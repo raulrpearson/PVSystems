@@ -2,7 +2,7 @@ package Interfaces "Connectors and partial models for input/output blocks"
   
   extends Modelica.Icons.Library;
   
-  annotation( Window(
+  annotation (Window(
       x=0.05,
       y=0.09,
       width=0.72,
@@ -132,7 +132,7 @@ Modelica in file \"Modelica/package.mo\".
     replaceable type SignalType = Real "type of signal";
     input SignalType signal[n] "Real input signals";
     
-    annotation(
+    annotation (
       Coordsys(extent=[-100, -100; 100, 100]),
       Icon(Polygon(points=[-100, 100; 100, 0; -100, -100; -100, 100], style(
               color=3, fillColor=3))),
@@ -150,7 +150,7 @@ Modelica in file \"Modelica/package.mo\".
     replaceable type SignalType = Real "type of signal";
     output SignalType signal[n] "Real output signals";
     
-    annotation(
+    annotation (
       Coordsys(extent=[-100, -100; 100, 100]),
       Icon(Polygon(points=[-100, 100; 100, 0; -100, -100; -100, 100], style(
               color=3, fillColor=7))),
@@ -167,7 +167,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter Integer n=1 "Dimension of signal vector";
     input Boolean signal[n] "Boolean input signals";
     
-    annotation(
+    annotation (
       Icon(Polygon(points=[-100, 100; 100, 0; -100, -100; -100, 100], style(
               color=5, fillColor=5))),
       Diagram(Polygon(points=[-100, 100; 100, 0; -100, -100; -100, 100], style(
@@ -183,7 +183,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter Integer n=1 "Dimension of signal vector";
     output Boolean signal[n] "Boolean output signals";
     
-    annotation(
+    annotation (
       Coordsys(extent=[-100, -100; 100, 100]),
       Icon(Polygon(points=[-100, 100; 100, 0; -100, -100; -100, 100], style(
               color=5, fillColor=7))),
@@ -200,7 +200,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter Integer n=1 "Dimension of signal vector";
     input Integer signal[n] "Integer input signals";
     
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
@@ -225,7 +225,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter Integer n=1 "Dimension of signal vector";
     output Integer signal[n] "Integer output signals";
     
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
@@ -247,16 +247,16 @@ Modelica in file \"Modelica/package.mo\".
   end IntegerOutPort;
   
   partial block BlockIcon "Basic graphical layout of continuous block" 
-    annotation( Icon(Rectangle(extent=[-100, -100; 100, 100], style(color=3,
+    annotation (Icon(Rectangle(extent=[-100, -100; 100, 100], style(color=3,
               fillColor=7)), Text(extent=[-150, 150; 150, 110], string="%name")));
   end BlockIcon;
   
   partial block SO "Single Output continuous control block" 
     extends BlockIcon;
     
-    OutPort outPort(final n=1) "Connector of Real output signal" annotation(
+    OutPort outPort(final n=1) "Connector of Real output signal" annotation (
         extent=[100, -10; 120, 10]);
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
@@ -275,10 +275,10 @@ Modelica in file \"Modelica/package.mo\".
   partial block MO "Multiple Output continuous control block" 
     extends BlockIcon;
     
-    parameter Integer nout(min=1)=  1 "Number of outputs";
+    parameter Integer nout(min=1) = 1 "Number of outputs";
     OutPort outPort(final n=nout) "Connector of Real output signals" 
-      annotation( extent=[100, -10; 120, 10]);
-    annotation(
+      annotation (extent=[100, -10; 120, 10]);
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
@@ -298,13 +298,13 @@ Modelica in file \"Modelica/package.mo\".
   partial block SISO "Single Input Single Output continuous control block" 
     extends BlockIcon;
     
-    InPort inPort(final n=1) "Connector of Real input signal" annotation(
+    InPort inPort(final n=1) "Connector of Real input signal" annotation (
         extent=[-140, -20; -100, 20]);
-    OutPort outPort(final n=1) "Connector of Real output signal" annotation(
+    OutPort outPort(final n=1) "Connector of Real output signal" annotation (
         extent=[100, -10; 120, 10]);
     output Real y;
     
-    annotation( Coordsys(
+    annotation (Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
         component=[20, 20]), Window(
@@ -322,15 +322,15 @@ Modelica in file \"Modelica/package.mo\".
     "2 Single Input / 1 Single Output continuous control block" 
     extends BlockIcon;
     
-    InPort inPort1(final n=1) "Connector of Real input signal 1" annotation(
+    InPort inPort1(final n=1) "Connector of Real input signal 1" annotation (
         extent=[-140, 40; -100, 80]);
-    InPort inPort2(final n=1) "Connector of Real input signal 2" annotation(
+    InPort inPort2(final n=1) "Connector of Real input signal 2" annotation (
         extent=[-140, -80; -100, -40]);
-    OutPort outPort(final n=1) "Connector of Real output signal" annotation(
+    OutPort outPort(final n=1) "Connector of Real output signal" annotation (
         extent=[100, -10; 120, 10]);
     output Real y "Output signal";
     
-    annotation( Documentation(info="<html><p>
+    annotation (Documentation(info="<html><p>
 Block has two Input vectors inPort1.signal and inPort2.signal and one
 output vector outPort.signal. All vectors have one element.</p></html>
 "));
@@ -344,13 +344,13 @@ output vector outPort.signal. All vectors have one element.</p></html>
   partial block SIMO "Single Input Multiple Output continuous control block" 
     extends BlockIcon;
     parameter Integer nout=1 "Number of outputs";
-    InPort inPort(final n=1) "Connector of Real input signal" annotation(
+    InPort inPort(final n=1) "Connector of Real input signal" annotation (
         extent=[-140, -20; -100, 20]);
     OutPort outPort(final n=nout) "Connector of Real output signals" 
-      annotation( extent=[100, -10; 120, 10]);
+      annotation (extent=[100, -10; 120, 10]);
     output Real y[nout] "Output signals";
     
-    annotation( Documentation(info="<HTML>
+    annotation (Documentation(info="<HTML>
 <p>Block has one continuous input signal and a vector of continuous output
 signals.</p>
 </HTML>
@@ -364,13 +364,13 @@ signals.</p>
   partial block MISO "Multiple Input Single Output continuous control block" 
     extends BlockIcon;
     parameter Integer nin=1 "Number of inputs";
-    InPort inPort(final n=nin) "Connector of Real input signals" annotation(
+    InPort inPort(final n=nin) "Connector of Real input signals" annotation (
         extent=[-140, -20; -100, 20]);
-    OutPort outPort(final n=1) "Connector of Real output signal" annotation(
+    OutPort outPort(final n=1) "Connector of Real output signal" annotation (
         extent=[100, -10; 120, 10]);
     output Real y "Output signal";
     
-    annotation( Documentation(info="<HTML>
+    annotation (Documentation(info="<HTML>
 <p>
 Block has a vector of continuous input signals and
 one continuous output signal.
@@ -388,12 +388,12 @@ one continuous output signal.
     extends BlockIcon;
     parameter Integer nin=1 "Number of inputs";
     parameter Integer nout=1 "Number of outputs";
-    InPort inPort(final n=nin) "Connector of Real input signals" annotation(
+    InPort inPort(final n=nin) "Connector of Real input signals" annotation (
         extent=[-140, -20; -100, 20]);
     OutPort outPort(final n=nout) "Connector of Real output signals" 
-      annotation( extent=[100, -10; 120, 10]);
+      annotation (extent=[100, -10; 120, 10]);
     output Real y[nout] "Output signals";
-    annotation( Documentation(info="<HTML>
+    annotation (Documentation(info="<HTML>
 <p>
 Block has a continuous input and a continuous output signal vector.
 The signal sizes of the input and output vector may be different.
@@ -407,17 +407,16 @@ The signal sizes of the input and output vector may be different.
   end MIMO;
   
   partial block MIMOs 
-    "Multiple Input Multiple Output continuous control block with same number of inputs and outputs"
-    
+    "Multiple Input Multiple Output continuous control block with same number of inputs and outputs" 
     
     extends BlockIcon;
     parameter Integer n=1 "Number of inputs (= number of outputs)";
-    InPort inPort(final n=n) "Connector of Real input signals" annotation(
+    InPort inPort(final n=n) "Connector of Real input signals" annotation (
         extent=[-140, -20; -100, 20]);
-    OutPort outPort(final n=n) "Connector of Real output signals" annotation(
+    OutPort outPort(final n=n) "Connector of Real output signals" annotation (
         extent=[100, -10; 120, 10]);
     output Real y[n] "Output signals";
-    annotation(
+    annotation (
       Documentation(info="<HTML>
 <p>
 Block has a continuous input and a continuous output signal vector
@@ -445,14 +444,14 @@ where the signal sizes of the input and output vector are identical.
     
     parameter Integer n=1 "Dimension of input and output vectors.";
     
-    InPort inPort1(final n=n) "Connector 1 of Real input signals" annotation(
+    InPort inPort1(final n=n) "Connector 1 of Real input signals" annotation (
         extent=[-140, 40; -100, 80]);
-    InPort inPort2(final n=n) "Connector 2 of Real input signals" annotation(
+    InPort inPort2(final n=n) "Connector 2 of Real input signals" annotation (
         extent=[-140, -80; -100, -40]);
-    OutPort outPort(final n=n) "Connector of Real output signals" annotation(
+    OutPort outPort(final n=n) "Connector of Real output signals" annotation (
         extent=[100, -10; 120, 10]);
     output Real y[n] "Output signals";
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
@@ -486,14 +485,14 @@ output vector outPort.signal. All vectors have the same number of elements.
     Real u_s "Scalar setpoint input signal";
     Real u_m "Scalar measurement input signal";
   public 
-    InPort inPort_s(final n=1) "Connector of setpoint input signal" annotation(
+    InPort inPort_s(final n=1) "Connector of setpoint input signal" annotation (
        extent=[-140, -20; -100, 20]);
     InPort inPort_m(final n=1) "Connector of measurement input signal" 
-      annotation( extent=[20, -100; -20, -140], rotation=-90);
+      annotation (extent=[20, -100; -20, -140], rotation=-90);
     OutPort outPort(final n=1) "Connector of actuator output signal" 
-      annotation( extent=[100, -10; 120, 10]);
+      annotation (extent=[100, -10; 120, 10]);
     output Real y "Scalar actuator output signal";
-    annotation(
+    annotation (
       Diagram(
         Text(extent=[-102, 34; -142, 24], string="(setpoint)"),
         Text(extent=[100, 24; 140, 14], string="(actuator)"),
@@ -520,19 +519,19 @@ output vector outPort.signal. All vectors have the same number of elements.
     parameter Integer nu_m=1 "Number of measurement inputs";
     parameter Integer ny=1 "Number of actuator outputs";
     InPort inPort_s(final n=nu_s) "Connector of setpoint input signals" 
-      annotation( extent=[-140, -20; -100, 20]);
+      annotation (extent=[-140, -20; -100, 20]);
     InPort inPort_m(final n=nu_m) "Connector of measurement input signals" 
-      annotation( extent=[20, -100; -20, -140], rotation=-90);
+      annotation (extent=[20, -100; -20, -140], rotation=-90);
     OutPort outPort(final n=ny) "Connector of actuator output signals" 
-      annotation( extent=[100, -10; 120, 10]);
-    annotation( Diagram(
+      annotation (extent=[100, -10; 120, 10]);
+    annotation (Diagram(
         Text(extent=[-100, 36; -140, 26], string="(setpoint)"),
         Text(extent=[102, 24; 142, 14], string="(actuator)"),
         Text(extent=[-75, -108; -25, -98], string=" (measurement)")));
   end MVcontrol;
   
   partial block BooleanBlockIcon "Basic graphical layout of Boolean block" 
-    annotation( Icon(Rectangle(extent=[-100, -100; 100, 100], style(color=5,
+    annotation (Icon(Rectangle(extent=[-100, -100; 100, 100], style(color=5,
               fillColor=7)), Text(extent=[-150, 150; 150, 110], string="%name")));
   end BooleanBlockIcon;
   
@@ -542,12 +541,12 @@ output vector outPort.signal. All vectors have the same number of elements.
     
   public 
     BooleanInPort inPort(final n=1) "Connector of Boolean input signal" 
-      annotation( extent=[-140, -20; -100, 20]);
+      annotation (extent=[-140, -20; -100, 20]);
     BooleanOutPort outPort(final n=1) "Connector of Boolean output signal" 
-      annotation( extent=[100, -10; 120, 10]);
+      annotation (extent=[100, -10; 120, 10]);
     output Boolean y;
     
-    annotation( Coordsys(
+    annotation (Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
         component=[20, 20]), Window(
@@ -562,17 +561,16 @@ output vector outPort.signal. All vectors have the same number of elements.
   end BooleanSISO;
   
   partial block BooleanMIMOs 
-    "Multiple Input Multiple Output continuous control block with same number of inputs and outputs of boolean type"
-    
+    "Multiple Input Multiple Output continuous control block with same number of inputs and outputs of boolean type" 
     
     extends BooleanBlockIcon;
     parameter Integer n=1 "Number of inputs (= number of outputs)";
     BooleanInPort inPort(final n=n) "Connector of Boolean input signals" 
-      annotation( extent=[-140, -20; -100, 20]);
+      annotation (extent=[-140, -20; -100, 20]);
     BooleanOutPort outPort(final n=n) "Connector of Boolean output signals" 
-      annotation( extent=[100, -10; 120, 10]);
+      annotation (extent=[100, -10; 120, 10]);
     output Boolean y[n] "Output signals";
-    annotation( Documentation(info="<HTML>
+    annotation (Documentation(info="<HTML>
 <p>
 Block has a continuous input and a continuous output signal vector
 where the signal sizes of the input and output vector are identical
@@ -587,18 +585,17 @@ and of type boolean.
   end BooleanMIMOs;
   
   partial block MI2BooleanMOs 
-    "2 Multiple Input / Boolean Multiple Output block with same signal lengths"
-    
+    "2 Multiple Input / Boolean Multiple Output block with same signal lengths" 
     
     extends BooleanBlockIcon;
     parameter Integer n=1 "Dimension of input and output vectors.";
     InPort inPort1(final n=n) "Connector 1 of Boolean input signals" 
-      annotation( extent=[-140, 40; -100, 80]);
+      annotation (extent=[-140, 40; -100, 80]);
     InPort inPort2(final n=n) "Connector 2 of Boolean input signals" 
-      annotation( extent=[-140, -80; -100, -40]);
+      annotation (extent=[-140, -80; -100, -40]);
     BooleanOutPort outPort(final n=n) "Connector of Boolean output signals" 
-      annotation( extent=[100, -10; 120, 10]);
-    annotation( Documentation(info="<html>
+      annotation (extent=[100, -10; 120, 10]);
+    annotation (Documentation(info="<html>
 <p>Block has two Boolean input vectors u1 and u2 and one Boolean output
 vector y. All vectors have the same number of elements.</p>
 </html>
@@ -607,10 +604,10 @@ vector y. All vectors have the same number of elements.</p>
   
   partial block BooleanSignalSource "Base class for Boolean signal sources" 
     extends BooleanBlockIcon;
-    parameter Integer nout(min=1)=  1 "Number of Boolean outputs";
+    parameter Integer nout(min=1) = 1 "Number of Boolean outputs";
     BooleanOutPort outPort(final n=nout) "Connector of Boolean output signal" 
-      annotation( extent=[100, -10; 120, 10]);
-    annotation(
+      annotation (extent=[100, -10; 120, 10]);
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
@@ -630,16 +627,16 @@ vector y. All vectors have the same number of elements.</p>
   end BooleanSignalSource;
   
   partial block IntegerBlockIcon "Basic graphical layout of Integer block" 
-    annotation( Icon(Rectangle(extent=[-100, -100; 100, 100], style(color=45,
+    annotation (Icon(Rectangle(extent=[-100, -100; 100, 100], style(color=45,
               fillColor=7)), Text(extent=[-150, 150; 150, 110], string="%name")));
   end IntegerBlockIcon;
   
   partial block IntegerMO "Multiple Integer Output continuous control block" 
     extends IntegerBlockIcon;
     
-    parameter Integer nout(min=1)=  1 "Number of outputs";
+    parameter Integer nout(min=1) = 1 "Number of outputs";
     IntegerOutPort outPort(final n=nout) "Connector of Integer output signals" 
-      annotation( extent=[100, -10; 120, 10]);
+      annotation (extent=[100, -10; 120, 10]);
     output Integer y[nout];
   equation 
     y = outPort.signal;
@@ -653,17 +650,16 @@ vector y. All vectors have the same number of elements.</p>
   end IntegerSignalSource;
   
   partial block IntegerMIBooleanMOs 
-    "Multiple Integer Input Multiple Boolean Output continuous control block with same number of inputs and outputs"
-    
+    "Multiple Integer Input Multiple Boolean Output continuous control block with same number of inputs and outputs" 
     
     extends BooleanBlockIcon;
     parameter Integer n=1 "Number of inputs (= number of outputs)";
     IntegerInPort inPort(final n=n) "Connector of Integer input signals" 
-      annotation( extent=[-140, -20; -100, 20]);
+      annotation (extent=[-140, -20; -100, 20]);
     BooleanOutPort outPort(final n=n) "Connector of Boolean output signals" 
-      annotation( extent=[100, -10; 120, 10]);
+      annotation (extent=[100, -10; 120, 10]);
     output Boolean y[n] "Boolean output signals";
-    annotation( Documentation(info="<HTML>
+    annotation (Documentation(info="<HTML>
 <p>
 Block has a continuous integer input and a continuous boolean output signal vector
 where the signal sizes of the input and output vector are identical.
@@ -715,9 +711,9 @@ where the signal sizes of the input and output vector are identical.
     extends Modelica.Icons.Library;
     
     block SendReal "Send Real signal to bus" 
-      Internal.OutputReal toBus annotation( extent=[100, -10; 120, 10]);
-      InPort inPort(final n=1) annotation( extent=[-140, -20; -100, 20]);
-      annotation( Icon(
+      Internal.OutputReal toBus annotation (extent=[100, -10; 120, 10]);
+      InPort inPort(final n=1) annotation (extent=[-140, -20; -100, 20]);
+      annotation (Icon(
           Rectangle(extent=[-100, 40; 100, -40], style(color=73, fillColor=7)),
           Text(
             extent=[-144, 96; 144, 46],
@@ -741,9 +737,9 @@ which is set equal to the signal of the InPort connector.
     end SendReal;
     
     block SendBoolean "Send Boolean signal to bus" 
-      Internal.OutputBoolean toBus annotation( extent=[100, -10; 120, 10]);
-      BooleanInPort inPort(final n=1) annotation( extent=[-140, -20; -100, 20]);
-      annotation( Icon(
+      Internal.OutputBoolean toBus annotation (extent=[100, -10; 120, 10]);
+      BooleanInPort inPort(final n=1) annotation (extent=[-140, -20; -100, 20]);
+      annotation (Icon(
           Rectangle(extent=[-100, 40; 100, -40], style(color=81, fillColor=7)),
           Text(
             extent=[-144, 96; 144, 46],
@@ -767,9 +763,9 @@ which is set equal to the signal of the BooleanInPort connector.
     end SendBoolean;
     
     block SendInteger "Send Integer signal to bus" 
-      Internal.OutputInteger toBus annotation( extent=[100, -10; 120, 10]);
-      IntegerInPort inPort(final n=1) annotation( extent=[-140, -20; -100, 20]);
-      annotation( Icon(
+      Internal.OutputInteger toBus annotation (extent=[100, -10; 120, 10]);
+      IntegerInPort inPort(final n=1) annotation (extent=[-140, -20; -100, 20]);
+      annotation (Icon(
           Rectangle(extent=[-100, 40; 100, -40], style(color=45, fillColor=7)),
           Text(
             extent=[-144, 96; 144, 46],
@@ -793,9 +789,9 @@ which is set equal to the signal of the IntegerInPort connector.
     end SendInteger;
     
     block ReceiveReal "Receive Real signal from bus" 
-      Internal.InputReal fromBus annotation( extent=[-120, -10; -100, 10]);
-      OutPort outPort(final n=1) annotation( extent=[100, -10; 120, 10]);
-      annotation( Icon(
+      Internal.InputReal fromBus annotation (extent=[-120, -10; -100, 10]);
+      OutPort outPort(final n=1) annotation (extent=[100, -10; 120, 10]);
+      annotation (Icon(
           Rectangle(extent=[-100, 40; 100, -40], style(color=73, fillColor=7)),
           Text(
             extent=[-100, 30; 100, -30],
@@ -819,9 +815,9 @@ which is set equal to the signal of the OutPort connector.
     end ReceiveReal;
     
     block ReceiveBoolean "Receive Boolean signal from bus" 
-      Internal.InputBoolean fromBus annotation( extent=[-120, -10; -100, 10]);
-      BooleanOutPort outPort(final n=1) annotation( extent=[100, -10; 120, 10]);
-      annotation( Icon(
+      Internal.InputBoolean fromBus annotation (extent=[-120, -10; -100, 10]);
+      BooleanOutPort outPort(final n=1) annotation (extent=[100, -10; 120, 10]);
+      annotation (Icon(
           Rectangle(extent=[-100, 40; 100, -40], style(color=81, fillColor=7)),
           Text(
             extent=[-100, 30; 100, -30],
@@ -845,9 +841,9 @@ which is set equal to the signal of the BooleanOutPort connector.
     end ReceiveBoolean;
     
     block ReceiveInteger "Receive Integer signal from bus" 
-      Internal.InputInteger fromBus annotation( extent=[-120, -10; -100, 10]);
-      IntegerOutPort outPort(final n=1) annotation( extent=[100, -10; 120, 10]);
-      annotation( Icon(
+      Internal.InputInteger fromBus annotation (extent=[-120, -10; -100, 10]);
+      IntegerOutPort outPort(final n=1) annotation (extent=[100, -10; 120, 10]);
+      annotation (Icon(
           Rectangle(extent=[-100, 40; 100, -40], style(color=45, fillColor=7)),
           Text(
             extent=[-100, 30; 100, -30],
@@ -871,13 +867,12 @@ which is set equal to the signal of the IntegerOutPort connector.
     end ReceiveInteger;
     
     package Internal 
-      "Internal connector definitions only to be used from models of package BusAdaptors"
-      
+      "Internal connector definitions only to be used from models of package BusAdaptors" 
       
       extends Modelica.Icons.Library;
       
       connector InputReal = input Real "'input Real' variable as connector" 
-        annotation( Icon(Rectangle(extent=[-100, 100; 100, -100], style(
+        annotation (Icon(Rectangle(extent=[-100, 100; 100, -100], style(
               color=77,
               fillColor=77,
               fillPattern=1)), Text(
@@ -892,7 +887,7 @@ which is set equal to the signal of the IntegerOutPort connector.
             string="%name",
             style(color=77))));
       connector InputBoolean = input Boolean 
-        "'input Boolean' variable as connector" annotation( Icon(Rectangle(
+        "'input Boolean' variable as connector" annotation (Icon(Rectangle(
               extent=[-100, 100; 100, -100], style(
               color=77,
               fillColor=77,
@@ -908,7 +903,7 @@ which is set equal to the signal of the IntegerOutPort connector.
             string="%name",
             style(color=77))));
       connector InputInteger = input Integer 
-        "'input Integer' variable as connector" annotation( Icon(Rectangle(
+        "'input Integer' variable as connector" annotation (Icon(Rectangle(
               extent=[-100, 100; 100, -100], style(
               color=77,
               fillColor=77,
@@ -924,7 +919,7 @@ which is set equal to the signal of the IntegerOutPort connector.
             string="%name",
             style(color=77))));
       connector OutputReal = output Real "'output Real' variable as connector" 
-        annotation( Icon(Rectangle(extent=[-100, 100; 100, -100], style(
+        annotation (Icon(Rectangle(extent=[-100, 100; 100, -100], style(
               color=77,
               fillColor=77,
               fillPattern=1)), Text(
@@ -939,7 +934,7 @@ which is set equal to the signal of the IntegerOutPort connector.
             string="%name",
             style(color=77))));
       connector OutputBoolean = output Boolean 
-        "'output Boolean' variable as connector" annotation( Icon(Rectangle(
+        "'output Boolean' variable as connector" annotation (Icon(Rectangle(
               extent=[-100, 100; 100, -100], style(
               color=77,
               fillColor=77,
@@ -955,7 +950,7 @@ which is set equal to the signal of the IntegerOutPort connector.
             string="%name",
             style(color=77))));
       connector OutputInteger = output Integer 
-        "'output Integer' variable as connector" annotation( Icon(Rectangle(
+        "'output Integer' variable as connector" annotation (Icon(Rectangle(
               extent=[-100, 100; 100, -100], style(
               color=77,
               fillColor=77,

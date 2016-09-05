@@ -2,7 +2,7 @@ package Math "Mathematical functions as input/output blocks"
   
   extends Modelica.Icons.Library;
   
-  annotation( Window(
+  annotation (Window(
       x=0.05,
       y=0.09,
       width=0.44,
@@ -91,8 +91,7 @@ Modelica in file \"Modelica/package.mo\".
 </HTML>
 "));
   
-  block TwoInputs "Change causality of input signals (e.g. for inverse models)"
-    
+  block TwoInputs "Change causality of input signals (e.g. for inverse models)" 
     
     extends Interfaces.BlockIcon;
     parameter Integer n=1 "number of input signals";
@@ -109,8 +108,8 @@ inverse model generation).</p>
 </ul>
 </HTML>"));
     
-    Interfaces.InPort inPort1(n=n) annotation( extent=[-140, -20; -100, 20]);
-    Interfaces.InPort inPort2(n=n) annotation(
+    Interfaces.InPort inPort1(n=n) annotation (extent=[-140, -20; -100, 20]);
+    Interfaces.InPort inPort2(n=n) annotation (
       extent=[100, -20; 140, 20],
       rotation=180);
   equation 
@@ -134,16 +133,15 @@ inverse model generation).</p>
 </ul>
 </HTML>"));
     
-    Interfaces.OutPort OutPort1(n=n) annotation( extent=[100, -10; 120, 10]);
-    Interfaces.OutPort OutPort2(n=n) annotation( extent=[-120, -10; -100, 10],
+    Interfaces.OutPort OutPort1(n=n) annotation (extent=[100, -10; 120, 10]);
+    Interfaces.OutPort OutPort2(n=n) annotation (extent=[-120, -10; -100, 10],
         rotation=180);
   equation 
     OutPort1.signal = OutPort2.signal;
   end TwoOutputs;
   
   block Gain 
-    "Output the element-wise product of a gain vector with the input signal vector"
-    
+    "Output the element-wise product of a gain vector with the input signal vector" 
     
     parameter Real k[:]={1} 
       "Gain vector multiplied element-wise with input vector";
@@ -152,10 +150,10 @@ inverse model generation).</p>
     Real y[size(k, 1)] "Output signals";
   public 
     Interfaces.InPort inPort(final n=size(k, 1)) "Input signal connector" 
-      annotation( extent=[-140, -20; -100, 20]);
+      annotation (extent=[-140, -20; -100, 20]);
     Interfaces.OutPort outPort(final n=size(k, 1)) "Output signal connector" 
-      annotation( extent=[100, -10; 120, 10]);
-    annotation(
+      annotation (extent=[100, -10; 120, 10]);
+    annotation (
       Documentation(info="<html>
 <p>
 This block computes the output <b>y</b>=outPort.signal as
@@ -198,7 +196,7 @@ input <b>u</b> = inPort.signal:
     parameter Real K[:, :]=[1, 0; 0, 1] 
       "Gain matrix which is multiplied with the input";
     extends Interfaces.MIMO(final nin=size(K, 2), final nout=size(K, 1));
-    annotation(
+    annotation (
       Documentation(info="<html>
 <p>
 This block computes the output <b>y</b>=outPort.signal as <i>product</i> of the
@@ -248,7 +246,7 @@ Example:
     
     parameter Real k[nin]=ones(nin) "Optional: sum coefficients";
     
-    annotation(
+    annotation (
       Documentation(info="<html>
 <p>This block computes the output y=outPort.signal[1] as
 <i>sum</i> of the elements of the input signal vector
@@ -299,11 +297,11 @@ product</p>
   
   block Feedback "Output difference between commanded and feedback input" 
     parameter Integer n=1 "size of input and feedback signal";
-    Interfaces.InPort inPort1(final n=n) annotation( extent=[-100, -20; -60, 20]);
-    Interfaces.InPort inPort2(final n=n) annotation( extent=[-20, -100; 20, -60],
+    Interfaces.InPort inPort1(final n=n) annotation (extent=[-100, -20; -60, 20]);
+    Interfaces.InPort inPort2(final n=n) annotation (extent=[-20, -100; 20, -60],
              rotation=90);
-    Interfaces.OutPort outPort(final n=n) annotation( extent=[80, -10; 100, 10]);
-    annotation(
+    Interfaces.OutPort outPort(final n=n) annotation (extent=[80, -10; 100, 10]);
+    annotation (
       Documentation(info="<html>
 <p>
 This block computes the output <b>y</b>=outPort.signal as <i>difference</i> of the
@@ -370,7 +368,7 @@ Example:
     extends Interfaces.MI2MO;
     parameter Real k1=+1 "Gain of upper input";
     parameter Real k2=+1 "Gain of lower input";
-    annotation(
+    annotation (
       Documentation(info="<html>
 <p>
 This block computes the output <b>y</b>=outPort.signal as <i>sum</i> of the
@@ -477,14 +475,14 @@ Example:
     parameter Real k3=+1 "Gain of lower input";
     parameter Integer n=1 "Dimension of input and output vectors.";
     Interfaces.InPort inPort1(final n=n) "Connector 1 of Real input signals" 
-      annotation( extent=[-140, 60; -100, 100]);
+      annotation (extent=[-140, 60; -100, 100]);
     Interfaces.InPort inPort2(final n=n) "Connector 2 of Real input signals" 
-      annotation( extent=[-140, -20; -100, 20]);
+      annotation (extent=[-140, -20; -100, 20]);
     Interfaces.InPort inPort3(final n=n) "Connector 3 of Real input signals" 
-      annotation( extent=[-140, -100; -100, -60]);
+      annotation (extent=[-140, -100; -100, -60]);
     Interfaces.OutPort outPort(final n=n) "Connector of Real output signals" 
-      annotation( extent=[100, -10; 120, 10]);
-    annotation(
+      annotation (extent=[100, -10; 120, 10]);
+    annotation (
       Documentation(info="<html>
 <p>
 This block computes the output <b>y</b>=outPort.signal as <i>sum</i> of the
@@ -574,7 +572,7 @@ Example:
   
   block Product "Output product of the two inputs" 
     extends Interfaces.MI2MO;
-    annotation(
+    annotation (
       Documentation(info="<html>
 <p>
 This block computes the output <b>y</b>=outPort.signal element-wise
@@ -619,7 +617,7 @@ the two inputs <b>u1</b>=inPort1.signal and <b>u2</b>=inPort2.signal:
   
   block Division "Output first input divided by second input" 
     extends Interfaces.MI2MO;
-    annotation(
+    annotation (
       Documentation(info="<html>
 <p>
 This block computes the output <b>y</b>=outPort.signal element-wise
@@ -665,7 +663,7 @@ the two inputs <b>u1</b>=inPort1.signal and <b>u2</b>=inPort2.signal:
   
   block Abs "Output the absolute value of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[92, 0; 70, 8; 70, -8; 92, 0], style(color=8, fillColor=
                 8)),
@@ -725,7 +723,7 @@ as <i>absolute value</i> of the input <b>u</b>=inPort.signal:
   
   block Sign "Output the sign of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Line(points=[-90, 0; 68, 0], style(color=8)),
         Polygon(points=[90, 0; 68, 8; 68, -8; 90, 0], style(color=8, fillColor=
@@ -794,7 +792,7 @@ as <b>sign</b> of the input <b>u</b>=inPort.signal:
   
   block Sqrt "Output the square root of the input (input >= 0 required)" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Line(points=[-90, -80; 68, -80], style(color=8)),
         Polygon(points=[90, -80; 68, -72; 68, -88; 90, -80], style(color=8,
@@ -857,7 +855,7 @@ Otherwise an error occurs.
   
   block Sin "Output the sine of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[-80, 90; -88, 68; -72, 68; -80, 90], style(color=8,
               fillColor=8)),
@@ -924,7 +922,7 @@ as <b>sine</b> of the input <b>u</b>=inPort.signal:
   
   block Cos "Output the cosine of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[-80, 90; -88, 68; -72, 68; -80, 90], style(color=8,
               fillColor=8)),
@@ -991,7 +989,7 @@ as <b>cos</b> of the input <b>u</b>=inPort.signal:
   
   block Tan "Output the tangent of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=
                 8)),
@@ -1055,7 +1053,7 @@ as <b>tan</b> of the input <b>u</b>=inPort.signal:
   
   block Asin "Output the arc sine of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=
                 8)),
@@ -1124,7 +1122,7 @@ Otherwise an error occurs.
   
   block Acos "Output the arc cosine of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=
                 8)),
@@ -1193,7 +1191,7 @@ Otherwise an error occurs.
   
   block Atan "Output the arc tangent of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=
                 8)),
@@ -1258,7 +1256,7 @@ This block computes the output <b>y</b>=outPort.signal element-wise as the
   
   block Atan2 "Output atan(u1/u2) of the inputs u1 and u2" 
     extends Interfaces.MI2MO;
-    annotation(
+    annotation (
       Icon(
         Text(extent=[-150, 150; 150, 110], string="%name"),
         Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=
@@ -1342,7 +1340,7 @@ block <b>Atan</b> gives a solution in the range
   
   block Sinh "Output the hyperbolic sine of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=
                 8)),
@@ -1408,7 +1406,7 @@ This block computes the output <b>y</b>=outPort.signal element-wise as the
   
   block Cosh "Output the hyperbolic cosine of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=
                 8)),
@@ -1477,7 +1475,7 @@ This block computes the output <b>y</b>=outPort.signal element-wise as the
   
   block Tanh "Output the hyperbolic tangent of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Line(points=[0, -90; 0, 84], style(color=8)),
         Line(points=[-100, 0; 84, 0], style(color=8)),
@@ -1542,7 +1540,7 @@ This block computes the output <b>y</b>=outPort.signal element-wise as the
   
   block Exp "Output the exponential (base e) of the input" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Line(points=[0, -80; 0, 68], style(color=8)),
         Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=
@@ -1607,7 +1605,7 @@ This block computes the output <b>y</b>=outPort.signal element-wise as the
   block Log 
     "Output the natural (base e) logarithm of the input (input > 0 required)" 
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Line(points=[-80, -80; -80, 68], style(color=8)),
         Polygon(points=[-80, 90; -88, 68; -72, 68; -80, 90], style(color=8,
@@ -1679,7 +1677,7 @@ zero or negative.
   block Log10 "Output the base 10 logarithm of the input (input > 0 required)" 
     
     extends Interfaces.MIMOs;
-    annotation(
+    annotation (
       Icon(
         Polygon(points=[90, 0; 68, 8; 68, -8; 90, 0], style(color=8, fillColor=
                 8)),
@@ -1753,7 +1751,7 @@ zero or negative.
     parameter Integer n=1 "Number of input and output signals";
   protected 
     Real u[n];
-    annotation( Icon(
+    annotation (Icon(
         Text(extent=[-100, 60; 0, -60], string="R"),
         Text(
           extent=[20, 60; 120, -60],
@@ -1772,8 +1770,8 @@ as <i>nearest integer value</i> of the input <b>u</b>=inPort.signal:
 </html>
 "));
   public 
-    Interfaces.InPort inPort(final n=n) annotation( extent=[-140, -20; -100, 20]);
-    Interfaces.IntegerOutPort outPort(final n=n) annotation( extent=[100, -10;
+    Interfaces.InPort inPort(final n=n) annotation (extent=[-140, -20; -100, 20]);
+    Interfaces.IntegerOutPort outPort(final n=n) annotation (extent=[100, -10;
           120, 10]);
   equation 
     u = inPort.signal;
@@ -1787,7 +1785,7 @@ as <i>nearest integer value</i> of the input <b>u</b>=inPort.signal:
     extends Interfaces.BlockIcon;
     parameter Integer n=1 
       "Number of input signals (= number of output signals)";
-    annotation( Icon(
+    annotation (Icon(
         Text(
           extent=[-120, 60; -20, -60],
           string="I",
@@ -1806,8 +1804,8 @@ as <i>Real equivalent</i> of the Integer input <b>u</b>=inPort.signal:
 <p>where <b>u</b> is of Integer and <b>y</b> of Real type.</p>
 </html>
 "));
-    Interfaces.OutPort outPort(final n=n) annotation( extent=[100, -10; 120, 10]);
-    Interfaces.IntegerInPort inPort(final n=n) annotation( extent=[-140, -20; -
+    Interfaces.OutPort outPort(final n=n) annotation (extent=[100, -10; 120, 10]);
+    Interfaces.IntegerInPort inPort(final n=n) annotation (extent=[-140, -20; -
           100, 20]);
   equation 
     outPort.signal = inPort.signal;
@@ -1815,7 +1813,7 @@ as <i>Real equivalent</i> of the Integer input <b>u</b>=inPort.signal:
   
   block Max "Pass through the largest signal" 
     extends Interfaces.MI2MO;
-    annotation( Icon(Text(
+    annotation (Icon(Text(
           extent=[-90, 36; 90, -36],
           style(color=9),
           string="max()")), Documentation(info="<html>
@@ -1836,7 +1834,7 @@ as <i>maximum</i> of the two inputs <b>u1</b>=inPort1.signal and <b>u2</b>=inPor
   
   block Min "Pass through the smallest signal" 
     extends Interfaces.MI2MO;
-    annotation( Icon(Text(
+    annotation (Icon(Text(
           extent=[-90, 36; 90, -36],
           style(color=9),
           string="min()")), Documentation(info="<html>
@@ -1857,7 +1855,7 @@ as <i>minimum</i> of the two inputs <b>u1</b>=inPort1.signal and <b>u2</b>=inPor
   
   block Edge "Indicates rising edge of boolean signal" 
     extends Interfaces.BooleanMIMOs;
-    annotation( Icon(Text(
+    annotation (Icon(Text(
           extent=[-90, 36; 90, -36],
           style(color=9),
           string="edge()")), Documentation(info="<html>
@@ -1874,12 +1872,12 @@ to true, when the Boolean input <b>u</b>=inPort.signal shows a <i>rising edge</i
     for i in 1:n loop
       y[i] = edge(u[i]);
     end for;
-    annotation( Icon);
+    annotation (Icon);
   end Edge;
   
   block BooleanChange "Indicates boolean signal changing" 
     extends Interfaces.BooleanMIMOs;
-    annotation( Icon(Text(
+    annotation (Icon(Text(
           extent=[-90, 36; 90, -36],
           style(color=9),
           string="change()")), Documentation(info="<html>
@@ -1901,7 +1899,7 @@ or falling edge</i>, i.e., when the signal changes:
   
   block IntegerChange "Indicates integer signal changing" 
     extends Interfaces.IntegerMIBooleanMOs;
-    annotation( Icon(Text(
+    annotation (Icon(Text(
           extent=[-90, 36; 90, -36],
           style(color=9),
           string="change()")), Documentation(info="<html>

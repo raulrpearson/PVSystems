@@ -3,7 +3,7 @@ package Nonlinear
   
   extends Modelica.Icons.Library;
   
-  annotation( Window(
+  annotation (Window(
       x=0.05,
       y=0.1,
       width=0.21,
@@ -59,11 +59,11 @@ Modelica in file \"Modelica/package.mo\".
 "));
   block Limiter "Limit the range of a signal" 
     parameter Real uMax[:]={1} "Upper limits of input signals";
-    parameter Real uMin[size(uMax, 1)](max=uMax)=  -uMax 
+    parameter Real uMin[size(uMax, 1)](max=uMax) = -uMax 
       "Lower limits of input signals";
     extends Interfaces.MIMOs(final n=size(uMax, 1));
     
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
@@ -128,14 +128,14 @@ as output.
   block VariableLimiter "Limit the range of a signal with variable limits" 
     extends Interfaces.MIMOs;
     
-    Interfaces.InPort limit1(final n=n) annotation( extent=[-140, 60; -100, 100]);
-    Interfaces.InPort limit2(final n=n) annotation( extent=[-140, -100; -100, -
+    Interfaces.InPort limit1(final n=n) annotation (extent=[-140, 60; -100, 100]);
+    Interfaces.InPort limit2(final n=n) annotation (extent=[-140, -100; -100, -
           60]);
   protected 
     Real uMax[n];
     Real uMin[n];
     
-    annotation(
+    annotation (
       Documentation(info="<html>
 <p>
 The Limiter block passes its input signal as output signal
@@ -199,11 +199,11 @@ is passed as output.
   
   block DeadZone "Provide a region of zero output" 
     parameter Real uMax[:]={1} "Upper limits of dead zones";
-    parameter Real uMin[size(uMax, 1)](max=uMax)=  -uMax 
+    parameter Real uMin[size(uMax, 1)](max=uMax) = -uMax 
       "Lower limits of dead zones";
     extends Interfaces.MIMOs(final n=size(uMax, 1));
     
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],

@@ -6,7 +6,7 @@ import SI = Modelica.SIunits;
 extends Modelica.Icons.Library2;
 
 
-annotation(
+annotation (
   Window(
     x=0.03,
     y=0.05,

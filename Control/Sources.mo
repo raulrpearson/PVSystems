@@ -3,7 +3,7 @@ package Sources
   
   extends Modelica.Icons.Library;
   
-  annotation( Window(
+  annotation (Window(
       x=0.06,
       y=0.1,
       width=0.43,
@@ -159,7 +159,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
     
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -251,7 +251,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter Real k[:]={1} "Constant output values";
     extends Interfaces.MO(final nout=size(k, 1));
     
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
@@ -308,7 +308,7 @@ Modelica in file \"Modelica/package.mo\".
         offset[1] else offset);
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
-    annotation( Icon(
+    annotation (Icon(
         Line(points=[-80, 68; -80, -80], style(color=8)),
         Polygon(points=[-80, 90; -88, 68; -72, 68; -80, 90], style(color=8,
               fillColor=8)),
@@ -386,7 +386,7 @@ Modelica in file \"Modelica/package.mo\".
   
   block Ramp "Generate ramp signals" 
     parameter Real height[:]={1} "Heights of ramps";
-    parameter Real duration[:](min=Modelica.Constants.small)=  {2} 
+    parameter Real duration[:](min=Modelica.Constants.small) = {2} 
       "Durations of ramps";
     parameter Real offset[:]={0} "Offsets of output signals";
     parameter SI.Time startTime[:]={0} "Output = offset for time < startTime";
@@ -402,7 +402,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
     
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -531,7 +531,7 @@ Modelica in file \"Modelica/package.mo\".
         offset[1] else offset);
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -637,7 +637,7 @@ Modelica in file \"Modelica/package.mo\".
         offset[1] else offset);
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -738,10 +738,10 @@ Modelica in file \"Modelica/package.mo\".
   
   block Exponentials "Generate a rising and falling exponential signal" 
     parameter Real outMax[:]={1} "Height of output for infinite riseTime";
-    parameter SI.Time riseTime[:](min=0)=  {0.5} "Rise time";
-    parameter SI.Time riseTimeConst[:](min=Modelica.Constants.small)=  {0.1} 
+    parameter SI.Time riseTime[:](min=0) = {0.5} "Rise time";
+    parameter SI.Time riseTimeConst[:](min=Modelica.Constants.small) = {0.1} 
       "Rise time constant";
-    parameter SI.Time fallTimeConst[:](min=Modelica.Constants.small)=  riseTimeConst 
+    parameter SI.Time fallTimeConst[:](min=Modelica.Constants.small) = riseTimeConst 
       "Fall time constant";
     parameter Real offset[:]={0} "Offsets of output signals";
     parameter SI.Time startTime[:]={0} "Output = offset for time < startTime";
@@ -762,7 +762,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
     Real y_riseTime[nout];
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -868,8 +868,8 @@ Modelica in file \"Modelica/package.mo\".
     parameter Real amplitude[:]={1} "Amplitudes of pulses";
     parameter Real width[:](
       final min=Modelica.Constants.small,
-      final max=100)=  {50} "Widths of pulses in % of periods";
-    parameter SI.Time period[:](final min=Modelica.Constants.small)=  {1} 
+      final max=100) = {50} "Widths of pulses in % of periods";
+    parameter SI.Time period[:](final min=Modelica.Constants.small) = {1} 
       "Times for one period";
     parameter Real offset[:]={0} "Offsets of output signals";
     parameter SI.Time startTime[:]={0} "Output = offset for time < startTime";
@@ -887,7 +887,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
     SI.Time T0[nout](final start=p_startTime) "Start time of current period";
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -1014,7 +1014,7 @@ Modelica in file \"Modelica/package.mo\".
   
   block SawTooth "Generate saw tooth signals" 
     parameter Real amplitude[:]={1} "Amplitudes of saw tooths";
-    parameter SI.Time period[:](final min=Modelica.Constants.small)=  {1} 
+    parameter SI.Time period[:](final min=Modelica.Constants.small) = {1} 
       "Times for one period";
     parameter Real offset[:]={0} "Offsets of output signals";
     parameter SI.Time startTime[:]={0} "Output = offset for time < startTime";
@@ -1030,7 +1030,7 @@ Modelica in file \"Modelica/package.mo\".
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
     SI.Time T0[nout](final start=p_startTime) "Start time of current period";
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -1142,13 +1142,13 @@ Modelica in file \"Modelica/package.mo\".
   
   block Trapezoid "Generate trapezoidal signals of type Real" 
     parameter Real amplitude[:]={1} "Amplitudes of trapezoids";
-    parameter SI.Time rising[:](final min=0)=  {0} 
+    parameter SI.Time rising[:](final min=0) = {0} 
       "Rising durations of trapezoids";
-    parameter SI.Time width[:](final min=0)=  {0.5} 
+    parameter SI.Time width[:](final min=0) = {0.5} 
       "Width durations of trapezoids";
-    parameter SI.Time falling[:](final min=0)=  {0} 
+    parameter SI.Time falling[:](final min=0) = {0} 
       "Falling durations of trapezoids";
-    parameter SI.Time period[:](final min=Modelica.Constants.small)=  {1} 
+    parameter SI.Time period[:](final min=Modelica.Constants.small) = {1} 
       "Time for one period";
     parameter Integer nperiod[:]={-1} 
       "Number of periods (< 0 means infinite number of periods)";
@@ -1179,7 +1179,7 @@ Modelica in file \"Modelica/package.mo\".
           nperiod[1] else nperiod)) "Period counter";
     Integer counter2[nout](start=(if size(nperiod, 1) == 1 then ones(nout)*
           nperiod[1] else nperiod));
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -1335,13 +1335,12 @@ Modelica in file \"Modelica/package.mo\".
   end Trapezoid;
   
   block KinematicPTP 
-    "Move as fast as possible along a distance within given kinematic constraints"
-    
+    "Move as fast as possible along a distance within given kinematic constraints" 
     
     parameter Real deltaq[:]={1} "Distance to move";
-    parameter Real qd_max[:](final min=Modelica.Constants.small)=  {1} 
+    parameter Real qd_max[:](final min=Modelica.Constants.small) = {1} 
       "Maximum velocities der(q)";
-    parameter Real qdd_max[:](final min=Modelica.Constants.small)=  {1} 
+    parameter Real qdd_max[:](final min=Modelica.Constants.small) = {1} 
       "Maximum accelerations der(qd)";
     parameter SI.Time startTime=0 "Time instant at which movement starts";
     
@@ -1365,7 +1364,7 @@ Modelica in file \"Modelica/package.mo\".
     SI.Time Tv;
     SI.Time Te;
     Boolean noWphase;
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -1493,8 +1492,7 @@ a flange according to a given acceleration.
   end KinematicPTP;
   
   block TimeTable 
-    "Generate a (possibly discontinuous) signal by linear interpolation in a table"
-    
+    "Generate a (possibly discontinuous) signal by linear interpolation in a table" 
     
     parameter Real table[:, 2]=[0, 0; 1, 1; 2, 4] 
       "Table matrix (time = first column)";
@@ -1506,7 +1504,7 @@ a flange according to a given acceleration.
     Real b "Interpolation coefficients b of actual interval (y=a*x+b)";
     Integer last(start=1) "Last used lower grid index";
     SI.Time nextEvent(start=0) "Next event instant";
-    annotation(
+    annotation (
       Icon(
         Line(points=[-80, 68; -80, -80], style(color=8)),
         Polygon(points=[-80, 90; -88, 68; -72, 68; -80, 90], style(color=8,
@@ -1726,7 +1724,7 @@ If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
     parameter Boolean k[:]={true} "Constant output values";
     extends Interfaces.BooleanSignalSource(final nout=size(k, 1));
     
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[2, 2],
@@ -1777,7 +1775,7 @@ If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
     parameter Boolean startValue[size(startTime, 1)]=fill(false, size(startTime,
           1)) "Output before startTime";
     extends Interfaces.BooleanSignalSource(final nout=size(startTime, 1));
-    annotation( Icon(Line(points=[-80, -70; 0, -70; 0, 50; 80, 50], style(color=
+    annotation (Icon(Line(points=[-80, -70; 0, -70; 0, 50; 80, 50], style(color=
                0)), Text(
           extent=[-150, -150; 150, -110],
           string="startTime=%startTime",
@@ -1821,8 +1819,8 @@ If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
   block BooleanPulse "Generate pulse signals of type Boolean" 
     parameter Real width[:](
       final min=Modelica.Constants.small,
-      final max=100)=  {50} "Widths of pulses in % of period";
-    parameter SI.Time period[:](final min=Modelica.Constants.small)=  {1} 
+      final max=100) = {50} "Widths of pulses in % of period";
+    parameter SI.Time period[:](final min=Modelica.Constants.small) = {1} 
       "Times for one period";
     parameter SI.Time startTime[:]={0} "Iime instants of first pulse";
     extends Interfaces.BooleanSignalSource(final nout=max([size(width, 1); size(
@@ -1835,7 +1833,7 @@ If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
     SI.Time T0[nout](final start=p_startTime) "Start time of current period";
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -1921,7 +1919,7 @@ If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
   end BooleanPulse;
   
   block SampleTrigger "Generate sample trigger signals" 
-    parameter SI.Time period[:](final min=Modelica.Constants.small)=  {0.01} 
+    parameter SI.Time period[:](final min=Modelica.Constants.small) = {0.01} 
       "Sample periods";
     parameter SI.Time startTime[:]={0} "Time instants of first sample triggers";
     extends Interfaces.BooleanSignalSource(final nout=max([size(period, 1);
@@ -1932,7 +1930,7 @@ If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
         period[1] else period);
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
-    annotation(
+    annotation (
       Coordsys(
         extent=[-100, -100; 100, 100],
         grid=[1, 1],
@@ -2010,7 +2008,7 @@ If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
     parameter Integer k[:]={1} "Constant output values";
     extends Interfaces.IntegerMO(final nout=size(k, 1));
     
-    annotation( Icon(
+    annotation (Icon(
         Line(points=[-80, 68; -80, -80], style(color=8)),
         Polygon(points=[-80, 90; -88, 68; -72, 68; -80, 90], style(color=8,
               fillColor=8)),
@@ -2056,7 +2054,7 @@ If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
         offset[1] else offset);
     parameter SI.Time p_startTime[nout]=(if size(startTime, 1) == 1 then ones(
         nout)*startTime[1] else startTime);
-    annotation( Icon(
+    annotation (Icon(
         Line(points=[-80, 68; -80, -80], style(color=8)),
         Polygon(points=[-80, 90; -88, 68; -72, 68; -80, 90], style(color=8,
               fillColor=8)),
