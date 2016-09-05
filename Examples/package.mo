@@ -1,6 +1,6 @@
 package Examples "Application examples"
   extends Modelica.Icons.Library;
-  import SI = Modelica.SIunits;
+import SI = Modelica.SIunits;
 
 
   annotation (
