@@ -1,6 +1,7 @@
 package PVlib "Photovoltaics library"
   extends Modelica.Icons.Library;
   import SI = Modelica.SIunits;
+  import C = Modelica.Constants;
 
 
   annotation (
