@@ -12,13 +12,38 @@ package Validation "Unit testing of the library's elements"
   equation 
     connect(ground.p, rampVoltage.n) 
       annotation (points=[40,-20; 40,0], style(color=3, rgbcolor={0,0,255}));
-    connect(Gn.outPort, pVArray.G) annotation (points=[-29,20; -18,20; -18,13; 
+    connect(Gn.outPort, pVArray.G) annotation (points=[-29,20; -18,20; -18,13;
           -5.5,13], style(color=3, rgbcolor={0,0,255}));
-    connect(Tn.outPort, pVArray.T) annotation (points=[-29,-14; -18,-14; -18,7; 
+    connect(Tn.outPort, pVArray.T) annotation (points=[-29,-14; -18,-14; -18,7;
           -5.5,7], style(color=3, rgbcolor={0,0,255}));
     connect(pVArray.p, rampVoltage.p) annotation (points=[1.83691e-015,20; 40,
           20], style(color=3, rgbcolor={0,0,255}));
     connect(pVArray.n, rampVoltage.n) annotation (points=[-1.83691e-015,0; 40,0],
         style(color=3, rgbcolor={0,0,255}));
   end PVArrayValidation;
+  
+  model IdealCBSwitchValidation 
+    Electrical.PowerConverters.IdealCBSwitch idealCBSwitch 
+      annotation (extent=[-40,0; -20,20], rotation=270);
+    Electrical.Sources.SineVoltage sineVoltage(freqHz=50) 
+      annotation (extent=[20,0; 40,20], rotation=270);
+    annotation (Diagram);
+    Control.Sources.BooleanStep booleanStep(startTime={0.05}) 
+      annotation (extent=[-80,0; -60,20]);
+    Electrical.Basic.Ground ground annotation (extent=[20,-60; 40,-40]);
+    Electrical.Basic.Resistor resistor(R=2) 
+      annotation (extent=[-10,30; 10,50], rotation=180);
+  equation 
+    connect(idealCBSwitch.n, sineVoltage.n) annotation (points=[-30,0; -30,-20; 
+          30,-20; 30,0], style(color=3, rgbcolor={0,0,255}));
+    connect(booleanStep.outPort, idealCBSwitch.firePort) annotation (points=[-59,10; 
+          -49.5,10; -49.5,10; -40,10],         style(color=5, rgbcolor={255,0,
+            255}));
+    connect(ground.p, sineVoltage.n) annotation (points=[30,-40; 30,-20; 30,0; 
+          30,0], style(color=3, rgbcolor={0,0,255}));
+    connect(resistor.p, sineVoltage.p) annotation (points=[10,40; 30,40; 30,20],
+        style(color=3, rgbcolor={0,0,255}));
+    connect(resistor.n, idealCBSwitch.p) annotation (points=[-10,40; -30,40; 
+          -30,20], style(color=3, rgbcolor={0,0,255}));
+  end IdealCBSwitchValidation;
 end Validation;
