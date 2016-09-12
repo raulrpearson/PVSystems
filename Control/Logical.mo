@@ -9,12 +9,8 @@ package Logical "Library of components with Boolean input and output signals"
           extent=[62,-38; -52,42],
           style(color=3, rgbcolor={0,0,255}),
           string="NOT")),
-      Documentation(info="<html>
-<p>
-The output is <b>true</b> if the input is <b>false</b>, otherwise
-the output is <b>false</b>.
-</p>
-</html>"));
+                Documentation(info="<html><p>The output is <b>true</b> if the input is
+                              <b>false</b>, otherwise the output is <b>false</b>.</p></html>"));
   equation 
     y = not u;
   end Not;
@@ -27,8 +23,11 @@ the output is <b>false</b>.
   equation 
     outPort.signal[1] = u1 < u2;
     annotation (Icon(Text(
-          extent=[-75,75; 75,-75],
-          style(color=3, rgbcolor={0,0,255}),
-          string=">")));
+                          extent=[-75,75; 75,-75],
+                          style(color=3, rgbcolor={0,0,255}),
+                          string=">")),
+                Documentation(info="<html><p>The otput is <b>true</b> if Real input u1
+                              is less than Real unput u2, otherwise the output is
+                              <b>false</b>.</p></html>"));
   end Less;
 end Logical;

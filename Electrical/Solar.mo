@@ -1,16 +1,5 @@
 package Solar "Solar PV elements" 
   model PVArray "Fundamental PV array model" 
-    // TODO
-    // - FIX whatever happens when v > Vocn, simulation stops
-    // - What happens when too much reverse voltage is applied. Also, what
-    //   *actually* happens to junction when reverse voltage is applied?
-    // - Is it possible to algorithm at init of simulation to iterate and solve
-    //   best Rp, Rs, Ipvn with parameter values?
-    // - Cool to be able to provide thermal model of panel so that user can
-    //   input ambient T in degrees instead of junction T in Kelvin
-    // - Improve scope of parameters and variables
-    // - Search for inspiration in AW2PS files
-    // - Complete units by assigning appropriate SI class to vars and params
     extends Interfaces.OnePort;
     constant SI.Charge q=1.60217646e-19 "Electron charge";
     constant Real Gn=1000 "STC irradiation";
@@ -44,11 +33,11 @@ package Solar "Solar PV elements"
         grid=[2,2],
         component=[20,20]),
       Documentation(
-        info="<html><p><i>Amortiguador lineal dependiente de la velocidad</i>.
-        Puede ser conectado entre una masa y un punto de referencia o entre
-        dos masas.</p>
-        <p><b>Nota</b>: elemento elaborado a partir de código de la librería
-        Modelica.Mechanics.Translational.</p></html>"),
+        info="<html><p>Flexible PV array model. The model can be
+  parametrized with the use of PV module datasheets. As a default, the
+  data from the Kyocera KC200GT is provided. The model is presented in
+  \"Comprehensive Approach to Modeling and Simulation of Photovoltaic
+  Arrays\" by M.G. Villalva et al.</p></html>"),
       Icon(
         Line(points=[-90,0;-60,0], style(color=0)),
         Rectangle(extent=[-60,-40;60,40], style(color=0,fillColor=7)),

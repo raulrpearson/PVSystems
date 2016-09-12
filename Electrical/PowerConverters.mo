@@ -1,7 +1,9 @@
 package PowerConverters "Power Electronics Converters" 
   model IdealCBSwitch "Basic two-cuadran current-bidirectional switch" 
-    annotation (uses(Modelica(version="1.6")), Diagram,
-      Icon(
+    annotation(
+               uses(Modelica(version="1.6")),
+               Diagram,
+               Icon(
         Line(points=[-98,0; -20,0], style(color=3, rgbcolor={0,0,255})),
         Line(points=[-20,-20; 20,0; 100,0], style(color=3, rgbcolor={0,0,255})),
         Line(points=[-40,0; -40,40; -20,40], style(color=3, rgbcolor={0,0,255})),
@@ -9,8 +11,13 @@ package PowerConverters "Power Electronics Converters"
                 0,255})),
         Line(points=[10,40; 40,40; 40,0], style(color=3, rgbcolor={0,0,255})),
         Line(points=[-20,60; -20,20], style(color=3, rgbcolor={0,0,255})),
-        Line(points=[0,-78; 0,-10], style(color=83, rgbcolor={255,85,255}))));
-    
+                    Line(points=[0,-78; 0,-10], style(color=83, rgbcolor={255,85,255}))),
+               Documentation(info=
+                             "<html>
+  <p>This model represents and idealized current bi-directional
+    switch. This is the typical IGBT in anti-parallel with a diode from
+    which many converters are built.</p>
+</html>"));
     Interfaces.PositivePin p annotation (extent=[-110, -10; -90, 10]);
     Interfaces.NegativePin n annotation (extent=[110, -10; 90, 10]);
     Modelica.Electrical.Analog.Ideal.IdealSwitch idealSwitch 
@@ -78,7 +85,12 @@ package PowerConverters "Power Electronics Converters"
             rgbcolor={0,0,255},
             fillColor=7,
             rgbfillColor={255,255,255},
-            fillPattern=1))));
+                                                           fillPattern=1))),
+                Documentation(info="<html><p>This model composes
+    IdealCBSwitch model into a two level leg, also very common in the
+    constructoin of power converters. It provides input only for the
+    firing signal of the top switch, generating the firing signal for
+                              the bottom switch by logical negation.</p></html>"));
     
     Modelica.Blocks.Interfaces.BooleanInPort firePort(final n=1) 
       annotation (extent=[-10,-80; 10,-60],   rotation=90);
@@ -124,7 +136,6 @@ package PowerConverters "Power Electronics Converters"
     Modelica.Blocks.Interfaces.BooleanInPort fireB(final n=1) 
       annotation (extent=[20,-108; 40,-88],   rotation=90);
   equation 
-    
     annotation (Diagram, Icon(
         Rectangle(extent=[-100,100; 100,-100], style(
             color=3,
@@ -185,7 +196,10 @@ package PowerConverters "Power Electronics Converters"
             pattern=0,
             fillColor=7,
             rgbfillColor={255,255,255},
-            fillPattern=1))));
+                                               fillPattern=1))),
+                Documentation(info="<html><p>This model further
+    composes IdealTwoLevelBranch to form a typical H-bridge
+    configuration from which a 1-phase inverter can be constructed.</p></html>"));
     connect(dcp, idealTwoLevelBranch.p) annotation (points=[-100,50; 10,50; 10,
           40], style(color=3, rgbcolor={0,0,255}));
     connect(dcn, idealTwoLevelBranch.n) annotation (points=[-100,-50; 10,-50;

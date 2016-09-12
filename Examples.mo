@@ -27,7 +27,7 @@ package Examples "Application and validation examples"
         style(color=3, rgbcolor={0,0,255}));
     end PVArrayValidation;
   
-  model IdealCBSwitchValidation 
+  model IdealCBSwitchValidation "Ideal current bidirectional switch validation"
     Electrical.PowerConverters.IdealCBSwitch idealCBSwitch 
       annotation (extent=[-40,0; -20,20], rotation=270);
     Electrical.Sources.SineVoltage sineVoltage(freqHz=5) 
