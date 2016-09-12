@@ -17,4 +17,13 @@ the output is <b>false</b>.
   equation 
     y = not u;
   end Not;
+
+  block Less "Output y is true, if input u1 is less than input u2" 
+    extends Interfaces.MI2BooleanMOs;
+  protected 
+    Real u1=inPort1.signal[1];
+    Real u2=inPort2.signal[1];
+  equation 
+    outPort.signal[1] = u1 < u2;
+  end Less;
 end Logical;
