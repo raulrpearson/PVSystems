@@ -54,41 +54,48 @@ package Examples "Application and validation examples"
   
   model IdealBuckOpen "Ideal synchronous open-loop buck converter" 
     Electrical.Sources.ConstantVoltage constantVoltage(V=5)
-      annotation (extent=[-90,20; -70,40], rotation=270);
-    annotation (Diagram, experiment(StopTime=0.01));
-    Electrical.Basic.Ground ground annotation (extent=[30,-30; 50,-10]);
+      annotation (extent=[-90,-30; -70,-10], rotation=270);
+    annotation (Diagram, experiment(StopTime=0.02));
+    Electrical.Basic.Ground ground annotation (extent=[30,-80; 50,-60]);
     Electrical.Basic.Resistor resistor(R=0.4)
-      annotation (extent=[70,0; 90,20], rotation=270);
-    Electrical.Basic.Inductor inductor(L=1e-6) annotation (extent=[0,20; 20,40]);
+      annotation (extent=[70,-50; 90,-30], rotation=270);
+    Electrical.Basic.Inductor inductor(L=1e-6)
+      annotation (extent=[0,-30; 20,-10]);
     Electrical.Basic.Capacitor capacitor(C=200e-6)
-      annotation (extent=[30,0; 50,20], rotation=270);
-    Control.Sources.BooleanPulse booleanPulse(period={1e-6}, width={80})
-      annotation (extent=[0,50; 20,70], rotation=180);
+      annotation (extent=[30,-50; 50,-30], rotation=270);
     Electrical.Ideal.IdealSwitch idealSwitch
-      annotation (extent=[-50,50; -30,70], rotation=270);
+      annotation (extent=[-50,0; -30,20], rotation=270);
     Electrical.Ideal.IdealDiode idealDiode
-      annotation (extent=[-50,0; -30,20], rotation=90);
+      annotation (extent=[-50,-50; -30,-30], rotation=90);
+    Control.PowerConverters.SignalPWM signalPWM(Ts={1e-5})
+      annotation (extent=[20,40; 40,60], rotation=0);
+    Control.Sources.Step step(
+      height={0.4}, 
+      offset={0.3}, 
+      startTime={0.01}) annotation (extent=[-20,40; 0,60]);
   equation 
-    connect(inductor.n, capacitor.p) annotation (points=[20,30; 40,30; 40,20], 
+    connect(inductor.n, capacitor.p) annotation (points=[20,-20; 40,-20; 40,-30], 
         style(color=3, rgbcolor={0,0,255}));
-    connect(inductor.n, resistor.p) annotation (points=[20,30; 80,30; 80,20], 
+    connect(inductor.n, resistor.p) annotation (points=[20,-20; 80,-20; 80,-30], 
         style(color=3, rgbcolor={0,0,255}));
-    connect(resistor.n, ground.p) annotation (points=[80,0; 80,-10; 40,-10], 
+    connect(resistor.n, ground.p) annotation (points=[80,-50; 80,-60; 40,-60], 
         style(color=3, rgbcolor={0,0,255}));
     connect(capacitor.n, ground.p)
-      annotation (points=[40,0; 40,-10], style(color=3, rgbcolor={0,0,255}));
+      annotation (points=[40,-50; 40,-60], style(color=3, rgbcolor={0,0,255}));
     connect(idealSwitch.n, idealDiode.n)
-      annotation (points=[-40,50; -40,20], style(color=3, rgbcolor={0,0,255}));
-    connect(inductor.p, idealSwitch.n) annotation (points=[0,30; -40,30; -40,50], 
-        style(color=3, rgbcolor={0,0,255}));
-    connect(constantVoltage.p, idealSwitch.p) annotation (points=[-80,40; -80,
-          80; -40,80; -40,70], style(color=3, rgbcolor={0,0,255}));
-    connect(constantVoltage.n, ground.p) annotation (points=[-80,20; -80,-10; 
-          40,-10], style(color=3, rgbcolor={0,0,255}));
-    connect(idealDiode.p, ground.p) annotation (points=[-40,0; -40,-10; 40,-10], 
-        style(color=3, rgbcolor={0,0,255}));
-    connect(booleanPulse.outPort, idealSwitch.control) annotation (points=[-1,
-          60; -34,60], style(color=5, rgbcolor={255,0,255}));
+      annotation (points=[-40,0; -40,-30], style(color=3, rgbcolor={0,0,255}));
+    connect(inductor.p, idealSwitch.n) annotation (points=[0,-20; -40,-20; -40,
+          0], style(color=3, rgbcolor={0,0,255}));
+    connect(constantVoltage.p, idealSwitch.p) annotation (points=[-80,-10; -80,
+          30; -40,30; -40,20], style(color=3, rgbcolor={0,0,255}));
+    connect(constantVoltage.n, ground.p) annotation (points=[-80,-30; -80,-60; 
+          40,-60], style(color=3, rgbcolor={0,0,255}));
+    connect(idealDiode.p, ground.p) annotation (points=[-40,-50; -40,-60; 40,
+          -60], style(color=3, rgbcolor={0,0,255}));
+    connect(signalPWM.fire, idealSwitch.control) annotation (points=[40,55; 60,
+          55; 60,10; -34,10], style(color=5, rgbcolor={255,0,255}));
+    connect(step.outPort, signalPWM.duty)
+      annotation (points=[1,50; 20,50], style(color=3, rgbcolor={0,0,255}));
   end IdealBuckOpen;
 
   model SignalPWMValidation "Simple model to validate SignalPWM behaviour" 
