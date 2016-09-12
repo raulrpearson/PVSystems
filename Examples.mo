@@ -117,4 +117,43 @@ package Examples "Application and validation examples"
     connect(add.outPort, signalPWM.duty)
       annotation (points=[1,10; 20,10], style(color=3, rgbcolor={0,0,255}));
   end SignalPWMValidation;
+  
+  model IdealInverter1phOpen 
+    "Basic 1 phase open-loop inverter with constant DC voltage source and no synchronization" 
+    Electrical.PowerConverters.IdealHBridge idealHBridge 
+      annotation (extent=[-20,20; 0,40]);
+    Electrical.Sources.ConstantVoltage constantVoltage(V=500) 
+      annotation (extent=[-60,20; -40,40], rotation=270);
+    annotation (Diagram, experiment(StopTime=0.5));
+    Electrical.Basic.Ground ground annotation (extent=[-60,-20; -40,0]);
+    Electrical.Basic.Resistor resistor 
+      annotation (extent=[40,0; 60,20], rotation=270);
+    Electrical.Basic.Inductor inductor(L=500e-6) 
+      annotation (extent=[40,40; 60,60], rotation=270);
+    Control.Sources.Sine sine(
+      amplitude={0.4},
+      freqHz={50},
+      offset={0.5}) annotation (extent=[-80,-60; -60,-40]);
+    Control.PowerConverters.SignalPWM signalPWM(Ts={320e-6}) 
+      annotation (extent=[-40,-60; -20,-40]);
+  equation 
+    connect(constantVoltage.p, idealHBridge.dcp) annotation (points=[-50,40;
+          -36,40; -36,35; -20,35], style(color=3, rgbcolor={0,0,255}));
+    connect(constantVoltage.n, idealHBridge.dcn) annotation (points=[-50,20;
+          -34,20; -34,25; -20,25], style(color=3, rgbcolor={0,0,255}));
+    connect(ground.p, constantVoltage.n) 
+      annotation (points=[-50,0; -50,20], style(color=3, rgbcolor={0,0,255}));
+    connect(inductor.n, resistor.p) 
+      annotation (points=[50,40; 50,20], style(color=3, rgbcolor={0,0,255}));
+    connect(idealHBridge.acp, inductor.p) annotation (points=[0,35; 26,35; 26,
+          60; 50,60], style(color=3, rgbcolor={0,0,255}));
+    connect(idealHBridge.acn, resistor.n) annotation (points=[0,25; 26,25; 26,0;
+          50,0], style(color=3, rgbcolor={0,0,255}));
+    connect(sine.outPort, signalPWM.duty) annotation (points=[-59,-50; -40,-50],
+        style(color=3, rgbcolor={0,0,255}));
+    connect(signalPWM.fire, idealHBridge.fireA) annotation (points=[-20,-45;
+          -14,-45; -14,20.2; -13,20.2], style(color=5, rgbcolor={255,0,255}));
+    connect(signalPWM.notFire, idealHBridge.fireB) annotation (points=[-20,-55;
+          -20,-55.5; -7,-55.5; -7,20.2], style(color=5, rgbcolor={255,0,255}));
+  end IdealInverter1phOpen;
 end Examples;
