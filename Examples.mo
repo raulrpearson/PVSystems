@@ -90,4 +90,24 @@ package Examples "Application and validation examples"
     connect(booleanPulse.outPort, idealSwitch.control) annotation (points=[-1,
           60; -34,60], style(color=5, rgbcolor={255,0,255}));
   end IdealBuckOpen;
+
+  model SignalPWMValidation "Simple model to validate SignalPWM behaviour" 
+    Control.PowerConverters.SignalPWM signalPWM(Ts={0.01})
+      annotation (extent=[20,0; 40,20]);
+    annotation (Diagram);
+    Control.Sources.Step step(
+      height={0.3}, 
+      offset={0.2}, 
+      startTime={0.3}) annotation (extent=[-80,20; -60,40]);
+    Control.Sources.Step step1(height={0.3}, startTime={0.6})
+      annotation (extent=[-80,-20; -60,0]);
+    Control.Math.Add add annotation (extent=[-20,0; 0,20]);
+  equation 
+    connect(step.outPort, add.inPort1) annotation (points=[-59,30; -40,30; -40,
+          16; -22,16], style(color=3, rgbcolor={0,0,255}));
+    connect(step1.outPort, add.inPort2) annotation (points=[-59,-10; -40,-10; 
+          -40,4; -22,4], style(color=3, rgbcolor={0,0,255}));
+    connect(add.outPort, signalPWM.duty)
+      annotation (points=[1,10; 20,10], style(color=3, rgbcolor={0,0,255}));
+  end SignalPWMValidation;
 end Examples;
