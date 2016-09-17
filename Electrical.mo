@@ -1,4 +1,4 @@
-package Electrical 
+package Electrical "Library for electrical models" 
   extends Modelica.Icons.Library;
   model IdealCBSwitch "Basic two-cuadrant current bidirectional switch" 
     extends Modelica.Electrical.Analog.Interfaces.TwoPin;
@@ -38,7 +38,7 @@ package Electrical
           6.73533e-016,-19; 6.73533e-016,-5.5; 0,-5.5; 0,7],
                                            style(color=5, rgbcolor={255,0,255}));
   end IdealCBSwitch;
-
+  
   model Ideal2LevelLeg "Basic ideal two level switching leg" 
     extends Modelica.Electrical.Analog.Interfaces.TwoPin;
     // Interface
@@ -84,7 +84,7 @@ package Electrical
               color=3,
               rgbcolor={0,0,255},
               fillColor=7,
-              rgbfillColor={255,255,255},                    fillPattern=1)), 
+              rgbfillColor={255,255,255},                    fillPattern=1)),
         Line(points=[0,100; 0,0], style(color=3, rgbcolor={0,0,255}))),
                   Documentation(info="<html><p>This model composes
     IdealCBSwitch model into a two level leg, also very common in the
@@ -92,22 +92,22 @@ package Electrical
     firing signal of the top switch, generating the firing signal for
                               the bottom switch by logical negation.</p></html>"));
   equation 
-    connect(p, topSwitch.p)
+    connect(p, topSwitch.p) 
       annotation (points=[-100,0; -40,0], style(color=3, rgbcolor={0,0,255}));
-    connect(topSwitch.n, bottomSwitch.p)
+    connect(topSwitch.n, bottomSwitch.p) 
       annotation (points=[-20,0; 20,0], style(color=3, rgbcolor={0,0,255}));
-    connect(bottomSwitch.n, n)
+    connect(bottomSwitch.n, n) 
       annotation (points=[40,0; 100,0], style(color=3, rgbcolor={0,0,255}));
-    connect(fire, notBlock.u) annotation (points=[0,-70; 0,-52; 30,-52; 30,-42], 
+    connect(fire, notBlock.u) annotation (points=[0,-70; 0,-52; 30,-52; 30,-42],
         style(color=5, rgbcolor={255,0,255}));
-    connect(fire, topSwitch.fire) annotation (points=[0,-70; 0,-52; -30,-52; 
+    connect(fire, topSwitch.fire) annotation (points=[0,-70; 0,-52; -30,-52;
           -30,-7], style(color=5, rgbcolor={255,0,255}));
-    connect(notBlock.y, bottomSwitch.fire) annotation (points=[30,-19; 30,-7], 
+    connect(notBlock.y, bottomSwitch.fire) annotation (points=[30,-19; 30,-7],
         style(color=5, rgbcolor={255,0,255}));
-    connect(midPoint, topSwitch.n) annotation (points=[0,100; 0,0; -20,0], 
+    connect(midPoint, topSwitch.n) annotation (points=[0,100; 0,0; -20,0],
         style(color=3, rgbcolor={0,0,255}));
   end Ideal2LevelLeg;
-
+  
   model IdealHBridge "Basic ideal H-bridge topology" 
     // Interface
     Modelica.Electrical.Analog.Interfaces.Pin dcp "Positive pin of the DC port"
@@ -203,7 +203,7 @@ package Electrical
     connect(legB.n, dcn) annotation (points=[50,-40; 50,-50; -100,-50], style(
           color=3, rgbcolor={0,0,255}));
   end IdealHBridge;
-
+  
   model PVArray "Flexible PV array model" 
     extends Modelica.Electrical.Analog.Interfaces.OnePort;
     // Interface
