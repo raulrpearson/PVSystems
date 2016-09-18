@@ -29,7 +29,9 @@ package Examples "Application and validation examples"
     Modelica.Blocks.Sources.BooleanStep booleanStep(startTime=0.45) annotation(extent=[-80,0;-60,20]);
     Modelica.Electrical.Analog.Basic.Ground ground annotation(extent=[20,-60;40,-40]);
     Modelica.Electrical.Analog.Basic.Resistor resistor(R=2) annotation(extent=[-10,30;10,50],rotation=180);
-    annotation (Diagram);
+    annotation (
+      Diagram,
+      experiment(StartTime=0, StopTime=1, Tolerance=1e-4));
   equation 
     connect(booleanStep.y, idealCBSwitch.fire) annotation (points=[-59,10; -48,
           10; -48,10; -37,10], style(color=5, rgbcolor={255,0,255}));
@@ -54,7 +56,9 @@ package Examples "Application and validation examples"
     Modelica.Electrical.Analog.Ideal.IdealDiode idealDiode annotation(extent=[-50,-50;-30,-30],rotation=90);
     Control.SignalPWM signalPWM(period=1e-5) annotation(extent=[20,40;40,60],rotation=0);
     Modelica.Blocks.Sources.Step step(height=0.4,offset=0.3,startTime=0.01) annotation(extent=[-20,40;0,60]);
-    annotation(Diagram,experiment(StopTime=0.02));
+    annotation (
+      Diagram,
+      experiment(StartTime=0, StopTime=0.02, Tolerance=1e-4));
   equation 
     connect(step.y, signalPWM.duty) 
       annotation (points=[1,50; 20,50], style(color=74, rgbcolor={0,0,127}));
@@ -86,7 +90,9 @@ package Examples "Application and validation examples"
     Modelica.Blocks.Sources.Step step(height=0.3,offset=0.2,startTime=0.3) annotation(extent=[-80,20; -60,40]);
     Modelica.Blocks.Sources.Step step1(height=0.3,startTime=0.6) annotation(extent=[-80,-20;-60,0]);
     Modelica.Blocks.Math.Add add annotation(extent=[-20,0;0,20]);
-    annotation(Diagram);
+    annotation (
+      Diagram,
+      experiment(StartTime=0, StopTime=1, Tolerance=1e-4));
   equation 
     connect(step.y, add.u1) annotation (points=[-59,30; -40,30; -40,16; -22,16],
         style(color=74, rgbcolor={0,0,127}));
@@ -104,9 +110,11 @@ package Examples "Application and validation examples"
     Modelica.Electrical.Analog.Basic.Ground ground annotation (extent=[-60,-20;-40,0]);
     Modelica.Electrical.Analog.Basic.Resistor resistor annotation(extent=[40,0;60,20],rotation=270);
     Modelica.Electrical.Analog.Basic.Inductor inductor(L=500e-6) annotation(extent=[40,40;60,60],rotation=270);
-    Modelica.Blocks.Sources.Sine sine(amplitude=0.4,freqHz=50,offset=0.5) annotation(extent=[-80,-60;-60,-40]);
+    Modelica.Blocks.Sources.Sine sine(amplitude=0.4,offset=0.5,freqHz=50) annotation(extent=[-80,-60;-60,-40]);
     Control.SignalPWM signalPWM(period=320e-6) annotation(extent=[-40,-60;-20,-40]);
-    annotation(Diagram, experiment(StopTime=0.5));
+    annotation (
+      Diagram,
+      experiment(StartTime=0, StopTime=0.05, Tolerance=1e-4));
   equation 
     connect(sine.y, signalPWM.duty) annotation (points=[-59,-50; -40,-50],
         style(color=74, rgbcolor={0,0,127}));
