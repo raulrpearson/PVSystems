@@ -6,7 +6,6 @@ package Electrical "Library for electrical models"
     Modelica.Electrical.Analog.Ideal.IdealClosingSwitch idealClosingSwitch annotation(extent=[-10,-10; 10,10],rotation=0);
     Modelica.Electrical.Analog.Ideal.IdealDiode idealDiode annotation(extent=[-10,30; 10,50],rotation=180);
     Modelica.Blocks.Interfaces.BooleanInput fire annotation(extent=[-10,-80; 10,-60],rotation=90);
-    Modelica.Blocks.Logical.Not notBlock annotation(extent=[-10,-40; 10,-20],rotation=90);
   equation 
     
     annotation (Diagram,
@@ -32,11 +31,8 @@ package Electrical "Library for electrical models"
           rgbcolor={0,0,255}));
     connect(idealDiode.n, p) annotation (points=[-10,40; -54,40; -54,0; -100,0],
         style(color=3, rgbcolor={0,0,255}));
-    connect(fire, notBlock.u) annotation (points=[0,-70; 0,-56; 0,-42; 
-          -7.34764e-016,-42], style(color=5, rgbcolor={255,0,255}));
-    connect(notBlock.y, idealClosingSwitch.control) annotation (points=[
-          6.73533e-016,-19; 6.73533e-016,-5.5; 0,-5.5; 0,7],
-                                           style(color=5, rgbcolor={255,0,255}));
+    connect(fire, idealClosingSwitch.control)
+      annotation (points=[0,-70; 0,7], style(color=5, rgbcolor={255,0,255}));
   end IdealCBSwitch;
   
   model Ideal2LevelLeg "Basic ideal two level switching leg" 
