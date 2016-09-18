@@ -8,7 +8,45 @@ package Examples "Application and validation examples"
       Electrical.PVArray pVArray annotation(extent=[-10,0;10,20],rotation=270);
       Modelica.Blocks.Sources.Constant Gn(k=1000) annotation(extent=[-50,10;-30,30]);
       Modelica.Blocks.Sources.Constant Tn(k=298.15) annotation(extent=[-50,-24;-30,-4]);
-      annotation (Diagram);
+      annotation (
+        Diagram,
+        Documentation(
+          info="<html>
+        <p>
+          PVArrayValidation presents a ramp DC voltage source in parallel with
+          an instance of the PVArray model. The voltage ramp is configured to
+          sweep from -10 volts to 35 volts in 1 second. This provides the
+          enough voltage range to cover all of the PV array's working range
+          when initialized with default values.
+        </p>
+
+        <p>
+          To use the example, simulate the model and start by displaying both
+          voltage and current of the ramp voltage source. A figure like the
+          following should be displayed:
+        </p>
+
+
+        <div class=\"figure\">
+          <p><img src=\"../Resources/Images/PVArrayValidationResults.png\"
+        	  alt=\"PVArrayValidationResults.png\" />
+          </p>
+        </div>
+
+        <p>
+          Notice how the variation in the current delivered by the PV array
+          (sinked by the voltage source) reflects the familiar PV module
+          curve.
+        </p>
+
+        <p>
+          Modify the values for the irradiance and temperature blocks and see
+          how these changes are reflected in a change in the PV curve,
+          accurately reflecting the effects of these variables in the PV
+          module performance.
+        </p>
+        </html>"),
+        experiment(StartTime=0, StopTime=1, Tolerance=1e-4));
     equation 
     connect(Gn.y, pVArray.G) annotation (points=[-29,20; -16,20; -16,13; -5.5,
           13], style(color=74, rgbcolor={0,0,127}));
