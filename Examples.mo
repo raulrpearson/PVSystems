@@ -69,17 +69,55 @@ package Examples "Application and validation examples"
     Modelica.Electrical.Analog.Basic.Resistor resistor(R=2) annotation(extent=[-10,30;10,50],rotation=180);
     annotation (
       Diagram,
-      experiment(StartTime=0, StopTime=1, Tolerance=1e-4));
+      experiment(StartTime=0, StopTime=1, Tolerance=1e-4),
+      Documentation(info="<html>
+      <p>
+        IdealCBSwitchValidation presents a simple circuit to validate the
+        behaviour of the corresponding component. The circuit is composed of
+        a resistor in series with a sinusoidal AC voltage source and the
+        ideal current bidirectional switch. The switch is operated by a step
+        block that changes from 0 to 1 in the middle of the simulation. This
+        changes the state of the switch from open to closed.
+      </p>
+
+      <p>
+        To use the example, simulate the model as provided and plot the
+        source voltage as well as the switch voltage, the plot should look
+        like this:
+      </p>
+
+
+      <div class=\"figure\">
+        <p><img src=\"../Resources/Images/IdealCBSwitchValidationResults.png\"
+      	  alt=\"IdealCBSwitchValidationResults.png\" />
+        </p>
+      </div>
+
+      <p>
+        Notice how at the begining of the simulation, when the switch is not
+        closed, it blocks all the positive voltage, preventing current from
+        flowing. On the other hand, the negative voltage is not blocked, so
+        the current can flow (through the parallel diode). When the switch
+        is closed using the firing signal, it never blocks voltage, allowing
+        bidirectional flow of current.
+      </p>
+
+      <p>
+        Plot the voltage drop in the result to confirm these results or play
+        with the parameter values to see what effects they have.
+      </p>
+
+      </html>"));
   equation 
     connect(booleanStep.y, idealCBSwitch.fire) annotation (points=[-59,10; -48,
           10; -48,10; -37,10], style(color=5, rgbcolor={255,0,255}));
-    connect(idealCBSwitch.p, resistor.n) annotation (points=[-30,20; -30,40;
+    connect(idealCBSwitch.p, resistor.n) annotation (points=[-30,20; -30,40; 
           -10,40], style(color=3, rgbcolor={0,0,255}));
-    connect(idealCBSwitch.n, sineVoltage.n) annotation (points=[-30,0; -30,-20;
+    connect(idealCBSwitch.n, sineVoltage.n) annotation (points=[-30,0; -30,-20; 
           30,-20; 30,0], style(color=3, rgbcolor={0,0,255}));
     connect(resistor.p, sineVoltage.p) annotation (points=[10,40; 30,40; 30,20],
         style(color=3, rgbcolor={0,0,255}));
-    connect(ground.p, sineVoltage.n) annotation (points=[30,-40; 30,-20; 30,0;
+    connect(ground.p, sineVoltage.n) annotation (points=[30,-40; 30,-20; 30,0; 
           30,0], style(color=3, rgbcolor={0,0,255}));
   end IdealCBSwitchValidation;
   
@@ -96,7 +134,46 @@ package Examples "Application and validation examples"
     Modelica.Blocks.Sources.Step step(height=0.4,offset=0.3,startTime=0.01) annotation(extent=[-20,40;0,60]);
     annotation (
       Diagram,
-      experiment(StartTime=0, StopTime=0.02, Tolerance=1e-4));
+      experiment(StartTime=0, StopTime=0.02, Tolerance=1e-4),
+      Documentation(info="<html>
+      <p>
+        IdealBuckOpen presents a buck DC-DC converter. It's build using
+        mostly blocks
+        from <a href=\"Modelica://Modelica.Electrical.Analog\">Modelica's
+        electrical library</a> but also includes
+        the <a href=\"Modelica://PVlib.Control.SignalPWM\">SignalPWM</a>
+        model. It showcases how components from PVlib can be mixed with
+        components from the Modelica Standard Library to build systems that
+        might be of interest.
+      </p>
+
+      <p>
+        It is still an open-loop system. A duty cycle value is fed to the
+        SignalPWM block to drive the ideal closing switch. The duty cycle
+        value begins at 0.3 and changes to 0.7 in the middle of the
+        simulation. The effect of this change can be observed by plotting
+        the output voltage:
+      </p>
+
+
+      <div class=\"figure\">
+        <p><img src=\"../Resources/Images/IdealBuckOpenResults.png\"
+      	  alt=\"IdealBuckOpenResults.png\" />
+        </p>
+      </div>
+
+      <p>
+        This figure also displays the input voltage for the sake of
+        comparison. It make the point that the function of the buck
+        converter is to reduce the voltage level from the input to the
+        output.
+      </p>
+
+      <p>
+        An interesting exercise to complete this example would be to build a
+        controller to close the loop and study the system's behaviour.
+      </p>
+      </html>"));
   equation 
     connect(step.y, signalPWM.duty) 
       annotation (points=[1,50; 20,50], style(color=74, rgbcolor={0,0,127}));
@@ -118,8 +195,8 @@ package Examples "Application and validation examples"
         style(color=3, rgbcolor={0,0,255}));
     connect(capacitor.p, inductor.n) annotation (points=[40,-30; 40,-20; 20,-20],
         style(color=3, rgbcolor={0,0,255}));
-    connect(signalPWM.fire, idealClosingSwitch.control) annotation (points=[40,
-          55; 60,55; 60,10; -33,10], style(color=5, rgbcolor={255,0,255}));
+    connect(signalPWM.fire, idealClosingSwitch.control) annotation (points=[40,55; 
+          60,55; 60,10; -33,10],     style(color=5, rgbcolor={255,0,255}));
   end IdealBuckOpen;
   
   model SignalPWMValidation "Simple model to validate SignalPWM behaviour" 
@@ -130,7 +207,30 @@ package Examples "Application and validation examples"
     Modelica.Blocks.Math.Add add annotation(extent=[-20,0;0,20]);
     annotation (
       Diagram,
-      experiment(StartTime=0, StopTime=1, Tolerance=1e-4));
+      experiment(StartTime=0, StopTime=1, Tolerance=1e-4),
+      Documentation(info="<html>
+      <p>
+        SignalPWMValidation presents a very simple model aimed at validating
+        the behaviour of the SignalPWM block. It provides a changing duty
+        cycle with the use of two step blocks. When running the simulation
+        with the provided values, plotting the fire output generates the
+        following graph:
+      </p>
+
+
+      <div class=\"figure\">
+        <p><img src=\"../Resources/Images/SignalPWMValidationResults.png\"
+      	  alt=\"SignalPWMValidationResults.png\" />
+        </p>
+      </div>
+
+      <p>
+        Through inspection of the plot, it can be seen how the signal
+        constitutes a PWM signal with a duty cycle changing in steps through
+        the values 0.2, 0.5 and 0.8. Zoom into the signal to confirm this
+        fact as well as the value of the period, set at 10 milliseconds.
+      </p>
+      </html>"));
   equation 
     connect(step.y, add.u1) annotation (points=[-59,30; -40,30; -40,16; -22,16],
         style(color=74, rgbcolor={0,0,127}));
@@ -152,7 +252,53 @@ package Examples "Application and validation examples"
     Control.SignalPWM signalPWM(period=320e-6) annotation(extent=[-40,-60;-20,-40]);
     annotation (
       Diagram,
-      experiment(StartTime=0, StopTime=0.05, Tolerance=1e-4));
+      experiment(StartTime=0, StopTime=0.05, Tolerance=1e-4),
+      Documentation(info="<html>
+      <p>
+        IdealInverter1phOpen presents an open loop 1-phase inverter. The
+        function of the inverter is to convert DC voltage and current into
+        AC voltage and current. To keep things simple, a constant DC source
+        is included on the DC side and an LC load is included on the AC
+        side. Typically, inverters are placed inside a more complicated
+        setup, which might require MPPT (Maximum Power Point Tracking) on
+        the DC side when connected to a PV array and AC synchronization when
+        connected to a grid on the AC side instead of just a simple passive
+        load.
+      </p>
+
+      <p>
+        Nevertheless, the example still showcases an interesting
+        application. Upon running the simulation with the provided values,
+        plotting the resistor voltage and the DC source voltage yields the
+        following figure:
+      </p>
+
+
+      <div class=\"figure\">
+        <p><img src=\"../Resources/Images/IdealInverter1phOpenResults.png\"
+      	  alt=\"IdealInverter1phOpenResults.png\" />
+        </p>
+      </div>
+
+      <p>
+        The AC is achieved with the inverter topology (called an H-bridge)
+        as well as with the duty cycle sinusoidal modulation. Have a look at
+        the duty cycle driving the SignalPWM block and compare it with the
+        voltage drop in the resistor.
+      </p>
+
+      <p>
+        Compare it with the voltage drop in the inductor. The voltage coming
+        out of the inverte is actually a square wave and the inductor is
+        providing some crude (but enough for some applications)
+        filtering. Play around with the value of the inductor to see how it
+        provides a better or worse filtering performance (decreasing or
+        increasing the voltage and current ripple in the resistor, which in
+        this example is assumed to be the load being fed). Since this is an
+        open loop configuration, it will also change the peak value of the
+        voltage drop in the resistor, as well as its phase.
+      </p>
+      </html>"));
   equation 
     connect(sine.y, signalPWM.duty) annotation (points=[-59,-50; -40,-50],
         style(color=74, rgbcolor={0,0,127}));
