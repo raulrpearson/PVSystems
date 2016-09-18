@@ -258,8 +258,12 @@ package Electrical "Library for electrical models"
       I0 = (Iscn + Ki*(T-Tn)) / (exp((Vocn+Kv*(T-Tn))/a/Vt) - 1);
       Id = I0 * (exp((v-Rs*i)/a/Vt) - 1);
       Ir = (v-Rs*i)/Rp;
-      i = if v < 0 then 
-        v / ((Rs+Rp)/Np) else 
-        -Np * (Ipv - Id - Ir);
+      if v < 0 then
+        i = v / ((Rs+Rp)/Np);
+      elseif v > Vocn then
+        i = 0;
+      else
+        i = -Np * (Ipv - Id - Ir);
+      end if;
   end PVArray;
 end Electrical;
