@@ -31,7 +31,7 @@ package Electrical "Library for electrical models"
           rgbcolor={0,0,255}));
     connect(idealDiode.n, p) annotation (points=[-10,40; -54,40; -54,0; -100,0],
         style(color=3, rgbcolor={0,0,255}));
-    connect(fire, idealClosingSwitch.control)
+    connect(fire, idealClosingSwitch.control) 
       annotation (points=[0,-70; 0,7], style(color=5, rgbcolor={255,0,255}));
   end IdealCBSwitch;
   

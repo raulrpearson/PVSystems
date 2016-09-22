@@ -111,13 +111,13 @@ package Examples "Application and validation examples"
   equation 
     connect(booleanStep.y, idealCBSwitch.fire) annotation (points=[-59,10; -48,
           10; -48,10; -37,10], style(color=5, rgbcolor={255,0,255}));
-    connect(idealCBSwitch.p, resistor.n) annotation (points=[-30,20; -30,40; 
+    connect(idealCBSwitch.p, resistor.n) annotation (points=[-30,20; -30,40;
           -10,40], style(color=3, rgbcolor={0,0,255}));
-    connect(idealCBSwitch.n, sineVoltage.n) annotation (points=[-30,0; -30,-20; 
+    connect(idealCBSwitch.n, sineVoltage.n) annotation (points=[-30,0; -30,-20;
           30,-20; 30,0], style(color=3, rgbcolor={0,0,255}));
     connect(resistor.p, sineVoltage.p) annotation (points=[10,40; 30,40; 30,20],
         style(color=3, rgbcolor={0,0,255}));
-    connect(ground.p, sineVoltage.n) annotation (points=[30,-40; 30,-20; 30,0; 
+    connect(ground.p, sineVoltage.n) annotation (points=[30,-40; 30,-20; 30,0;
           30,0], style(color=3, rgbcolor={0,0,255}));
   end IdealCBSwitchValidation;
   
@@ -195,7 +195,7 @@ package Examples "Application and validation examples"
         style(color=3, rgbcolor={0,0,255}));
     connect(capacitor.p, inductor.n) annotation (points=[40,-30; 40,-20; 20,-20],
         style(color=3, rgbcolor={0,0,255}));
-    connect(signalPWM.fire, idealClosingSwitch.control) annotation (points=[40,55; 
+    connect(signalPWM.fire, idealClosingSwitch.control) annotation (points=[40,55;
           60,55; 60,10; -33,10],     style(color=5, rgbcolor={255,0,255}));
   end IdealBuckOpen;
   
@@ -319,4 +319,17 @@ package Examples "Application and validation examples"
     connect(signalPWM.notFire, idealHBridge.fireB) annotation (points=[-20,-55;
           -6,-55; -6,20; -7,20], style(color=5, rgbcolor={255,0,255}));
   end IdealInverter1phOpen;
+
+  model PLLValidation 
+    annotation (uses(Modelica(version="2.2.1")), Diagram);
+    Modelica.Blocks.Sources.Sine sine(freqHz=50, phase=2.5)
+      annotation (extent=[-80,0; -60,20]);
+    PLL pLL annotation (extent=[-40,0; -20,20]);
+    Modelica.Blocks.Math.Sin sin annotation (extent=[2,0; 22,20]);
+  equation 
+    connect(sine.y, pLL.v) annotation (points=[-59,10; -50.5,10; -50.5,11; -42,
+          11], style(color=74, rgbcolor={0,0,127}));
+    connect(pLL.theta, sin.u) annotation (points=[-19,11; -9.5,11; -9.5,10; 0,
+          10], style(color=74, rgbcolor={0,0,127}));
+  end PLLValidation;
 end Examples;
