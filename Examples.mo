@@ -319,12 +319,14 @@ package Examples "Application and validation examples"
     connect(signalPWM.notFire, idealHBridge.fireB) annotation (points=[-20,-55;
           -6,-55; -6,20; -7,20], style(color=5, rgbcolor={255,0,255}));
   end IdealInverter1phOpen;
-
+  
   model PLLValidation 
-    annotation (uses(Modelica(version="2.2.1")), Diagram);
-    Modelica.Blocks.Sources.Sine sine(freqHz=50, phase=2.5)
+    extends Modelica.Icons.Example;
+    annotation (uses(Modelica(version="2.2.1")), Diagram,
+      experiment(StopTime=0.1));
+    Modelica.Blocks.Sources.Sine sine(freqHz=50, phase=2.5) 
       annotation (extent=[-80,0; -60,20]);
-    PLL pLL annotation (extent=[-40,0; -20,20]);
+    Control.PLL pLL annotation (extent=[-40,0; -20,20]);
     Modelica.Blocks.Math.Sin sin annotation (extent=[2,0; 22,20]);
   equation 
     connect(sine.y, pLL.v) annotation (points=[-59,10; -50.5,10; -50.5,11; -42,
