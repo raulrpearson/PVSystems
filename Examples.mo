@@ -334,4 +334,71 @@ package Examples "Application and validation examples"
     connect(pLL.theta, sin.u) annotation (points=[-19,11; -9.5,11; -9.5,10; 0,
           10], style(color=74, rgbcolor={0,0,127}));
   end PLLValidation;
+
+  model GridSynchInverter1phOpen 
+    "Grid synchronized 1-phase open-loop inverter fed by constant DC source" 
+    extends Modelica.Icons.Example;
+    Electrical.IdealHBridge idealHBridge annotation (extent=[-74,20; -54,40]);
+    Modelica.Electrical.Analog.Sources.ConstantVoltage DCBus(V=580) 
+      annotation (extent=[-100,20; -80,40], rotation=270);
+    annotation (Diagram);
+    Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=480) 
+      annotation (extent=[50,20; 70,40], rotation=270);
+    Modelica.Electrical.Analog.Basic.Inductor inductor(L=500e-6) 
+      annotation (extent=[-20,50; 0,70]);
+    Control.PLL pLL annotation (extent=[62,-60; 82,-40], rotation=180);
+    Modelica.Electrical.Analog.Sensors.VoltageSensor voltageSensor 
+      annotation (extent=[80,30; 100,50], rotation=0);
+    Control.SignalPWM signalPWM(period=320e-6) 
+      annotation (extent=[-54,-20; -34,0], rotation=180);
+    Modelica.Blocks.Math.Sin sin 
+      annotation (extent=[34,-60; 54,-40], rotation=180);
+    Modelica.Blocks.Math.Gain gain(k=350/580/2) 
+      annotation (extent=[6,-60; 26,-40], rotation=180);
+    Modelica.Blocks.Math.Add add annotation (extent=[-24,-20; -4,0], rotation=180);
+    Modelica.Blocks.Sources.Constant const(k=0.5) 
+      annotation (extent=[20,-20; 40,0], rotation=180);
+    Modelica.Electrical.Analog.Basic.Ground ground 
+      annotation (extent=[-100,-20; -80,0]);
+    Modelica.Electrical.Analog.Basic.Resistor resistor(R=10e-3) 
+      annotation (extent=[20,50; 40,70]);
+  equation 
+    connect(DCBus.p, idealHBridge.dcp) annotation (points=[-90,40; -80,40; -80,35;
+          -74,35], style(color=3, rgbcolor={0,0,255}));
+    connect(DCBus.n, idealHBridge.dcn) annotation (points=[-90,20; -80,20; -80,25;
+          -74,25], style(color=3, rgbcolor={0,0,255}));
+    connect(voltageSensor.p, Grid.p) 
+      annotation (points=[80,40; 60,40], style(color=3, rgbcolor={0,0,255}));
+    connect(Grid.n, voltageSensor.n) annotation (points=[60,20; 100,20; 100,40],
+        style(color=3, rgbcolor={0,0,255}));
+    connect(pLL.v, voltageSensor.v) annotation (points=[84,-50; 84,-50.5; 90,
+          -50.5; 90,30], style(color=74, rgbcolor={0,0,127}));
+    connect(sin.u, pLL.theta) 
+      annotation (points=[56,-50; 61,-50], style(color=74, rgbcolor={0,0,127}));
+    connect(gain.u, sin.y) 
+      annotation (points=[28,-50; 33,-50], style(color=74, rgbcolor={0,0,127}));
+    connect(add.y, signalPWM.duty) annotation (points=[-25,-10; -27.25,-10; 
+          -27.25,-10; -29.5,-10; -29.5,-10; -34,-10], style(color=74, rgbcolor={0,
+            0,127}));
+    connect(gain.y, add.u1) annotation (points=[5,-50; 2,-50; 2,-16; -2,-16],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(const.y, add.u2) annotation (points=[19,-10; 10,-10; 10,-4; -2,-4],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(signalPWM.notFire, idealHBridge.fireB) annotation (points=[-54,-5; 
+          -62,-5; -62,20; -61,20], style(color=5, rgbcolor={255,0,255}));
+    connect(signalPWM.fire, idealHBridge.fireA) annotation (points=[-54,-15; -68,
+          -15; -68,20; -67,20], style(color=5, rgbcolor={255,0,255}));
+    connect(ground.p, DCBus.n) 
+      annotation (points=[-90,0; -90,20], style(color=3, rgbcolor={0,0,255}));
+    connect(idealHBridge.acn, Grid.n) annotation (points=[-54,25; -30,25; -30,
+          20; 60,20],
+               style(color=3, rgbcolor={0,0,255}));
+    connect(resistor.n, Grid.p) annotation (points=[40,60; 60,60; 60,40], style(
+          color=3, rgbcolor={0,0,255}));
+    connect(inductor.n, resistor.p) 
+      annotation (points=[0,60; 20,60], style(color=3, rgbcolor={0,0,255}));
+    connect(idealHBridge.acp, inductor.p) annotation (points=[-54,35; -31,35; 
+          -31,60; -20,60],
+                       style(color=3, rgbcolor={0,0,255}));
+  end GridSynchInverter1phOpen;
 end Examples;
