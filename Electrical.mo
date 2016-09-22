@@ -119,6 +119,8 @@ package Electrical "Library for electrical models"
     Ideal2LevelLeg legB annotation(extent=[40,-40;60,-20],rotation=270);
     Modelica.Blocks.Interfaces.BooleanInput fireA annotation(extent=[-40,-110;-20,-90],rotation=90);
     Modelica.Blocks.Interfaces.BooleanInput fireB annotation(extent=[20,-110;40,-90],rotation=90);
+    Modelica.SIunits.Voltage vdc "DC voltage";
+    Modelica.SIunits.Voltage vac "AC voltage";
   equation 
     
     annotation (Diagram, Icon(
@@ -198,6 +200,8 @@ package Electrical "Library for electrical models"
            3, rgbcolor={0,0,255}));
     connect(legB.n, dcn) annotation (points=[50,-40; 50,-50; -100,-50], style(
           color=3, rgbcolor={0,0,255}));
+    vdc = dcp.v - dcn.v;
+    vac = acp.v - acn.v;
   end IdealHBridge;
   
   model PVArray "Flexible PV array model" 
