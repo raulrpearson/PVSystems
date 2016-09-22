@@ -323,7 +323,7 @@ package Examples "Application and validation examples"
   model PLLValidation 
     extends Modelica.Icons.Example;
     annotation (uses(Modelica(version="2.2.1")), Diagram,
-      experiment(StopTime=0.1));
+      experiment(StartTime=0, StopTime=0.15, Tolerance=1e-4));
     Modelica.Blocks.Sources.Sine sine(freqHz=50, phase=2.5) 
       annotation (extent=[-80,0; -60,20]);
     Control.PLL pLL annotation (extent=[-40,0; -20,20]);
