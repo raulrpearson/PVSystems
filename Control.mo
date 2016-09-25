@@ -14,15 +14,6 @@ package Control "Control elements for power converters"
           -60,60]);
     Modelica.Blocks.Logical.Less lessBlock annotation(extent=[-20,40; 0,60]);
     Modelica.Blocks.Logical.Not notBlock annotation(extent=[40,-60; 60,-40]);
-    annotation (Diagram,
-                  Icon(Text(extent=[-50,52; 56,-50],
-                            style(color=3, rgbcolor={0,0,255}),
-                            string="PWM")),
-                  Documentation(info="<html><p>This block provides the switching
-                              signal needed to drive the ideal switch models. It's
-                              input <i>duty</i> receives the desired duty cycle and
-                              the outputs <i>fire</i> and <i>notFire</i> provide the
-                              PWM and negated PWM signals.</p></html>"));
   equation 
     connect(sawTooth.y, lessBlock.u1) 
       annotation (points=[-59,50; -22,50], style(color=74, rgbcolor={0,0,127}));
@@ -34,16 +25,79 @@ package Control "Control elements for power converters"
           50], style(color=5, rgbcolor={255,0,255}));
     connect(notBlock.y, notFire) annotation (points=[61,-50; 100,-50], style(
           color=5, rgbcolor={255,0,255}));
+    annotation (
+      Diagram,
+      Icon(
+        Text(
+          extent=[-50,52; 56,-50],
+          style(color=3, rgbcolor={0,0,255}),
+          string="PWM")),
+      Documentation(info="<html>
+          <p>This block provides the switching
+            signal needed to drive the ideal switch models. It's
+             input <i>duty</i> receives the desired duty cycle and
+             the outputs <i>fire</i> and <i>notFire</i> provide the
+             PWM and negated PWM signals.
+          </p>
+        </html>"));
   end SignalPWM;
   
+  model Park "Park transformation" 
+    extends Modelica.Blocks.Interfaces.BlockIcon;
+    Modelica.Blocks.Interfaces.RealInput alpha 
+      annotation (extent=[-140,20; -100,60]);
+    Modelica.Blocks.Interfaces.RealInput beta 
+      annotation (extent=[-140,-60; -100,-20]);
+    Modelica.Blocks.Interfaces.RealOutput d 
+      annotation (extent=[100,30; 120,50]);
+    Modelica.Blocks.Interfaces.RealOutput q 
+      annotation (extent=[100,-50; 120,-30]);
+    Modelica.Blocks.Interfaces.RealInput theta 
+      annotation (extent=[-20,-140; 20,-100], rotation=90);
+  equation 
+    d = alpha*cos(theta) + beta*sin(theta);
+    q = -alpha*sin(theta) + beta*cos(theta);
+    annotation (
+      Diagram,
+      Icon(
+        Text(
+          extent=[-60,30;60,-30],
+          style(color=3, rgbcolor={0,0,255}),
+          string="AB2dq")));
+  end Park;
+  
+  model InversePark "Inverse Park transformation" 
+    extends Modelica.Blocks.Interfaces.BlockIcon;
+    Modelica.Blocks.Interfaces.RealInput d 
+      annotation (extent=[-140,20; -100,60]);
+    Modelica.Blocks.Interfaces.RealInput q 
+      annotation (extent=[-140,-60; -100,-20]);
+    Modelica.Blocks.Interfaces.RealOutput alpha 
+      annotation (extent=[100,30; 120,50]);
+    Modelica.Blocks.Interfaces.RealOutput beta 
+      annotation (extent=[100,-50; 120,-30]);
+    Modelica.Blocks.Interfaces.RealInput theta 
+      annotation (extent=[-20,-140; 20,-100], rotation=90);
+  equation 
+    d = alpha*cos(theta) + beta*sin(theta);
+    q = -alpha*sin(theta) + beta*cos(theta);
+    annotation (
+      Diagram,
+      Icon(
+        Text(
+          extent=[-60,30;60,-30],
+          style(color=3, rgbcolor={0,0,255}),
+          string="dq2AB")));
+  end InversePark;
+  
   model PLL "Phase-locked loop" 
-    annotation (uses(Modelica(version="2.2.1")), Diagram);
+    extends Modelica.Blocks.Interfaces.BlockIcon;
     parameter Modelica.SIunits.Frequency frequency=50;
     Modelica.Blocks.Continuous.Integrator integrator 
       annotation (extent=[60,-10; 80,10]);
     Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1e-3, k=100) 
       annotation (extent=[-4,-10; 16,10]);
-    Modelica.Blocks.Nonlinear.FixedDelay fixedDelay(delayTime=1/frequency/4) 
+    Modelica.Blocks.Nonlinear.FixedDelay QuarterTDelay(delayTime=1/frequency/4)
       annotation (extent=[-80,-30; -60,-10]);
     Modelica.Blocks.Interfaces.RealInput v annotation (extent=[-140,-20; -100,
           20]);
@@ -51,15 +105,18 @@ package Control "Control elements for power converters"
       annotation (extent=[100,-10; 120,10]);
     Park park annotation (extent=[-40,-14; -20,6]);
     Modelica.Blocks.Math.Add add annotation (extent=[30,48; 50,68]);
-    Modelica.Blocks.Sources.Constant const(k=2*Modelica.Constants.pi*frequency) 
-      annotation (extent=[-30,58; -10,78]);
+    Modelica.Blocks.Sources.Constant lineFreq(k=2*Modelica.Constants.pi*
+          frequency) 
+      annotation (extent=[-30,54; -10,74]);
   equation 
     connect(v, park.alpha) 
       annotation (points=[-120,0; -42,0],   style(color=74, rgbcolor={0,0,127}));
-    connect(fixedDelay.y, park.beta) annotation (points=[-59,-20; -50,-20; -50,
+    connect(QuarterTDelay.y, park.beta) 
+                                     annotation (points=[-59,-20; -50,-20; -50,
           -8; -42,-8],
                   style(color=74, rgbcolor={0,0,127}));
-    connect(fixedDelay.u, v) annotation (points=[-82,-20; -96,-20; -96,0; -120,
+    connect(QuarterTDelay.u, v) 
+                             annotation (points=[-82,-20; -96,-20; -96,0; -120,
           0],  style(color=74, rgbcolor={0,0,127}));
     connect(integrator.y, theta) 
       annotation (points=[81,0; 110,0],   style(color=74, rgbcolor={0,0,127}));
@@ -70,25 +127,152 @@ package Control "Control elements for power converters"
         style(color=74, rgbcolor={0,0,127}));
     connect(firstOrder.y, add.u2) annotation (points=[17,0; 22,0; 22,52; 28,52],
                style(color=74, rgbcolor={0,0,127}));
-    connect(const.y, add.u1) annotation (points=[-9,68; 8,68; 8,64; 28,64],
+    connect(lineFreq.y, add.u1) 
+                             annotation (points=[-9,64; 28,64],
         style(color=74, rgbcolor={0,0,127}));
     connect(park.d, firstOrder.u) annotation (points=[-19,0; -6,0],
                   style(color=74, rgbcolor={0,0,127}));
+    annotation (
+      Diagram,
+      Icon(
+        Text(
+          extent=[-60,30;60,-30],
+          style(color=3, rgbcolor={0,0,255}),
+          string="PLL")));
   end PLL;
   
-  model Park "Park transformation" 
-    
-    annotation (uses(Modelica(version="2.2.1")), Diagram);
-    Modelica.Blocks.Interfaces.RealInput alpha 
-      annotation (extent=[-140,20; -100,60]);
-    Modelica.Blocks.Interfaces.RealInput beta 
-      annotation (extent=[-140,-60; -100,-20]);
-    Modelica.Blocks.Interfaces.RealOutput d annotation (extent=[100,30; 120,50]);
-    Modelica.Blocks.Interfaces.RealOutput q annotation (extent=[100,-50; 120,-30]);
-    Modelica.Blocks.Interfaces.RealInput theta 
-      annotation (extent=[-20,-140; 20,-100], rotation=90);
+  model MPPTController "Maximum Power Point Tracking Controller" 
+    extends Modelica.Blocks.Interfaces.SI2SO;
+    parameter Modelica.SIunits.Time sampleTime=5;
+    parameter Modelica.SIunits.Voltage vrefStep=5;
+    parameter Modelica.SIunits.Power pkThreshold=10;
+    Modelica.SIunits.Voltage vk;
+    Modelica.SIunits.Current ik;
+    Modelica.SIunits.Power pk;
+    Modelica.SIunits.Voltage vref;
   equation 
-    d = alpha*cos(theta) + beta*sin(theta);
-    q = -alpha*sin(theta) + beta*cos(theta);
-  end Park;
+    when sample(0,sampleTime) then
+      if initial() then
+        vk =  pre(u1);
+        ik =  pre(u2);
+        pk = vk*ik;
+        vref = 10;
+      else
+        vk =  pre(u1);
+        ik =  pre(u2);
+        pk = vk*ik;
+        if abs(pk-pre(pk)) < pkThreshold then
+          // power unchanged => don't change action
+          vref = pre(vref);
+        elseif pk-pre(pk) > 0 then
+          // power increased => repeat action
+          vref = pre(vref) + vrefStep*sign(vk-pre(vk));
+        else
+          // power decreased => change action
+          vref = pre(vref) - vrefStep*sign(vk-pre(vk));
+        end if;
+      end if;
+    end when;
+    y = vref;
+    annotation (
+      Diagram,
+      Icon(
+        Text(
+          extent=[-70,70; 70,20],
+          style(color=3, rgbcolor={0,0,255}),
+          string="MPPT"),
+        Text(
+          extent=[-70,-20; 70,-70],
+          style(color=3, rgbcolor={0,0,255}),
+          string="Controller")));
+  end MPPTController;
+  
+  model OnePhaseInverterController "1-phase inverter controller" 
+    extends Modelica.Blocks.Interfaces.BlockIcon;
+    parameter Real ik=0.2 "Current PI gain";
+    parameter Modelica.SIunits.Time iT=0.02 "Current PI time constant";
+    parameter Real vk=0.2 "Voltage PI gain";
+    parameter Modelica.SIunits.Time vT=0.02 "Voltage PI time constant";
+    parameter Modelica.SIunits.Frequency fline=50 "Line frequency";
+    Modelica.Blocks.Interfaces.RealInput iac 
+      annotation (extent=[-140,60; -100,100]);
+    Modelica.Blocks.Interfaces.RealInput vac 
+      annotation (extent=[-140,10; -100,50]);
+    Modelica.Blocks.Interfaces.RealInput idc 
+      annotation (extent=[-140,-50; -100,-10]);
+    Modelica.Blocks.Interfaces.RealInput vdc 
+      annotation (extent=[-140,-100; -100,-60]);
+    annotation (Diagram);
+    Modelica.Blocks.Interfaces.RealOutput d annotation (extent=[100,-10; 120,10]);
+    Park park annotation (extent=[-54,66; -34,86]);
+    PLL pLL(frequency=fline) 
+            annotation (extent=[-80,20; -60,40]);
+    Modelica.Blocks.Nonlinear.FixedDelay fixedDelay(delayTime=1/fline/4) 
+      annotation (extent=[-88,50; -68,70]);
+    Modelica.Blocks.Continuous.PI idPI(k=ik, T=iT) 
+      annotation (extent=[50,40; 70,60]);
+    Modelica.Blocks.Math.Feedback idFB annotation (extent=[20,60; 40,40]);
+    Modelica.Blocks.Continuous.PI iqPI(k=ik, T=iT) 
+      annotation (extent=[-8,-10; 12,10]);
+    Modelica.Blocks.Math.Feedback iqFB annotation (extent=[-38,10; -18,-10]);
+    Modelica.Blocks.Sources.Constant const(k=0) 
+      annotation (extent=[-68,-10; -48,10]);
+    MPPTController mPPTController annotation (extent=[-88,-26; -68,-46]);
+    Modelica.Blocks.Continuous.PI vdcPI(k=vk, T=vT) 
+      annotation (extent=[-30,-46; -10,-26]);
+    Modelica.Blocks.Math.Feedback iqFB1 annotation (extent=[-60,-46; -40,-26]);
+    InversePark inversePark annotation (extent=[72,-14; 92,6]);
+  equation 
+    connect(pLL.v, vac) 
+      annotation (points=[-82,30; -120,30], style(color=74, rgbcolor={0,0,127}));
+    connect(pLL.theta, park.theta) annotation (points=[-59,30; -44,30; -44,64],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(iac, fixedDelay.u) annotation (points=[-120,80; -96,80; -96,60; -90,
+          60], style(color=74, rgbcolor={0,0,127}));
+    connect(park.alpha, iac) 
+      annotation (points=[-56,80; -120,80], style(color=74, rgbcolor={0,0,127}));
+    connect(park.beta, fixedDelay.y) annotation (points=[-56,72; -62,72; -62,60;
+          -67,60], style(color=74, rgbcolor={0,0,127}));
+    connect(idFB.y, idPI.u) 
+      annotation (points=[39,50; 48,50], style(color=74, rgbcolor={0,0,127}));
+    connect(park.d, idFB.u2) annotation (points=[-33,80; 30,80; 30,58], style(
+          color=74, rgbcolor={0,0,127}));
+    connect(iqFB.y, iqPI.u) 
+      annotation (points=[-19,0; -10,0], style(color=74, rgbcolor={0,0,127}));
+    connect(park.q, iqFB.u2) annotation (points=[-33,72; -28,72; -28,8], style(
+          color=74, rgbcolor={0,0,127}));
+    connect(const.y, iqFB.u1) 
+      annotation (points=[-47,0; -36,0], style(color=74, rgbcolor={0,0,127}));
+    connect(idc, mPPTController.u2) annotation (points=[-120,-30; -90,-30], style(
+          color=74, rgbcolor={0,0,127}));
+    connect(vdc, mPPTController.u1) annotation (points=[-120,-80; -96,-80; -96,
+          -42; -90,-42], style(color=74, rgbcolor={0,0,127}));
+    connect(mPPTController.y, iqFB1.u1) annotation (points=[-67,-36; -58,-36],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(iqFB1.u2, vdc) annotation (points=[-50,-44; -50,-80; -120,-80], style(
+          color=74, rgbcolor={0,0,127}));
+    connect(iqFB1.y, vdcPI.u) annotation (points=[-41,-36; -32,-36], style(color=
+            74, rgbcolor={0,0,127}));
+    connect(vdcPI.y, idFB.u1) annotation (points=[-9,-36; 18,-36; 18,50; 22,50],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(inversePark.alpha, d) 
+      annotation (points=[93,0; 110,0], style(color=74, rgbcolor={0,0,127}));
+    connect(iqPI.y, inversePark.q) annotation (points=[13,0; 42,0; 42,-8; 70,-8],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(idPI.y, inversePark.d) annotation (points=[71,50; 70,50; 70,0], style(
+          color=74, rgbcolor={0,0,127}));
+    connect(pLL.theta, inversePark.theta) annotation (points=[-59,30; 0,30; 0,-52;
+          82,-52; 82,-16], style(color=74, rgbcolor={0,0,127}));
+    annotation (
+      Diagram,
+      Icon(
+        Text(
+          extent=[-70,70; 70,20],
+          style(color=3, rgbcolor={0,0,255}),
+          string="Inverter"),
+        Text(
+          extent=[-70,-20; 70,-70],
+          style(color=3, rgbcolor={0,0,255}),
+          string="Controller")));
+  end OnePhaseInverterController;
 end Control;
