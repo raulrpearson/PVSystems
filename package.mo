@@ -5,8 +5,8 @@ extends Modelica.Icons.Library;
 annotation (
   uses(Modelica(version="2.2.1")),
   preferedView="info",
-  version="0.2",
-  versionDate="2016-09-17",
+  version="0.3",
+  versionDate="2016-09-23",
   Documentation(
     info="<html>
       <p>
@@ -16,13 +16,13 @@ annotation (
         aide in the modeling and simulation of photovoltaic power systems
         like this one:
       </p>
-
+ 
       <div class=\"figure\">
         <p><img src=\"../Resources/Images/TypicalSystem.png\"
-      	  alt=\"TypicalSystem.png\" />
+                alt=\"TypicalSystem.png\" />
         </p>
       </div>
-
+ 
       <p>
         As specified under the <b>Package Content</b> heading, this library
         is divided into three
@@ -31,7 +31,7 @@ annotation (
         <a href=\"Modelica://PVlib.Examples\">Examples</a>. In total, the
         library contains these 5 original component models:
       </p>
-
+ 
       <ul class=\"org-ul\">
         <li><a href=\"Modelica://PVlib.Control.SignalPWM\">SignalPWM</a>: a
           PWM switching signal generator
@@ -50,7 +50,7 @@ annotation (
           flexible PV array model
         </li>
       </ul>
-
+ 
       <p>
         After this brief introduction, the best way to go about learning to
         use this library is to check out the
