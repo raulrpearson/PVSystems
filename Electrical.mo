@@ -70,36 +70,43 @@ package Electrical "Library for electrical models"
   model IdealCBSwitch "Basic two-cuadrant current bidirectional switch" 
     extends Modelica.Electrical.Analog.Interfaces.TwoPin;
     // Components
-    Modelica.Electrical.Analog.Ideal.IdealClosingSwitch idealClosingSwitch annotation(extent=[-10,-10; 10,10],rotation=0);
-    Modelica.Electrical.Analog.Ideal.IdealDiode idealDiode annotation(extent=[-10,30; 10,50],rotation=180);
-    Modelica.Blocks.Interfaces.BooleanInput fire annotation(extent=[-10,-80; 10,-60],rotation=90);
+    Modelica.Electrical.Analog.Ideal.IdealClosingSwitch idealClosingSwitch 
+      annotation(extent=[-10,-10; 10,10],rotation=0);
+    Modelica.Electrical.Analog.Ideal.IdealDiode idealDiode 
+      annotation(extent=[-10,30; 10,50],rotation=180);
+    Modelica.Blocks.Interfaces.BooleanInput fire 
+      annotation(extent=[-10,-80; 10,-60],rotation=90);
   equation 
-    
-    annotation (Diagram,
-  Icon(   Line(points=[-98,0; -20,0], style(color=3, rgbcolor={0,0,255})),
-          Line(points=[-20,-20; 20,0; 100,0], style(color=3, rgbcolor={0,0,255})),
-          Line(points=[-40,0; -40,40; -20,40], style(color=3, rgbcolor={0,0,255})),
-          Line(points=[-20,40; 10,60; 10,20; -20,40], style(color=3, rgbcolor={0,
-                  0,255})),
-          Line(points=[10,40; 40,40; 40,0], style(color=3, rgbcolor={0,0,255})),
-          Line(points=[-20,60; -20,20], style(color=3, rgbcolor={0,0,255})),
-                      Line(points=[0,-78; 0,-10], style(color=83, rgbcolor={255,85,255}))),
-                 Documentation(info=
-                               "<html>
-  <p>This model represents and idealized current bi-directional
-    switch. This is the typical IGBT in anti-parallel with a diode from
-    which many converters are built.</p>
-</html>"));
     connect(p, idealClosingSwitch.p) 
-      annotation (points=[-100,0; -10,0], style(color=3, rgbcolor={0,0,255}));
+      annotation(points=[-100,0; -10,0],
+        style(color=3, rgbcolor={0,0,255}));
     connect(idealClosingSwitch.n, n) 
-      annotation (points=[10,0; 100,0], style(color=3, rgbcolor={0,0,255}));
-    connect(idealDiode.p, n) annotation (points=[10,40; 56,40; 56,0; 100,0], style(color=3,
-          rgbcolor={0,0,255}));
-    connect(idealDiode.n, p) annotation (points=[-10,40; -54,40; -54,0; -100,0],
+      annotation(points=[10,0; 100,0],
+        style(color=3, rgbcolor={0,0,255}));
+    connect(idealDiode.p, n) 
+      annotation(points=[10,40; 56,40; 56,0; 100,0],
+        style(color=3,rgbcolor={0,0,255}));
+    connect(idealDiode.n, p) 
+      annotation(points=[-10,40; -54,40; -54,0; -100,0],
         style(color=3, rgbcolor={0,0,255}));
     connect(fire, idealClosingSwitch.control) 
-      annotation (points=[0,-70; 0,7], style(color=5, rgbcolor={255,0,255}));
+      annotation(points=[0,-70; 0,7],
+        style(color=5, rgbcolor={255,0,255}));
+    annotation (
+      Diagram,
+      Icon(
+        Line(points=[-98,0; -20,0], style(color=3, rgbcolor={0,0,255})),
+        Line(points=[-20,-20; 20,0; 100,0], style(color=3, rgbcolor={0,0,255})),
+        Line(points=[-40,0; -40,40; -20,40], style(color=3, rgbcolor={0,0,255})),
+        Line(points=[-20,40; 10,60; 10,20; -20,40], style(color=3, rgbcolor={0,0,255})),
+        Line(points=[10,40; 40,40; 40,0], style(color=3, rgbcolor={0,0,255})),
+        Line(points=[-20,60; -20,20], style(color=3, rgbcolor={0,0,255})),
+        Line(points=[0,-78; 0,-10], style(color=83, rgbcolor={255,85,255}))),
+      Documentation(info="<html>
+      <p>This model represents and idealized current bi-directional
+      switch. This is the typical IGBT in anti-parallel with a diode from
+      which many converters are built.</p>
+      </html>"));
   end IdealCBSwitch;
   
   model Ideal2LevelLeg "Basic ideal two level switching leg" 
