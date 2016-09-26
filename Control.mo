@@ -42,7 +42,7 @@ package Control "Control elements for power converters"
         </html>"));
   end SignalPWM;
   
-  model Park "Park transformation" 
+  block Park "Park transformation" 
     extends Modelica.Blocks.Interfaces.BlockIcon;
     Modelica.Blocks.Interfaces.RealInput alpha 
       annotation (extent=[-140,20; -100,60]);
@@ -73,7 +73,7 @@ package Control "Control elements for power converters"
       </html>"));
   end Park;
   
-  model InversePark "Inverse Park transformation" 
+  block InversePark "Inverse Park transformation" 
     extends Modelica.Blocks.Interfaces.BlockIcon;
     Modelica.Blocks.Interfaces.RealInput d 
       annotation (extent=[-140,20; -100,60]);
@@ -104,7 +104,7 @@ package Control "Control elements for power converters"
       </html>"));
   end InversePark;
   
-  model PLL "Phase-locked loop" 
+  block PLL "Phase-locked loop" 
     extends Modelica.Blocks.Interfaces.BlockIcon;
     parameter Modelica.SIunits.Frequency frequency=50;
     Modelica.Blocks.Continuous.Integrator integrator 
@@ -163,12 +163,13 @@ package Control "Control elements for power converters"
       </html>"));
   end PLL;
   
-  model MPPTController "Maximum Power Point Tracking Controller" 
+  block MPPTController "Maximum Power Point Tracking Controller" 
     extends Modelica.Blocks.Interfaces.SI2SO;
     parameter Modelica.SIunits.Time sampleTime=1 "Sample time of control block";
     parameter Modelica.SIunits.Voltage vrefStep=5 "Step of change for vref";
     parameter Modelica.SIunits.Power pkThreshold=1 
       "Power threshold below which no change is considered";
+  protected 
     Modelica.SIunits.Voltage vk;
     Modelica.SIunits.Current ik;
     Modelica.SIunits.Power pk;
@@ -235,7 +236,7 @@ package Control "Control elements for power converters"
       </html>"));
   end MPPTController;
   
-  model OnePhaseInverterController "1-phase inverter controller" 
+  block OnePhaseInverterController "1-phase inverter controller" 
     extends Modelica.Blocks.Interfaces.BlockIcon;
     // Parameters
     parameter Real ik=0.2 "Current PI gain";
