@@ -256,7 +256,7 @@ package Electrical "Library for electrical models"
         Line(points=[-46,0; 0,0])));
   end IdealAverageDCMSwitch;
   
-  model IdealHBridge "Basic ideal H-bridge topology (switched)" 
+  model HBridgeSwitched "Basic ideal H-bridge topology (switched)" 
     // Interface
     Modelica.Electrical.Analog.Interfaces.Pin dcp "Positive pin of the DC port"
       annotation(extent=[-110,40;-90,60]);
@@ -360,9 +360,9 @@ package Electrical "Library for electrical models"
     composes IdealTwoLevelBranch to form a typical H-bridge
     configuration from which a 1-phase inverter can be constructed.
     This model is based on discrete switch models.</p></html>"));
-  end IdealHBridge;
+  end HBridgeSwitched;
   
-  model IdealAverageHBridge "Basic ideal H-bridge topology (averaged)" 
+  model HBridgeAveraged "Basic ideal H-bridge topology (averaged)" 
     // Interface
     Modelica.Electrical.Analog.Interfaces.Pin dcp "Positive pin of the DC port"
       annotation(extent=[-110,40;-90,60]);
@@ -392,9 +392,9 @@ package Electrical "Library for electrical models"
         style(color=3, rgbcolor={0,0,255}));
     connect(s1.n2, dcn) annotation (points=[40,65; 40,-20; -100,-20; -100,-50],
         style(color=3, rgbcolor={0,0,255}));
-    connect(u, s2.d) annotation (points=[0,-120; 0,-92; -30,-92; -30,-82],
+    connect(d, s2.d) annotation (points=[0,-120; 0,-92; -30,-92; -30,-82],
         style(color=74, rgbcolor={0,0,127}));
-    connect(u, s1.d) annotation (points=[0,-120; 0,30; 30,30; 30,58], style(
+    connect(d, s1.d) annotation (points=[0,-120; 0,30; 30,30; 30,58], style(
           color=74, rgbcolor={0,0,127}));
     connect(s2.p2, dcp) annotation (points=[-20,-65; -20,50; -100,50], style(
           color=3, rgbcolor={0,0,255}));
@@ -466,5 +466,5 @@ package Electrical "Library for electrical models"
     composes IdealAverageCCMSwitch to form a typical H-bridge
     configuration from which a 1-phase inverter can be constructed.
     This model is based in averaged switch models.</p></html>"));
-  end IdealAverageHBridge;
+  end HBridgeAveraged;
 end Electrical;
