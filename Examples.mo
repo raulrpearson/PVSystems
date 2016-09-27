@@ -52,7 +52,7 @@ package Examples "Application and validation examples"
       equation 
       connect(Gn.y, pVArray.G) annotation (points=[-29,20; -16,20; -16,13; -5.5,
             13], style(color=74, rgbcolor={0,0,127}));
-      connect(Tn.y, pVArray.T) annotation (points=[-29,-14; -16,-14; -16,7;
+      connect(Tn.y, pVArray.T) annotation (points=[-29,-14; -16,-14; -16,7; 
             -5.5,7],
                 style(color=74, rgbcolor={0,0,127}));
       connect(pVArray.p, rampVoltage.p) annotation (points=[1.83691e-015,20; 40,
@@ -945,7 +945,7 @@ package Examples "Application and validation examples"
             24,-2], style(color=74, rgbcolor={0,0,127}));
       connect(idSetpoint.y, control.idSetpoint) annotation (points=[21,-54; 36,-54;
             36,-2], style(color=74, rgbcolor={0,0,127}));
-      connect(control.theta, sawTooth.y) annotation (points=[18,6; -26.5,6; 
+      connect(control.theta, sawTooth.y) annotation (points=[18,6; -26.5,6;
             -26.5,6; -71,6],
                     style(color=74, rgbcolor={0,0,127}));
       connect(VSdc.p, dcsrc.p) 
@@ -1064,7 +1064,7 @@ package Examples "Application and validation examples"
              74, rgbcolor={0,0,127}));
       connect(VSdc.v, control.udc) annotation (points=[-118,70; -126,70; -126,
             30; -30,30; -30,14; -38,14], style(color=74, rgbcolor={0,0,127}));
-      connect(pll.theta, control.theta) annotation (points=[39,6; 0.5,6; 0.5,6; 
+      connect(pll.theta, control.theta) annotation (points=[39,6; 0.5,6; 0.5,6;
             -38,6], style(color=74, rgbcolor={0,0,127}));
       connect(currentSensor.i, control.i) annotation (points=[-10,40; -10,-20;
             -50,-20; -50,-2], style(color=74, rgbcolor={0,0,127}));
