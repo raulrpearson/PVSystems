@@ -172,11 +172,11 @@ package Examples "Application and validation examples"
     
     model PLLValidation "PLL validation example" 
       extends Modelica.Icons.Example;
-      Modelica.Blocks.Sources.Sine source(freqHz=50, phase=2.5) 
+      Modelica.Blocks.Sources.Sine source(freqHz=50) 
         annotation (extent=[-50,-10; -30,10]);
       Control.PLL pLL 
         annotation (extent=[-10,-10; 10,10]);
-      Modelica.Blocks.Math.Sin sync 
+      Modelica.Blocks.Math.Cos sync 
         annotation (extent=[30,-10; 50,10]);
     equation 
       connect(source.y, pLL.v) 
@@ -187,7 +187,7 @@ package Examples "Application and validation examples"
           style(color=74, rgbcolor={0,0,127}));
       annotation (
         Diagram,
-        experiment(StartTime=0, StopTime=0.15, Tolerance=1e-4),
+        experiment(StartTime=0, StopTime=0.1, Tolerance=1e-4),
         Documentation(info="<html>
       <p>
         This simple example provides a sinusoidal input to the PLL block and
@@ -195,17 +195,17 @@ package Examples "Application and validation examples"
         input sine, to drive a sine block so that the synchronization
         capabilities of the PLL can be visualized.
       </p>
-
+ 
       <p>
         Run the model and plot the output of the sinusoidal source and the
         output of the sine block to see how, after some short transient, the
         PLL successfully follows the reference:
       </p>
-
-
+ 
+ 
       <div class=\"figure\">
         <p><img src=\"../Resources/Images/PLLValidationResults.png\"
-      	  alt=\"PLLValidationResults.png\" />
+                alt=\"PLLValidationResults.png\" />
         </p>
       </div>
       </html>"));
@@ -219,7 +219,7 @@ package Examples "Application and validation examples"
           annotation(extent=[-70,0; -50,20],rotation=270);
         Modelica.Electrical.Analog.Sources.SignalVoltage sink 
           annotation(extent=[-2,0; 18,20], rotation=270);
-        Control.MPPTController controller(
+        PVlib.Control.ControllerMPPT controller(
           vrefStep=1,
           sampleTime=1,
           pkThreshold=0.01) 
@@ -357,7 +357,26 @@ package Examples "Application and validation examples"
             -30], style(color=74, rgbcolor={0,0,127}));
       annotation (
         Diagram,
-        experiment(startTime=0,stopTime=0.1,tolerance=1e-4));
+        experiment(startTime=0,stopTime=0.1,tolerance=1e-4),
+        Documentation(info="<html>
+      <p>
+        This example provides some easy input for the Park transform blocks
+        to check that calculations are being done as expected. Run the
+        simulation and you should get something like the following figure:
+      </p>
+
+      <div class=\"figure\">
+        <p><img src=\"../Resources/Images/ParkValidationResults.png\"
+      	  alt=\"ParkValidationResults.png\" />
+        </p>
+      </div>
+
+      <p>
+        As expected, <i>d</i> is equal to the peak amplitude of the input
+        signal and <i>q</i> sets at zero. Feeding the signals back to the
+        inverse transformation block recreates the original signals.
+      </p>
+      </html>"));
     end ParkValidation;
   end Validation;
   
@@ -698,7 +717,7 @@ package Examples "Application and validation examples"
         annotation (extent=[-100,40; -80,60], rotation=270);
       Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=480) 
         annotation(extent=[80,-40; 100,-20],rotation=270);
-      Modelica.Electrical.Analog.Basic.Inductor indsw(L=500e-6) 
+      Modelica.Electrical.Analog.Basic.Inductor Lsw1(L=500e-6) 
         annotation (extent=[80,60; 100,80], rotation=270);
       Control.PLL pLL 
         annotation(extent=[-64,-70; -84,-50],rotation=180);
@@ -706,7 +725,7 @@ package Examples "Application and validation examples"
         annotation(extent=[60,-40; 80,-20],rotation=270);
       Control.SignalPWM signalPWM(period=320e-6) 
         annotation(extent=[-60,20; -40,40],rotation=90);
-      Modelica.Blocks.Math.Sin sin 
+      Modelica.Blocks.Math.Cos sin 
         annotation(extent=[-34,-70; -54,-50],rotation=180);
       Modelica.Blocks.Math.Add add(k2=1, k1=580/580/2) 
         annotation(extent=[0,-64; -20,-44],rotation=180);
@@ -714,34 +733,34 @@ package Examples "Application and validation examples"
         annotation(extent=[-60,-40; -80,-20],rotation=180);
       Modelica.Electrical.Analog.Basic.Ground gsrc 
         annotation(extent=[-100,12; -80,32]);
-      Modelica.Electrical.Analog.Basic.Resistor ressw(R=0.1) 
+      Modelica.Electrical.Analog.Basic.Resistor Rsw1(R=0.1) 
         annotation(extent=[80,30; 100,50],rotation=270);
       PVlib.Electrical.HBridgeAveraged HBav 
         annotation(extent=[0,48; 20,68]);
-      Modelica.Electrical.Analog.Basic.Inductor indav(L=500e-6) 
+      Modelica.Electrical.Analog.Basic.Inductor Lav1(L=500e-6) 
         annotation(extent=[40,28; 60,48], rotation=270);
-      Modelica.Electrical.Analog.Basic.Resistor resav(R=0.1) 
+      Modelica.Electrical.Analog.Basic.Resistor Rav1(R=0.1) 
         annotation(extent=[40,-2; 60,18], rotation=270);
       Modelica.Electrical.Analog.Basic.Ground gsw 
         annotation(extent=[-80,62; -60,82]);
       Modelica.Electrical.Analog.Basic.Ground gav 
         annotation(extent=[-20,28; 0,48]);
-      Modelica.Electrical.Analog.Basic.Inductor indsw1(L=500e-6) 
+      Modelica.Electrical.Analog.Basic.Inductor Lsw2(L=500e-6) 
         annotation (extent=[-38,30; -18,50],rotation=270);
-      Modelica.Electrical.Analog.Basic.Resistor ressw1(R=0.1) 
+      Modelica.Electrical.Analog.Basic.Resistor Rsw2(R=0.1) 
         annotation(extent=[-38,0; -18,20],rotation=270);
-      Modelica.Electrical.Analog.Basic.Inductor indsw2(L=500e-6) 
+      Modelica.Electrical.Analog.Basic.Inductor Lav2(L=500e-6) 
         annotation (extent=[18,12; 38,32],  rotation=270);
-      Modelica.Electrical.Analog.Basic.Resistor ressw2(R=0.1) 
+      Modelica.Electrical.Analog.Basic.Resistor Rav2(R=0.1) 
         annotation(extent=[18,-18; 38,2], rotation=270);
     equation 
-      connect(HBsw.acp, indsw.p) 
+      connect(HBsw.acp, Lsw1.p) 
         annotation (points=[-40,95; 90,95;90,80],
           style(color=3, rgbcolor={0,0,255}));
-      connect(indsw.n, ressw.p) 
+      connect(Lsw1.n, Rsw1.p) 
         annotation(points=[90,60; 90,50],
           style(color=3, rgbcolor={0,0,255}));
-      connect(ressw.n, Grid.p) 
+      connect(Rsw1.n, Grid.p) 
         annotation(points=[90,30; 90,-20],
           style(color=3, rgbcolor={0,0,255}));
       connect(Grid.p, VSac.p) 
@@ -750,10 +769,10 @@ package Examples "Application and validation examples"
       connect(Grid.n, VSac.n) 
         annotation (points=[90,-40; 70,-40],
           style(color=3, rgbcolor={0,0,255}));
-      connect(indav.n, resav.p) 
+      connect(Lav1.n, Rav1.p) 
         annotation (points=[50,28; 50,18],
           style(color=3, rgbcolor={0,0,255}));
-      connect(HBav.acp, indav.p) 
+      connect(HBav.acp, Lav1.p) 
         annotation (points=[20,63; 50,63;50,48],
           style(color=3, rgbcolor={0,0,255}));
       connect(DCsrc.p, HBsw.dcp) 
@@ -786,38 +805,282 @@ package Examples "Application and validation examples"
       connect(HBav.d, add.y) 
         annotation (points=[10,46; 10,-54; 1,-54],
           style(color=74, rgbcolor={0,0,127}));
-      connect(resav.n, VSac.p) 
+      connect(Rav1.n, VSac.p) 
         annotation (points=[50,-2; 50,-20; 70,-20],
           style(color=3, rgbcolor={0,0,255}));
       connect(VSac.v, pLL.v) 
         annotation(points=[60,-30; 50,-30; 50,-90; -94,-90; -94,-60; -86,-60],
           style(color=74, rgbcolor={0,0,127}));
-      annotation (
-        Diagram,
-        experiment(StartTime=0, StopTime=0.1, Tolerance=1e-4));
       connect(signalPWM.fire, HBsw.fireA) annotation (points=[-55,40; -54,40;
             -54,80; -53,80], style(color=5, rgbcolor={255,0,255}));
       connect(signalPWM.notFire, HBsw.fireB) annotation (points=[-45,40; -47,40;
             -47,80], style(color=5, rgbcolor={255,0,255}));
-      connect(indsw1.n, ressw1.p) 
+      connect(Lsw2.n, Rsw2.p) 
         annotation(points=[-28,30; -28,27.5; -28,27.5; -28,25; -28,20; -28,20],
           style(color=3, rgbcolor={0,0,255}));
-      connect(HBsw.acn, indsw1.p) annotation (points=[-40,85; -28,85; -28,50],
+      connect(HBsw.acn, Lsw2.p)   annotation (points=[-40,85; -28,85; -28,50],
           style(color=3, rgbcolor={0,0,255}));
-      connect(ressw1.n, VSac.n) annotation (points=[-28,0; -28,-40; 70,-40],
+      connect(Rsw2.n, VSac.n)   annotation (points=[-28,0; -28,-40; 70,-40],
           style(color=3, rgbcolor={0,0,255}));
-      connect(indsw2.n, ressw2.p) 
+      connect(Lav2.n, Rav2.p) 
         annotation(points=[28,12; 28,9.5; 28,9.5; 28,7; 28,2; 28,2],
           style(color=3, rgbcolor={0,0,255}));
-      connect(HBav.acn, indsw2.p) annotation (points=[20,53; 28,53; 28,32],
+      connect(HBav.acn, Lav2.p)   annotation (points=[20,53; 28,53; 28,32],
           style(color=3, rgbcolor={0,0,255}));
-      connect(ressw2.n, VSac.n) annotation (points=[28,-18; 28,-40; 70,-40],
+      connect(Rav2.n, VSac.n)   annotation (points=[28,-18; 28,-40; 70,-40],
           style(color=3, rgbcolor={0,0,255}));
+      annotation (
+        Diagram,
+        experiment(StartTime=0, StopTime=0.1, Tolerance=1e-4),
+        Documentation(info="<html>
+      <p>
+        This example goes a step further
+        than <a href=\"Modelica://PVlib.Examples.Application.Inverter1phOpen\">Inverter1phOpen</a>
+        and includes grid synchronization. Typically this is the condition
+        for inverters in real-life situations. Both switched and averaged
+        implementations are presented for comparison purposes and it can be
+        seen that they both provide very similar results (excluding the fact
+        that high frequencies are left out in the averaged model).
+      </p>
+
+
+      <div class=\"figure\">
+        <p><img src=\"../Resources/Images/Inverter1phOpenSynchResults.png\"
+      	  alt=\"Inverter1phOpenSynchResults.png\" />
+        </p>
+      </div>
+
+      <p>
+        Since this is still open-loop and there's no in-quadrature
+        separation, the value of the current can't comfortably be specified
+        to be of a certain value. Since the RL load has almost equal real
+        and imaginary parts, the current that is drawn from the inverter has
+        a power factor different than one.
+      </p>
+
+      <p>
+        A key value to pay attention to in this example is the gain that is
+        placed in the <i>Add</i> block.
+      </p>
+
+
+      <div class=\"figure\">
+        <p><img src=\"../Resources/Images/Inverter1phOpenSynchDialog.png\"
+      	  alt=\"Inverter1phOpenSynchDialog.png\" />
+        </p>
+      </div>
+
+      <p>
+        It's initially set at 0.5. The value is expressed as 580/580/2 to
+        highlight the fact that this gain should be normalized to the DC
+        voltage value. Above that, over-modulation will occur and the output
+        current of the inverter will become quite ugly. Play around with
+        this value (using values between 0 and 0.5) to see how the output
+        current of the inverter changes.
+      </p>
+      </html>"));
     end Inverter1phOpenSynch;
     
-    model SimplePVSystem 
-      "Simple PV system including PV array, inverter and grid" 
+    model Inverter1phClosed 
+      "Basic 1-phase closed-loop inverter with constant DC voltage source and no synchronization" 
       extends Modelica.Icons.Example;
+      Modelica.Electrical.Analog.Sources.ConstantVoltage dcsrc(V=500) 
+        annotation(extent=[-30,60; -10,80],                                                                                             rotation=270);
+      Modelica.Electrical.Analog.Basic.Ground ground 
+        annotation(extent=[-30,34; -10,54]);
+      PVlib.Electrical.HBridgeAveraged HBav 
+        annotation(extent=[20,60; 40,80]);
+      Modelica.Electrical.Analog.Basic.Resistor resav(R=0.1) 
+        annotation(extent=[80,40; 100,60],rotation=270);
+      Modelica.Electrical.Analog.Basic.Inductor indav(L=500e-6) 
+        annotation(extent=[80,80; 100,100],rotation=270);
+      Modelica.Blocks.Sources.Step iqSetpoint(
+        height=14.14,
+        startTime=0.2) 
+        annotation (extent=[0,-30; 20,-10]);
+      Modelica.Blocks.Sources.Step idSetpoint(
+        offset=20,
+        startTime=0.2,
+        height=14.14 - 20) 
+        annotation (extent=[0,-64; 20,-44]);
+      Modelica.Electrical.Analog.Sensors.CurrentSensor CSac 
+        annotation (extent=[50,50; 70,30], rotation=180);
+      Modelica.Blocks.Sources.SawTooth sawTooth(
+        amplitude=2*Modelica.Constants.pi,period=0.02) 
+        annotation (extent=[-92,-4; -72,16]);
+      Modelica.Blocks.Math.Cos cos annotation (extent=[-50,-100; -30,-80]);
+      Modelica.Blocks.Math.Gain gain(k=50) annotation (extent=[-20,-100; 0,-80]);
+      Control.ControllerInverter1phCurrent control 
+        annotation (extent=[40,0; 20,20], rotation=90);
+      Modelica.Electrical.Analog.Sensors.VoltageSensor VSdc 
+        annotation (extent=[-60,60; -40,80], rotation=270);
+    equation 
+      connect(dcsrc.n, ground.p) 
+        annotation(points=[-20,60; -20,57; -20,57; -20,54],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(resav.p, indav.n) 
+        annotation(points=[90,60; 90,80],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(HBav.dcp, dcsrc.p) 
+        annotation(points=[20,75; 0,75; 0,80; -20,80],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(HBav.dcn, dcsrc.n) 
+        annotation(points=[20,65; 0,65; 0,60; -20,60],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(CSac.p, resav.n) 
+        annotation (points=[70,40; 90,40], style(color=3, rgbcolor={0,0,255}));
+      connect(HBav.acn, CSac.n) annotation (points=[40,65; 46,65; 46,40; 50,40],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(HBav.acp, indav.p) annotation (points=[40,75; 46,75; 46,100; 90,100],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(cos.u, sawTooth.y) annotation (points=[-52,-90; -60,-90; -60,6; -71,6],
+          style(color=74, rgbcolor={0,0,127}));
+      connect(cos.y, gain.u) annotation (points=[-29,-90; -22,-90], style(color=74,
+            rgbcolor={0,0,127}));
+      connect(control.d, HBav.d) 
+        annotation (points=[30,21; 30,58], style(color=74, rgbcolor={0,0,127}));
+      connect(CSac.i, control.i) annotation (points=[60,30; 60,-20; 30,-20; 30,-2],
+          style(color=74, rgbcolor={0,0,127}));
+      connect(iqSetpoint.y, control.iqSetpoint) annotation (points=[21,-20; 24,-20;
+            24,-2], style(color=74, rgbcolor={0,0,127}));
+      connect(idSetpoint.y, control.idSetpoint) annotation (points=[21,-54; 36,-54;
+            36,-2], style(color=74, rgbcolor={0,0,127}));
+      connect(control.theta, sawTooth.y) annotation (points=[18,6; -26.5,6; 
+            -26.5,6; -71,6],
+                    style(color=74, rgbcolor={0,0,127}));
+      connect(VSdc.p, dcsrc.p) 
+        annotation (points=[-50,80; -20,80], style(color=3, rgbcolor={0,0,255}));
+      connect(VSdc.n, dcsrc.n) 
+        annotation (points=[-50,60; -20,60], style(color=3, rgbcolor={0,0,255}));
+      connect(VSdc.v, control.udc) annotation (points=[-60,70; -66,70; -66,14; 18,
+            14], style(color=74, rgbcolor={0,0,127}));
+      annotation (
+        Diagram,
+        experiment(StartTime=0, StopTime=0.4, Tolerance=1e-4),
+        Documentation(info="<html>
+      <p>
+        This example explores a closed-loop inverter. No grid is present,
+        which simplifies things. But, since the controller is implemented in
+        the synchronous (dq) refrecen frame, a synchronization source needs
+        to exist. This is implemented with the saw tooth generator, which
+        emulates the output of the PLL.
+      </p>
+
+      <p>
+        As can be seen in the following figure, one can now comfortably
+        specify the setpoint for the output current of the inverter:
+      </p>
+
+      <div class=\"figure\">
+        <p><img src=\"../Resources/Images/Inverter1phClosedResults.png\"
+      	  alt=\"Inverter1phClosedResults.png\" />
+        </p>
+      </div>
+
+      <p>
+        Having the posibility to separately control the current in each dq
+        axis enables one to control the power factor (i.e. the phase lag
+        between the voltage and the current) as well as the amplitude of the
+        current.
+      </p>
+
+      <p>
+        In this example, the equivalent synchronization signal is plotted to
+        see this phase shift as the setpoints change. Notice how, when the q
+        component of the current is 0, the d component is equal to the peak
+        current.
+      </p>
+      </html>"));
+    end Inverter1phClosed;
+    
+    model Inverter1phClosedSynch 
+      "Grid synchronized 1-phase closed-loop inverter fed by constant DC source" 
+      extends Modelica.Icons.Example;
+      extends Icons.UnderConstruction;
+      Modelica.Electrical.Analog.Sources.ConstantVoltage DCsrc(V=580) 
+        annotation (extent=[-90,60; -70,80],  rotation=270);
+      Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=480) 
+        annotation(extent=[46,60; 66,80],rotation=270);
+      Control.PLL pll 
+        annotation(extent=[60,-4; 40,16],rotation=0);
+      Modelica.Electrical.Analog.Sensors.VoltageSensor VSac 
+        annotation(extent=[90,60; 70,80], rotation=270);
+      PVlib.Electrical.HBridgeAveraged HB(d(start=0.5)) 
+        annotation(extent=[-60,60; -40,80]);
+      Modelica.Electrical.Analog.Basic.Inductor L1(L=500e-6) 
+        annotation(extent=[10,80; 30,100],rotation=0);
+      Modelica.Electrical.Analog.Basic.Resistor R1(R=0.1) 
+        annotation(extent=[36,80; 56,100],rotation=0);
+      Modelica.Electrical.Analog.Basic.Inductor L2(L=500e-6) 
+        annotation (extent=[10,40; 30,60],  rotation=180);
+      Modelica.Electrical.Analog.Basic.Resistor R2(R=0.1) 
+        annotation(extent=[36,40; 56,60], rotation=180);
+      Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor 
+        annotation (extent=[0,40; -20,60]);
+      Control.ControllerInverter1phCurrent control(d(start=0.5)) 
+        annotation (extent=[-60,0; -40,20], rotation=90);
+      Modelica.Electrical.Analog.Sensors.VoltageSensor VSdc(v(start=DCsrc.V)) 
+        annotation(extent=[-118,60; -98,80],rotation=270);
+      Modelica.Blocks.Sources.Step iqSetpoint(height=14.14,startTime=0.2) 
+        annotation (extent=[-100,-80; -80,-60]);
+      Modelica.Blocks.Sources.Step idSetpoint(
+        offset=20,
+        startTime=0.2,
+        height=14.14 - 20) 
+        annotation (extent=[-100,-40; -80,-20]);
+    equation 
+      connect(Grid.p, VSac.p) 
+        annotation(points=[56,80; 80,80],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(Grid.n, VSac.n) 
+        annotation(points=[56,60; 80,60],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(L1.n, R1.p) 
+        annotation(points=[30,90; 36,90],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(R2.n, L2.p) 
+        annotation (points=[36,50; 30,50], style(color=3, rgbcolor={0,0,255}));
+      connect(HB.acp, L1.p) annotation (points=[-40,75; -34,75; -34,90; 10,90],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(R1.n, Grid.p) 
+        annotation (points=[56,90; 56,80], style(color=3, rgbcolor={0,0,255}));
+      connect(Grid.n, R2.p) 
+        annotation (points=[56,60; 56,50], style(color=3, rgbcolor={0,0,255}));
+      connect(DCsrc.p, HB.dcp) annotation (points=[-80,80; -64,80; -64,75; -60,
+            75], style(color=3, rgbcolor={0,0,255}));
+      connect(DCsrc.n, HB.dcn) annotation (points=[-80,60; -64,60; -64,65; -60,
+            65], style(color=3, rgbcolor={0,0,255}));
+      connect(currentSensor.p, L2.n) 
+        annotation (points=[0,50; 10,50], style(color=3, rgbcolor={0,0,255}));
+      connect(HB.acn, currentSensor.n) annotation (points=[-40,65; -34,65; -34,
+            50; -20,50], style(color=3, rgbcolor={0,0,255}));
+      connect(pll.v, VSac.v) annotation (points=[62,6; 100,6; 100,70; 90,70],
+          style(color=74, rgbcolor={0,0,127}));
+      connect(VSdc.p, DCsrc.p) annotation (points=[-108,80; -80,80], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(VSdc.n, DCsrc.n) annotation (points=[-108,60; -80,60], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(control.d, HB.d) annotation (points=[-50,21; -50,58], style(color=
+             74, rgbcolor={0,0,127}));
+      connect(VSdc.v, control.udc) annotation (points=[-118,70; -126,70; -126,
+            30; -30,30; -30,14; -38,14], style(color=74, rgbcolor={0,0,127}));
+      connect(pll.theta, control.theta) annotation (points=[39,6; 0.5,6; 0.5,6; 
+            -38,6], style(color=74, rgbcolor={0,0,127}));
+      connect(currentSensor.i, control.i) annotation (points=[-10,40; -10,-20;
+            -50,-20; -50,-2], style(color=74, rgbcolor={0,0,127}));
+      connect(iqSetpoint.y, control.iqSetpoint) annotation (points=[-79,-70;
+            -44,-70; -44,-2], style(color=74, rgbcolor={0,0,127}));
+      connect(idSetpoint.y, control.idSetpoint) annotation (points=[-79,-30;
+            -56,-30; -56,-2], style(color=74, rgbcolor={0,0,127}));
+      annotation (
+        Diagram,
+        experiment(StartTime=0, StopTime=0.1, Tolerance=1e-4));
+    end Inverter1phClosedSynch;
+    
+    model PVInverter1ph 
+      "Simple PV system including PV array, inverter and no grid" 
+      extends Modelica.Icons.Example;
+      extends Icons.UnderConstruction;
       Electrical.PVArray PV(          v(start=450)) 
         annotation (extent=[-120,60; -100,80], rotation=270);
       Modelica.Blocks.Sources.Constant Gn(k=1000) annotation(extent=[-148,80; -128,
@@ -825,6 +1088,114 @@ package Examples "Application and validation examples"
       Modelica.Blocks.Sources.Constant Tn(k=298.15) annotation(extent=[-148,40;
             -128,60]);
       annotation (Diagram);
+      PVlib.Electrical.HBridgeAveraged Inverter annotation (extent=[0,60; 20,80]);
+      Modelica.Electrical.Analog.Basic.Inductor L(L=500e-6) 
+        annotation (extent=[80,56; 100,76], rotation=270);
+      Modelica.Electrical.Analog.Basic.Resistor R(R=10) 
+        annotation (extent=[80,20; 100,40], rotation=270);
+      Modelica.Electrical.Analog.Basic.Capacitor C(C=5e-3, v(start=32.8)) 
+        annotation (extent=[-30,60; -10,80], rotation=270);
+      Modelica.Electrical.Analog.Sensors.VoltageSensor VSdc 
+        annotation (extent=[-42,-80; -62,-60],
+                                             rotation=270);
+      Modelica.Electrical.Analog.Sensors.CurrentSensor CSdc 
+        annotation (extent=[-52,70; -32,90]);
+      Modelica.Electrical.Analog.Sensors.PowerSensor PSac 
+        annotation (extent=[60,80; 80,100]);
+      Modelica.Electrical.Analog.Sensors.PowerSensor PSdc 
+        annotation (extent=[-102,70; -82,90]);
+      Modelica.Electrical.Analog.Basic.Resistor resistor(R=1e-3, v(start=30)) 
+        annotation (extent=[-76,70; -56,90]);
+      Modelica.Electrical.Analog.Basic.Ground ground 
+        annotation (extent=[-62,-108; -42,-88]);
+      Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor 
+        annotation (extent=[30,80; 50,100]);
+      Modelica.Blocks.Sources.Sine sine(freqHz=50) 
+        annotation (extent=[-20,-100; 0,-80]);
+      Modelica.Blocks.Nonlinear.Limiter limiter(uMin=0) 
+        annotation (extent=[0,20; 20,40], rotation=90);
+      Modelica.Blocks.Math.Add add(k1=0.5) 
+        annotation (extent=[6,-20; 26,0], rotation=90);
+      Modelica.Blocks.Sources.Constant const(k=0.5) 
+        annotation (extent=[-80,-40; -60,-20]);
+      PVlib.Control.ControllerInverter1ph onePhaseInverterController 
+        annotation (extent=[20,-60; 0,-40], rotation=90);
+    equation 
+      connect(Gn.y, PV.G) annotation (points=[-127,90; -122,90; -122,73; -115.5,73],
+          style(color=74, rgbcolor={0,0,127}));
+      connect(Tn.y, PV.T) annotation (points=[-127,50; -122,50; -122,67; -115.5,67],
+          style(color=74, rgbcolor={0,0,127}));
+      connect(C.p, Inverter.dcp)         annotation (points=[-20,80; -6,80; -6,
+            75; 0,75],
+                     style(color=3, rgbcolor={0,0,255}));
+      connect(PV.n, VSdc.n) annotation (points=[-110,60; -110,-80; -52,-80], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(VSdc.n, C.n)         annotation (points=[-52,-80; -20,-80; -20,60],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(CSdc.n, C.p) 
+        annotation (points=[-32,80; -20,80], style(color=3, rgbcolor={0,0,255}));
+      connect(VSdc.p, CSdc.p) 
+        annotation (points=[-52,-60; -52,80],
+                                            style(color=3, rgbcolor={0,0,255}));
+      connect(L.n, R.p) 
+        annotation (points=[90,56; 90,40], style(color=3, rgbcolor={0,0,255}));
+      connect(PSdc.pv, PV.p) annotation (points=[-92,90; -110,90; -110,80], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(PSdc.nv, VSdc.n) annotation (points=[-92,70; -92,-80; -52,-80], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(PSac.nc, L.p) annotation (points=[80,90; 90,90; 90,76], style(color=3,
+            rgbcolor={0,0,255}));
+      connect(PSac.pv, PSac.pc) annotation (points=[70,100; 60,100; 60,90], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(resistor.n, CSdc.p) annotation (points=[-56,80; -52,80], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(PV.p, PSdc.pc) annotation (points=[-110,80; -102,80], style(color=
+             3, rgbcolor={0,0,255}));
+      connect(PSdc.nc, resistor.p) annotation (points=[-82,80; -76,80], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(C.n, Inverter.dcn)         annotation (points=[-20,60; -6,60; -6,
+            65; 0,65],       style(color=3, rgbcolor={0,0,255}));
+      connect(ground.p, VSdc.n) annotation (points=[-52,-88; -52,-80], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(Inverter.acn, R.n) annotation (points=[20,65; 50,65; 50,20; 90,20],
+          style(color=3, rgbcolor={0,0,255}));
+      connect(PSac.nv, R.n) annotation (points=[70,80; 70,20; 90,20], style(
+            color=3, rgbcolor={0,0,255}));
+      connect(currentSensor.n, PSac.pc) 
+        annotation (points=[50,90; 60,90], style(color=3, rgbcolor={0,0,255}));
+      connect(Inverter.acp, currentSensor.p) annotation (points=[20,75; 26,75;
+            26,90; 30,90], style(color=3, rgbcolor={0,0,255}));
+      connect(limiter.y, Inverter.d) annotation (points=[10,41; 10,58], style(
+            color=74, rgbcolor={0,0,127}));
+      connect(const.y, add.u2) annotation (points=[-59,-30; 22,-30; 22,-22],
+          style(color=74, rgbcolor={0,0,127}));
+      connect(add.y, limiter.u) annotation (points=[16,1; 16,10; 10,10; 10,18],
+          style(color=74, rgbcolor={0,0,127}));
+      connect(onePhaseInverterController.d, add.u1) annotation (points=[10,-39;
+            10,-22], style(color=74, rgbcolor={0,0,127}));
+      connect(sine.y, onePhaseInverterController.vac) annotation (points=[1,-90;
+            14,-90; 14,-62; 13,-62], style(color=74, rgbcolor={0,0,127}));
+      connect(currentSensor.i, onePhaseInverterController.iac) annotation (
+          points=[40,80; 40,-90; 18,-90; 18,-62], style(color=74, rgbcolor={0,0,
+              127}));
+      connect(VSdc.v, onePhaseInverterController.vdc) annotation (points=[-42,-70;
+            2,-70; 2,-62],      style(color=74, rgbcolor={0,0,127}));
+      connect(CSdc.i, onePhaseInverterController.idc) annotation (points=[-42,70;
+            -36,70; -36,-76; 7,-76; 7,-62],     style(color=74, rgbcolor={0,0,
+              127}));
+    end PVInverter1ph;
+    
+    model PVInverter1phSynch 
+      "Simple PV system including PV array, inverter and grid" 
+      extends Modelica.Icons.Example;
+      extends Icons.UnderConstruction;
+      Electrical.PVArray PV(          v(start=450)) 
+        annotation (extent=[-120,60; -100,80], rotation=270);
+      Modelica.Blocks.Sources.Constant Gn(k=1000) annotation(extent=[-148,80; -128,
+            100]);
+      Modelica.Blocks.Sources.Constant Tn(k=298.15) annotation(extent=[-148,40;
+            -128,60]);
+      annotation (Diagram, Icon);
       PVlib.Electrical.HBridgeAveraged Inverter annotation (extent=[-10,60; 10,80]);
       Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=25) 
         annotation (extent=[80,-20; 100,0],rotation=270);
@@ -836,7 +1207,7 @@ package Examples "Application and validation examples"
         annotation (extent=[50,-20; 70,0], rotation=270);
       Modelica.Electrical.Analog.Basic.Capacitor C(C=5e-3, v(start=32.8)) 
         annotation (extent=[-36,60; -16,80], rotation=270);
-      Control.OnePhaseInverterController Controller 
+      PVlib.Control.ControllerInverter1ph Controller 
         annotation (extent=[10,18; -10,38],rotation=90);
       Modelica.Electrical.Analog.Sensors.VoltageSensor VSdc 
         annotation (extent=[-42,-20; -62,0], rotation=270);
@@ -863,10 +1234,10 @@ package Examples "Application and validation examples"
           style(color=74, rgbcolor={0,0,127}));
       connect(Tn.y, PV.T) annotation (points=[-127,50; -122,50; -122,67; -115.5,67],
           style(color=74, rgbcolor={0,0,127}));
-      connect(C.p, Inverter.dcp)         annotation (points=[-26,80; -16,80; 
+      connect(C.p, Inverter.dcp)         annotation (points=[-26,80; -16,80;
             -16,75; -10,75],
                      style(color=3, rgbcolor={0,0,255}));
-      connect(Controller.d, Inverter.d) annotation (points=[-6.73533e-016,39; 
+      connect(Controller.d, Inverter.d) annotation (points=[-6.73533e-016,39;
             -6.73533e-016,58; 0,58],
           style(color=74, rgbcolor={0,0,127}));
       connect(PV.n, VSdc.n) annotation (points=[-110,60; -110,-20; -52,-20], style(
@@ -878,7 +1249,7 @@ package Examples "Application and validation examples"
           style(color=74, rgbcolor={0,0,127}));
       connect(CSdc.n, C.p) 
         annotation (points=[-32,80; -26,80], style(color=3, rgbcolor={0,0,255}));
-      connect(CSdc.i, Controller.idc) annotation (points=[-42,70; -42,6; -3,6; 
+      connect(CSdc.i, Controller.idc) annotation (points=[-42,70; -42,6; -3,6;
             -3,16],
                  style(color=74, rgbcolor={0,0,127}));
       connect(VSdc.p, CSdc.p) 
@@ -924,101 +1295,11 @@ package Examples "Application and validation examples"
              3, rgbcolor={0,0,255}));
       connect(PSdc.nc, resistor.p) annotation (points=[-82,80; -76,80], style(
             color=3, rgbcolor={0,0,255}));
-      connect(C.n, Inverter.dcn)         annotation (points=[-26,60; -16,60; 
+      connect(C.n, Inverter.dcn)         annotation (points=[-26,60; -16,60;
             -16,65; -10,65], style(color=3, rgbcolor={0,0,255}));
       connect(ground.p, VSdc.n) annotation (points=[-52,-28; -52,-20], style(
             color=3, rgbcolor={0,0,255}));
-    end SimplePVSystem;
+    end PVInverter1phSynch;
     
-    model PVInverter1phOpen 
-      "Simple PV system including PV array, inverter and no grid" 
-      extends Modelica.Icons.Example;
-      Electrical.PVArray PV(          v(start=450)) 
-        annotation (extent=[-120,60; -100,80], rotation=270);
-      Modelica.Blocks.Sources.Constant Gn(k=1000) annotation(extent=[-148,80; -128,
-            100]);
-      Modelica.Blocks.Sources.Constant Tn(k=298.15) annotation(extent=[-148,40;
-            -128,60]);
-      annotation (Diagram);
-      PVlib.Electrical.HBridgeAveraged Inverter annotation (extent=[0,60; 20,80]);
-      Modelica.Electrical.Analog.Basic.Inductor L(L=500e-6) 
-        annotation (extent=[80,56; 100,76], rotation=270);
-      Modelica.Electrical.Analog.Basic.Resistor R(R=10) 
-        annotation (extent=[80,20; 100,40], rotation=270);
-      Modelica.Electrical.Analog.Basic.Capacitor C(C=5e-3, v(start=32.8)) 
-        annotation (extent=[-30,60; -10,80], rotation=270);
-      Control.OnePhaseInverterController Controller 
-        annotation (extent=[20,20; 0,40],  rotation=90);
-      Modelica.Electrical.Analog.Sensors.VoltageSensor VSdc 
-        annotation (extent=[-42,-20; -62,0], rotation=270);
-      Modelica.Electrical.Analog.Sensors.CurrentSensor CSdc 
-        annotation (extent=[-52,70; -32,90]);
-      Modelica.Electrical.Analog.Sensors.PowerSensor PSac 
-        annotation (extent=[60,80; 80,100]);
-      Modelica.Electrical.Analog.Sensors.PowerSensor PSdc 
-        annotation (extent=[-102,70; -82,90]);
-      Modelica.Electrical.Analog.Basic.Resistor resistor(R=1e-3, v(start=30)) 
-        annotation (extent=[-76,70; -56,90]);
-      Modelica.Electrical.Analog.Basic.Ground ground 
-        annotation (extent=[-62,-48; -42,-28]);
-      Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor 
-        annotation (extent=[30,80; 50,100]);
-      Modelica.Blocks.Sources.Sine sine(freqHz=50) 
-        annotation (extent=[-20,-60; 0,-40]);
-    equation 
-      connect(Gn.y, PV.G) annotation (points=[-127,90; -122,90; -122,73; -115.5,73],
-          style(color=74, rgbcolor={0,0,127}));
-      connect(Tn.y, PV.T) annotation (points=[-127,50; -122,50; -122,67; -115.5,67],
-          style(color=74, rgbcolor={0,0,127}));
-      connect(C.p, Inverter.dcp)         annotation (points=[-20,80; -6,80; -6,
-            75; 0,75],
-                     style(color=3, rgbcolor={0,0,255}));
-      connect(Controller.d, Inverter.d) annotation (points=[10,40.5; 10,58],
-          style(color=74, rgbcolor={0,0,127}));
-      connect(PV.n, VSdc.n) annotation (points=[-110,60; -110,-20; -52,-20], style(
-            color=3, rgbcolor={0,0,255}));
-      connect(VSdc.n, C.n)         annotation (points=[-52,-20; -20,-20; -20,60],
-          style(color=3, rgbcolor={0,0,255}));
-      connect(VSdc.v, Controller.vdc) annotation (points=[-42,-10; 2,-10; 2,19],
-          style(color=74, rgbcolor={0,0,127}));
-      connect(CSdc.n, C.p) 
-        annotation (points=[-32,80; -20,80], style(color=3, rgbcolor={0,0,255}));
-      connect(CSdc.i, Controller.idc) annotation (points=[-42,70; -42,6; 7,6; 7,
-            19], style(color=74, rgbcolor={0,0,127}));
-      connect(VSdc.p, CSdc.p) 
-        annotation (points=[-52,0; -52,80], style(color=3, rgbcolor={0,0,255}));
-      connect(L.n, R.p) 
-        annotation (points=[90,56; 90,40], style(color=3, rgbcolor={0,0,255}));
-      connect(PSdc.pv, PV.p) annotation (points=[-92,90; -110,90; -110,80], style(
-            color=3, rgbcolor={0,0,255}));
-      connect(PSdc.nv, VSdc.n) annotation (points=[-92,70; -92,-20; -52,-20], style(
-            color=3, rgbcolor={0,0,255}));
-      connect(PSac.nc, L.p) annotation (points=[80,90; 90,90; 90,76], style(color=3,
-            rgbcolor={0,0,255}));
-      connect(PSac.pv, PSac.pc) annotation (points=[70,100; 60,100; 60,90], style(
-            color=3, rgbcolor={0,0,255}));
-      connect(resistor.n, CSdc.p) annotation (points=[-56,80; -52,80], style(
-            color=3, rgbcolor={0,0,255}));
-      connect(PV.p, PSdc.pc) annotation (points=[-110,80; -102,80], style(color=
-             3, rgbcolor={0,0,255}));
-      connect(PSdc.nc, resistor.p) annotation (points=[-82,80; -76,80], style(
-            color=3, rgbcolor={0,0,255}));
-      connect(C.n, Inverter.dcn)         annotation (points=[-20,60; -6,60; -6,
-            65; 0,65],       style(color=3, rgbcolor={0,0,255}));
-      connect(ground.p, VSdc.n) annotation (points=[-52,-28; -52,-20], style(
-            color=3, rgbcolor={0,0,255}));
-      connect(Inverter.acn, R.n) annotation (points=[20,65; 50,65; 50,20; 90,20],
-          style(color=3, rgbcolor={0,0,255}));
-      connect(PSac.nv, R.n) annotation (points=[70,80; 70,20; 90,20], style(
-            color=3, rgbcolor={0,0,255}));
-      connect(currentSensor.n, PSac.pc) 
-        annotation (points=[50,90; 60,90], style(color=3, rgbcolor={0,0,255}));
-      connect(Inverter.acp, currentSensor.p) annotation (points=[20,75; 26,75;
-            26,90; 30,90], style(color=3, rgbcolor={0,0,255}));
-      connect(currentSensor.i, Controller.iac) annotation (points=[40,80; 40,
-            -10; 18,-10; 18,19], style(color=74, rgbcolor={0,0,127}));
-      connect(sine.y, Controller.vac) annotation (points=[1,-50; 12,-50; 12,19; 
-            13,19], style(color=74, rgbcolor={0,0,127}));
-    end PVInverter1phOpen;
   end Application;
 end Examples;

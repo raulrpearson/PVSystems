@@ -146,9 +146,6 @@ package Control "Control elements for power converters"
     connect(lineFreq.y, add.u1) 
       annotation(points=[-9,64; 28,64],
         style(color=74, rgbcolor={0,0,127}));
-    connect(park.d, firstOrder.u) 
-      annotation(points=[-19,0; -6,0],
-        style(color=74, rgbcolor={0,0,127}));
     annotation (
       Diagram,
       Icon(
@@ -161,9 +158,11 @@ package Control "Control elements for power converters"
           Phase-locked loop. Given a sinusoidal input, extract the phase.
         </p>
       </html>"));
+    connect(park.q, firstOrder.u) annotation (points=[-19,-8; -12,-8; -12,0; -6,
+          0], style(color=74, rgbcolor={0,0,127}));
   end PLL;
   
-  block MPPTController "Maximum Power Point Tracking Controller" 
+  block ControllerMPPT "Maximum Power Point Tracking Controller" 
     extends Modelica.Blocks.Interfaces.SI2SO;
     parameter Modelica.SIunits.Time sampleTime=1 "Sample time of control block";
     parameter Modelica.SIunits.Voltage vrefStep=5 "Step of change for vref";
@@ -186,13 +185,13 @@ package Control "Control elements for power converters"
         ik =  pre(u2);
         pk = vk*ik;
         if abs(pk-pre(pk)) < pkThreshold then
-          // power unchanged => don't change action
+          // power unchanged => don't change vref
           vref = pre(vref);
         elseif pk-pre(pk) > 0 then
-          // power increased => repeat action
+          // power increased => repeat last action
           vref = pre(vref) + vrefStep*sign(vk-pre(vk));
         else
-          // power decreased => change action
+          // power decreased => change last action
           vref = pre(vref) - vrefStep*sign(vk-pre(vk));
         end if;
       end if;
@@ -234,10 +233,104 @@ package Control "Control elements for power converters"
           </li>
         </ul>
       </html>"));
-  end MPPTController;
+  end ControllerMPPT;
   
-  block OnePhaseInverterController "1-phase inverter controller" 
+  block ControllerInverter1phCurrent 
+    "Simple synchronous reference frame PI current controller" 
     extends Modelica.Blocks.Interfaces.BlockIcon;
+    extends Icons.UnderConstruction;
+    Park park annotation (extent=[-50,-14; -30,6]);
+    Modelica.Blocks.Nonlinear.FixedDelay fixedDelay(delayTime=1/50/4) 
+      annotation (extent=[-88,-30; -68,-10]);
+    Modelica.Blocks.Continuous.PI idPI(k=0.1, T=0.01) 
+      annotation (extent=[-8,50; 12,70]);
+    Modelica.Blocks.Math.Feedback idFB annotation (extent=[-34,50; -14,70]);
+    Modelica.Blocks.Continuous.PI iqPI(k=0.1, T=0.01) 
+      annotation (extent=[-8,-70; 12,-50]);
+    Modelica.Blocks.Math.Feedback iqFB annotation (extent=[-34,-50; -14,-70]);
+    InversePark inversePark annotation (extent=[24,-14; 44,6]);
+    Modelica.Blocks.Sources.Constant dOffset(k=0.5) 
+      annotation (extent=[38,26; 58,46]);
+    Modelica.Blocks.Interfaces.RealInput i "Sensed current" 
+      annotation (extent=[-140,-20; -100,20]);
+    Modelica.Blocks.Interfaces.RealInput idSetpoint 
+      "Current d component setpoint" 
+      annotation (extent=[-140,40; -100,80]);
+    Modelica.Blocks.Interfaces.RealInput iqSetpoint 
+      "Current q component setpoint" 
+      annotation (extent=[-140,-80; -100,-40]);
+    Modelica.Blocks.Interfaces.RealInput theta "Sensed AC voltage phase" 
+      annotation (extent=[-60,-140; -20,-100], rotation=90);
+    Modelica.Blocks.Interfaces.RealInput udc "Sensed DC voltage" 
+      annotation (extent=[20,-140; 60,-100], rotation=90);
+    Modelica.Blocks.Interfaces.RealOutput d "Duty cycle output" 
+      annotation (extent=[100,-10; 120,10]);
+    Modelica.Blocks.Math.Division division annotation (extent=[56,-16; 76,4]);
+    Modelica.Blocks.Math.Add add annotation (extent=[72,20; 92,40]);
+  equation 
+    // Connections
+    connect(park.beta,fixedDelay. y) 
+      annotation (points=[-52,-8; -60,-8; -60,-20; -67,-20],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(idFB.y,idPI. u) 
+      annotation (points=[-15,60; -10,60],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(park.d,idFB. u2) 
+      annotation (points=[-29,0; -24,0; -24,52],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(iqFB.y,iqPI. u) 
+      annotation(points=[-15,-60; -10,-60],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(park.q,iqFB. u2) 
+      annotation (points=[-29,-8; -24,-8; -24,-52],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(iqPI.y,inversePark. q) 
+      annotation(points=[13,-60; 16,-60; 16,-8; 22,-8],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(idPI.y,inversePark. d) 
+      annotation(points=[13,60; 16,60; 16,0; 22,0],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(i, park.alpha) 
+      annotation (points=[-120,0; -52,0], style(color=74, rgbcolor={0,0,127}));
+    connect(i, fixedDelay.u) annotation (points=[-120,0; -96,0; -96,-20; -90,
+          -20], style(color=74, rgbcolor={0,0,127}));
+    connect(idSetpoint, idFB.u1) annotation (points=[-120,60; -32,60], style(
+          color=74, rgbcolor={0,0,127}));
+    connect(iqSetpoint, iqFB.u1) annotation (points=[-120,-60; -32,-60], style(
+          color=74, rgbcolor={0,0,127}));
+    connect(inversePark.theta, theta) annotation (points=[34,-16; 34,-80; -40,
+          -80; -40,-120], style(color=74, rgbcolor={0,0,127}));
+    connect(park.theta, theta) annotation (points=[-40,-16; -40,-120; -40,-120],
+        style(color=74, rgbcolor={0,0,127}));
+    connect(inversePark.alpha, division.u1) 
+      annotation (points=[45,0; 54,0], style(color=74, rgbcolor={0,0,127}));
+    connect(udc, division.u2) annotation (points=[40,-120; 40,-80; 48,-80; 48,
+          -12; 54,-12], style(color=74, rgbcolor={0,0,127}));
+    connect(dOffset.y, add.u1) 
+      annotation (points=[59,36; 70,36], style(color=74, rgbcolor={0,0,127}));
+    connect(division.y, add.u2) annotation (points=[77,-6; 70,-6; 70,24], style(
+          color=74, rgbcolor={0,0,127}));
+    connect(add.y, d) annotation (points=[93,30; 96,30; 96,0; 110,0], style(
+          color=74, rgbcolor={0,0,127}));
+    annotation (
+      Diagram,
+      Icon(
+        Text(
+          extent=[-70,25; 70,-25],
+          style(color=3, rgbcolor={0,0,255}),
+          string="Control")),
+      Documentation(info="<html>
+      <p>
+        Partial current controller for monophasic inverter. Currently
+        under construction.
+      </p>
+      </html>"));
+  end ControllerInverter1phCurrent;
+  
+  block ControllerInverter1ph 
+    "Complete synchronous reference frame inverter controller" 
+    extends Modelica.Blocks.Interfaces.BlockIcon;
+    extends Icons.UnderConstruction;
     // Parameters
     parameter Real ik=0.2 "Current PI gain";
     parameter Modelica.SIunits.Time iT=0.02 "Current PI time constant";
@@ -246,33 +339,40 @@ package Control "Control elements for power converters"
     parameter Modelica.SIunits.Frequency fline=50 "Line frequency";
     // Interface
     Modelica.Blocks.Interfaces.RealInput iac "AC current sense" 
-      annotation (extent=[-140,60; -100,100]);
+      annotation(extent=[-140,60; -100,100]);
     Modelica.Blocks.Interfaces.RealInput vac "AC voltage sense" 
-      annotation (extent=[-140,10; -100,50]);
+      annotation(extent=[-140,10; -100,50]);
     Modelica.Blocks.Interfaces.RealInput idc "DC current sense" 
-      annotation (extent=[-140,-50; -100,-10]);
+      annotation(extent=[-140,-50; -100,-10]);
     Modelica.Blocks.Interfaces.RealInput vdc "DC voltage sense" 
-      annotation (extent=[-140,-100; -100,-60]);
+      annotation(extent=[-140,-100; -100,-60]);
     Modelica.Blocks.Interfaces.RealOutput d "Duty cycle" 
-      annotation (extent=[100,-10; 120,10]);
+      annotation(extent=[100,-10; 120,10]);
     // Components
-    Park park annotation (extent=[-54,66; -34,86]);
-    PLL pLL(frequency=fline) annotation (extent=[-80,20; -60,40]);
+    Park park 
+      annotation(extent=[-54,66; -34,86]);
+    PLL pLL(frequency=fline) 
+      annotation(extent=[-80,20; -60,40]);
     Modelica.Blocks.Nonlinear.FixedDelay fixedDelay(delayTime=1/fline/4) 
-      annotation (extent=[-88,50; -68,70]);
+      annotation(extent=[-88,50; -68,70]);
     Modelica.Blocks.Continuous.PI idPI(k=ik, T=iT) 
-      annotation (extent=[50,40; 70,60]);
-    Modelica.Blocks.Math.Feedback idFB annotation (extent=[20,60; 40,40]);
+      annotation(extent=[50,40; 70,60]);
+    Modelica.Blocks.Math.Feedback idFB 
+      annotation(extent=[20,60; 40,40]);
     Modelica.Blocks.Continuous.PI iqPI(k=ik, T=iT) 
-      annotation (extent=[-8,-10; 12,10]);
-    Modelica.Blocks.Math.Feedback iqFB annotation (extent=[-38,10; -18,-10]);
+      annotation(extent=[-8,-10; 12,10]);
+    Modelica.Blocks.Math.Feedback iqFB 
+      annotation(extent=[-38,10; -18,-10]);
     Modelica.Blocks.Sources.Constant const(k=0) 
-      annotation (extent=[-68,-10; -48,10]);
-    MPPTController mPPTController annotation (extent=[-88,-26; -68,-46]);
+      annotation(extent=[-68,-10; -48,10]);
+    PVlib.Control.ControllerMPPT mPPTController 
+      annotation(extent=[-88,-26; -68,-46]);
     Modelica.Blocks.Continuous.PI vdcPI(k=vk, T=vT) 
-      annotation (extent=[-30,-46; -10,-26]);
-    Modelica.Blocks.Math.Feedback iqFB1 annotation (extent=[-60,-46; -40,-26]);
-    InversePark inversePark annotation (extent=[72,-14; 92,6]);
+      annotation(extent=[-30,-46; -10,-26]);
+    Modelica.Blocks.Math.Feedback iqFB1 
+      annotation(extent=[-60,-46; -40,-26]);
+    InversePark inversePark 
+      annotation(extent=[72,-14; 92,6]);
   equation 
     connect(pLL.v, vac) 
       annotation(points=[-82,30; -120,30],
@@ -344,12 +444,12 @@ package Control "Control elements for power converters"
         Text(
           extent=[-70,-20; 70,-70],
           style(color=3, rgbcolor={0,0,255}),
-          string="Controller")),
+          string="Ctl")),
       Documentation(info="<html>
-        <p>
-          Complete controller for monophasic inverter. Currently under
-          construction.
-        </p>
+      <p>
+        Complete controller for monophasic inverter. Currently under
+        construction.
+      </p>
       </html>"));
-  end OnePhaseInverterController;
+  end ControllerInverter1ph;
 end Control;
