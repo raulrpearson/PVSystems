@@ -52,7 +52,7 @@ package Examples "Application and validation examples"
       equation 
       connect(Gn.y, pVArray.G) annotation (points=[-29,20; -16,20; -16,13; -5.5,
             13], style(color=74, rgbcolor={0,0,127}));
-      connect(Tn.y, pVArray.T) annotation (points=[-29,-14; -16,-14; -16,7; 
+      connect(Tn.y, pVArray.T) annotation (points=[-29,-14; -16,-14; -16,7;
             -5.5,7],
                 style(color=74, rgbcolor={0,0,127}));
       connect(pVArray.p, rampVoltage.p) annotation (points=[1.83691e-015,20; 40,

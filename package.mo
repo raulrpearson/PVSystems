@@ -4,8 +4,8 @@ extends Modelica.Icons.Library;
 annotation (
   uses(Modelica(version="2.2.1")),
   preferedView="info",
-  version="0.3",
-  versionDate="2016-09-23",
+  version="0.4",
+  versionDate="2016-09-28",
   Documentation(info="<html>
       <p>
         PVlib is a Modelica library focused on providing the components
@@ -14,13 +14,13 @@ annotation (
         aide in the modeling and simulation of photovoltaic power systems
         like this one:
       </p>
-
+ 
       <div class=\"figure\">
         <p><img src=\"../Resources/Images/TypicalSystem.png\"
-      	  alt=\"TypicalSystem.png\" />
+                alt=\"TypicalSystem.png\" />
         </p>
       </div>
-
+ 
       <p>
         As specified under the <b>Package Content</b> heading, this library
         is divided into three
@@ -32,7 +32,7 @@ annotation (
         are <a href=\"Modelica://PVlib.Icons.UnderConstruction\">under
           construction</a>.
       </p>
-
+ 
       <p>
         After this brief introduction, the best way to go about learning to
         use this library is to check out the
