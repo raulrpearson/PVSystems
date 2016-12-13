@@ -8,9 +8,9 @@ annotation (
   versionDate="2016-12-13",
   Documentation(info="<html>
       <p>
-        PVlib is a Modelica library focused on providing the components
+        PVSystems is a Modelica library focused on providing the components
         typically useful for the electrical design of converters as well as
-        the development of control algorithms. PVlib is a library created to
+        the development of control algorithms. PVSystems is a library created to
         aide in the modeling and simulation of photovoltaic power systems
         like this one:
       </p>
@@ -24,19 +24,19 @@ annotation (
       <p>
         As specified under the <b>Package Content</b> heading, this library
         is divided into three
-        packages: <a href=\"Modelica://PVlib.Control\">Control</a>, <a href=\"Modelica://PVlib.Electrical\">Electrical</a>
-        and <a href=\"Modelica://PVlib.Examples\">Examples</a>. There is
-        also an <a href=\"Modelica://PVlib.Icons\">Icons</a> package that
+        packages: <a href=\"Modelica://PVSystems.Control\">Control</a>, <a href=\"Modelica://PVSystems.Electrical\">Electrical</a>
+        and <a href=\"Modelica://PVSystems.Examples\">Examples</a>. There is
+        also an <a href=\"Modelica://PVSystems.Icons\">Icons</a> package that
         for the moment only includes an icon that can be applied to classes
         to indicate that they
-        are <a href=\"Modelica://PVlib.Icons.UnderConstruction\">under
+        are <a href=\"Modelica://PVSystems.Icons.UnderConstruction\">under
           construction</a>.
       </p>
  
       <p>
         After this brief introduction, the best way to go about learning to
         use this library is to check out the
-        great <a href=\"Modelica://PVlib.Examples\">Examples</a> package!
+        great <a href=\"Modelica://PVSystems.Examples\">Examples</a> package!
       </p>
       </html>"));
 end PVSystems;
