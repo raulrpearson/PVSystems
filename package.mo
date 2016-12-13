@@ -1,11 +1,11 @@
-package PVlib "Photovoltaics library"
+package PVSystems "PV Systems library"
 extends Modelica.Icons.Library;
 
 annotation (
   uses(Modelica(version="2.2.1")),
   preferedView="info",
-  version="0.4",
-  versionDate="2016-09-28",
+  version="0.5.0",
+  versionDate="2016-12-13",
   Documentation(info="<html>
       <p>
         PVlib is a Modelica library focused on providing the components
@@ -39,4 +39,4 @@ annotation (
         great <a href=\"Modelica://PVlib.Examples\">Examples</a> package!
       </p>
       </html>"));
-end PVlib;
+end PVSystems;
