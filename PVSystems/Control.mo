@@ -365,7 +365,7 @@ package Control "Control elements for power converters"
       annotation(extent=[-38,10; -18,-10]);
     Modelica.Blocks.Sources.Constant const(k=0) 
       annotation(extent=[-68,-10; -48,10]);
-    PVlib.Control.ControllerMPPT mPPTController 
+    PVSystems.Control.ControllerMPPT mPPTController 
       annotation(extent=[-88,-26; -68,-46]);
     Modelica.Blocks.Continuous.PI vdcPI(k=vk, T=vT) 
       annotation(extent=[-30,-46; -10,-26]);

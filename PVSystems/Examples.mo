@@ -219,7 +219,7 @@ package Examples "Application and validation examples"
           annotation(extent=[-70,0; -50,20],rotation=270);
         Modelica.Electrical.Analog.Sources.SignalVoltage sink 
           annotation(extent=[-2,0; 18,20], rotation=270);
-        PVlib.Control.ControllerMPPT controller(
+        PVSystems.Control.ControllerMPPT controller(
           vrefStep=1,
           sampleTime=1,
           pkThreshold=0.01) 
@@ -392,7 +392,7 @@ package Examples "Application and validation examples"
         annotation(extent=[30,-32;50,-12]);
       Modelica.Electrical.Analog.Basic.Capacitor capav(C=200e-6) 
         annotation(extent=[50,-52;70,-32],rotation=270);
-      PVlib.Electrical.IdealAverageCCMSwitch idealAverageCCMSwitch 
+      PVSystems.Electrical.IdealAverageCCMSwitch idealAverageCCMSwitch 
         annotation (extent=[0,-28; 20,-8]);
       Modelica.Electrical.Analog.Ideal.IdealClosingSwitch idealClosingSwitch 
         annotation(extent=[-10,38;10,58],rotation=0);
@@ -505,13 +505,13 @@ package Examples "Application and validation examples"
         switched version is built using mostly blocks
         from <a href=\"Modelica://Modelica.Electrical.Analog\">Modelica's
           electrical library</a> but also includes
-        the <a href=\"Modelica://PVlib.Control.SignalPWM\">SignalPWM</a>
+        the <a href=\"Modelica://PVSystems.Control.SignalPWM\">SignalPWM</a>
         model. The averaged version is built around the average switch model
         for CCM (continuous conduction mode).
       </p>
 
       <p>
-        This example showcases how components from PVlib can be mixed with
+        This example showcases how components from PVSystems can be mixed with
         components from the Modelica Standard Library to build systems that
         might be of interest. Additionally, it aims validating the average
         switch model performance by comparison with the more
@@ -572,7 +572,7 @@ package Examples "Application and validation examples"
     model Inverter1phOpen 
       "Basic 1-phase open-loop inverter with constant DC voltage source and no synchronization" 
       extends Modelica.Icons.Example;
-      PVlib.Electrical.HBridgeSwitched HBsw 
+      PVSystems.Electrical.HBridgeSwitched HBsw 
         annotation(extent=[0,40; 20,60]);
       Modelica.Electrical.Analog.Sources.ConstantVoltage dcsrc(V=500) 
         annotation(extent=[-70,40;-50,60],                                                                                              rotation=270);
@@ -586,7 +586,7 @@ package Examples "Application and validation examples"
         annotation(extent=[-80,-60;-60,-40]);
       Control.SignalPWM signalPWM(period=320e-6) 
         annotation(extent=[-20,0; 0,20]);
-      PVlib.Electrical.HBridgeAveraged HBav 
+      PVSystems.Electrical.HBridgeAveraged HBav 
         annotation(extent=[0,-40; 20,-20]);
       Modelica.Electrical.Analog.Basic.Resistor resav(R=2) 
         annotation(extent=[60,-60;80,-40],rotation=270);
@@ -711,7 +711,7 @@ package Examples "Application and validation examples"
     model Inverter1phOpenSynch 
       "Grid synchronized 1-phase open-loop inverter fed by constant DC source" 
       extends Modelica.Icons.Example;
-      PVlib.Electrical.HBridgeSwitched HBsw 
+      PVSystems.Electrical.HBridgeSwitched HBsw 
         annotation(extent=[-60,80; -40,100]);
       Modelica.Electrical.Analog.Sources.ConstantVoltage DCsrc(V=580) 
         annotation (extent=[-100,40; -80,60], rotation=270);
@@ -735,7 +735,7 @@ package Examples "Application and validation examples"
         annotation(extent=[-100,12; -80,32]);
       Modelica.Electrical.Analog.Basic.Resistor Rsw1(R=0.1) 
         annotation(extent=[80,30; 100,50],rotation=270);
-      PVlib.Electrical.HBridgeAveraged HBav 
+      PVSystems.Electrical.HBridgeAveraged HBav 
         annotation(extent=[0,48; 20,68]);
       Modelica.Electrical.Analog.Basic.Inductor Lav1(L=500e-6) 
         annotation(extent=[40,28; 60,48], rotation=270);
@@ -835,7 +835,7 @@ package Examples "Application and validation examples"
         Documentation(info="<html>
       <p>
         This example goes a step further
-        than <a href=\"Modelica://PVlib.Examples.Application.Inverter1phOpen\">Inverter1phOpen</a>
+        than <a href=\"Modelica://PVSystems.Examples.Application.Inverter1phOpen\">Inverter1phOpen</a>
         and includes grid synchronization. Typically this is the condition
         for inverters in real-life situations. Both switched and averaged
         implementations are presented for comparison purposes and it can be
@@ -888,7 +888,7 @@ package Examples "Application and validation examples"
         annotation(extent=[-30,60; -10,80],                                                                                             rotation=270);
       Modelica.Electrical.Analog.Basic.Ground ground 
         annotation(extent=[-30,34; -10,54]);
-      PVlib.Electrical.HBridgeAveraged HBav 
+      PVSystems.Electrical.HBridgeAveraged HBav 
         annotation(extent=[20,60; 40,80]);
       Modelica.Electrical.Analog.Basic.Resistor resav(R=0.1) 
         annotation(extent=[80,40; 100,60],rotation=270);
@@ -1005,7 +1005,7 @@ package Examples "Application and validation examples"
         annotation(extent=[60,-4; 40,16],rotation=0);
       Modelica.Electrical.Analog.Sensors.VoltageSensor VSac 
         annotation(extent=[90,60; 70,80], rotation=270);
-      PVlib.Electrical.HBridgeAveraged HB(d(start=0.5)) 
+      PVSystems.Electrical.HBridgeAveraged HB(d(start=0.5)) 
         annotation(extent=[-60,60; -40,80]);
       Modelica.Electrical.Analog.Basic.Inductor L1(L=500e-6) 
         annotation(extent=[10,80; 30,100],rotation=0);
@@ -1088,7 +1088,7 @@ package Examples "Application and validation examples"
       Modelica.Blocks.Sources.Constant Tn(k=298.15) annotation(extent=[-148,40;
             -128,60]);
       annotation (Diagram);
-      PVlib.Electrical.HBridgeAveraged Inverter annotation (extent=[0,60; 20,80]);
+      PVSystems.Electrical.HBridgeAveraged Inverter annotation (extent=[0,60; 20,80]);
       Modelica.Electrical.Analog.Basic.Inductor L(L=500e-6) 
         annotation (extent=[80,56; 100,76], rotation=270);
       Modelica.Electrical.Analog.Basic.Resistor R(R=10) 
@@ -1118,7 +1118,7 @@ package Examples "Application and validation examples"
         annotation (extent=[6,-20; 26,0], rotation=90);
       Modelica.Blocks.Sources.Constant const(k=0.5) 
         annotation (extent=[-80,-40; -60,-20]);
-      PVlib.Control.ControllerInverter1ph onePhaseInverterController 
+      PVSystems.Control.ControllerInverter1ph onePhaseInverterController 
         annotation (extent=[20,-60; 0,-40], rotation=90);
     equation 
       connect(Gn.y, PV.G) annotation (points=[-127,90; -122,90; -122,73; -115.5,73],
@@ -1196,7 +1196,7 @@ package Examples "Application and validation examples"
       Modelica.Blocks.Sources.Constant Tn(k=298.15) annotation(extent=[-148,40;
             -128,60]);
       annotation (Diagram, Icon);
-      PVlib.Electrical.HBridgeAveraged Inverter annotation (extent=[-10,60; 10,80]);
+      PVSystems.Electrical.HBridgeAveraged Inverter annotation (extent=[-10,60; 10,80]);
       Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=25) 
         annotation (extent=[80,-20; 100,0],rotation=270);
       Modelica.Electrical.Analog.Basic.Inductor L(L=500e-6) 
@@ -1207,7 +1207,7 @@ package Examples "Application and validation examples"
         annotation (extent=[50,-20; 70,0], rotation=270);
       Modelica.Electrical.Analog.Basic.Capacitor C(C=5e-3, v(start=32.8)) 
         annotation (extent=[-36,60; -16,80], rotation=270);
-      PVlib.Control.ControllerInverter1ph Controller 
+      PVSystems.Control.ControllerInverter1ph Controller 
         annotation (extent=[10,18; -10,38],rotation=90);
       Modelica.Electrical.Analog.Sensors.VoltageSensor VSdc 
         annotation (extent=[-42,-20; -62,0], rotation=270);
