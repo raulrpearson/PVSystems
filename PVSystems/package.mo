@@ -3,7 +3,7 @@ extends Modelica.Icons.Library;
 
 annotation (
   uses(Modelica(version="3.2.2")),
-  preferedView="info",
+  preferredView="info",
   version="0.5.1",
   versionDate="2016-12-13",
   Documentation(info="<html>
