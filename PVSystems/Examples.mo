@@ -52,7 +52,7 @@ package Examples "Application and validation examples"
 
 
         <div class=\"figure\">
-          <p><img src=\"../Resources/Images/PVArrayValidationResults.png\"
+          <p><img src=\"modelica://PVSystems/Resources/Images/PVArrayValidationResults.png\"
         	  alt=\"PVArrayValidationResults.png\" />
           </p>
         </div>
@@ -127,7 +127,7 @@ package Examples "Application and validation examples"
 
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/IdealCBSwitchValidationResults.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/IdealCBSwitchValidationResults.png\"
       	  alt=\"IdealCBSwitchValidationResults.png\" />
         </p>
       </div>
@@ -180,7 +180,7 @@ package Examples "Application and validation examples"
 
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/SignalPWMValidationResults.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/SignalPWMValidationResults.png\"
       	  alt=\"SignalPWMValidationResults.png\" />
         </p>
       </div>
@@ -229,7 +229,7 @@ package Examples "Application and validation examples"
  
  
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/PLLValidationResults.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/PLLValidationResults.png\"
                 alt=\"PLLValidationResults.png\" />
         </p>
       </div>
@@ -360,7 +360,7 @@ package Examples "Application and validation examples"
 
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/MPPTControllerValidationResults.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/MPPTControllerValidationResults.png\"
       	  alt=\"MPPTControllerValidationResults.png\" />
         </p>
       </div>
@@ -411,7 +411,7 @@ package Examples "Application and validation examples"
       </p>
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/ParkValidationResults.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/ParkValidationResults.png\"
       	  alt=\"ParkValidationResults.png\" />
         </p>
       </div>
@@ -586,7 +586,7 @@ package Examples "Application and validation examples"
       </p>
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/BuckOpenResultsA.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/BuckOpenResultsA.png\"
       	  alt=\"BuckOpenResultsA.png\" />
         </p>
       </div>
@@ -611,7 +611,7 @@ package Examples "Application and validation examples"
 
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/BuckOpenResultsB.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/BuckOpenResultsB.png\"
       	  alt=\"BuckOpenResultsB.png\" />
         </p>
       </div>
@@ -745,7 +745,7 @@ package Examples "Application and validation examples"
 
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/Inverter1phOpenResults.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenResults.png\"
       	  alt=\"Inverter1phOpenResults.png\" />
         </p>
       </div>
@@ -958,7 +958,7 @@ package Examples "Application and validation examples"
 
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/Inverter1phOpenSynchResults.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenSynchResults.png\"
       	  alt=\"Inverter1phOpenSynchResults.png\" />
         </p>
       </div>
@@ -978,7 +978,7 @@ package Examples "Application and validation examples"
 
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/Inverter1phOpenSynchDialog.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenSynchDialog.png\"
       	  alt=\"Inverter1phOpenSynchDialog.png\" />
         </p>
       </div>
@@ -1108,7 +1108,7 @@ package Examples "Application and validation examples"
       </p>
 
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/Inverter1phClosedResults.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phClosedResults.png\"
       	  alt=\"Inverter1phClosedResults.png\" />
         </p>
       </div>

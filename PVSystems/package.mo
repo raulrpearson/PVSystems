@@ -16,7 +16,7 @@ annotation (
       </p>
  
       <div class=\"figure\">
-        <p><img src=\"../Resources/Images/TypicalSystem.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/TypicalSystem.png\"
                 alt=\"TypicalSystem.png\" />
         </p>
       </div>
