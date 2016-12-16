@@ -2,9 +2,9 @@ package PVSystems "PV Systems library"
 extends Modelica.Icons.Library;
 
 annotation (
-  uses(Modelica(version="2.2.1")),
+  uses(Modelica(version="3.2.2")),
   preferedView="info",
-  version="0.5.0",
+  version="0.5.1",
   versionDate="2016-12-13",
   Documentation(info="<html>
       <p>
