@@ -10,7 +10,7 @@
 
 The library is the result of a research project carried out in the form of a master's degree thesis. There are two intended audiences for the library:
 
-- **Users**: the library is intended to be rich enough in component and subsystem models that it proves useful for those interested in designing and evaluating photovoltaic systems, power converters and their associated control algorithms. Check-out the [usage section](#download-and-usage) to learn more.
+- **Users**: the library is intended to be rich enough in component and subsystem models that it proves useful for those interested in designing and evaluating photovoltaic systems, power converters and their associated control algorithms. Check out the [usage section](#download-and-usage) to learn more.
 - **Developers**: the library is also intended to explore and showcase best practices for the development of Modelica libraries. Many of these best practices are inspired or taken from other [Modelica libraries on GitHub](https://github.com/raulrpearson?language=modelica&tab=stars) and from the excellent [Modelica by Example](http://book.xogeny.com/).
 
 The library is currently in the early stages of development, so the structure and contents will probably be updated regularly. The intention is to provide models in the following categories:
