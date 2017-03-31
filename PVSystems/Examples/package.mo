@@ -1,4 +1,5 @@
 within PVSystems;
 package Examples "Application and validation examples"
-  extends Modelica.Icons.Library;
+extends Modelica.Icons.ExamplesPackage;
+
 end Examples;

@@ -1,100 +1,89 @@
 within PVSystems.Examples.Application;
 model Inverter1phOpen
-      "Basic 1-phase open-loop inverter with constant DC voltage source and no synchronization"
-      extends Modelica.Icons.Example;
-      PVSystems.Electrical.HBridgeSwitched HBsw
-        annotation (Placement(transformation(extent={{0,40},{20,60}}, rotation=
-                0)));
-      Modelica.Electrical.Analog.Sources.ConstantVoltage dcsrc(V=500)
-        annotation (Placement(transformation(
-            origin={-60,50},
-            extent={{-10,-10},{10,10}},
-            rotation=270)));
-      Modelica.Electrical.Analog.Basic.Ground ground
-        annotation (Placement(transformation(extent={{-70,14},{-50,34}},
-              rotation=0)));
-      Modelica.Electrical.Analog.Basic.Resistor ressw(R=2)
-        annotation (Placement(transformation(
-            origin={70,30},
-            extent={{-10,-10},{10,10}},
-            rotation=270)));
-      Modelica.Electrical.Analog.Basic.Inductor indsw(L=500e-6)
-        annotation (Placement(transformation(
-            origin={70,70},
-            extent={{-10,-10},{10,10}},
-            rotation=270)));
-      Modelica.Blocks.Sources.Sine duty(amplitude=0.4,offset=0.5,freqHz=50)
-        annotation (Placement(transformation(extent={{-80,-60},{-60,-40}},
-              rotation=0)));
-      Control.SignalPWM signalPWM(period=320e-6)
-        annotation (Placement(transformation(extent={{-20,0},{0,20}}, rotation=
-                0)));
-      PVSystems.Electrical.HBridgeAveraged HBav
-        annotation (Placement(transformation(extent={{0,-40},{20,-20}},
-              rotation=0)));
-      Modelica.Electrical.Analog.Basic.Resistor resav(R=2)
-        annotation (Placement(transformation(
-            origin={70,-50},
-            extent={{-10,-10},{10,10}},
-            rotation=270)));
-      Modelica.Electrical.Analog.Basic.Inductor indav(L=500e-6)
-        annotation (Placement(transformation(
-            origin={70,-10},
-            extent={{-10,-10},{10,10}},
-            rotation=270)));
-    equation
-      connect(duty.y, signalPWM.duty)
-        annotation (Line(points={{-59,-50},{-48,-50},{-48,10},{-20,10}}, color=
-              {0,0,127}));
-      connect(dcsrc.n, ground.p)
-        annotation (Line(points={{-60,40},{-60,34}}, color={0,0,255}));
-      connect(HBsw.dcn, dcsrc.n)
-        annotation (Line(points={{0,45},{-26,45},{-26,40},{-60,40}}, color={0,0,
-              255}));
-      connect(HBsw.dcp, dcsrc.p)
-        annotation (Line(points={{0,55},{-26,55},{-26,60},{-60,60}}, color={0,0,
-              255}));
-      connect(HBsw.acp, indsw.p)
-        annotation (Line(points={{20,55},{40,55},{40,80},{70,80}}, color={0,0,
-              255}));
-      connect(HBsw.acn, ressw.n)
-        annotation (Line(points={{20,45},{40,45},{40,20},{70,20}}, color={0,0,
-              255}));
-      connect(ressw.p, indsw.n)
-        annotation (Line(points={{70,40},{70,60}}, color={0,0,255}));
-      connect(signalPWM.fire, HBsw.fireA)
-        annotation (Line(points={{0,15},{8,15},{8,40},{7,40}}, color={255,0,255}));
-      connect(signalPWM.notFire, HBsw.fireB)
-        annotation (Line(points={{0,5},{14,5},{14,40},{13,40}}, color={255,0,
-              255}));
-      connect(resav.p, indav.n)
-        annotation (Line(points={{70,-40},{70,-20}}, color={0,0,255}));
-      connect(HBav.acp, indav.p)
-        annotation (Line(points={{20,-25},{40,-25},{40,0},{70,0}}, color={0,0,
-              255}));
-      connect(resav.n, HBav.acn)
-        annotation (Line(points={{70,-60},{40,-60},{40,-35},{20,-35}}, color={0,
-              0,255}));
-      connect(HBav.d, duty.y)
-        annotation (Line(points={{10,-42},{10,-50},{-59,-50}}, color={0,0,127}));
-      connect(HBav.dcp, dcsrc.p)
-        annotation (Line(points={{0,-25},{-32,-25},{-32,60},{-60,60}}, color={0,
-              0,255}));
-      connect(HBav.dcn, dcsrc.n)
-        annotation (Line(points={{0,-35},{-40,-35},{-40,40},{-60,40}}, color={0,
-              0,255}));
-      annotation (
-        Diagram(graphics={Text(
-              extent={{-10,74},{28,62}},
-              lineColor={0,0,255},
-              textString=
-                   "Switched model"), Text(
-              extent={{-8,-6},{30,-18}},
-              lineColor={0,0,255},
-              textString=
-                   "Averaged model")}),
-        experiment(StartTime=0, StopTime=0.05, Tolerance=1e-4),
-        Documentation(info="<html>
+  "Basic 1-phase open-loop inverter with constant DC voltage source and no synchronization"
+  extends Modelica.Icons.Example;
+  PVSystems.Electrical.HBridgeSwitched HBsw
+    annotation (Placement(transformation(extent={{0,40},{20,60}}, rotation=0)));
+  Modelica.Electrical.Analog.Sources.ConstantVoltage dcsrc(V=500) annotation (
+      Placement(transformation(
+        origin={-60,50},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+  Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
+        transformation(extent={{-70,14},{-50,34}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Resistor ressw(R=2) annotation (Placement(
+        transformation(
+        origin={70,30},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+  Modelica.Electrical.Analog.Basic.Inductor indsw(L=500e-6) annotation (
+      Placement(transformation(
+        origin={70,70},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+  Modelica.Blocks.Sources.Sine duty(
+    amplitude=0.4,
+    offset=0.5,
+    freqHz=50) annotation (Placement(transformation(extent={{-80,-60},{-60,-40}},
+          rotation=0)));
+  Control.SignalPWM signalPWM(period=320e-6)
+    annotation (Placement(transformation(extent={{-20,0},{0,20}}, rotation=0)));
+  PVSystems.Electrical.HBridgeAveraged HBav annotation (Placement(
+        transformation(extent={{0,-40},{20,-20}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Resistor resav(R=2) annotation (Placement(
+        transformation(
+        origin={70,-50},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+  Modelica.Electrical.Analog.Basic.Inductor indav(L=500e-6) annotation (
+      Placement(transformation(
+        origin={70,-10},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+equation
+  connect(duty.y, signalPWM.duty) annotation (Line(points={{-59,-50},{-48,-50},
+          {-48,10},{-20,10}}, color={0,0,127}));
+  connect(dcsrc.n, ground.p)
+    annotation (Line(points={{-60,40},{-60,34}}, color={0,0,255}));
+  connect(HBsw.dcn, dcsrc.n) annotation (Line(points={{0,45},{-26,45},{-26,40},
+          {-60,40}}, color={0,0,255}));
+  connect(HBsw.dcp, dcsrc.p) annotation (Line(points={{0,55},{-26,55},{-26,60},
+          {-60,60}}, color={0,0,255}));
+  connect(HBsw.acp, indsw.p) annotation (Line(points={{20,55},{40,55},{40,80},{
+          70,80}}, color={0,0,255}));
+  connect(HBsw.acn, ressw.n) annotation (Line(points={{20,45},{40,45},{40,20},{
+          70,20}}, color={0,0,255}));
+  connect(ressw.p, indsw.n)
+    annotation (Line(points={{70,40},{70,60}}, color={0,0,255}));
+  connect(signalPWM.fire, HBsw.fireA)
+    annotation (Line(points={{0,15},{8,15},{8,40},{7,40}}, color={255,0,255}));
+  connect(signalPWM.notFire, HBsw.fireB) annotation (Line(points={{0,5},{14,5},
+          {14,40},{13,40}}, color={255,0,255}));
+  connect(resav.p, indav.n)
+    annotation (Line(points={{70,-40},{70,-20}}, color={0,0,255}));
+  connect(HBav.acp, indav.p) annotation (Line(points={{20,-25},{40,-25},{40,0},
+          {70,0}}, color={0,0,255}));
+  connect(resav.n, HBav.acn) annotation (Line(points={{70,-60},{40,-60},{40,-35},
+          {20,-35}}, color={0,0,255}));
+  connect(HBav.d, duty.y)
+    annotation (Line(points={{10,-42},{10,-50},{-59,-50}}, color={0,0,127}));
+  connect(HBav.dcp, dcsrc.p) annotation (Line(points={{0,-25},{-32,-25},{-32,60},
+          {-60,60}}, color={0,0,255}));
+  connect(HBav.dcn, dcsrc.n) annotation (Line(points={{0,-35},{-40,-35},{-40,40},
+          {-60,40}}, color={0,0,255}));
+  annotation (
+    Diagram(graphics={Text(
+          extent={{-10,74},{28,62}},
+          lineColor={0,0,255},
+          textString="Switched model"),Text(
+          extent={{-8,-6},{30,-18}},
+          lineColor={0,0,255},
+          textString="Averaged model")}),
+    experiment(
+      StartTime=0,
+      StopTime=0.05,
+      Tolerance=1e-4),
+    Documentation(info="<html>
       <p>
         IdealInverter1phOpen presents two implementations of an open loop
         1-phase inverter. The function of the inverter is to convert DC
@@ -117,7 +106,7 @@ model Inverter1phOpen
 
       <div class=\"figure\">
         <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenResults.png\"
-      	  alt=\"Inverter1phOpenResults.png\" />
+                alt=\"Inverter1phOpenResults.png\" />
         </p>
       </div>
 
@@ -153,4 +142,4 @@ model Inverter1phOpen
         dynamics.
       </p>
       </html>"));
-    end Inverter1phOpen;
+end Inverter1phOpen;

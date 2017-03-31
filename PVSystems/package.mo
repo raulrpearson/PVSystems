@@ -1,5 +1,7 @@
 package PVSystems "PV Systems library"
-extends Modelica.Icons.Library;
+extends Modelica.Icons.Package;
+
+
 
 annotation (
   uses(Modelica(version="3.2.2")),
@@ -38,5 +40,15 @@ annotation (
         use this library is to check out the
         great <a href=\"Modelica://PVSystems.Examples\">Examples</a> package!
       </p>
-      </html>"));
+      </html>"),
+  Icon(graphics={Ellipse(
+        extent={{-70,52},{-10,-6}},
+        pattern=LinePattern.None,
+        lineColor={0,0,0},
+        fillColor={229,184,0},
+        fillPattern=FillPattern.Solid), Polygon(
+        points={{-78,-60},{-42,14},{42,14},{86,-60},{-78,-60}},
+        fillColor={27,77,130},
+        fillPattern=FillPattern.Solid,
+        pattern=LinePattern.None)}));
 end PVSystems;
