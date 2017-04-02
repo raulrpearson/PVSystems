@@ -23,7 +23,7 @@ annotation (
       
       
         <div class=\"figure\">
-          <p><img src=\"modelica://PVSystems/Resources/Images/screenshot.png\"
+          <p><img src=\"modelica://PVSystems/Resources/Images/screenshot_small.png\"
                   alt=\"screenshot.png\" />
           </p>
         </div>
