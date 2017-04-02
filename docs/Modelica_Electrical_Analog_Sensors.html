@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Modelica.Electrical.Analog.Sensors.CurrentSensor</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;Sensor to measure the current in a branch&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE CurrentSensor<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Electrical.Analo7ae42b3e2b2d1e15ensorI.png" alt="Modelica.Electrical.Analog.Sensors.CurrentSensor" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Electrical.Analog.Sensors.CurrentSensor"></a>Modelica.Electrical.Analog.Sensors.CurrentSensor</h2>
+<p>
+<span class="ModelicaDescription">Sensor to measure the current in a branch</span>
+<br>
+<br><img src="Modelica.Electrical.Analo7ae42b3e2b2d1e15ensorD.png" alt="Modelica.Electrical.Analog.Sensors.CurrentSensor">
+</p>
+<h3>Information</h3>
+
+<p>The current sensor converts the current flowing between the two connectors into a real valued signal. The two connectors are in the sensor connected like a short cut. The sensor has to be placed within an electrical connection in series.  It does not influence the current sum at the connected nodes. Therefore, the electrical behavior is not influenced by the sensor.</p>
+
+<p><span class="ModelicaBaseClass">Extends from Modelica.Icons.RotationalSensor (Icon representing a round measurement device).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>PositivePin</a></td><td>p</td><td>positive pin</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>NegativePin</a></td><td>n</td><td>negative pin</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>i</td><td>Current in the branch from p to n as output signal [A]</td></tr>
+</table>
+<h3>Revisions</h3>
+
+<ul>
+<li><i> 1998   </i>
+       by Christoph Clauss<br> initially implemented<br>
+       </li>
+</ul>
+
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> CurrentSensor <span class="ModelicaComment">&quot;Sensor to measure the current in a branch&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.RotationalSensor"
+>Modelica.Icons.RotationalSensor</a>;
+
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>Interfaces.PositivePin</a> p <span class="ModelicaComment">&quot;positive pin&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>Interfaces.NegativePin</a> n <span class="ModelicaComment">&quot;negative pin&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</a> i(unit=&quot;A&quot;) <span class="ModelicaComment">
+    &quot;Current in the branch from p to n as output signal&quot;</span>;
+
+<span class="ModelicaKeyword">equation </span>
+  p.v = n.v;
+  p.i = i;
+  n.i = -i;
+<span class="ModelicaKeyword">end </span>CurrentSensor;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE VoltageSensor<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Electrical.Analo8e934b873655da58ensorI.png" alt="Modelica.Electrical.Analog.Sensors.VoltageSensor" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Electrical.Analog.Sensors.VoltageSensor"></a>Modelica.Electrical.Analog.Sensors.VoltageSensor</h2>
+<p>
+<span class="ModelicaDescription">Sensor to measure the voltage between two pins</span>
+<br>
+<br><img src="Modelica.Electrical.Analo8e934b873655da58ensorD.png" alt="Modelica.Electrical.Analog.Sensors.VoltageSensor">
+</p>
+<h3>Information</h3>
+
+<p>The voltage sensor converts the voltage between the two connectors into a real valued signal. It does not influence the current sum at the nodes in between the voltage is measured, therefore, the electrical behavior is not influenced by the sensor.</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.RotationalSensor"
+>Modelica.Icons.RotationalSensor</a> (Icon representing a round measurement device).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>PositivePin</a></td><td>p</td><td>positive pin</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>NegativePin</a></td><td>n</td><td>negative pin</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>v</td><td>Voltage between pin p and n (= p.v - n.v) as output signal [V]</td></tr>
+</table>
+<h3>Revisions</h3>
+
+<ul>
+<li><i> 1998   </i>
+       by Christoph Clauss<br> initially implemented<br>
+       </li>
+</ul>
+
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> VoltageSensor <span class="ModelicaComment">&quot;Sensor to measure the voltage between two pins&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.RotationalSensor"
+>Modelica.Icons.RotationalSensor</a>;
+
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>Interfaces.PositivePin</a> p <span class="ModelicaComment">&quot;positive pin&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>Interfaces.NegativePin</a> n <span class="ModelicaComment">&quot;negative pin&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</a> v(unit=&quot;V&quot;) <span class="ModelicaComment">
+    &quot;Voltage between pin p and n (= p.v - n.v) as output signal&quot;</span>;
+
+<span class="ModelicaKeyword">equation </span>
+  p.i = 0;
+  n.i = 0;
+  v = p.v - n.v;
+<span class="ModelicaKeyword">end </span>VoltageSensor;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE PowerSensor<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Electrical.Analodcda341e5a8b5158ensorI.png" alt="Modelica.Electrical.Analog.Sensors.PowerSensor" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Electrical.Analog.Sensors.PowerSensor"></a>Modelica.Electrical.Analog.Sensors.PowerSensor</h2>
+<p>
+<span class="ModelicaDescription">Sensor to measure the power</span>
+<br>
+<br><img src="Modelica.Electrical.Analodcda341e5a8b5158ensorD.png" alt="Modelica.Electrical.Analog.Sensors.PowerSensor">
+</p>
+<h3>Information</h3>
+
+<p>This power sensor measures instantaneous electrical power of a singlephase system and has a separated voltage and current path. The pins of the voltage path are pv and nv, the pins of the current path are pc and nc. The internal resistance of the current path is zero, the internal resistance of the voltage path is infinite.</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.RotationalSensor"
+>Modelica.Icons.RotationalSensor</a> (Icon representing a round measurement device).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>PositivePin</a></td><td>pc</td><td>Positive pin, current path</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>NegativePin</a></td><td>nc</td><td>Negative pin, current path</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>PositivePin</a></td><td>pv</td><td>Positive pin, voltage path</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>NegativePin</a></td><td>nv</td><td>Negative pin, voltage path</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>power</td><td>Instantaneous power as output signal [W]</td></tr>
+</table>
+<h3>Revisions</h3>
+
+<ul>
+<li><i>January 12, 2006</i> by Anton Haumer implemented</li>
+</ul>
+
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> PowerSensor <span class="ModelicaComment">&quot;Sensor to measure the power&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.RotationalSensor"
+>Modelica.Icons.RotationalSensor</a>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>Modelica.Electrical.Analog.Interfaces.PositivePin</a> pc <span class="ModelicaComment">
+    &quot;Positive pin, current path&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>Modelica.Electrical.Analog.Interfaces.NegativePin</a> nc <span class="ModelicaComment">
+    &quot;Negative pin, current path&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>Modelica.Electrical.Analog.Interfaces.PositivePin</a> pv <span class="ModelicaComment">
+    &quot;Positive pin, voltage path&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>Modelica.Electrical.Analog.Interfaces.NegativePin</a> nv <span class="ModelicaComment">
+    &quot;Negative pin, voltage path&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</a> power(unit=&quot;W&quot;) <span class="ModelicaComment">
+    &quot;Instantaneous power as output signal&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Sensors.html#Modelica.Electrical.Analog.Sensors.VoltageSensor"
+>Modelica.Electrical.Analog.Sensors.VoltageSensor</a> voltageSensor;
+  <a href="Modelica_Electrical_Analog_Sensors.html#Modelica.Electrical.Analog.Sensors.CurrentSensor"
+>Modelica.Electrical.Analog.Sensors.CurrentSensor</a> currentSensor;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Product"
+>Modelica.Blocks.Math.Product</a> product;
+
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(pv, voltageSensor.p);
+  <span class="ModelicaFunction">connect</span>(voltageSensor.n, nv);
+  <span class="ModelicaFunction">connect</span>(pc, currentSensor.p);
+  <span class="ModelicaFunction">connect</span>(currentSensor.n, nc);
+  <span class="ModelicaFunction">connect</span>(currentSensor.i, product.u2);
+  <span class="ModelicaFunction">connect</span>(voltageSensor.v, product.u1);
+  <span class="ModelicaFunction">connect</span>(product.y, power);
+<span class="ModelicaKeyword">end </span>PowerSensor;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Sun Apr 02 18:12:02 2017.
+</address>
+</body>
+</html>

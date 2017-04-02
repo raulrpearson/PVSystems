@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Modelica.Blocks.Math.Add</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;Output the sum of the two inputs&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Add<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Math.AddI.png" alt="Modelica.Blocks.Math.Add" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Math.Add"></a>Modelica.Blocks.Math.Add</h2>
+<p>
+<span class="ModelicaDescription">Output the sum of the two inputs</span>
+<br>
+<br><img src="Modelica.Blocks.Math.AddD.png" alt="Modelica.Blocks.Math.Add">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks computes output <b>y</b> as <i>sum</i> of the
+two input signals <b>u1</b> and <b>u2</b>:
+</p>
+<pre>
+    <b>y</b> = k1*<b>u1</b> + k2*<b>u2</b>;
+</pre>
+<p>
+Example:
+</p>
+<pre>
+     parameter:   k1= +2, k2= -3
+
+  results in the following equations:
+
+     y = 2 * u1 - 3 * u2
+</pre>
+
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
+>Interfaces.SI2SO</a> (2 Single Input / 1 Single Output continuous control block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Real</td><td>k1</td><td>+1</td><td>Gain of upper input</td></tr>
+<tr><td>Real</td><td>k2</td><td>+1</td><td>Gain of lower input</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u1</td><td>Connector of Real input signal 1</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u2</td><td>Connector of Real input signal 2</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Add <span class="ModelicaComment">&quot;Output the sum of the two inputs&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
+>Interfaces.SI2SO</a>;
+
+  <span class="ModelicaKeyword">parameter </span>Real k1=+1 <span class="ModelicaComment">&quot;Gain of upper input&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real k2=+1 <span class="ModelicaComment">&quot;Gain of lower input&quot;</span>;
+
+<span class="ModelicaKeyword">equation </span>
+  y = k1*u1 + k2*u2;
+<span class="ModelicaKeyword">end </span>Add;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Cos<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Math.CosI.png" alt="Modelica.Blocks.Math.Cos" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Math.Cos"></a>Modelica.Blocks.Math.Cos</h2>
+<p>
+<span class="ModelicaDescription">Output the cosine of the input</span>
+<br>
+<br><img src="Modelica.Blocks.Math.CosD.png" alt="Modelica.Blocks.Math.Cos">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks computes the output <b>y</b>
+as <b>cos</b> of the input <b>u</b>:
+</p>
+<pre>
+    y = <b>cos</b>( u );
+</pre>
+
+<p>
+<img src="C:/Program%20Files%20(x86)/Dymola%202017%20FD01/Modelica/Library/Modelica%203.2.2/Resources/Images/Math/cos.png"
+     alt="cos.png">
+</p>
+
+
+<p><span class="ModelicaBaseClass">Extends from Interfaces.SISO (Single Input Single Output continuous control block).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Cos <span class="ModelicaComment">&quot;Output the cosine of the input&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a>;
+
+<span class="ModelicaKeyword">equation </span>
+  y = <span class="ModelicaFunction">Modelica.Math.cos</span>(u);
+<span class="ModelicaKeyword">end </span>Cos;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Gain<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Math.GainI.png" alt="Modelica.Blocks.Math.Gain" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Math.Gain"></a>Modelica.Blocks.Math.Gain</h2>
+<p>
+<span class="ModelicaDescription">Output the product of a gain value with the input signal</span>
+<br>
+<br><img src="Modelica.Blocks.Math.GainD.png" alt="Modelica.Blocks.Math.Gain">
+</p>
+<h3>Information</h3>
+
+<p>
+This block computes output <i>y</i> as
+<i>product</i> of gain <i>k</i> with the
+input <i>u</i>:
+</p>
+<pre>
+    y = k * u;
+</pre>
+
+
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Real</td><td>k</td><td>&nbsp;</td><td>Gain value multiplied with input signal [1]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Input signal connector</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Output signal connector</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Gain <span class="ModelicaComment">&quot;Output the product of a gain value with the input signal&quot;</span>
+
+  <span class="ModelicaKeyword">parameter </span>Real k(start=1, unit=&quot;1&quot;) <span class="ModelicaComment">&quot;Gain value multiplied with input signal&quot;</span>;
+<span class="ModelicaKeyword">public </span>
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Interfaces.RealInput</a> u <span class="ModelicaComment">&quot;Input signal connector&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Interfaces.RealOutput</a> y <span class="ModelicaComment">&quot;Output signal connector&quot;</span>;
+
+<span class="ModelicaKeyword">equation </span>
+  y = k*u;
+<span class="ModelicaKeyword">end </span>Gain;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Sin<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Math.SinI.png" alt="Modelica.Blocks.Math.Sin" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Math.Sin"></a>Modelica.Blocks.Math.Sin</h2>
+<p>
+<span class="ModelicaDescription">Output the sine of the input</span>
+<br>
+<br><img src="Modelica.Blocks.Math.SinD.png" alt="Modelica.Blocks.Math.Sin">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks computes the output <b>y</b>
+as <b>sine</b> of the input <b>u</b>:
+</p>
+<pre>
+    y = <b>sin</b>( u );
+</pre>
+
+<p>
+<img src="C:/Program%20Files%20(x86)/Dymola%202017%20FD01/Modelica/Library/Modelica%203.2.2/Resources/Images/Math/sin.png"
+     alt="sin.png">
+</p>
+
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a> (Single Input Single Output continuous control block).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Sin <span class="ModelicaComment">&quot;Output the sine of the input&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a>;
+<span class="ModelicaKeyword">equation </span>
+  y = <span class="ModelicaFunction">Modelica.Math.sin</span>(u);
+<span class="ModelicaKeyword">end </span>Sin;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Feedback<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Math.FeedbackI.png" alt="Modelica.Blocks.Math.Feedback" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Math.Feedback"></a>Modelica.Blocks.Math.Feedback</h2>
+<p>
+<span class="ModelicaDescription">Output difference between commanded and feedback input</span>
+<br>
+<br><img src="Modelica.Blocks.Math.FeedbackD.png" alt="Modelica.Blocks.Math.Feedback">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks computes output <b>y</b> as <i>difference</i> of the
+commanded input <b>u1</b> and the feedback
+input <b>u2</b>:
+</p>
+<pre>
+    <b>y</b> = <b>u1</b> - <b>u2</b>;
+</pre>
+<p>
+Example:
+</p>
+<pre>
+     parameter:   n = 2
+
+  results in the following equations:
+
+     y = u1 - u2
+</pre>
+
+
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u1</td><td>&nbsp;</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u2</td><td>&nbsp;</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>&nbsp;</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Feedback <span class="ModelicaComment">
+  &quot;Output difference between commanded and feedback input&quot;</span>
+
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Interfaces.RealInput</a> u1;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Interfaces.RealInput</a> u2;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Interfaces.RealOutput</a> y;
+
+<span class="ModelicaKeyword">equation </span>
+  y = u1 - u2;
+<span class="ModelicaKeyword">end </span>Feedback;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Division<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Math.DivisionI.png" alt="Modelica.Blocks.Math.Division" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Math.Division"></a>Modelica.Blocks.Math.Division</h2>
+<p>
+<span class="ModelicaDescription">Output first input divided by second input</span>
+<br>
+<br><img src="Modelica.Blocks.Math.DivisionD.png" alt="Modelica.Blocks.Math.Division">
+</p>
+<h3>Information</h3>
+
+<p>
+This block computes the output <b>y</b> (element-wise)
+by <i>dividing</i> the corresponding elements of
+the two inputs <b>u1</b> and <b>u2</b>:
+</p>
+<pre>
+    y = u1 / u2;
+</pre>
+
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
+>Interfaces.SI2SO</a> (2 Single Input / 1 Single Output continuous control block).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u1</td><td>Connector of Real input signal 1</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u2</td><td>Connector of Real input signal 2</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Division <span class="ModelicaComment">&quot;Output first input divided by second input&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
+>Interfaces.SI2SO</a>;
+
+<span class="ModelicaKeyword">equation </span>
+  y = u1/u2;
+<span class="ModelicaKeyword">end </span>Division;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Sun Apr 02 18:12:02 2017.
+</address>
+</body>
+</html>

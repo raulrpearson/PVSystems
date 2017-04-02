@@ -1,0 +1,672 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>PVSystems.Electrical</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;Library for electrical models&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Electrical<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><a name="PVSystems.Electrical"></a><a href="index.html#PVSystems"
+>PVSystems</a>.Electrical</h2>
+<p>
+<span class="ModelicaDescription">Library for electrical models</span><br>
+</p>
+<h3>Information</h3>
+<p><span class="ModelicaBaseClass">Extends from Modelica.Icons.Package (Icon for standard packages).</span></p>
+<h3>Package Content</h3>
+<table summary="Package Content" class="ModelicaTablePackageContent">
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.HBridgeAveragedS.png" alt="PVSystems.Electrical.HBridgeAveraged" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical.HBridgeAveraged"
+>HBridgeAveraged</a>
+</td>
+<td>Basic ideal H-bridge topology (averaged)</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.HBridgeSwitchedS.png" alt="PVSystems.Electrical.HBridgeSwitched" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical.HBridgeSwitched"
+>HBridgeSwitched</a>
+</td>
+<td>Basic ideal H-bridge topology (switched)</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.Ideal2LevelLegS.png" alt="PVSystems.Electrical.Ideal2LevelLeg" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical.Ideal2LevelLeg"
+>Ideal2LevelLeg</a>
+</td>
+<td>Basic ideal two level switching leg</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.Idea4a062337ba1595e2witchS.png" alt="PVSystems.Electrical.IdealAverageCCMSwitch" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical.IdealAverageCCMSwitch"
+>IdealAverageCCMSwitch</a>
+</td>
+<td>Average switch model for any ideal 2-switch PWM converter in CCM</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.Idea4a062337ba1595e2witchS.png" alt="PVSystems.Electrical.IdealAverageDCMSwitch" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical.IdealAverageDCMSwitch"
+>IdealAverageDCMSwitch</a>
+</td>
+<td>Average switch model for any ideal 2-switch PWM converter in DCM</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.IdealCBSwitchS.png" alt="PVSystems.Electrical.IdealCBSwitch" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical.IdealCBSwitch"
+>IdealCBSwitch</a>
+</td>
+<td>Basic two-cuadrant current bidirectional switch</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.PVArrayS.png" alt="PVSystems.Electrical.PVArray" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical.PVArray"
+>PVArray</a>
+</td>
+<td>Flexible PV array model</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.PartialBatteryS.png" alt="PVSystems.Electrical.PartialBattery" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical.PartialBattery"
+>PartialBattery</a>
+</td>
+<td>Partial model for battery</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.PartialBatteryS.png" alt="PVSystems.Electrical.SimpleBattery" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical.SimpleBattery"
+>SimpleBattery</a>
+</td>
+<td>Simple battery model</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Electrical.InterfacesS.png" alt="PVSystems.Electrical.Interfaces" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces"
+>Interfaces</a>
+</td>
+<td>Interfaces</td>
+</tr>
+</table>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE HBridgeAveraged<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Electrical.HBridgeAveragedI.png" alt="PVSystems.Electrical.HBridgeAveraged" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.HBridgeAveraged"></a><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>PVSystems.Electrical</a>.HBridgeAveraged</h2>
+<p>
+<span class="ModelicaDescription">Basic ideal H-bridge topology (averaged)</span>
+<br>
+<br><img src="PVSystems.Electrical.HBridgeAveragedD.png" alt="PVSystems.Electrical.HBridgeAveraged">
+</p>
+<h3>Information</h3>
+<p>This model further
+    composes IdealAverageCCMSwitch to form a typical H-bridge
+    configuration from which a 1-phase inverter can be constructed.
+    This model is based in averaged switch models.</p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>Pin</td><td>dcp</td><td>Positive pin of the DC port</td></tr>
+<tr><td>Pin</td><td>dcn</td><td>Negative pin of the DC port</td></tr>
+<tr><td>Pin</td><td>acp</td><td>Positive pin of the AC port</td></tr>
+<tr><td>Pin</td><td>acn</td><td>Negative pin of the AC port</td></tr>
+<tr><td>input RealInput</td><td>d</td><td>&nbsp;</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> HBridgeAveraged <span class="ModelicaComment">&quot;Basic ideal H-bridge topology (averaged)&quot;</span>
+  <span class="ModelicaComment">// Interface</span>
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Modelica.Electrical.Analog.Interfaces.Pin</a> dcp <span class="ModelicaComment">&quot;Positive pin of the DC port&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Modelica.Electrical.Analog.Interfaces.Pin</a> dcn <span class="ModelicaComment">&quot;Negative pin of the DC port&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Modelica.Electrical.Analog.Interfaces.Pin</a> acp <span class="ModelicaComment">&quot;Positive pin of the AC port&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Modelica.Electrical.Analog.Interfaces.Pin</a> acn <span class="ModelicaComment">&quot;Negative pin of the AC port&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> d;
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> vdc <span class="ModelicaComment">&quot;DC voltage&quot;</span>;
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> vac <span class="ModelicaComment">&quot;AC voltage&quot;</span>;
+  <span class="ModelicaComment">// Components</span>
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.IdealAverageCCMSwitch"
+>IdealAverageCCMSwitch</a> s1;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.IdealAverageCCMSwitch"
+>IdealAverageCCMSwitch</a> s2;
+<span class="ModelicaKeyword">equation </span>
+  vdc = dcp.v - dcn.v;
+  vac = acp.v - acn.v;
+  <span class="ModelicaFunction">connect</span>(s1.p1, dcp);
+  <span class="ModelicaFunction">connect</span>(s1.n1, acp);
+  <span class="ModelicaFunction">connect</span>(s2.n1, dcn);
+  <span class="ModelicaFunction">connect</span>(s2.p1, acn);
+  <span class="ModelicaFunction">connect</span>(s1.n2, dcn);
+  <span class="ModelicaFunction">connect</span>(d, s2.d);
+  <span class="ModelicaFunction">connect</span>(d, s1.d);
+  <span class="ModelicaFunction">connect</span>(s2.p2, dcp);
+  <span class="ModelicaFunction">connect</span>(s1.p2, acp);
+  <span class="ModelicaFunction">connect</span>(s2.n2, acn);
+<span class="ModelicaKeyword">end </span>HBridgeAveraged;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE HBridgeSwitched<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Electrical.HBridgeSwitchedI.png" alt="PVSystems.Electrical.HBridgeSwitched" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.HBridgeSwitched"></a><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>PVSystems.Electrical</a>.HBridgeSwitched</h2>
+<p>
+<span class="ModelicaDescription">Basic ideal H-bridge topology (switched)</span>
+<br>
+<br><img src="PVSystems.Electrical.HBridgeSwitchedD.png" alt="PVSystems.Electrical.HBridgeSwitched">
+</p>
+<h3>Information</h3>
+<p>This model further
+    composes IdealTwoLevelBranch to form a typical H-bridge
+    configuration from which a 1-phase inverter can be constructed.
+    This model is based on discrete switch models.</p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Pin</a></td><td>dcp</td><td>Positive pin of the DC port</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Pin</a></td><td>dcn</td><td>Negative pin of the DC port</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Pin</a></td><td>acp</td><td>Positive pin of the AC port</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Pin</a></td><td>acn</td><td>Negative pin of the AC port</td></tr>
+<tr><td>input BooleanInput</td><td>fireA</td><td>&nbsp;</td></tr>
+<tr><td>input BooleanInput</td><td>fireB</td><td>&nbsp;</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> HBridgeSwitched <span class="ModelicaComment">&quot;Basic ideal H-bridge topology (switched)&quot;</span>
+  <span class="ModelicaComment">// Interface</span>
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Modelica.Electrical.Analog.Interfaces.Pin</a> dcp <span class="ModelicaComment">&quot;Positive pin of the DC port&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Modelica.Electrical.Analog.Interfaces.Pin</a> dcn <span class="ModelicaComment">&quot;Negative pin of the DC port&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Modelica.Electrical.Analog.Interfaces.Pin</a> acp <span class="ModelicaComment">&quot;Positive pin of the AC port&quot;</span>;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Modelica.Electrical.Analog.Interfaces.Pin</a> acn <span class="ModelicaComment">&quot;Negative pin of the AC port&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>Modelica.Blocks.Interfaces.BooleanInput</a> fireA;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>Modelica.Blocks.Interfaces.BooleanInput</a> fireB;
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> vdc <span class="ModelicaComment">&quot;DC voltage&quot;</span>;
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> vac <span class="ModelicaComment">&quot;AC voltage&quot;</span>;
+  <span class="ModelicaComment">// Components</span>
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.Ideal2LevelLeg"
+>Ideal2LevelLeg</a> legA;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.Ideal2LevelLeg"
+>Ideal2LevelLeg</a> legB;
+<span class="ModelicaKeyword">equation </span>
+  vdc = dcp.v - dcn.v;
+  vac = acp.v - acn.v;
+  <span class="ModelicaFunction">connect</span>(dcp, legA.p);
+  <span class="ModelicaFunction">connect</span>(legA.n, dcn);
+  <span class="ModelicaFunction">connect</span>(legA.midPoint, acp);
+  <span class="ModelicaFunction">connect</span>(legB.midPoint, acn);
+  <span class="ModelicaFunction">connect</span>(fireA, legA.fire);
+  <span class="ModelicaFunction">connect</span>(fireB, legB.fire);
+  <span class="ModelicaFunction">connect</span>(legB.p, dcp);
+  <span class="ModelicaFunction">connect</span>(legB.n, dcn);
+<span class="ModelicaKeyword">end </span>HBridgeSwitched;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Ideal2LevelLeg<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Electrical.Ideal2LevelLegI.png" alt="PVSystems.Electrical.Ideal2LevelLeg" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.Ideal2LevelLeg"></a><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>PVSystems.Electrical</a>.Ideal2LevelLeg</h2>
+<p>
+<span class="ModelicaDescription">Basic ideal two level switching leg</span>
+<br>
+<br><img src="PVSystems.Electrical.Ideal2LevelLegD.png" alt="PVSystems.Electrical.Ideal2LevelLeg">
+</p>
+<h3>Information</h3>
+<p>This model composes
+    IdealCBSwitch model into a two level leg, also very common in the
+    constructoin of power converters. It provides input only for the
+    firing signal of the top switch, generating the firing signal for
+                              the bottom switch by logical negation.</p>
+<p><span class="ModelicaBaseClass">Extends from Modelica.Electrical.Analog.Interfaces.TwoPin (Component with two electrical pins).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>PositivePin</td><td>p</td><td>Positive pin Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
+<tr><td>NegativePin</td><td>n</td><td>Negative pin</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>fire</td><td>&nbsp;</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Pin</a></td><td>midPoint</td><td>&nbsp;</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> Ideal2LevelLeg <span class="ModelicaComment">&quot;Basic ideal two level switching leg&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.TwoPin"
+>Modelica.Electrical.Analog.Interfaces.TwoPin</a>;
+  <span class="ModelicaComment">// Interface</span>
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>Modelica.Blocks.Interfaces.BooleanInput</a> fire;
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Modelica.Electrical.Analog.Interfaces.Pin</a> midPoint;
+  <span class="ModelicaComment">// Components</span>
+  <a href="Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Not"
+>Modelica.Blocks.Logical.Not</a> notBlock;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.IdealCBSwitch"
+>IdealCBSwitch</a> topSwitch;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.IdealCBSwitch"
+>IdealCBSwitch</a> bottomSwitch;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(p, topSwitch.p);
+  <span class="ModelicaFunction">connect</span>(topSwitch.n, bottomSwitch.p);
+  <span class="ModelicaFunction">connect</span>(bottomSwitch.n, n);
+  <span class="ModelicaFunction">connect</span>(fire, notBlock.u);
+  <span class="ModelicaFunction">connect</span>(fire, topSwitch.fire);
+  <span class="ModelicaFunction">connect</span>(notBlock.y, bottomSwitch.fire);
+  <span class="ModelicaFunction">connect</span>(midPoint, topSwitch.n);
+<span class="ModelicaKeyword">end </span>Ideal2LevelLeg;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE IdealAverageCCMSwitch<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Electrical.Idea4a062337ba1595e2witchI.png" alt="PVSystems.Electrical.IdealAverageCCMSwitch" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.IdealAverageCCMSwitch"></a><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>PVSystems.Electrical</a>.IdealAverageCCMSwitch</h2>
+<p>
+<span class="ModelicaDescription">Average switch model for any ideal 2-switch PWM converter in CCM</span>
+<br>
+<br><img src="PVSystems.Electrical.Idea4a062337ba1595e2witchD.png" alt="PVSystems.Electrical.IdealAverageCCMSwitch">
+</p>
+<h3>Information</h3>
+<p><span class="ModelicaBaseClass">Extends from Modelica.Electrical.Analog.Interfaces.TwoPort (Component with two electrical ports, including current).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>PositivePin</td><td>p1</td><td>Positive pin of the left port (potential p1.v &gt; n1.v for positive voltage drop v1)</td></tr>
+<tr><td>NegativePin</td><td>n1</td><td>Negative pin of the left port</td></tr>
+<tr><td>PositivePin</td><td>p2</td><td>Positive pin of the right port (potential p2.v &gt; n2.v for positive voltage drop v2)</td></tr>
+<tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>d</td><td>Duty cycle</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> IdealAverageCCMSwitch <span class="ModelicaComment">
+  &quot;Average switch model for any ideal 2-switch PWM converter in CCM&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.TwoPort"
+>Modelica.Electrical.Analog.Interfaces.TwoPort</a>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> d <span class="ModelicaComment">&quot;Duty cycle&quot;</span>;
+<span class="ModelicaKeyword">equation </span>
+  v1 = (1 - d)/d*v2;
+  -i2 = (1 - d)/d*i1;
+<span class="ModelicaKeyword">end </span>IdealAverageCCMSwitch;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE IdealAverageDCMSwitch<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Electrical.Idea4a062337ba1595e2witchI.png" alt="PVSystems.Electrical.IdealAverageDCMSwitch" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.IdealAverageDCMSwitch"></a><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>PVSystems.Electrical</a>.IdealAverageDCMSwitch</h2>
+<p>
+<span class="ModelicaDescription">Average switch model for any ideal 2-switch PWM converter in DCM</span>
+<br>
+<br><img src="PVSystems.Electrical.Idea4a062337ba1595e2witchD.png" alt="PVSystems.Electrical.IdealAverageDCMSwitch">
+</p>
+<h3>Information</h3>
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.TwoPort"
+>Modelica.Electrical.Analog.Interfaces.TwoPort</a> (Component with two electrical ports, including current).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Inductance"
+>Inductance</a></td><td>Le</td><td>&nbsp;</td><td>Equivalent DCM inductance [H]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Frequency"
+>Frequency</a></td><td>fs</td><td>&nbsp;</td><td>Switching frequency [Hz]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>PositivePin</td><td>p1</td><td>Positive pin of the left port (potential p1.v &gt; n1.v for positive voltage drop v1)</td></tr>
+<tr><td>NegativePin</td><td>n1</td><td>Negative pin of the left port</td></tr>
+<tr><td>PositivePin</td><td>p2</td><td>Positive pin of the right port (potential p2.v &gt; n2.v for positive voltage drop v2)</td></tr>
+<tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>d</td><td>Duty cycle</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> IdealAverageDCMSwitch <span class="ModelicaComment">
+  &quot;Average switch model for any ideal 2-switch PWM converter in DCM&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.TwoPort"
+>Modelica.Electrical.Analog.Interfaces.TwoPort</a>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Inductance"
+>Modelica.SIunits.Inductance</a> Le <span class="ModelicaComment">&quot;Equivalent DCM inductance&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Frequency"
+>Modelica.SIunits.Frequency</a> fs <span class="ModelicaComment">&quot;Switching frequency&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> d <span class="ModelicaComment">&quot;Duty cycle&quot;</span>;
+  Real mu <span class="ModelicaComment">&quot;Effective switch conversion ratio&quot;</span>;
+  Real Re <span class="ModelicaComment">&quot;Equivalent DCM port 1 resistance&quot;</span>;
+<span class="ModelicaKeyword">equation </span>
+  Re = 2*Le*fs/d^2;
+  mu = <span class="ModelicaFunction">max</span>(d, 1/(1 + Re*i1/v2));
+  v1 = (1 - mu)/mu*v2;
+  -i2 = (1 - mu)/mu*i1;
+<span class="ModelicaKeyword">end </span>IdealAverageDCMSwitch;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE IdealCBSwitch<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Electrical.IdealCBSwitchI.png" alt="PVSystems.Electrical.IdealCBSwitch" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.IdealCBSwitch"></a><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>PVSystems.Electrical</a>.IdealCBSwitch</h2>
+<p>
+<span class="ModelicaDescription">Basic two-cuadrant current bidirectional switch</span>
+<br>
+<br><img src="PVSystems.Electrical.IdealCBSwitchD.png" alt="PVSystems.Electrical.IdealCBSwitch">
+</p>
+<h3>Information</h3>
+
+      <p>This model represents and idealized current bi-directional
+      switch. This is the typical IGBT in anti-parallel with a diode from
+      which many converters are built.</p>
+      
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.TwoPin"
+>Modelica.Electrical.Analog.Interfaces.TwoPin</a> (Component with two electrical pins).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>PositivePin</td><td>p</td><td>Positive pin Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
+<tr><td>NegativePin</td><td>n</td><td>Negative pin</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>fire</td><td>&nbsp;</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> IdealCBSwitch <span class="ModelicaComment">&quot;Basic two-cuadrant current bidirectional switch&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.TwoPin"
+>Modelica.Electrical.Analog.Interfaces.TwoPin</a>;
+  <span class="ModelicaComment">// Components</span>
+  <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealClosingSwitch"
+>Modelica.Electrical.Analog.Ideal.IdealClosingSwitch</a> idealClosingSwitch;
+  <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealDiode"
+>Modelica.Electrical.Analog.Ideal.IdealDiode</a> idealDiode;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>Modelica.Blocks.Interfaces.BooleanInput</a> fire;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(p, idealClosingSwitch.p);
+  <span class="ModelicaFunction">connect</span>(idealClosingSwitch.n, n);
+  <span class="ModelicaFunction">connect</span>(idealDiode.p, n);
+  <span class="ModelicaFunction">connect</span>(idealDiode.n, p);
+  <span class="ModelicaFunction">connect</span>(fire, idealClosingSwitch.control);
+<span class="ModelicaKeyword">end </span>IdealCBSwitch;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE PVArray<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Electrical.PVArrayI.png" alt="PVSystems.Electrical.PVArray" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.PVArray"></a><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>PVSystems.Electrical</a>.PVArray</h2>
+<p>
+<span class="ModelicaDescription">Flexible PV array model</span>
+<br>
+<br><img src="PVSystems.Electrical.PVArrayD.png" alt="PVSystems.Electrical.PVArray">
+</p>
+<h3>Information</h3>
+<p>Flexible PV array model. The model can be
+  parametrized with the use of PV module datasheets. As a default, the
+  data from the Kyocera KC200GT is provided. The model is presented in
+  "Comprehensive Approach to Modeling and Simulation of Photovoltaic
+  Arrays" by M.G. Villalva et al.</p>
+<p><span class="ModelicaBaseClass">Extends from Modelica.Electrical.Analog.Interfaces.OnePort (Component with two electrical pins p and n and current i from p to n).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Current</a></td><td>Imp</td><td>7.61</td><td>Maximum power current [A]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a></td><td>Vmp</td><td>26.3</td><td>Maximum power voltage [V]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Current</a></td><td>Iscn</td><td>8.21</td><td>Short circuit current [A]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a></td><td>Vocn</td><td>32.9</td><td>Open circuit voltage [V]</td></tr>
+<tr><td>Real</td><td>Kv</td><td>-0.123</td><td>Voc temperature coefficient</td></tr>
+<tr><td>Real</td><td>Ki</td><td>3.18e-3</td><td>Isc temperature coefficient</td></tr>
+<tr><td>Real</td><td>Ns</td><td>54</td><td>Number of cells in series</td></tr>
+<tr><td>Real</td><td>Np</td><td>1</td><td>Number of cells in parallel</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Resistance</a></td><td>Rs</td><td>0.221</td><td>Equivalent series resistance of array [Ohm]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Resistance</a></td><td>Rp</td><td>415.405</td><td>Equivalent parallel resistance of array [Ohm]</td></tr>
+<tr><td>Real</td><td>a</td><td>1.3</td><td>Diode ideality constant</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Current</a></td><td>Ipvn</td><td>Iscn</td><td>Photovoltaic current at STC [A]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>PositivePin</td><td>p</td><td>Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
+<tr><td>NegativePin</td><td>n</td><td>Negative pin</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>G</td><td>Solar irradiation</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>T</td><td>Panel temperature</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> PVArray <span class="ModelicaComment">&quot;Flexible PV array model&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Modelica.Electrical.Analog.Interfaces.OnePort</a>;
+  <span class="ModelicaComment">// Interface</span>
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> G <span class="ModelicaComment">&quot;Solar irradiation&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> T <span class="ModelicaComment">&quot;Panel temperature&quot;</span>;
+  <span class="ModelicaComment">// Constants</span>
+  <span class="ModelicaKeyword">constant </span><a href="Modelica_SIunits.html#Modelica.SIunits.Charge"
+>Modelica.SIunits.Charge</a> q=1.60217646e-19 <span class="ModelicaComment">&quot;Electron charge&quot;</span>;
+  <span class="ModelicaKeyword">constant </span>Real Gn=1000 <span class="ModelicaComment">&quot;STC irradiation&quot;</span>;
+  <span class="ModelicaKeyword">constant </span><a href="Modelica_SIunits.html#Modelica.SIunits.Temperature"
+>Modelica.SIunits.Temperature</a> Tn=298.15 <span class="ModelicaComment">&quot;STC temperature&quot;</span>;
+  <span class="ModelicaComment">// Basic datasheet parameters</span>
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Modelica.SIunits.Current</a> Imp=7.61 <span class="ModelicaComment">&quot;Maximum power current&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> Vmp=26.3 <span class="ModelicaComment">&quot;Maximum power voltage&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Modelica.SIunits.Current</a> Iscn=8.21 <span class="ModelicaComment">&quot;Short circuit current&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> Vocn=32.9 <span class="ModelicaComment">&quot;Open circuit voltage&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real Kv=-0.123 <span class="ModelicaComment">&quot;Voc temperature coefficient&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real Ki=3.18e-3 <span class="ModelicaComment">&quot;Isc temperature coefficient&quot;</span>;
+  <span class="ModelicaComment">// Basic model parameters</span>
+  <span class="ModelicaKeyword">parameter </span>Real Ns=54 <span class="ModelicaComment">&quot;Number of cells in series&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real Np=1 <span class="ModelicaComment">&quot;Number of cells in parallel&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Modelica.SIunits.Resistance</a> Rs=0.221 <span class="ModelicaComment">
+    &quot;Equivalent series resistance of array&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Modelica.SIunits.Resistance</a> Rp=415.405 <span class="ModelicaComment">
+    &quot;Equivalent parallel resistance of array&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real a=1.3 <span class="ModelicaComment">&quot;Diode ideality constant&quot;</span>;
+  <span class="ModelicaComment">// Derived model parameters</span>
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Modelica.SIunits.Current</a> Ipvn=Iscn <span class="ModelicaComment">&quot;Photovoltaic current at STC&quot;</span>;
+  <span class="ModelicaComment">// Variables</span>
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> Vt <span class="ModelicaComment">&quot;Thermal voltage of the array&quot;</span>;
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Modelica.SIunits.Current</a> Ipv <span class="ModelicaComment">&quot;Photovoltaic current of the cell&quot;</span>;
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Modelica.SIunits.Current</a> I0 <span class="ModelicaComment">&quot;Saturation current of the cell&quot;</span>;
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Modelica.SIunits.Current</a> Id <span class="ModelicaComment">&quot;Diode current&quot;</span>;
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Modelica.SIunits.Current</a> Ir <span class="ModelicaComment">&quot;Rp current&quot;</span>;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaComment">// Auxiliary variables</span>
+  Vt = Ns*Modelica.Constants.k*T/q;
+  Ipv = (Ipvn + Ki*(T - Tn))*G/Gn;
+  I0 = (Iscn + Ki*(T - Tn))/(<span class="ModelicaFunction">exp</span>((Vocn + Kv*(T - Tn))/a/Vt) - 1);
+  Id = I0*(<span class="ModelicaFunction">exp</span>((v - Rs*i)/a/Vt) - 1);
+  Ir = (v - Rs*i)/Rp;
+  <span class="ModelicaKeyword">if </span>v &lt; 0<span class="ModelicaKeyword"> then</span>
+    i = v/((Rs + Rp)/Np);
+  <span class="ModelicaKeyword">elseif </span>v &gt; Vocn<span class="ModelicaKeyword"> then</span>
+    i = 0;
+  <span class="ModelicaKeyword">else</span>
+    i = -Np*(Ipv - Id - Ir);
+  <span class="ModelicaKeyword">end if</span>;
+<span class="ModelicaKeyword">end </span>PVArray;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE PartialBattery<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Electrical.PartialBatteryI.png" alt="PVSystems.Electrical.PartialBattery" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.PartialBattery"></a><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>PVSystems.Electrical</a>.PartialBattery</h2>
+<p>
+<span class="ModelicaDescription">Partial model for battery</span>
+<br>
+<br><img src="PVSystems.Electrical.PartialBatteryD.png" alt="PVSystems.Electrical.PartialBattery">
+</p>
+<h3>Information</h3>
+<p>Partial model for battery</p>
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Modelica.Electrical.Analog.Interfaces.OnePort</a> (Component with two electrical pins p and n and current i from p to n).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>PositivePin</td><td>p</td><td>Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
+<tr><td>NegativePin</td><td>n</td><td>Negative pin</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> PartialBattery <span class="ModelicaComment">&quot;Partial model for battery&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Modelica.Electrical.Analog.Interfaces.OnePort</a>;
+<span class="ModelicaKeyword">end </span>PartialBattery;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE SimpleBattery<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Electrical.PartialBatteryI.png" alt="PVSystems.Electrical.SimpleBattery" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.SimpleBattery"></a><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>PVSystems.Electrical</a>.SimpleBattery</h2>
+<p>
+<span class="ModelicaDescription">Simple battery model</span>
+<br>
+<br><img src="PVSystems.Electrical.PartialBatteryD.png" alt="PVSystems.Electrical.SimpleBattery">
+</p>
+<h3>Information</h3>
+<p><span class="ModelicaBaseClass">Extends from <a href="PVSystems_Electrical.html#PVSystems.Electrical.PartialBattery"
+>PartialBattery</a> (Partial model for battery).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Resistance</a></td><td>Rint</td><td>0.09</td><td>Internal resistance [Ohm]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a></td><td>E0</td><td>3.7348</td><td>Constant battery voltage [V]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a></td><td>K</td><td>0.00876</td><td>Polarization voltage [V]</td></tr>
+<tr><td>Real</td><td>Q</td><td>1</td><td>Rated battery capacity [A.h]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a></td><td>A</td><td>0.468</td><td>Exponential region amplitude [V]</td></tr>
+<tr><td>Real</td><td>B</td><td>3.5294</td><td>Exponential zone time constant inverse</td></tr>
+<tr><td>Real</td><td>DoDini</td><td>0</td><td>Initial Depth of Discharge [A.h]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>PositivePin</td><td>p</td><td>Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
+<tr><td>NegativePin</td><td>n</td><td>Negative pin</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> SimpleBattery <span class="ModelicaComment">&quot;Simple battery model&quot;</span>
+  <span class="ModelicaComment">// Model taken from</span>
+  <span class="ModelicaComment">// TODO:</span>
+  <span class="ModelicaComment">// + Would be cool to have capacities relative to absolute battery capacity,</span>
+  <span class="ModelicaComment">//   i.e., &#39;it&#39; from 0 to 1 instead of from 0 to Q.</span>
+  <span class="ModelicaComment">// + Would probably be more intuitive to provide parameter for initial State</span>
+  <span class="ModelicaComment">//   of charge (in relative terms) instead of initial depth of discharge.</span>
+  <span class="ModelicaComment">// + Would probably be nice to introduce safeguards around Q = it, which</span>
+  <span class="ModelicaComment">//   currently just produces a division by 0 an a simulation error.</span>
+  <span class="ModelicaComment">// + Would probably be more convenient to move the type definition of</span>
+  <span class="ModelicaComment">//   BatteryCapacity to another place.</span>
+  <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical.html#PVSystems.Electrical.PartialBattery"
+>PartialBattery</a>;
+  <span class="ModelicaKeyword">import </span><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Modelica.SIunits.Resistance</a>;
+  <span class="ModelicaKeyword">import </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a>;
+  <span class="ModelicaKeyword">import </span><a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Modelica.SIunits.Current</a>;
+  <span class="ModelicaKeyword">type</span> BatteryCapacity = Real (<span class="ModelicaKeyword">final </span>quantity=&quot;Energy&quot;, <span class="ModelicaKeyword">final </span>unit=&quot;A.h&quot;);
+  <span class="ModelicaComment">// Parameters (Li-ion values as defaults)</span>
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Resistance</a> Rint=0.09 <span class="ModelicaComment">&quot;Internal resistance&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a> E0=3.7348 <span class="ModelicaComment">&quot;Constant battery voltage&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a> K=0.00876 <span class="ModelicaComment">&quot;Polarization voltage&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="PVSystems_Electrical.html#PVSystems.Electrical.SimpleBattery.BatteryCapacity"
+>BatteryCapacity</a> Q=1 <span class="ModelicaComment">&quot;Rated battery capacity&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a> A=0.468 <span class="ModelicaComment">&quot;Exponential region amplitude&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real B=3.5294 <span class="ModelicaComment">&quot;Exponential zone time constant inverse&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="PVSystems_Electrical.html#PVSystems.Electrical.SimpleBattery.BatteryCapacity"
+>BatteryCapacity</a> DoDini=0 <span class="ModelicaComment">&quot;Initial Depth of Discharge&quot;</span>;
+  <span class="ModelicaComment">// Variables</span>
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a> E;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.SimpleBattery.BatteryCapacity"
+>BatteryCapacity</a> it(start=DoDini, fixed=true) <span class="ModelicaComment">&quot;Actual depth of discharge&quot;</span>;
+<span class="ModelicaKeyword">equation </span>
+  v = E + i*Rint;
+  <span class="ModelicaFunction">der</span>(it) = -i/3600;
+  E = <span class="ModelicaFunction">max</span>(0, E0 - K*Q/(Q - it) + A*<span class="ModelicaFunction">exp</span>(-B*it));
+<span class="ModelicaKeyword">end </span>SimpleBattery;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Sun Apr 02 18:12:00 2017.
+</address>
+</body>
+</html>
