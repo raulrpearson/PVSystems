@@ -6,8 +6,8 @@ extends Modelica.Icons.Package;
 annotation (
   uses(Modelica(version="3.2.2")),
   preferredView="info",
-  version="0.5.1",
-  versionDate="2016-12-13",
+  version="0.6.0",
+  versionDate="2017-04-03",
   Documentation(info="<html>
         <p>
           <b>Overview</b>
