@@ -1,6 +1,6 @@
 within PVSystems.Control;
 block SignalPWM "Generates a pulse width modulated (PWM) boolean fire signal"
-  extends Modelica.Blocks.Interfaces.BlockIcon;
+  extends Modelica.Blocks.Icons.Block;
   // Parameters
   parameter Modelica.SIunits.Time period(final min=Modelica.Constants.small) =
     1 "Time for one period";

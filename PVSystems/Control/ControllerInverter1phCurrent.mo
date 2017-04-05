@@ -1,7 +1,7 @@
 within PVSystems.Control;
 block ControllerInverter1phCurrent
   "Simple synchronous reference frame PI current controller"
-  extends Modelica.Blocks.Interfaces.BlockIcon;
+  extends Modelica.Blocks.Icons.Block;
   extends Modelica.Icons.UnderConstruction;
   Park park annotation (Placement(transformation(extent={{-50,-14},{-30,6}},
           rotation=0)));

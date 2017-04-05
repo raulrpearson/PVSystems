@@ -1,6 +1,6 @@
 within PVSystems.Control;
 block PLL "Phase-locked loop"
-  extends Modelica.Blocks.Interfaces.BlockIcon;
+  extends Modelica.Blocks.Icons.Block;
   parameter Modelica.SIunits.Frequency frequency=50;
   Modelica.Blocks.Continuous.Integrator integrator annotation (Placement(
         transformation(extent={{60,-10},{80,10}}, rotation=0)));

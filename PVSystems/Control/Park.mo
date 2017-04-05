@@ -1,6 +1,6 @@
 within PVSystems.Control;
 block Park "Park transformation"
-  extends Modelica.Blocks.Interfaces.BlockIcon;
+  extends Modelica.Blocks.Icons.Block;
   Modelica.Blocks.Interfaces.RealInput alpha annotation (Placement(
         transformation(extent={{-140,20},{-100,60}}, rotation=0)));
   Modelica.Blocks.Interfaces.RealInput beta annotation (Placement(

@@ -1,7 +1,7 @@
 within PVSystems.Control;
 block ControllerInverter1ph
   "Complete synchronous reference frame inverter controller"
-  extends Modelica.Blocks.Interfaces.BlockIcon;
+  extends Modelica.Blocks.Icons.Block;
   extends Modelica.Icons.UnderConstruction;
   // Parameters
   parameter Real ik=0.2 "Current PI gain";
