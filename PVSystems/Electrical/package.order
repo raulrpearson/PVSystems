@@ -5,6 +5,5 @@ IdealAverageCCMSwitch
 IdealAverageDCMSwitch
 IdealCBSwitch
 PVArray
-PartialBattery
 SimpleBattery
 Interfaces

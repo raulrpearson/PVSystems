@@ -10,7 +10,7 @@ model SimpleBattery "Simple battery model"
   //   currently just produces a division by 0 an a simulation error.
   // + Would probably be more convenient to move the type definition of
   //   BatteryCapacity to another place.
-  extends PartialBattery;
+  extends Interfaces.BatteryInterface;
   import Modelica.SIunits.Resistance;
   import Modelica.SIunits.Voltage;
   import Modelica.SIunits.Current;

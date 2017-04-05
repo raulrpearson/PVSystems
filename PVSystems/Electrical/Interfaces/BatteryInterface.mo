@@ -1,5 +1,5 @@
-within PVSystems.Electrical;
-partial model PartialBattery "Partial model for battery"
+within PVSystems.Electrical.Interfaces;
+partial model BatteryInterface "Partial model for battery"
   extends Modelica.Electrical.Analog.Interfaces.OnePort;
   annotation (Documentation(info=
           "<html><p>Partial model for battery</p></html>"), Icon(
@@ -18,4 +18,4 @@ partial model PartialBattery "Partial model for battery"
           extent={{-80,-40},{80,-80}},
           lineColor={28,108,200},
           textString="%name")}));
-end PartialBattery;
+end BatteryInterface;
