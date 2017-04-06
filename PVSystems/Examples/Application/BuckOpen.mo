@@ -18,8 +18,10 @@ model BuckOpen "Ideal synchronous open-loop buck converter"
         origin={60,-42},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  PVSystems.Electrical.CCM1 idealAverageCCMSwitch annotation (Placement(
-        transformation(extent={{0,-28},{20,-8}}, rotation=0)));
+  replaceable Electrical.CCM1 avgswitch constrainedby
+    PVSystems.Electrical.Interfaces.SwitchNetworkInterface annotation (
+      Placement(transformation(extent={{0,-28},{20,-8}}, rotation=0)),
+      choicesAllMatching=true);
   Modelica.Electrical.Analog.Ideal.IdealClosingSwitch idealClosingSwitch
     annotation (Placement(transformation(extent={{-10,38},{10,58}}, rotation=0)));
   Modelica.Electrical.Analog.Ideal.IdealDiode idealDiode annotation (Placement(
@@ -68,14 +70,14 @@ equation
     annotation (Line(points={{50,-22},{80,-22},{80,-32}}, color={0,0,255}));
   connect(capav.p, indav.n)
     annotation (Line(points={{60,-32},{60,-22},{50,-22}}, color={0,0,255}));
-  connect(src.p, idealAverageCCMSwitch.p1)
+  connect(src.p, avgswitch.p1)
     annotation (Line(points={{-20,-22},{-20,-13},{0,-13}}, color={0,0,255}));
-  connect(idealAverageCCMSwitch.p2, indav.p)
+  connect(avgswitch.p2, indav.p)
     annotation (Line(points={{20,-13},{30,-13},{30,-22}}, color={0,0,255}));
-  connect(idealAverageCCMSwitch.n2, gav.p)
+  connect(avgswitch.n2, gav.p)
     annotation (Line(points={{20,-23},{20,-52},{40,-52}}, color={0,0,255}));
-  connect(idealAverageCCMSwitch.n1, indav.p) annotation (Line(points={{0,-23},{
-          0,-42},{30,-42},{30,-22}}, color={0,0,255}));
+  connect(avgswitch.n1, indav.p) annotation (Line(points={{0,-23},{0,-42},{30,-42},
+          {30,-22}}, color={0,0,255}));
   connect(signalPWM.fire, idealClosingSwitch.control)
     annotation (Line(points={{-10,73},{0,73},{0,55}}, color={255,0,255}));
   connect(idealClosingSwitch.p, src.p)
@@ -89,10 +91,10 @@ equation
   connect(indsw.p, idealDiode.n)
     annotation (Line(points={{30,48},{20,48},{20,38}}, color={0,0,255}));
   connect(fStep.y, add.u1) annotation (Line(points={{-79,30},{-70,30},{-70,14},
-          {-64,14}}, color={0,0,127}));
+          {-64,14}},color={0,0,127}));
   connect(iStep.y, add.u2) annotation (Line(points={{-79,-12},{-70,-12},{-70,2},
           {-64,2}}, color={0,0,127}));
-  connect(add.y, idealAverageCCMSwitch.d)
+  connect(add.y, avgswitch.d)
     annotation (Line(points={{-41,8},{10,8},{10,-30}}, color={0,0,127}));
   connect(signalPWM.duty, add.y) annotation (Line(points={{-30,68},{-36,68},{-36,
           8},{-41,8}}, color={0,0,127}));
