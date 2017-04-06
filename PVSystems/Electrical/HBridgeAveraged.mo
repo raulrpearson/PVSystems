@@ -19,10 +19,10 @@ model HBridgeAveraged "Basic ideal H-bridge topology (averaged)"
   Modelica.SIunits.Voltage vdc "DC voltage";
   Modelica.SIunits.Voltage vac "AC voltage";
   // Components
-  IdealAverageCCMSwitch s1 annotation (Placement(transformation(extent={{20,60},
-            {40,80}}, rotation=0)));
-  IdealAverageCCMSwitch s2 annotation (Placement(transformation(extent={{-40,-80},
-            {-20,-60}}, rotation=0)));
+  CCM1 s1 annotation (Placement(transformation(extent={{20,60},{40,80}},
+          rotation=0)));
+  CCM1 s2 annotation (Placement(transformation(extent={{-40,-80},{-20,-60}},
+          rotation=0)));
 equation
   vdc = dcp.v - dcn.v;
   vac = acp.v - acn.v;

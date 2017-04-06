@@ -18,8 +18,8 @@ model BuckOpen "Ideal synchronous open-loop buck converter"
         origin={60,-42},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  PVSystems.Electrical.IdealAverageCCMSwitch idealAverageCCMSwitch annotation (
-      Placement(transformation(extent={{0,-28},{20,-8}}, rotation=0)));
+  PVSystems.Electrical.CCM1 idealAverageCCMSwitch annotation (Placement(
+        transformation(extent={{0,-28},{20,-8}}, rotation=0)));
   Modelica.Electrical.Analog.Ideal.IdealClosingSwitch idealClosingSwitch
     annotation (Placement(transformation(extent={{-10,38},{10,58}}, rotation=0)));
   Modelica.Electrical.Analog.Ideal.IdealDiode idealDiode annotation (Placement(

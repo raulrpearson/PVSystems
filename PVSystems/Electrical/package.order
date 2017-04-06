@@ -1,8 +1,8 @@
 HBridgeAveraged
 HBridgeSwitched
 Ideal2LevelLeg
-IdealAverageCCMSwitch
-IdealAverageDCMSwitch
+CCM1
+CCM_DCM1
 IdealCBSwitch
 PVArray
 SimpleBattery

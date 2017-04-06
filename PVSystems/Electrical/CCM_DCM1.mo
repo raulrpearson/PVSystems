@@ -1,5 +1,5 @@
 within PVSystems.Electrical;
-model IdealAverageDCMSwitch
+model CCM_DCM1
   "Average switch model for any ideal 2-switch PWM converter in DCM"
   extends Modelica.Electrical.Analog.Interfaces.TwoPort;
   extends Interfaces.SwitchNetworkInterface;
@@ -17,4 +17,4 @@ equation
   mu = max(d, 1/(1 + Re*i1/v2));
   v1 = (1 - mu)/mu*v2;
   -i2 = (1 - mu)/mu*i1;
-end IdealAverageDCMSwitch;
+end CCM_DCM1;
