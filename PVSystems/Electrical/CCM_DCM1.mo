@@ -5,11 +5,6 @@ model CCM_DCM1
   extends Interfaces.SwitchNetworkInterface;
   parameter Modelica.SIunits.Inductance Le "Equivalent DCM inductance";
   parameter Modelica.SIunits.Frequency fs "Switching frequency";
-  Modelica.Blocks.Interfaces.RealInput d "Duty cycle" annotation (Placement(
-        transformation(
-        origin={0,-120},
-        extent={{-20,-20},{20,20}},
-        rotation=90)));
   Real mu "Effective switch conversion ratio";
   Real Re "Equivalent DCM port 1 resistance";
 equation

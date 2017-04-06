@@ -2,6 +2,11 @@ within PVSystems.Electrical.Interfaces;
 partial model SwitchNetworkInterface
   "Interface for the averaged switch network models"
   extends Modelica.Electrical.Analog.Interfaces.TwoPort;
+  Modelica.Blocks.Interfaces.RealInput d "Duty cycle" annotation (Placement(
+        transformation(
+        origin={0,-120},
+        extent={{-20,-20},{20,20}},
+        rotation=90)));
   annotation (Icon(graphics={
         Polygon(
           points={{60,20},{40,-20},{80,-20},{60,20}},
