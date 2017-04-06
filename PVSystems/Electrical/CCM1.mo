@@ -1,6 +1,5 @@
 within PVSystems.Electrical;
-model CCM1 "Average switch model for any ideal 2-switch PWM converter in CCM"
-  extends Modelica.Electrical.Analog.Interfaces.TwoPort;
+model CCM1 "Average CCM model with no losses"
   extends Interfaces.SwitchNetworkInterface;
 equation
   v1 = (1 - d)/d*v2;

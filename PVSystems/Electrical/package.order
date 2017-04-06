@@ -3,7 +3,12 @@ HBridgeSwitched
 IdealCBSwitch
 Ideal2LevelLeg
 CCM1
+CCM2
+CCM3
+CCM4
+CCM5
 CCM_DCM1
+CCM_DCM2
 PVArray
 SimpleBattery
 Interfaces
