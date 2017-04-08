@@ -113,8 +113,8 @@ equation
           18}}, color={0,0,127}));
   connect(onePhaseInverterController.d, add.u1)
     annotation (Line(points={{10,-39},{10,-22}}, color={0,0,127}));
-  connect(sine.y, onePhaseInverterController.vac) annotation (Line(points={{1,
-          -90},{14,-90},{14,-61},{13,-61}}, color={0,0,127}));
+  connect(sine.y, onePhaseInverterController.vac) annotation (Line(points={{1,-90},
+          {14,-90},{14,-61},{13,-61}}, color={0,0,127}));
   connect(currentSensor.i, onePhaseInverterController.iac) annotation (Line(
         points={{40,80},{40,-90},{18,-90},{18,-61}}, color={0,0,127}));
   connect(VSdc.v, onePhaseInverterController.vdc)

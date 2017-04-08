@@ -39,7 +39,7 @@ equation
     Icon(graphics={Text(
           extent={{-70,70},{70,20}},
           lineColor={0,0,255},
-          textString="MPPT"), Text(
+          textString="MPPT"),Text(
           extent={{-70,-20},{70,-70}},
           lineColor={0,0,255},
           textString="Controller")}),

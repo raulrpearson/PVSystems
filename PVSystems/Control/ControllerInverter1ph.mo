@@ -89,7 +89,7 @@ equation
   annotation (Icon(graphics={Text(
           extent={{-70,70},{70,20}},
           lineColor={0,0,255},
-          textString="Inverter"), Text(
+          textString="Inverter"),Text(
           extent={{-70,-20},{70,-70}},
           lineColor={0,0,255},
           textString="Ctl")}), Documentation(info="<html>
