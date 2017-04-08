@@ -5,3 +5,6 @@ PLL
 ControllerMPPT
 ControllerInverter1phCurrent
 ControllerInverter1ph
+CPM_CCM
+CPM
+Interfaces
