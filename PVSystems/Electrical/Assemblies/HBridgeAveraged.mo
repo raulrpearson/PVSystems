@@ -48,32 +48,39 @@ equation
           -50}}, color={0,0,255}));
   annotation (
     Diagram(graphics),
-    Icon(graphics={Rectangle(
+    Icon(graphics={
+        Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={0,0,255},
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),Line(points={{-100,-100},{100,100}},
-          color={0,0,255}),Text(
+          fillPattern=FillPattern.Solid),
+        Line(points={{-100,-100},{100,100}}, color={0,0,255}),
+        Text(
           extent={{-76,38},{76,-22}},
           lineColor={0,0,255},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString="1-ph"),Ellipse(
+          textString="1-ph"),
+        Ellipse(
           extent={{2,-32},{38,-60}},
           lineColor={0,0,255},
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),Line(points={{-68,56},{-10,56}}, color
-          ={0,0,255}),Line(points={{-68,76},{-10,76}}, color={0,0,255}),Line(
-          points={{0,-82},{76,-82}}, color={0,0,255}),Ellipse(
+          fillPattern=FillPattern.Solid),
+        Line(points={{-68,56},{-10,56}}, color={0,0,255}),
+        Line(points={{-68,76},{-10,76}}, color={0,0,255}),
+        Line(points={{0,-82},{76,-82}}, color={0,0,255}),
+        Ellipse(
           extent={{2,-36},{38,-64}},
           lineColor={28,108,200},
           pattern=LinePattern.None,
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),Ellipse(
+          fillPattern=FillPattern.Solid),
+        Ellipse(
           extent={{38,-36},{74,-64}},
           lineColor={0,0,255},
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),Ellipse(
+          fillPattern=FillPattern.Solid),
+        Ellipse(
           extent={{38,-28},{74,-56}},
           lineColor={28,108,200},
           pattern=LinePattern.None,
