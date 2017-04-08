@@ -2,7 +2,7 @@ within PVSystems.Examples.Application;
 model Inverter1phOpenSynch
   "Grid synchronized 1-phase open-loop inverter fed by constant DC source"
   extends Modelica.Icons.Example;
-  PVSystems.Electrical.HBridgeSwitched HBsw annotation (Placement(
+  PVSystems.Electrical.Assemblies.HBridgeSwitched HBsw annotation (Placement(
         transformation(extent={{-60,80},{-40,100}}, rotation=0)));
   Modelica.Electrical.Analog.Sources.ConstantVoltage DCsrc(V=580) annotation (
       Placement(transformation(
@@ -54,7 +54,7 @@ model Inverter1phOpenSynch
         origin={90,40},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  PVSystems.Electrical.HBridgeAveraged HBav
+  PVSystems.Electrical.Assemblies.HBridgeAveraged HBav
     annotation (Placement(transformation(extent={{0,48},{20,68}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Inductor Lav1(L=500e-6) annotation (
       Placement(transformation(

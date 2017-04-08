@@ -2,7 +2,7 @@ within PVSystems.Examples.Application;
 model Inverter1phOpen
   "Basic 1-phase open-loop inverter with constant DC voltage source and no synchronization"
   extends Modelica.Icons.Example;
-  PVSystems.Electrical.HBridgeSwitched HBsw
+  PVSystems.Electrical.Assemblies.HBridgeSwitched HBsw
     annotation (Placement(transformation(extent={{0,40},{20,60}}, rotation=0)));
   Modelica.Electrical.Analog.Sources.ConstantVoltage dcsrc(V=500) annotation (
       Placement(transformation(
@@ -28,7 +28,7 @@ model Inverter1phOpen
           rotation=0)));
   Control.SignalPWM signalPWM(period=320e-6)
     annotation (Placement(transformation(extent={{-20,0},{0,20}}, rotation=0)));
-  PVSystems.Electrical.HBridgeAveraged HBav annotation (Placement(
+  PVSystems.Electrical.Assemblies.HBridgeAveraged HBav annotation (Placement(
         transformation(extent={{0,-40},{20,-20}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Resistor resav(R=2) annotation (Placement(
         transformation(
