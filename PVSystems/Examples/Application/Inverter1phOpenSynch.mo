@@ -28,9 +28,9 @@ model Inverter1phOpenSynch
         origin={70,-30},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Control.SignalPWM signalPWM(period=320e-6) annotation (Placement(
-        transformation(
-        origin={-50,30},
+  Control.SignalPWM signalPWM(fs=3125, provideComplement=true) annotation (
+      Placement(transformation(
+        origin={-52,30},
         extent={{-10,-10},{10,10}},
         rotation=90)));
   Modelica.Blocks.Math.Cos sin annotation (Placement(transformation(
@@ -121,18 +121,12 @@ equation
     annotation (Line(points={{0,53},{-10,53},{-10,48}}, color={0,0,255}));
   connect(sin.y, add.u1)
     annotation (Line(points={{-33,-60},{-22,-60}}, color={0,0,127}));
-  connect(signalPWM.duty, add.y) annotation (Line(points={{-50,20},{-50,-10},{
-          10,-10},{10,-54},{1,-54}}, color={0,0,127}));
   connect(HBav.d, add.y)
     annotation (Line(points={{10,46},{10,-54},{1,-54}}, color={0,0,127}));
   connect(Rav1.n, VSac.p)
     annotation (Line(points={{50,-2},{50,-20},{70,-20}}, color={0,0,255}));
   connect(VSac.v, pLL.v) annotation (Line(points={{60,-30},{50,-30},{50,-90},{-94,
           -90},{-94,-60},{-86,-60}}, color={0,0,127}));
-  connect(signalPWM.fire, HBsw.fireA) annotation (Line(points={{-55,40},{-54,40},
-          {-54,80},{-53,80}}, color={255,0,255}));
-  connect(signalPWM.notFire, HBsw.fireB)
-    annotation (Line(points={{-45,40},{-47,40},{-47,80}}, color={255,0,255}));
   connect(Lsw2.n, Rsw2.p) annotation (Line(points={{-28,30},{-28,27.5},{-28,
           27.5},{-28,25},{-28,20},{-28,20}}, color={0,0,255}));
   connect(HBsw.acn, Lsw2.p)
@@ -145,13 +139,16 @@ equation
     annotation (Line(points={{20,53},{28,53},{28,32}}, color={0,0,255}));
   connect(Rav2.n, VSac.n)
     annotation (Line(points={{28,-18},{28,-40},{70,-40}}, color={0,0,255}));
-  annotation (
-    Diagram(graphics),
-    experiment(
+  connect(add.y, signalPWM.vc) annotation (Line(points={{1,-54},{10,-54},{10,-10},
+          {-52,-10},{-52,18}}, color={0,0,127}));
+  connect(signalPWM.c1, HBsw.fireA)
+    annotation (Line(points={{-52,41},{-52,80},{-53,80}}, color={255,0,255}));
+  connect(signalPWM.c2, HBsw.fireB)
+    annotation (Line(points={{-44,41},{-47,41},{-47,80}}, color={255,0,255}));
+  annotation (experiment(
       StartTime=0,
       StopTime=0.1,
-      Tolerance=1e-4),
-    Documentation(info="<html>
+      Tolerance=1e-4), Documentation(info="<html>
       <p>
         This example goes a step further
         than <a href=\"Modelica://PVSystems.Examples.Application.Inverter1phOpen\">Inverter1phOpen</a>

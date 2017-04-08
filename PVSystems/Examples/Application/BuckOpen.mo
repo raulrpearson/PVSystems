@@ -18,7 +18,7 @@ model BuckOpen "Ideal synchronous open-loop buck converter"
         origin={60,-42},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  replaceable Electrical.CCM1 avgswitch constrainedby
+  replaceable Electrical.CCM_DCM1 avgswitch(Le=1e-6, fs=1e5) constrainedby
     PVSystems.Electrical.Interfaces.SwitchNetworkInterface annotation (
       Placement(transformation(extent={{0,-28},{20,-8}}, rotation=0)),
       choicesAllMatching=true);
@@ -29,7 +29,7 @@ model BuckOpen "Ideal synchronous open-loop buck converter"
         origin={20,28},
         extent={{-10,-10},{10,10}},
         rotation=90)));
-  Control.SignalPWM signalPWM(period=1e-5) annotation (Placement(transformation(
+  Control.SignalPWM signalPWM(fs=1e5) annotation (Placement(transformation(
           extent={{-30,58},{-10,78}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Resistor ressw(R=0.4) annotation (Placement(
         transformation(
@@ -78,8 +78,6 @@ equation
     annotation (Line(points={{20,-23},{20,-52},{40,-52}}, color={0,0,255}));
   connect(avgswitch.n1, indav.p) annotation (Line(points={{0,-23},{0,-42},{30,-42},
           {30,-22}}, color={0,0,255}));
-  connect(signalPWM.fire, idealClosingSwitch.control)
-    annotation (Line(points={{-10,73},{0,73},{0,55}}, color={255,0,255}));
   connect(idealClosingSwitch.p, src.p)
     annotation (Line(points={{-10,48},{-20,48},{-20,-22}}, color={0,0,255}));
   connect(idealClosingSwitch.n, idealDiode.n)
@@ -96,8 +94,6 @@ equation
           {-64,2}}, color={0,0,127}));
   connect(add.y, avgswitch.d)
     annotation (Line(points={{-41,8},{10,8},{10,-30}}, color={0,0,127}));
-  connect(signalPWM.duty, add.y) annotation (Line(points={{-30,68},{-36,68},{-36,
-          8},{-41,8}}, color={0,0,127}));
   connect(capsw.n, ressw.n)
     annotation (Line(points={{60,18},{80,18}}, color={0,0,255}));
   connect(idealDiode.p, gsw.p)
@@ -106,6 +102,10 @@ equation
     annotation (Line(points={{40,18},{60,18}}, color={0,0,255}));
   connect(gsrc.p, src.n) annotation (Line(points={{-20,-48},{-20,-45},{-20,-42},
           {-20,-42}}, color={0,0,255}));
+  connect(signalPWM.c1, idealClosingSwitch.control)
+    annotation (Line(points={{-9,68},{0,68},{0,55}}, color={255,0,255}));
+  connect(add.y, signalPWM.vc) annotation (Line(points={{-41,8},{-36,8},{-36,68},
+          {-32,68}}, color={0,0,127}));
   annotation (
     Diagram(graphics={Text(
           extent={{20,70},{64,62}},

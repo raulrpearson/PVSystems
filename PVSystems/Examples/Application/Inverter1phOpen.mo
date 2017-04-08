@@ -26,7 +26,7 @@ model Inverter1phOpen
     offset=0.5,
     freqHz=50) annotation (Placement(transformation(extent={{-80,-60},{-60,-40}},
           rotation=0)));
-  Control.SignalPWM signalPWM(period=320e-6)
+  Control.SignalPWM signalPWM(fs=3125, provideComplement=true)
     annotation (Placement(transformation(extent={{-20,0},{0,20}}, rotation=0)));
   PVSystems.Electrical.Assemblies.HBridgeAveraged HBav annotation (Placement(
         transformation(extent={{0,-40},{20,-20}}, rotation=0)));
@@ -41,28 +41,22 @@ model Inverter1phOpen
         extent={{-10,-10},{10,10}},
         rotation=270)));
 equation
-  connect(duty.y, signalPWM.duty) annotation (Line(points={{-59,-50},{-48,-50},
-          {-48,10},{-20,10}}, color={0,0,127}));
   connect(dcsrc.n, ground.p)
     annotation (Line(points={{-60,40},{-60,34}}, color={0,0,255}));
   connect(HBsw.dcn, dcsrc.n) annotation (Line(points={{0,45},{-26,45},{-26,40},
-          {-60,40}}, color={0,0,255}));
+          {-60,40}},color={0,0,255}));
   connect(HBsw.dcp, dcsrc.p) annotation (Line(points={{0,55},{-26,55},{-26,60},
-          {-60,60}}, color={0,0,255}));
+          {-60,60}},color={0,0,255}));
   connect(HBsw.acp, indsw.p) annotation (Line(points={{20,55},{40,55},{40,80},{
           70,80}}, color={0,0,255}));
   connect(HBsw.acn, ressw.n) annotation (Line(points={{20,45},{40,45},{40,20},{
           70,20}}, color={0,0,255}));
   connect(ressw.p, indsw.n)
     annotation (Line(points={{70,40},{70,60}}, color={0,0,255}));
-  connect(signalPWM.fire, HBsw.fireA)
-    annotation (Line(points={{0,15},{8,15},{8,40},{7,40}}, color={255,0,255}));
-  connect(signalPWM.notFire, HBsw.fireB) annotation (Line(points={{0,5},{14,5},
-          {14,40},{13,40}}, color={255,0,255}));
   connect(resav.p, indav.n)
     annotation (Line(points={{70,-40},{70,-20}}, color={0,0,255}));
   connect(HBav.acp, indav.p) annotation (Line(points={{20,-25},{40,-25},{40,0},
-          {70,0}}, color={0,0,255}));
+          {70,0}},color={0,0,255}));
   connect(resav.n, HBav.acn) annotation (Line(points={{70,-60},{40,-60},{40,-35},
           {20,-35}}, color={0,0,255}));
   connect(HBav.d, duty.y)
@@ -71,6 +65,12 @@ equation
           {-60,60}}, color={0,0,255}));
   connect(HBav.dcn, dcsrc.n) annotation (Line(points={{0,-35},{-40,-35},{-40,40},
           {-60,40}}, color={0,0,255}));
+  connect(signalPWM.c2, HBsw.fireB)
+    annotation (Line(points={{1,2},{13,2},{13,40}}, color={255,0,255}));
+  connect(signalPWM.c1, HBsw.fireA)
+    annotation (Line(points={{1,10},{7,10},{7,40}}, color={255,0,255}));
+  connect(duty.y, signalPWM.vc) annotation (Line(points={{-59,-50},{-54,-50},{
+          -50,-50},{-50,10},{-22,10}}, color={0,0,127}));
   annotation (
     Diagram(graphics={Text(
           extent={{-10,74},{28,62}},
