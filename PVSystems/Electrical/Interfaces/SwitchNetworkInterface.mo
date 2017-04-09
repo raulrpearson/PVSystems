@@ -2,6 +2,8 @@ within PVSystems.Electrical.Interfaces;
 partial model SwitchNetworkInterface
   "Interface for the averaged switch network models"
   extends Modelica.Electrical.Analog.Interfaces.TwoPort;
+  parameter Real dmin(final unit="1") = 1e-3 "Minimum duty cycle";
+  parameter Real dmax(final unit="1") = 1 "Maximum duty cycle";
   Modelica.Blocks.Interfaces.RealInput d "Duty cycle" annotation (Placement(
         transformation(
         origin={0,-120},
@@ -38,4 +40,7 @@ partial model SwitchNetworkInterface
         Line(points={{0,-60},{0,-100}}),
         Line(points={{0,0},{0,-40}}),
         Line(points={{-46,0},{0,0}})}));
+protected
+  Real dsat(final unit="1") = smooth(0, if d > dmax then dmax else if d < dmin
+     then dmin else d) "Saturated duty cycle";
 end SwitchNetworkInterface;

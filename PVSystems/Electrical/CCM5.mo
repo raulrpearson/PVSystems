@@ -8,6 +8,6 @@ model CCM5
   parameter Modelica.SIunits.Time tr "Diode reverse recovery time";
   parameter Modelica.SIunits.Frequency fs "Switching frequency";
 equation
-  v1 = (i1 - fs*Qr)*Ron/(d + fs*tr) + (1 - d)/d*(v2 + VD);
-  -i2 = i1*(1 - d - fs*tr)/(d + fs*tr) - fs*Qr/(d + fs*tr);
+  v1 = (i1 - fs*Qr)*Ron/(dsat + fs*tr) + (1 - dsat)/dsat*(v2 + VD);
+  -i2 = i1*(1 - dsat - fs*tr)/(dsat + fs*tr) - fs*Qr/(dsat + fs*tr);
 end CCM5;
