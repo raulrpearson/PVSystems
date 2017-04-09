@@ -1,5 +1,5 @@
 within PVSystems.Control;
-model CPM "Current Programmed Mode controller for averaged models"
+model CPM "Current Peak Mode modulator for averaged models"
   extends Interfaces.CPMInterface;
 protected
   Real d2;

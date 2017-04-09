@@ -4,4 +4,5 @@ ParkValidation
 PLLValidation
 PVArrayValidation
 SignalPWMValidation
+SwitchingCPMValidation
 SimpleBatteryValidation
