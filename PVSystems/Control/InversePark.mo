@@ -19,10 +19,21 @@ equation
   q = -alpha*sin(theta) + beta*cos(theta);
   annotation (
     Diagram(graphics),
-    Icon(graphics={Text(
-          extent={{-60,30},{60,-30}},
-          lineColor={0,0,255},
-          textString="dq2AB")}),
+    Icon(graphics={
+        Line(
+          points={{0,0},{15,60},{30,0},{45,-60},{60,0}},
+          color={0,0,255},
+          smooth=Smooth.Bezier),
+        Line(
+          points={{-96,-234}},
+          color={255,0,0},
+          smooth=Smooth.Bezier),
+        Line(points={{-80,20},{-20,20}}, color={128,0,255}),
+        Line(points={{-80,-20},{-20,-20}}, color={0,255,0}),
+        Line(
+          points={{15,0},{30,60},{45,0},{60,-60},{75,0}},
+          color={255,0,0},
+          smooth=Smooth.Bezier)}),
     Documentation(info="<html>
         <p>
           Perform inverse Park transformation. This transformation translates

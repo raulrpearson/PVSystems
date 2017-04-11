@@ -19,10 +19,21 @@ equation
   q = -alpha*sin(theta) + beta*cos(theta);
   annotation (
     Diagram(graphics),
-    Icon(graphics={Text(
-          extent={{-60,30},{60,-30}},
-          lineColor={0,0,255},
-          textString="AB2dq")}),
+    Icon(graphics={
+        Line(
+          points={{-75,0},{-60,60},{-45,0},{-30,-60},{-15,0}},
+          color={0,0,255},
+          smooth=Smooth.Bezier),
+        Line(
+          points={{-96,-234}},
+          color={255,0,0},
+          smooth=Smooth.Bezier),
+        Line(points={{20,20},{80,20}}, color={128,0,255}),
+        Line(points={{20,-20},{80,-20}}, color={0,255,0}),
+        Line(
+          points={{-60,0},{-45,60},{-30,0},{-15,-60},{0,0}},
+          color={255,0,0},
+          smooth=Smooth.Bezier)}),
     Documentation(info="<html>
         <p>
           Perform Park transformation. This transformation translates from the

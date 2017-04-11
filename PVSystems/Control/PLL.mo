@@ -40,10 +40,15 @@ equation
           0},{-6,0}}, color={0,0,127}));
   annotation (
     Diagram(graphics),
-    Icon(graphics={Text(
-          extent={{-60,30},{60,-30}},
-          lineColor={0,0,255},
-          textString="PLL")}),
+    Icon(graphics={Line(
+          points={{-70,0},{-50,60},{-30,0},{-10,-60},{10,0},{30,60},{50,0},{70,
+              -60},{90,0}},
+          color={0,0,255},
+          smooth=Smooth.Bezier), Line(
+          points={{-90,0},{-64,60},{-44,0},{-18,-60},{2,0},{22,60},{44,0},{64,-60},
+              {88,0}},
+          color={255,0,0},
+          smooth=Smooth.Bezier)}),
     Documentation(info="<html>
         <p>
           Phase-locked loop. Given a sinusoidal input, extract the phase.
