@@ -73,4 +73,28 @@ equation
           52},{68,52}}, color={255,0,255}));
   connect(dMaxLimiter.y, orBlock.u1)
     annotation (Line(points={{11,76},{30,76}}, color={255,0,255}));
+  annotation (Icon(graphics={
+        Line(points={{-80,20},{-50,-20},{-30,60},{30,-20},{50,60},{80,20}},
+            color={255,0,0}),
+        Line(points={{-52,-140}}, color={0,0,255}),
+        Line(points={{-80.1563,45.078},{-50,30},{-50,70},{30,30},{30,70},{
+              79.531,45.234}}, color={0,0,255}),
+        Line(
+          points={{-50,80},{-50,-80}},
+          color={0,0,255},
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-30,80},{-30,-80}},
+          color={0,0,255},
+          pattern=LinePattern.Dash),
+        Line(
+          points={{30,80},{30,-80}},
+          color={0,0,255},
+          pattern=LinePattern.Dash),
+        Line(
+          points={{50,80},{50,-80}},
+          color={0,0,255},
+          pattern=LinePattern.Dash),
+        Line(points={{-80,-80},{-50,-80},{-50,-40},{-30,-40},{-30,-80},{30,-80},
+              {30,-40},{50,-40},{50,-80},{80,-80}}, color={255,0,255})}));
 end SwitchingCPM;
