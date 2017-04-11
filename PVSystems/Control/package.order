@@ -1,5 +1,6 @@
 SignalPWM
 SwitchingCPM
+DeadTime
 Park
 InversePark
 PLL
