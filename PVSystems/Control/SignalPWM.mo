@@ -5,10 +5,6 @@ block SignalPWM "Generates a pulse width modulated (PWM) boolean fire signal"
   parameter Real dMin=0 "Minimum duty cycle";
   parameter Modelica.SIunits.Frequency fs "Switching frequency";
   parameter Modelica.SIunits.Time startTime=0 "Start time";
-  parameter Boolean provideComplement=false
-    "Provide fire signal and complement";
-  parameter Real deadTime=0 "Firing signals dead time"
-    annotation (Dialog(enable=provideComplement));
   Modelica.Blocks.Interfaces.RealInput vc "Control voltage"
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.BooleanOutput c1 "Firing PWM signal" annotation (
@@ -16,46 +12,26 @@ block SignalPWM "Generates a pulse width modulated (PWM) boolean fire signal"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={110,0})));
-  Modelica.Blocks.Interfaces.BooleanOutput c2 if provideComplement
-    "Firing PWM signal" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={110,-80})));
   Modelica.Blocks.Nonlinear.Limiter limiter(uMax=dMax, uMin=dMin)
-    annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
+    annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Modelica.Blocks.Logical.Less greaterEqual annotation (Placement(
-        transformation(extent={{-10,10},{10,-10}}, origin={0,0})));
+        transformation(extent={{-10,10},{10,-10}}, origin={50,0})));
   Modelica.Blocks.Sources.SawTooth sawtooth(
     final period=1/fs,
     final amplitude=1,
     final nperiod=-1,
     final offset=0,
-    final startTime=startTime) annotation (Placement(transformation(origin={-50,
-            -50}, extent={{-10,-10},{10,10}})));
-  Modelica.Blocks.MathBoolean.OnDelay c1_onDelay(delayTime=if provideComplement
-         then deadTime else 0)
-    annotation (Placement(transformation(extent={{76,-4},{84,4}})));
-  Modelica.Blocks.MathBoolean.OnDelay c2_onDelay(delayTime=deadTime)
-    annotation (Placement(transformation(extent={{76,-84},{84,-76}})));
-  Modelica.Blocks.Logical.Not notBlock
-    annotation (Placement(transformation(extent={{40,-90},{60,-70}})));
+    final startTime=startTime) annotation (Placement(transformation(origin={0,-50},
+          extent={{-10,-10},{10,10}})));
 equation
   connect(vc, limiter.u)
-    annotation (Line(points={{-120,0},{-92,0}}, color={0,0,127}));
-  connect(sawtooth.y, greaterEqual.u1) annotation (Line(points={{-39,-50},{-20,
-          -50},{-20,0},{-12,0}}, color={0,0,127}));
-  connect(c1_onDelay.y, c1)
-    annotation (Line(points={{84.8,0},{110,0}}, color={255,0,255}));
-  connect(c1_onDelay.u, greaterEqual.y)
-    annotation (Line(points={{74.4,0},{11,0}}, color={255,0,255}));
-  connect(c2_onDelay.y, c2)
-    annotation (Line(points={{84.8,-80},{110,-80}}, color={255,0,255}));
-  connect(notBlock.y, c2_onDelay.u)
-    annotation (Line(points={{61,-80},{74.4,-80}}, color={255,0,255}));
-  connect(notBlock.u, greaterEqual.y) annotation (Line(points={{38,-80},{20,-80},
-          {20,0},{11,0}}, color={255,0,255}));
-  connect(limiter.y, greaterEqual.u2) annotation (Line(points={{-69,0},{-40,0},
-          {-40,8},{-12,8}}, color={0,0,127}));
+    annotation (Line(points={{-120,0},{-94,0},{-62,0}}, color={0,0,127}));
+  connect(sawtooth.y, greaterEqual.u1) annotation (Line(points={{11,-50},{20,-50},
+          {20,0},{38,0}}, color={0,0,127}));
+  connect(limiter.y, greaterEqual.u2)
+    annotation (Line(points={{-39,0},{0,0},{0,8},{38,8}}, color={0,0,127}));
+  connect(greaterEqual.y, c1)
+    annotation (Line(points={{61,0},{110,0}}, color={255,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}),graphics={
         Line(points={{-100,0},{-98,0},{12,0}}, color={0,0,255}),
