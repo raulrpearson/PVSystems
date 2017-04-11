@@ -4,9 +4,7 @@ DeadTime
 Park
 InversePark
 PLL
-ControllerMPPT
-ControllerInverter1phCurrent
-ControllerInverter1ph
 CPM_CCM
 CPM
+Assemblies
 Interfaces

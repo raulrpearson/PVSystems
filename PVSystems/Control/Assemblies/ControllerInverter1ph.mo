@@ -1,4 +1,4 @@
-within PVSystems.Control;
+within PVSystems.Control.Assemblies;
 block ControllerInverter1ph
   "Complete synchronous reference frame inverter controller"
   extends Modelica.Blocks.Icons.Block;
@@ -37,8 +37,8 @@ block ControllerInverter1ph
           extent={{-38,10},{-18,-10}}, rotation=0)));
   Modelica.Blocks.Sources.Constant const(k=0) annotation (Placement(
         transformation(extent={{-68,-10},{-48,10}}, rotation=0)));
-  PVSystems.Control.ControllerMPPT mPPTController annotation (Placement(
-        transformation(extent={{-88,-26},{-68,-46}}, rotation=0)));
+  PVSystems.Control.Assemblies.ControllerMPPT mPPTController annotation (
+      Placement(transformation(extent={{-88,-26},{-68,-46}}, rotation=0)));
   Modelica.Blocks.Continuous.PI vdcPI(k=vk, T=vT) annotation (Placement(
         transformation(extent={{-30,-46},{-10,-26}}, rotation=0)));
   Modelica.Blocks.Math.Feedback iqFB1 annotation (Placement(transformation(

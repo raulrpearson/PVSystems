@@ -1,4 +1,4 @@
-within PVSystems.Control;
+within PVSystems.Control.Assemblies;
 block ControllerInverter1phCurrent
   "Simple synchronous reference frame PI current controller"
   extends Modelica.Blocks.Icons.Block;
