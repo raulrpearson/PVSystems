@@ -40,7 +40,7 @@ model Inverter1phClosed
             -100},{-30,-80}}, rotation=0)));
   Modelica.Blocks.Math.Gain gain(k=50) annotation (Placement(transformation(
           extent={{-20,-100},{0,-80}}, rotation=0)));
-  Control.ControllerInverter1phCurrent control annotation (Placement(
+  Control.Assemblies.ControllerInverter1phCurrent control annotation (Placement(
         transformation(
         origin={30,10},
         extent={{-10,10},{10,-10}},
@@ -77,8 +77,8 @@ equation
     annotation (Line(points={{21,-20},{24,-20},{24,-2}}, color={0,0,127}));
   connect(idSetpoint.y, control.idSetpoint)
     annotation (Line(points={{21,-54},{36,-54},{36,-2}}, color={0,0,127}));
-  connect(control.theta, sawTooth.y) annotation (Line(points={{18,6},{-26.5,6},
-          {-26.5,6},{-71,6}}, color={0,0,127}));
+  connect(control.theta, sawTooth.y)
+    annotation (Line(points={{18,6},{-26.5,6},{-71,6}}, color={0,0,127}));
   connect(VSdc.p, dcsrc.p)
     annotation (Line(points={{-50,80},{-20,80}}, color={0,0,255}));
   connect(VSdc.n, dcsrc.n)

@@ -28,9 +28,8 @@ model Inverter1phOpenSynch
         origin={70,-30},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Control.SignalPWM signalPWM(fs=3125, provideComplement=true) annotation (
-      Placement(transformation(
-        origin={-52,30},
+  Control.SignalPWM signalPWM(fs=3125) annotation (Placement(transformation(
+        origin={-50,10},
         extent={{-10,-10},{10,10}},
         rotation=90)));
   Modelica.Blocks.Math.Cos sin annotation (Placement(transformation(
@@ -90,6 +89,10 @@ model Inverter1phOpenSynch
         origin={28,-8},
         extent={{-10,-10},{10,10}},
         rotation=270)));
+  Control.DeadTime deadTime annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-50,44})));
 equation
   connect(HBsw.acp, Lsw1.p)
     annotation (Line(points={{-40,95},{90,95},{90,80}}, color={0,0,255}));
@@ -140,11 +143,13 @@ equation
   connect(Rav2.n, VSac.n)
     annotation (Line(points={{28,-18},{28,-40},{70,-40}}, color={0,0,255}));
   connect(add.y, signalPWM.vc) annotation (Line(points={{1,-54},{10,-54},{10,-10},
-          {-52,-10},{-52,18}}, color={0,0,127}));
-  connect(signalPWM.c1, HBsw.fireA)
-    annotation (Line(points={{-52,41},{-52,80},{-53,80}}, color={255,0,255}));
-  connect(signalPWM.c2, HBsw.fireB)
-    annotation (Line(points={{-44,41},{-47,41},{-47,80}}, color={255,0,255}));
+          {-50,-10},{-50,-2}}, color={0,0,127}));
+  connect(signalPWM.c1, deadTime.c)
+    annotation (Line(points={{-50,21},{-50,32}}, color={255,0,255}));
+  connect(deadTime.c2, HBsw.fireB)
+    annotation (Line(points={{-46,55},{-46,80},{-47,80}}, color={255,0,255}));
+  connect(deadTime.c1, HBsw.fireA)
+    annotation (Line(points={{-54,55},{-54,80},{-53,80}}, color={255,0,255}));
   annotation (experiment(
       StartTime=0,
       StopTime=0.1,

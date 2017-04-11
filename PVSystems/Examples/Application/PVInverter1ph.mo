@@ -57,7 +57,7 @@ model PVInverter1ph "Simple PV system including PV array, inverter and no grid"
         rotation=90)));
   Modelica.Blocks.Sources.Constant const(k=0.5) annotation (Placement(
         transformation(extent={{-80,-40},{-60,-20}}, rotation=0)));
-  PVSystems.Control.ControllerInverter1ph onePhaseInverterController
+  Control.Assemblies.ControllerInverter1ph onePhaseInverterController
     annotation (Placement(transformation(
         origin={10,-50},
         extent={{-10,10},{10,-10}},

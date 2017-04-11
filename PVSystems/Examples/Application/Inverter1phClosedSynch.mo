@@ -38,8 +38,8 @@ model Inverter1phClosedSynch
         rotation=180)));
   Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor annotation (
       Placement(transformation(extent={{0,40},{-20,60}}, rotation=0)));
-  Control.ControllerInverter1phCurrent control(d(start=0.5)) annotation (
-      Placement(transformation(
+  Control.Assemblies.ControllerInverter1phCurrent control(d(start=0.5))
+    annotation (Placement(transformation(
         origin={-50,10},
         extent={{-10,-10},{10,10}},
         rotation=90)));
@@ -89,8 +89,8 @@ equation
     annotation (Line(points={{-50,21},{-50,58}}, color={0,0,127}));
   connect(VSdc.v, control.udc) annotation (Line(points={{-118,70},{-126,70},{-126,
           30},{-30,30},{-30,14},{-38,14}}, color={0,0,127}));
-  connect(pll.theta, control.theta) annotation (Line(points={{39,6},{0.5,6},{
-          0.5,6},{-38,6}}, color={0,0,127}));
+  connect(pll.theta, control.theta)
+    annotation (Line(points={{39,6},{0.5,6},{-38,6}}, color={0,0,127}));
   connect(currentSensor.i, control.i) annotation (Line(points={{-10,40},{-10,-20},
           {-50,-20},{-50,-2}}, color={0,0,127}));
   connect(iqSetpoint.y, control.iqSetpoint)

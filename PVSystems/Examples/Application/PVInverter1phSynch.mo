@@ -38,7 +38,7 @@ model PVInverter1phSynch
         origin={-26,70},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  PVSystems.Control.ControllerInverter1ph Controller annotation (Placement(
+  Control.Assemblies.ControllerInverter1ph Controller annotation (Placement(
         transformation(
         origin={0,28},
         extent={{-10,10},{10,-10}},
@@ -84,18 +84,18 @@ equation
   connect(VSdc.n, C.n)
     annotation (Line(points={{-52,-20},{-26,-20},{-26,60}}, color={0,0,255}));
   connect(VSdc.v, Controller.vdc)
-    annotation (Line(points={{-42,-10},{-8,-10},{-8,16}}, color={0,0,127}));
+    annotation (Line(points={{-42,-10},{-7,-10},{-7,17}}, color={0,0,127}));
   connect(CSdc.n, C.p)
     annotation (Line(points={{-32,80},{-26,80}}, color={0,0,255}));
   connect(CSdc.i, Controller.idc) annotation (Line(points={{-42,70},{-42,6},{-3,
-          6},{-3,16}}, color={0,0,127}));
+          6},{-3,17}}, color={0,0,127}));
   connect(VSdc.p, CSdc.p)
     annotation (Line(points={{-52,0},{-52,80}}, color={0,0,255}));
   connect(VSac.n, Grid.n)
     annotation (Line(points={{60,-20},{90,-20}}, color={0,0,255}));
   connect(VSac.p, Grid.p)
     annotation (Line(points={{60,0},{90,0}}, color={0,0,255}));
-  connect(Controller.vac, VSac.v) annotation (Line(points={{3,16},{4,16},{4,-10},
+  connect(Controller.vac, VSac.v) annotation (Line(points={{3,17},{4,17},{4,-10},
           {50,-10}}, color={0,0,127}));
   connect(R.n, Grid.p)
     annotation (Line(points={{90,20},{90,0}}, color={0,0,255}));
@@ -104,7 +104,7 @@ equation
   connect(Inverter.acp, CSac.p) annotation (Line(points={{10,75},{26,75},{26,90},
           {30,90}}, color={0,0,255}));
   connect(CSac.i, Controller.iac)
-    annotation (Line(points={{40,80},{40,6},{8,6},{8,16}}, color={0,0,127}));
+    annotation (Line(points={{40,80},{40,6},{8,6},{8,17}}, color={0,0,127}));
   connect(PSdc.pv, PV.p)
     annotation (Line(points={{-92,90},{-110,90},{-110,80}}, color={0,0,255}));
   connect(PSdc.nv, VSdc.n)
