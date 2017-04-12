@@ -3,157 +3,127 @@ model Inverter1phOpenSynch
   "Grid synchronized 1-phase open-loop inverter fed by constant DC source"
   extends Modelica.Icons.Example;
   PVSystems.Electrical.Assemblies.HBridgeSwitched HBsw annotation (Placement(
-        transformation(extent={{-60,80},{-40,100}}, rotation=0)));
+        transformation(extent={{30,70},{50,90}}, rotation=0)));
   Modelica.Electrical.Analog.Sources.ConstantVoltage DCsrc(V=580) annotation (
       Placement(transformation(
-        origin={-90,50},
+        origin={-10,70},
         extent={{-10,-10},{10,10}},
-        rotation=270)));
+        rotation=180)));
   Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=480)
     annotation (Placement(transformation(
-        origin={90,-30},
+        origin={130,-70},
         extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Inductor Lsw1(L=500e-6) annotation (
       Placement(transformation(
-        origin={90,70},
+        origin={80,90},
         extent={{-10,-10},{10,10}},
-        rotation=270)));
+        rotation=0)));
   Control.PLL pLL annotation (Placement(transformation(
-        origin={-74,-60},
+        origin={-90,-16},
         extent={{10,-10},{-10,10}},
         rotation=180)));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor VSac annotation (Placement(
-        transformation(
-        origin={70,-30},
-        extent={{-10,-10},{10,10}},
-        rotation=270)));
   Control.SignalPWM signalPWM(fs=3125) annotation (Placement(transformation(
-        origin={-50,10},
+        origin={40,10},
         extent={{-10,-10},{10,10}},
         rotation=90)));
   Modelica.Blocks.Math.Cos sin annotation (Placement(transformation(
-        origin={-44,-60},
+        origin={-56,-16},
         extent={{10,-10},{-10,10}},
         rotation=180)));
   Modelica.Blocks.Math.Add add(k2=1, k1=580/580/2) annotation (Placement(
         transformation(
-        origin={-10,-54},
+        origin={-20,-10},
         extent={{10,-10},{-10,10}},
         rotation=180)));
   Modelica.Blocks.Sources.Constant const(k=0.5) annotation (Placement(
         transformation(
-        origin={-70,-30},
+        origin={-90,16},
         extent={{10,-10},{-10,10}},
         rotation=180)));
   Modelica.Electrical.Analog.Basic.Ground gsrc annotation (Placement(
-        transformation(extent={{-100,12},{-80,32}}, rotation=0)));
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-40,70})));
   Modelica.Electrical.Analog.Basic.Resistor Rsw1(R=0.1) annotation (Placement(
         transformation(
-        origin={90,40},
+        origin={110,90},
         extent={{-10,-10},{10,10}},
-        rotation=270)));
-  PVSystems.Electrical.Assemblies.HBridgeAveraged HBav
-    annotation (Placement(transformation(extent={{0,48},{20,68}}, rotation=0)));
+        rotation=0)));
+  PVSystems.Electrical.Assemblies.HBridgeAveraged HBav annotation (Placement(
+        transformation(extent={{30,-40},{50,-20}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Inductor Lav1(L=500e-6) annotation (
       Placement(transformation(
-        origin={50,38},
+        origin={80,-20},
         extent={{-10,-10},{10,10}},
-        rotation=270)));
+        rotation=0)));
   Modelica.Electrical.Analog.Basic.Resistor Rav1(R=0.1) annotation (Placement(
         transformation(
-        origin={50,8},
+        origin={110,-20},
         extent={{-10,-10},{10,10}},
-        rotation=270)));
+        rotation=0)));
   Modelica.Electrical.Analog.Basic.Ground gsw annotation (Placement(
-        transformation(extent={{-80,62},{-60,82}}, rotation=0)));
+        transformation(extent={{10,52},{30,72}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Ground gav annotation (Placement(
-        transformation(extent={{-20,28},{0,48}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Inductor Lsw2(L=500e-6) annotation (
-      Placement(transformation(
-        origin={-28,40},
-        extent={{-10,-10},{10,10}},
-        rotation=270)));
-  Modelica.Electrical.Analog.Basic.Resistor Rsw2(R=0.1) annotation (Placement(
-        transformation(
-        origin={-28,10},
-        extent={{-10,-10},{10,10}},
-        rotation=270)));
-  Modelica.Electrical.Analog.Basic.Inductor Lav2(L=500e-6) annotation (
-      Placement(transformation(
-        origin={28,22},
-        extent={{-10,-10},{10,10}},
-        rotation=270)));
-  Modelica.Electrical.Analog.Basic.Resistor Rav2(R=0.1) annotation (Placement(
-        transformation(
-        origin={28,-8},
-        extent={{-10,-10},{10,10}},
-        rotation=270)));
+        transformation(extent={{10,-60},{30,-40}}, rotation=0)));
   Control.DeadTime deadTime annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={-50,44})));
+        origin={40,50})));
+  Modelica.Blocks.Sources.RealExpression VacSense(y=Grid.v)
+    annotation (Placement(transformation(extent={{-134,-26},{-114,-6}})));
 equation
-  connect(HBsw.acp, Lsw1.p)
-    annotation (Line(points={{-40,95},{90,95},{90,80}}, color={0,0,255}));
-  connect(Lsw1.n, Rsw1.p)
-    annotation (Line(points={{90,60},{90,50}}, color={0,0,255}));
-  connect(Rsw1.n, Grid.p)
-    annotation (Line(points={{90,30},{90,-20}}, color={0,0,255}));
-  connect(Grid.p, VSac.p)
-    annotation (Line(points={{90,-20},{70,-20}}, color={0,0,255}));
-  connect(Grid.n, VSac.n)
-    annotation (Line(points={{90,-40},{70,-40}}, color={0,0,255}));
-  connect(Lav1.n, Rav1.p)
-    annotation (Line(points={{50,28},{50,18}}, color={0,0,255}));
-  connect(HBav.acp, Lav1.p)
-    annotation (Line(points={{20,63},{50,63},{50,48}}, color={0,0,255}));
-  connect(DCsrc.p, HBsw.dcp)
-    annotation (Line(points={{-90,60},{-90,95},{-60,95}}, color={0,0,255}));
-  connect(HBav.dcp, DCsrc.p)
-    annotation (Line(points={{0,63},{-90,63},{-90,60}}, color={0,0,255}));
-  connect(gsrc.p, DCsrc.n)
-    annotation (Line(points={{-90,32},{-90,40}}, color={0,0,255}));
   connect(gsw.p, HBsw.dcn)
-    annotation (Line(points={{-70,82},{-70,85},{-60,85}}, color={0,0,255}));
+    annotation (Line(points={{20,72},{20,75},{30,75}}, color={0,0,255}));
   connect(pLL.theta, sin.u)
-    annotation (Line(points={{-63,-60},{-56,-60}}, color={0,0,127}));
-  connect(const.y, add.u2) annotation (Line(points={{-59,-30},{-30,-30},{-30,-48},
-          {-22,-48}}, color={0,0,127}));
+    annotation (Line(points={{-79,-16},{-68,-16}}, color={0,0,127}));
+  connect(const.y, add.u2) annotation (Line(points={{-79,16},{-40,16},{-40,-4},
+          {-32,-4}}, color={0,0,127}));
   connect(HBav.dcn, gav.p)
-    annotation (Line(points={{0,53},{-10,53},{-10,48}}, color={0,0,255}));
+    annotation (Line(points={{30,-35},{20,-35},{20,-40}}, color={0,0,255}));
   connect(sin.y, add.u1)
-    annotation (Line(points={{-33,-60},{-22,-60}}, color={0,0,127}));
-  connect(HBav.d, add.y)
-    annotation (Line(points={{10,46},{10,-54},{1,-54}}, color={0,0,127}));
-  connect(Rav1.n, VSac.p)
-    annotation (Line(points={{50,-2},{50,-20},{70,-20}}, color={0,0,255}));
-  connect(VSac.v, pLL.v) annotation (Line(points={{60,-30},{50,-30},{50,-90},{-94,
-          -90},{-94,-60},{-86,-60}}, color={0,0,127}));
-  connect(Lsw2.n, Rsw2.p) annotation (Line(points={{-28,30},{-28,27.5},{-28,
-          27.5},{-28,25},{-28,20},{-28,20}}, color={0,0,255}));
-  connect(HBsw.acn, Lsw2.p)
-    annotation (Line(points={{-40,85},{-28,85},{-28,50}}, color={0,0,255}));
-  connect(Rsw2.n, VSac.n)
-    annotation (Line(points={{-28,0},{-28,-40},{70,-40}}, color={0,0,255}));
-  connect(Lav2.n, Rav2.p) annotation (Line(points={{28,12},{28,9.5},{28,9.5},{
-          28,7},{28,2},{28,2}}, color={0,0,255}));
-  connect(HBav.acn, Lav2.p)
-    annotation (Line(points={{20,53},{28,53},{28,32}}, color={0,0,255}));
-  connect(Rav2.n, VSac.n)
-    annotation (Line(points={{28,-18},{28,-40},{70,-40}}, color={0,0,255}));
-  connect(add.y, signalPWM.vc) annotation (Line(points={{1,-54},{10,-54},{10,-10},
-          {-50,-10},{-50,-2}}, color={0,0,127}));
-  connect(signalPWM.c1, deadTime.c)
-    annotation (Line(points={{-50,21},{-50,32}}, color={255,0,255}));
-  connect(deadTime.c2, HBsw.c2)
-    annotation (Line(points={{-46,55},{-46,80},{-47,80}}, color={255,0,255}));
+    annotation (Line(points={{-45,-16},{-32,-16}}, color={0,0,127}));
+  connect(Rsw1.p, Lsw1.n)
+    annotation (Line(points={{100,90},{90,90}}, color={0,0,255}));
+  connect(Lav1.n, Rav1.p)
+    annotation (Line(points={{90,-20},{100,-20}}, color={0,0,255}));
+  connect(Rav1.n, Grid.p)
+    annotation (Line(points={{120,-20},{130,-20},{130,-60}}, color={0,0,255}));
+  connect(HBsw.acp, Lsw1.p) annotation (Line(points={{50,85},{60,85},{60,90},{
+          70,90}}, color={0,0,255}));
+  connect(HBav.acp, Lav1.p) annotation (Line(points={{50,-25},{60,-25},{60,-20},
+          {70,-20}}, color={0,0,255}));
+  connect(gsrc.p, DCsrc.n)
+    annotation (Line(points={{-30,70},{-20,70}}, color={0,0,255}));
+  connect(DCsrc.p, HBsw.dcp) annotation (Line(points={{0,70},{10,70},{10,85},{
+          30,85}}, color={0,0,255}));
+  connect(DCsrc.p, HBav.dcp) annotation (Line(points={{0,70},{10,70},{10,-25},{
+          30,-25}}, color={0,0,255}));
+  connect(Rsw1.n, Grid.p)
+    annotation (Line(points={{120,90},{130,90},{130,-60}}, color={0,0,255}));
   connect(deadTime.c1, HBsw.c1)
-    annotation (Line(points={{-54,55},{-54,80},{-53,80}}, color={255,0,255}));
-  annotation (experiment(
+    annotation (Line(points={{36,61},{36,70},{36,70}}, color={255,0,255}));
+  connect(deadTime.c2, HBsw.c2)
+    annotation (Line(points={{44,61},{44,65.5},{44,70}}, color={255,0,255}));
+  connect(signalPWM.c1, deadTime.c)
+    annotation (Line(points={{40,21},{40,30},{40,38}}, color={255,0,255}));
+  connect(Grid.n, HBsw.acn) annotation (Line(points={{130,-80},{130,-90},{56,
+          -90},{56,75},{50,75}}, color={0,0,255}));
+  connect(Grid.n, HBav.acn) annotation (Line(points={{130,-80},{130,-90},{56,
+          -90},{56,-35},{50,-35}}, color={0,0,255}));
+  connect(add.y, signalPWM.vc) annotation (Line(points={{-9,-10},{0,-10},{40,
+          -10},{40,-2}}, color={0,0,127}));
+  connect(HBav.d, signalPWM.vc) annotation (Line(points={{40,-42},{40,-70},{0,
+          -70},{0,-10},{40,-10},{40,-2}}, color={0,0,127}));
+  connect(VacSense.y, pLL.v) annotation (Line(points={{-113,-16},{-113,-16},{
+          -102,-16}}, color={0,0,127}));
+  annotation (
+    experiment(
       StartTime=0,
       StopTime=0.1,
-      Tolerance=1e-4), Documentation(info="<html>
+      Tolerance=1e-4),
+    Documentation(info="<html>
       <p>
         This example goes a step further
         than <a href=\"Modelica://PVSystems.Examples.Application.Inverter1phOpen\">Inverter1phOpen</a>
@@ -199,5 +169,8 @@ equation
         this value (using values between 0 and 0.5) to see how the output
         current of the inverter changes.
       </p>
-      </html>"));
+      </html>"),
+    Diagram(coordinateSystem(extent={{-140,-100},{140,100}}, initialScale=0.1)),
+
+    Icon(coordinateSystem(initialScale=0.1)));
 end Inverter1phOpenSynch;
