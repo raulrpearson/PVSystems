@@ -12,49 +12,63 @@ model HBridgeSwitched "Basic ideal H-bridge topology (switched)"
   Modelica.Electrical.Analog.Interfaces.Pin acn "Negative pin of the AC port"
     annotation (Placement(transformation(extent={{90,-60},{110,-40}}, rotation=
             0)));
-  Modelica.Blocks.Interfaces.BooleanInput fireA annotation (Placement(
+  Modelica.Blocks.Interfaces.BooleanInput c1 annotation (Placement(
         transformation(
-        origin={-30,-100},
+        origin={-40,-100},
         extent={{-10,-10},{10,10}},
         rotation=90)));
-  Modelica.Blocks.Interfaces.BooleanInput fireB annotation (Placement(
+  Modelica.Blocks.Interfaces.BooleanInput c2 annotation (Placement(
         transformation(
-        origin={30,-100},
+        origin={40,-100},
         extent={{-10,-10},{10,10}},
         rotation=90)));
   Modelica.SIunits.Voltage vdc "DC voltage";
   Modelica.SIunits.Voltage vac "AC voltage";
   // Components
-  Ideal2LevelLeg legA annotation (Placement(transformation(
-        origin={10,30},
+  IdealCBSwitch idealCBSwitch annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=270)));
-  Ideal2LevelLeg legB annotation (Placement(transformation(
-        origin={50,-30},
+        rotation=270,
+        origin={0,30})));
+  IdealCBSwitch idealCBSwitch1 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=270)));
+        rotation=270,
+        origin={0,-30})));
+  IdealCBSwitch idealCBSwitch2 annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={60,30})));
+  IdealCBSwitch idealCBSwitch3 annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={60,-30})));
 equation
   vdc = dcp.v - dcn.v;
   vac = acp.v - acn.v;
-  connect(dcp, legA.p)
-    annotation (Line(points={{-100,50},{10,50},{10,40}}, color={0,0,255}));
-  connect(legA.n, dcn)
-    annotation (Line(points={{10,20},{10,-50},{-100,-50}}, color={0,0,255}));
-  connect(legA.m, acp) annotation (Line(points={{16,30},{60,30},{60,50},{100,50}},
-        color={0,0,255}));
-  connect(legB.m, acn) annotation (Line(points={{56,-30},{80,-30},{80,-50},{100,
-          -50}}, color={0,0,255}));
-  connect(fireA, legA.c)
-    annotation (Line(points={{-30,-100},{-30,30},{3,30}}, color={255,0,255}));
-  connect(fireB, legB.c)
-    annotation (Line(points={{30,-100},{30,-30},{43,-30}}, color={255,0,255}));
-  connect(legB.p, dcp)
-    annotation (Line(points={{50,-20},{50,50},{-100,50}}, color={0,0,255}));
-  connect(legB.n, dcn)
-    annotation (Line(points={{50,-40},{50,-50},{-100,-50}}, color={0,0,255}));
-  annotation (
-    Diagram(graphics),
-    Icon(graphics={
+  connect(c1, idealCBSwitch.c) annotation (Line(points={{-40,-100},{-40,-100},{
+          -40,24},{-40,30},{-7,30}}, color={255,0,255}));
+  connect(c1, idealCBSwitch3.c) annotation (Line(points={{-40,-100},{-40,-60},{
+          20,-60},{20,-30},{53,-30}}, color={255,0,255}));
+  connect(c2, idealCBSwitch2.c) annotation (Line(points={{40,-100},{40,-50},{40,
+          30},{53,30}}, color={255,0,255}));
+  connect(c2, idealCBSwitch1.c) annotation (Line(points={{40,-100},{40,-70},{
+          -20,-70},{-20,-30},{-7,-30}}, color={255,0,255}));
+  connect(dcp, idealCBSwitch2.p) annotation (Line(points={{-100,50},{-40,50},{
+          60,50},{60,40}}, color={0,0,255}));
+  connect(idealCBSwitch.p, idealCBSwitch2.p)
+    annotation (Line(points={{0,40},{0,50},{60,50},{60,40}}, color={0,0,255}));
+  connect(idealCBSwitch1.p, idealCBSwitch.n)
+    annotation (Line(points={{0,-20},{0,0},{0,20}}, color={0,0,255}));
+  connect(idealCBSwitch2.n, idealCBSwitch3.p)
+    annotation (Line(points={{60,20},{60,0},{60,-20}}, color={0,0,255}));
+  connect(dcn, idealCBSwitch1.n) annotation (Line(points={{-100,-50},{0,-50},{0,
+          -40},{-1.77636e-015,-40}}, color={0,0,255}));
+  connect(idealCBSwitch3.n, idealCBSwitch1.n) annotation (Line(points={{60,-40},
+          {60,-50},{0,-50},{0,-40},{-1.77636e-015,-40}}, color={0,0,255}));
+  connect(acn, idealCBSwitch3.p) annotation (Line(points={{100,-50},{80,-50},{
+          80,-10},{60,-10},{60,-20}}, color={0,0,255}));
+  connect(acp, idealCBSwitch.n) annotation (Line(points={{100,50},{80,50},{80,
+          10},{0,10},{0,20},{-1.77636e-015,20}}, color={0,0,255}));
+  annotation (Icon(graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={0,0,255},
@@ -91,8 +105,7 @@ equation
           lineColor={28,108,200},
           pattern=LinePattern.None,
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid)}),
-    Documentation(info="<html><p>This model further
+          fillPattern=FillPattern.Solid)}), Documentation(info="<html><p>This model further
     composes IdealTwoLevelBranch to form a typical H-bridge
     configuration from which a 1-phase inverter can be constructed.
     This model is based on discrete switch models.</p></html>"));

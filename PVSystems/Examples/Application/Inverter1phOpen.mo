@@ -71,9 +71,9 @@ equation
           -50},{-70,10},{-42,10}}, color={0,0,127}));
   connect(signalPWM.c1, deadTime.c)
     annotation (Line(points={{-19,10},{-10.5,10},{-2,10}}, color={255,0,255}));
-  connect(deadTime.c1, HBsw.fireA)
+  connect(deadTime.c1, HBsw.c1)
     annotation (Line(points={{21,14},{27,14},{27,40}}, color={255,0,255}));
-  connect(deadTime.c2, HBsw.fireB)
+  connect(deadTime.c2, HBsw.c2)
     annotation (Line(points={{21,6},{33,6},{33,40}}, color={255,0,255}));
   annotation (
     Diagram(graphics={Text(
