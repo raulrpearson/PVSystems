@@ -9,6 +9,9 @@ partial model SwitchNetworkInterface
         origin={0,-120},
         extent={{-20,-20},{20,20}},
         rotation=90)));
+protected
+  Real dsat(final unit="1") = smooth(0, if d > dmax then dmax else if d < dmin
+     then dmin else d) "Saturated duty cycle";
   annotation (Icon(graphics={
         Polygon(
           points={{60,20},{40,-20},{80,-20},{60,20}},
@@ -40,7 +43,4 @@ partial model SwitchNetworkInterface
         Line(points={{0,-60},{0,-100}}),
         Line(points={{0,0},{0,-40}}),
         Line(points={{-46,0},{0,0}})}));
-protected
-  Real dsat(final unit="1") = smooth(0, if d > dmax then dmax else if d < dmin
-     then dmin else d) "Saturated duty cycle";
 end SwitchNetworkInterface;

@@ -118,4 +118,8 @@ equation
     annotation (Line(points={{30,50},{40,50},{40,35}}, color={0,0,255}));
   connect(inductor.n, resistor.p)
     annotation (Line(points={{0,50},{5,50},{10,50}}, color={0,0,255}));
+  annotation (Diagram(graphics={Text(
+          extent={{-28,-44},{36,-48}},
+          lineColor={0,0,255},
+          textString="vm1_buck = vm2_boost")}));
 end CPMBidirectionalBuckBoost;

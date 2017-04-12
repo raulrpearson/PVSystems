@@ -40,13 +40,13 @@ equation
     annotation (Line(points={{-100,50},{10,50},{10,40}}, color={0,0,255}));
   connect(legA.n, dcn)
     annotation (Line(points={{10,20},{10,-50},{-100,-50}}, color={0,0,255}));
-  connect(legA.midPoint, acp) annotation (Line(points={{20,30},{60,30},{60,50},
-          {100,50}}, color={0,0,255}));
-  connect(legB.midPoint, acn) annotation (Line(points={{60,-30},{80,-30},{80,-50},
-          {100,-50}}, color={0,0,255}));
-  connect(fireA, legA.fire)
+  connect(legA.m, acp) annotation (Line(points={{16,30},{60,30},{60,50},{100,50}},
+        color={0,0,255}));
+  connect(legB.m, acn) annotation (Line(points={{56,-30},{80,-30},{80,-50},{100,
+          -50}}, color={0,0,255}));
+  connect(fireA, legA.c)
     annotation (Line(points={{-30,-100},{-30,30},{3,30}}, color={255,0,255}));
-  connect(fireB, legB.fire)
+  connect(fireB, legB.c)
     annotation (Line(points={{30,-100},{30,-30},{43,-30}}, color={255,0,255}));
   connect(legB.p, dcp)
     annotation (Line(points={{50,-20},{50,50},{-100,50}}, color={0,0,255}));
