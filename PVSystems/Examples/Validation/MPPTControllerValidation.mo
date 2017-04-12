@@ -2,93 +2,99 @@ within PVSystems.Examples.Validation;
 model MPPTControllerValidation "Model to validate MPPT controller"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
-        transformation(extent={{-2,-80},{18,-60}}, rotation=0)));
+        transformation(extent={{-30,-40},{-10,-20}}, rotation=0)));
   Electrical.PVArray pVArray annotation (Placement(transformation(
-        origin={-60,10},
+        origin={-40,-10},
         extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Sources.SignalVoltage sink annotation (Placement(
         transformation(
-        origin={8,10},
+        origin={0,-10},
         extent={{-10,-10},{10,10}},
         rotation=270)));
   Control.Assemblies.ControllerMPPT controller(
-    vrefStep=1,
     sampleTime=1,
-    pkThreshold=0.01) annotation (Placement(transformation(
-        origin={80,4},
+    pkThreshold=0.01,
+    vrefStep=1,
+    vrefStart=5) annotation (Placement(transformation(
+        origin={-30,74},
         extent={{-10,-10},{10,10}},
-        rotation=180)));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor CS annotation (Placement(
-        transformation(extent={{-50,30},{-30,10}}, rotation=0)));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor VS annotation (Placement(
-        transformation(
-        origin={30,-30},
-        extent={{-10,10},{10,-10}},
-        rotation=270)));
-  Modelica.Electrical.Analog.Sensors.PowerSensor PS annotation (Placement(
-        transformation(extent={{-24,10},{-4,30}}, rotation=0)));
+        rotation=0)));
   Modelica.Blocks.Sources.Ramp G(
     offset=1000,
     height=-500,
     startTime=30,
-    duration=10) annotation (Placement(transformation(extent={{-100,20},{-80,40}},
+    duration=10) annotation (Placement(transformation(extent={{-90,0},{-70,20}},
           rotation=0)));
   Modelica.Blocks.Sources.Ramp T(
     height=-25,
     offset=273.15 + 25,
-    duration=50,
-    startTime=50) annotation (Placement(transformation(extent={{-100,-18},{-80,
-            2}}, rotation=0)));
+    startTime=50,
+    duration=50) annotation (Placement(transformation(extent={{-80,-80},{-60,
+            -60}}, rotation=0)));
   Modelica.Blocks.Math.Add add annotation (Placement(transformation(
-        origin={46,10},
+        origin={30,54},
         extent={{-10,-10},{10,10}},
-        rotation=180)));
+        rotation=0)));
   Modelica.Blocks.Sources.Ramp Perturbation(
     height=10,
     offset=0,
     duration=20,
     startTime=130) annotation (Placement(transformation(
-        origin={80,36},
+        origin={-30,34},
         extent={{-10,-10},{10,10}},
-        rotation=180)));
+        rotation=0)));
+  Modelica.Blocks.Sources.RealExpression vsense(y=sink.v)
+    annotation (Placement(transformation(extent={{-80,70},{-60,90}})));
+  Modelica.Blocks.Sources.RealExpression isense(y=sink.i)
+    annotation (Placement(transformation(extent={{-80,44},{-60,64}})));
+  Modelica.Blocks.Sources.RealExpression isense1(y=26)
+    annotation (Placement(transformation(extent={{60,-60},{40,-40}})));
+  Modelica.Electrical.Analog.Basic.Ground ground1 annotation (Placement(
+        transformation(extent={{-30,-80},{-10,-60}}, rotation=0)));
+  Electrical.PVArray pVArray1 annotation (Placement(transformation(
+        origin={-40,-50},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+  Modelica.Electrical.Analog.Sources.SignalVoltage sink1 annotation (Placement(
+        transformation(
+        origin={0,-50},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
 equation
-  connect(ground.p, sink.n)
-    annotation (Line(points={{8,-60},{8,-30},{8,0},{8,0}}, color={0,0,255}));
-  connect(pVArray.n, sink.n)
-    annotation (Line(points={{-60,0},{8,0}}, color={0,0,255}));
-  connect(pVArray.p, CS.p)
-    annotation (Line(points={{-60,20},{-50,20}}, color={0,0,255}));
-  connect(CS.i, controller.u2) annotation (Line(points={{-40,30},{-40,60},{100,
-          60},{100,10},{92,10}}, color={0,0,127}));
-  connect(VS.p, sink.p)
-    annotation (Line(points={{30,-20},{30,20},{8,20}}, color={0,0,255}));
-  connect(VS.n, ground.p)
-    annotation (Line(points={{30,-40},{30,-60},{8,-60}}, color={0,0,255}));
-  connect(VS.v, controller.u1) annotation (Line(points={{40,-30},{100,-30},{100,
-          -2},{92,-2}}, color={0,0,127}));
-  connect(CS.n, PS.pc)
-    annotation (Line(points={{-30,20},{-24,20}}, color={0,0,255}));
-  connect(PS.nc, sink.p)
-    annotation (Line(points={{-4,20},{8,20}}, color={0,0,255}));
-  connect(PS.pv, sink.p)
-    annotation (Line(points={{-14,30},{8,30},{8,20}}, color={0,0,255}));
-  connect(PS.nv, sink.n)
-    annotation (Line(points={{-14,10},{-14,0},{8,0}}, color={0,0,255}));
-  connect(G.y, pVArray.G) annotation (Line(points={{-79,30},{-74,30},{-74,13},{
-          -65.5,13}}, color={0,0,127}));
-  connect(T.y, pVArray.T) annotation (Line(points={{-79,-8},{-74,-8},{-74,7},{-65.5,
-          7}}, color={0,0,127}));
-  connect(add.u1, controller.y) annotation (Line(points={{58,4},{60.75,4},{
-          60.75,4},{63.5,4},{63.5,4},{69,4}}, color={0,0,127}));
-  connect(add.y, sink.v) annotation (Line(points={{35,10},{30,10},{30,10},{25,
-          10},{25,10},{15,10}}, color={0,0,127}));
-  connect(Perturbation.y, add.u2) annotation (Line(points={{69,36},{64,36},{64,
-          16},{58,16}}, color={0,0,127}));
-  annotation (
-    Diagram(graphics),
-    experiment(StopTime=180),
-    Documentation(info="<html>
+  connect(G.y, pVArray.G) annotation (Line(points={{-69,10},{-60,10},{-60,-7},{
+          -45.5,-7}}, color={0,0,127}));
+  connect(add.y, sink.v) annotation (Line(points={{41,54},{60,54},{60,-10},{7,
+          -10}},color={0,0,127}));
+  connect(Perturbation.y, add.u2) annotation (Line(points={{-19,34},{0,34},{0,
+          48},{18,48}}, color={0,0,127}));
+  connect(pVArray.p, sink.p)
+    annotation (Line(points={{-40,0},{0,0}}, color={0,0,255}));
+  connect(vsense.y, controller.u1)
+    annotation (Line(points={{-59,80},{-59,80},{-42,80}}, color={0,0,127}));
+  connect(controller.y, add.u1) annotation (Line(points={{-19,74},{0,74},{0,60},
+          {18,60}}, color={0,0,127}));
+  connect(isense.y, controller.u2) annotation (Line(points={{-59,54},{-50,54},{
+          -50,68},{-42,68}}, color={0,0,127}));
+  connect(pVArray1.p, sink1.p) annotation (Line(points={{-40,-40},{-28,-40},{
+          -14,-40},{0,-40}}, color={0,0,255}));
+  connect(sink1.v, isense1.y)
+    annotation (Line(points={{7,-50},{39,-50}}, color={0,0,127}));
+  connect(T.y, pVArray1.T) annotation (Line(points={{-59,-70},{-52,-70},{-52,
+          -53},{-45.5,-53}}, color={0,0,127}));
+  connect(T.y, pVArray.T) annotation (Line(points={{-59,-70},{-52,-70},{-52,-13},
+          {-45.5,-13}}, color={0,0,127}));
+  connect(G.y, pVArray1.G) annotation (Line(points={{-69,10},{-60,10},{-60,-47},
+          {-45.5,-47}}, color={0,0,127}));
+  connect(pVArray.n, ground.p)
+    annotation (Line(points={{-40,-20},{-30,-20},{-20,-20}}, color={0,0,255}));
+  connect(sink.n, ground.p)
+    annotation (Line(points={{0,-20},{-10,-20},{-20,-20}}, color={0,0,255}));
+  connect(pVArray1.n, ground1.p)
+    annotation (Line(points={{-40,-60},{-20,-60}}, color={0,0,255}));
+  connect(ground1.p, sink1.n)
+    annotation (Line(points={{-20,-60},{-1.77636e-015,-60}}, color={0,0,255}));
+  annotation (experiment(StopTime=180), Documentation(info="<html>
       <p>
         This examples places the MPPT controller closing the loop for a
         voltage source connected to a PV array. The MPPT controller senses

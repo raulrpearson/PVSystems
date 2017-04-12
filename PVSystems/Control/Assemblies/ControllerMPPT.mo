@@ -5,44 +5,32 @@ block ControllerMPPT "Maximum Power Point Tracking Controller"
   parameter Modelica.SIunits.Voltage vrefStep=5 "Step of change for vref";
   parameter Modelica.SIunits.Power pkThreshold=1
     "Power threshold below which no change is considered";
+  parameter Modelica.SIunits.Voltage vrefStart=10
+    "Voltage reference initial value";
 protected
-  Modelica.SIunits.Voltage vk;
-  Modelica.SIunits.Current ik;
-  Modelica.SIunits.Power pk;
-  Modelica.SIunits.Voltage vref;
+  discrete Modelica.SIunits.Voltage vk;
+  discrete Modelica.SIunits.Current ik;
+  discrete Modelica.SIunits.Power pk;
+  discrete Modelica.SIunits.Voltage vref(start=vrefStart);
 equation
-  when sample(0, sampleTime) then
-    if initial() then
-      vk = pre(u1);
-      ik = pre(u2);
-      pk = vk*ik;
-      vref = 10;
+  when sample(sampleTime, sampleTime) then
+    vk = pre(u1);
+    ik = pre(u2);
+    pk = vk*ik;
+    if abs(pk - pre(pk)) < pkThreshold then
+      // power unchanged => don't change vref
+      vref = pre(vref);
+    elseif pk - pre(pk) > 0 then
+      // power increased => repeat last action
+      vref = pre(vref) + vrefStep*sign(vk - pre(vk));
     else
-      vk = pre(u1);
-      ik = pre(u2);
-      pk = vk*ik;
-      if abs(pk - pre(pk)) < pkThreshold then
-        // power unchanged => don't change vref
-        vref = pre(vref);
-      elseif pk - pre(pk) > 0 then
-        // power increased => repeat last action
-        vref = pre(vref) + vrefStep*sign(vk - pre(vk));
-      else
-        // power decreased => change last action
-        vref = pre(vref) - vrefStep*sign(vk - pre(vk));
-      end if;
+      // power decreased => change last action
+      vref = pre(vref) - vrefStep*sign(vk - pre(vk));
     end if;
   end when;
   y = vref;
   annotation (
     Diagram(graphics),
-    Icon(graphics={Text(
-          extent={{-70,70},{70,20}},
-          lineColor={0,0,255},
-          textString="MPPT"),Text(
-          extent={{-70,-20},{70,-70}},
-          lineColor={0,0,255},
-          textString="Controller")}),
     Documentation(info="<html>
         <p>
           Maximum power-point tracking controller. Given the DC voltage and
@@ -67,5 +55,22 @@ equation
             that no change in power has occurred.
           </li>
         </ul>
-      </html>"));
+      </html>"),
+    Icon(graphics={
+        Line(points={{-80,80},{-80,-80},{80,-80}}, color={0,0,0}),
+        Line(
+          points={{-80,-80},{40,80},{60,-80}},
+          color={0,0,255},
+          smooth=Smooth.Bezier),
+        Line(
+          points={{-80,40},{30,40},{30,-80}},
+          color={255,0,0},
+          pattern=LinePattern.Dash),
+        Text(
+          extent={{-60,80},{60,40}},
+          lineColor={0,0,255},
+          pattern=LinePattern.Dash,
+          fillColor={95,95,95},
+          fillPattern=FillPattern.Solid,
+          textString="MPPT")}));
 end ControllerMPPT;
