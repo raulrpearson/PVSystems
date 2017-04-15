@@ -6,18 +6,24 @@ block Inverter1phCurrentController
   parameter Modelica.SIunits.Time T(final min=Modelica.Constants.small) = 0.01
     "PI controllers time constant (T>0 required)";
   parameter Modelica.SIunits.Frequency fline=50 "AC line frequency";
+  parameter Real idMax=Modelica.Constants.inf "Maximum effort for id loop";
+  parameter Real iqMax=Modelica.Constants.inf "Maximum effort for iq loop";
   Park park annotation (Placement(transformation(extent={{-70,-14},{-50,6}},
           rotation=0)));
   Modelica.Blocks.Nonlinear.FixedDelay T4Delay(delayTime=1/4/fline) annotation
     (Placement(transformation(extent={{-108,-30},{-88,-10}}, rotation=0)));
-  Modelica.Blocks.Continuous.PI idPI(k=k, T=T) annotation (Placement(
-        transformation(extent={{-28,50},{-8,70}},rotation=0)));
-  Modelica.Blocks.Math.Feedback idFB annotation (Placement(transformation(
-          extent={{-54,50},{-34,70}}, rotation=0)));
-  Modelica.Blocks.Continuous.PI iqPI(k=k, T=T) annotation (Placement(
-        transformation(extent={{-28,-70},{-8,-50}},rotation=0)));
-  Modelica.Blocks.Math.Feedback iqFB annotation (Placement(transformation(
-          extent={{-54,-50},{-34,-70}}, rotation=0)));
+  Modelica.Blocks.Continuous.LimPID idPI(
+    k=k,
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    Ti=T,
+    yMax=idMax) annotation (Placement(transformation(extent={{-40,50},{-20,70}},
+          rotation=0)));
+  Modelica.Blocks.Continuous.LimPID iqPI(
+    k=k,
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    Ti=T,
+    yMax=iqMax) annotation (Placement(transformation(extent={{-40,-50},{-20,-70}},
+          rotation=0)));
   InversePark inversePark
     annotation (Placement(transformation(extent={{8,-14},{28,6}}, rotation=0)));
   Modelica.Blocks.Sources.Constant dOffset(k=0.5) annotation (Placement(
@@ -52,26 +58,14 @@ equation
   // Connections
   connect(park.beta, T4Delay.y) annotation (Line(points={{-72,-8},{-80,-8},{-80,
           -20},{-87,-20}}, color={0,0,127}));
-  connect(idFB.y, idPI.u)
-    annotation (Line(points={{-35,60},{-30,60}}, color={0,0,127}));
-  connect(park.d, idFB.u2)
-    annotation (Line(points={{-49,0},{-44,0},{-44,52}}, color={0,0,127}));
-  connect(iqFB.y, iqPI.u)
-    annotation (Line(points={{-35,-60},{-30,-60}}, color={0,0,127}));
-  connect(park.q, iqFB.u2)
-    annotation (Line(points={{-49,-8},{-44,-8},{-44,-52}}, color={0,0,127}));
-  connect(iqPI.y, inversePark.q) annotation (Line(points={{-7,-60},{0,-60},{0,-8},
-          {6,-8}}, color={0,0,127}));
+  connect(iqPI.y, inversePark.q) annotation (Line(points={{-19,-60},{0,-60},{0,
+          -8},{6,-8}}, color={0,0,127}));
   connect(idPI.y, inversePark.d)
-    annotation (Line(points={{-7,60},{0,60},{0,0},{6,0}}, color={0,0,127}));
+    annotation (Line(points={{-19,60},{0,60},{0,0},{6,0}},color={0,0,127}));
   connect(i, park.alpha)
     annotation (Line(points={{-140,0},{-140,0},{-72,0}}, color={0,0,127}));
   connect(i, T4Delay.u) annotation (Line(points={{-140,0},{-116,0},{-116,-20},{
           -110,-20}}, color={0,0,127}));
-  connect(ids, idFB.u1)
-    annotation (Line(points={{-140,60},{-52,60}}, color={0,0,127}));
-  connect(iqs, iqFB.u1)
-    annotation (Line(points={{-140,-60},{-52,-60}}, color={0,0,127}));
   connect(inversePark.theta, theta) annotation (Line(points={{18,-16},{18,-80},
           {-40,-80},{-40,-120}},color={0,0,127}));
   connect(inversePark.alpha, dScaling.u1)
@@ -86,6 +80,14 @@ equation
           -80},{-60,-16}}, color={0,0,127}));
   connect(dOffset.y, dCalc.u1)
     annotation (Line(points={{71,30},{80,30},{80,6},{86,6}}, color={0,0,127}));
+  connect(idPI.u_s, ids)
+    annotation (Line(points={{-42,60},{-140,60}}, color={0,0,127}));
+  connect(idPI.u_m, park.d)
+    annotation (Line(points={{-30,48},{-30,0},{-49,0}}, color={0,0,127}));
+  connect(park.q, iqPI.u_m)
+    annotation (Line(points={{-49,-8},{-30,-8},{-30,-48}}, color={0,0,127}));
+  connect(iqPI.u_s, iqs) annotation (Line(points={{-42,-60},{-86,-60},{-86,-60},
+          {-140,-60}}, color={0,0,127}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={

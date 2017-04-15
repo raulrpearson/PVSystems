@@ -12,17 +12,17 @@ model PVInverter1ph "Simple PV system including PV array, inverter and no grid"
         transformation(extent={{-80,30},{-60,50}}, rotation=0)));
   PVSystems.Electrical.Assemblies.HBridgeAveraged Inverter annotation (
       Placement(transformation(extent={{40,50},{60,70}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Inductor L(L=400e-6) annotation (Placement(
+  Modelica.Electrical.Analog.Basic.Inductor L(L=200e-6) annotation (Placement(
         transformation(
         origin={90,74},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Resistor R(R=1) annotation (Placement(
+  Modelica.Electrical.Analog.Basic.Resistor R(R=0.5) annotation (Placement(
         transformation(
         origin={90,48},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Capacitor C(C=5e-3, v(start=32.8))
+  Modelica.Electrical.Analog.Basic.Capacitor C(v(start=32.8), C=5e-1)
     annotation (Placement(transformation(
         origin={20,60},
         extent={{-10,-10},{10,10}},
@@ -35,10 +35,13 @@ model PVInverter1ph "Simple PV system including PV array, inverter and no grid"
         transformation(extent={{-40,-70},{-20,-50}},rotation=0)));
   Control.Assemblies.Inverter1phCompleteController controller(
     fline=50,
+    iqMax=10,
+    idMax=15,
+    vdcMax=40,
     ik=0.1,
     iT=0.01,
-    vk=1e-2,
-    vT=1e-3) annotation (Placement(transformation(
+    vk=10,
+    vT=0.5) annotation (Placement(transformation(
         origin={30,-30},
         extent={{-10,-10},{10,10}},
         rotation=0)));
@@ -88,8 +91,8 @@ equation
           -38},{18,-38}}, color={0,0,127}));
   connect(iacSense.y, controller.iac)
     annotation (Line(points={{-19,-34},{-0.5,-34},{18,-34}}, color={0,0,127}));
-  connect(acPower.y, mean.u) annotation (Line(points={{-79,-30},{-75.5,-30},{
-          -72,-30}}, color={0,0,127}));
+  connect(acPower.y, mean.u) annotation (Line(points={{-79,-30},{-75.5,-30},{-72,
+          -30}}, color={0,0,127}));
   connect(controller.d, Inverter.d)
     annotation (Line(points={{41,-30},{50,-30},{50,48}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(initialScale=0.1)));

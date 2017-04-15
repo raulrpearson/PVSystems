@@ -6,8 +6,11 @@ block Inverter1phCompleteController
   // Parameters
   parameter Real ik=0.1 "Current PI gain";
   parameter Modelica.SIunits.Time iT=0.01 "Current PI time constant";
+  parameter Real idMax=Modelica.Constants.inf "Maximum effort for id loop";
+  parameter Real iqMax=Modelica.Constants.inf "Maximum effort for iq loop";
   parameter Real vk=0.1 "Voltage PI gain";
   parameter Modelica.SIunits.Time vT=0.01 "Voltage PI time constant";
+  parameter Real vdcMax=Modelica.Constants.inf "Maximum effort for vdc loop";
   parameter Modelica.SIunits.Frequency fline=50 "Line frequency";
   // Interface
   Modelica.Blocks.Interfaces.RealInput iac "AC current sense" annotation (
@@ -25,18 +28,22 @@ block Inverter1phCompleteController
         transformation(extent={{-20,-30},{0,-10}}, rotation=0)));
   PVSystems.Control.Assemblies.MPPTController mppt(
     sampleTime=1,
-    vrefStep=1,
-    pkThreshold=0.01,
-    vrefStart=25) annotation (Placement(transformation(extent={{-80,36},{-60,56}},
+    vrefStep=0.5,
+    pkThreshold=0.5,
+    vrefStart=15) annotation (Placement(transformation(extent={{-80,36},{-60,56}},
           rotation=0)));
-  Modelica.Blocks.Continuous.PI vdcPI(k=vk, T=vT) annotation (Placement(
-        transformation(extent={{-20,36},{0,56}}, rotation=0)));
-  Modelica.Blocks.Math.Feedback vdcFB annotation (Placement(transformation(
-          extent={{-50,56},{-30,36}}, rotation=0)));
+  Modelica.Blocks.Continuous.LimPID vdcPI(
+    k=vk,
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    Ti=vT,
+    yMax=vdcMax) annotation (Placement(transformation(extent={{-20,56},{0,36}},
+          rotation=0)));
   Inverter1phCurrentController currentController(
     k=ik,
     T=iT,
-    fline=fline)
+    fline=fline,
+    idMax=idMax,
+    iqMax=iqMax)
     annotation (Placement(transformation(extent={{40,-10},{60,10}})));
   PLL pLL(frequency=fline)
     annotation (Placement(transformation(extent={{-80,-90},{-60,-70}})));
@@ -47,14 +54,8 @@ equation
     annotation (Line(points={{61,0},{110,0}}, color={0,0,127}));
   connect(idc, mppt.u2)
     annotation (Line(points={{-120,40},{-120,40},{-82,40}},color={0,0,127}));
-  connect(vdcFB.y, vdcPI.u)
-    annotation (Line(points={{-31,46},{-31,46},{-22,46}}, color={0,0,127}));
-  connect(mppt.y, vdcFB.u1)
-    annotation (Line(points={{-59,46},{-48,46}}, color={0,0,127}));
   connect(vdc, mppt.u1) annotation (Line(points={{-120,80},{-90,80},{-90,52},{-82,
           52}}, color={0,0,127}));
-  connect(vdc, vdcFB.u2) annotation (Line(points={{-120,80},{-120,80},{-40,80},
-          {-40,54}},color={0,0,127}));
   connect(vdcPI.y, currentController.ids)
     annotation (Line(points={{1,46},{20,46},{20,6},{38,6}}, color={0,0,127}));
   connect(iac, currentController.i) annotation (Line(points={{-120,-40},{-70,-40},
@@ -67,6 +68,10 @@ equation
     annotation (Line(points={{-59,-80},{46,-80},{46,-12}}, color={0,0,127}));
   connect(vdcClone.y, currentController.vdc) annotation (Line(points={{1,-90},{
           1,-90},{54,-90},{54,-12}}, color={0,0,127}));
+  connect(mppt.y, vdcPI.u_s)
+    annotation (Line(points={{-59,46},{-22,46}}, color={0,0,127}));
+  connect(vdc, vdcPI.u_m)
+    annotation (Line(points={{-120,80},{-10,80},{-10,58}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
         Rectangle(
