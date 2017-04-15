@@ -2,103 +2,71 @@ within PVSystems.Examples.Application;
 model Inverter1phClosedSynch
   "Grid synchronized 1-phase closed-loop inverter fed by constant DC source"
   extends Modelica.Icons.Example;
-  extends Modelica.Icons.UnderConstruction;
   Modelica.Electrical.Analog.Sources.ConstantVoltage DCsrc(V=580) annotation (
       Placement(transformation(
-        origin={-80,70},
+        origin={-18,70},
         extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=480)
     annotation (Placement(transformation(
-        origin={56,70},
-        extent={{-10,-10},{10,10}},
-        rotation=270)));
-  Control.PLL pll annotation (Placement(transformation(extent={{60,-4},{40,16}},
-          rotation=0)));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor VSac annotation (Placement(
-        transformation(
         origin={80,70},
-        extent={{-10,10},{10,-10}},
+        extent={{-10,-10},{10,10}},
         rotation=270)));
-  PVSystems.Electrical.Assemblies.HBridgeAveraged HB(d(start=0.5)) annotation (
-      Placement(transformation(extent={{-60,60},{-40,80}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Inductor L1(L=500e-6) annotation (Placement(
-        transformation(extent={{10,80},{30,100}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Resistor R1(R=0.1) annotation (Placement(
-        transformation(extent={{36,80},{56,100}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Inductor L2(L=500e-6) annotation (Placement(
-        transformation(
-        origin={20,50},
-        extent={{-10,-10},{10,10}},
-        rotation=180)));
-  Modelica.Electrical.Analog.Basic.Resistor R2(R=0.1) annotation (Placement(
-        transformation(
-        origin={46,50},
-        extent={{-10,-10},{10,10}},
-        rotation=180)));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor annotation (
-      Placement(transformation(extent={{0,40},{-20,60}}, rotation=0)));
+  Control.PLL pll annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
+        rotation=180,
+        origin={-40,-50})));
+  PVSystems.Electrical.Assemblies.HBridgeAveraged HB(d(start=0.5))
+    annotation (Placement(transformation(extent={{2,60},{22,80}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Inductor L(L=500e-6) annotation (Placement(
+        transformation(extent={{34,80},{54,100}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Resistor R(R=0.1) annotation (Placement(
+        transformation(extent={{60,80},{80,100}}, rotation=0)));
   Control.Assemblies.ControllerInverter1phCurrent control(d(start=0.5))
     annotation (Placement(transformation(
-        origin={-50,10},
+        origin={-10,10},
         extent={{-10,-10},{10,10}},
-        rotation=90)));
-  Modelica.Electrical.Analog.Sensors.VoltageSensor VSdc(v(start=DCsrc.V))
-    annotation (Placement(transformation(
-        origin={-108,70},
-        extent={{-10,-10},{10,10}},
-        rotation=270)));
-  Modelica.Blocks.Sources.Step iqSetpoint(height=14.14, startTime=0.2)
-    annotation (Placement(transformation(extent={{-100,-80},{-80,-60}},
-          rotation=0)));
-  Modelica.Blocks.Sources.Step idSetpoint(
-    offset=20,
-    startTime=0.2,
-    height=14.14 - 20) annotation (Placement(transformation(extent={{-100,-40},
-            {-80,-20}}, rotation=0)));
+        rotation=0)));
+  Modelica.Blocks.Sources.Constant idSetpoint(k=400)
+    annotation (Placement(transformation(extent={{-90,30},{-70,50}})));
+  Modelica.Blocks.Sources.Constant iqSetpoint(k=0)
+    annotation (Placement(transformation(extent={{-90,-30},{-70,-10}})));
+  Modelica.Electrical.Analog.Basic.Ground ground
+    annotation (Placement(transformation(extent={{-28,40},{-8,60}})));
+  Modelica.Blocks.Sources.RealExpression vacSense(y=Grid.v)
+    annotation (Placement(transformation(extent={{-90,-60},{-70,-40}})));
+  Modelica.Blocks.Sources.RealExpression iacSense(y=Grid.i)
+    annotation (Placement(transformation(extent={{-90,0},{-70,20}})));
+  Modelica.Blocks.Sources.RealExpression vdcSense(y=DCsrc.v)
+    annotation (Placement(transformation(extent={{-90,-90},{-70,-70}})));
 equation
-  connect(Grid.p, VSac.p)
-    annotation (Line(points={{56,80},{80,80}}, color={0,0,255}));
-  connect(Grid.n, VSac.n)
-    annotation (Line(points={{56,60},{80,60}}, color={0,0,255}));
-  connect(L1.n, R1.p)
-    annotation (Line(points={{30,90},{36,90}}, color={0,0,255}));
-  connect(R2.n, L2.p)
-    annotation (Line(points={{36,50},{30,50}}, color={0,0,255}));
-  connect(HB.p2, L1.p) annotation (Line(points={{-40,75},{-34,75},{-34,90},{10,
-          90}}, color={0,0,255}));
-  connect(R1.n, Grid.p)
-    annotation (Line(points={{56,90},{56,80}}, color={0,0,255}));
-  connect(Grid.n, R2.p)
-    annotation (Line(points={{56,60},{56,50}}, color={0,0,255}));
-  connect(DCsrc.p, HB.p1) annotation (Line(points={{-80,80},{-64,80},{-64,75},{
-          -60,75}}, color={0,0,255}));
-  connect(DCsrc.n, HB.n1) annotation (Line(points={{-80,60},{-64,60},{-64,65},{
-          -60,65}}, color={0,0,255}));
-  connect(currentSensor.p, L2.n)
-    annotation (Line(points={{0,50},{10,50}}, color={0,0,255}));
-  connect(HB.n2, currentSensor.n) annotation (Line(points={{-40,65},{-34,65},{-34,
-          50},{-20,50}}, color={0,0,255}));
-  connect(pll.v, VSac.v) annotation (Line(points={{62,6},{100,6},{100,70},{90,
-          70}}, color={0,0,127}));
-  connect(VSdc.p, DCsrc.p)
-    annotation (Line(points={{-108,80},{-80,80}}, color={0,0,255}));
-  connect(VSdc.n, DCsrc.n)
-    annotation (Line(points={{-108,60},{-80,60}}, color={0,0,255}));
+  connect(L.n, R.p)
+    annotation (Line(points={{54,90},{60,90}}, color={0,0,255}));
+  connect(HB.p2, L.p) annotation (Line(points={{22,75},{28,75},{28,90},{34,90}},
+        color={0,0,255}));
+  connect(R.n, Grid.p)
+    annotation (Line(points={{80,90},{80,80}}, color={0,0,255}));
+  connect(DCsrc.p, HB.p1) annotation (Line(points={{-18,80},{-2,80},{-2,75},{2,
+          75}}, color={0,0,255}));
+  connect(DCsrc.n, HB.n1) annotation (Line(points={{-18,60},{-2,60},{-2,65},{2,
+          65}}, color={0,0,255}));
+  connect(iqSetpoint.y, control.iqs) annotation (Line(points={{-69,-20},{-40,-20},
+          {-40,4},{-22,4}}, color={0,0,127}));
+  connect(idSetpoint.y, control.ids) annotation (Line(points={{-69,40},{-40,40},
+          {-40,16},{-22,16}}, color={0,0,127}));
+  connect(DCsrc.n, ground.p)
+    annotation (Line(points={{-18,60},{-18,60}}, color={0,0,255}));
+  connect(Grid.n, HB.n2) annotation (Line(points={{80,60},{80,50},{28,50},{28,
+          65},{22,65}}, color={0,0,255}));
   connect(control.d, HB.d)
-    annotation (Line(points={{-50,21},{-50,58}}, color={0,0,127}));
-  connect(VSdc.v, control.udc) annotation (Line(points={{-118,70},{-126,70},{-126,
-          30},{-30,30},{-30,14},{-38,14}}, color={0,0,127}));
-  connect(pll.theta, control.theta)
-    annotation (Line(points={{39,6},{0.5,6},{-38,6}}, color={0,0,127}));
-  connect(currentSensor.i, control.i) annotation (Line(points={{-10,40},{-10,-20},
-          {-50,-20},{-50,-2}}, color={0,0,127}));
-  connect(iqSetpoint.y, control.iqSetpoint)
-    annotation (Line(points={{-79,-70},{-44,-70},{-44,-2}}, color={0,0,127}));
-  connect(idSetpoint.y, control.idSetpoint)
-    annotation (Line(points={{-79,-30},{-56,-30},{-56,-2}}, color={0,0,127}));
-  annotation (Diagram(graphics), experiment(
-      StartTime=0,
-      StopTime=0.1,
-      Tolerance=1e-4));
+    annotation (Line(points={{1,10},{12,10},{12,58}}, color={0,0,127}));
+  connect(iacSense.y, control.i)
+    annotation (Line(points={{-69,10},{-22,10}}, color={0,0,127}));
+  connect(pll.theta, control.theta) annotation (Line(points={{-29,-50},{-29,-50},
+          {-14,-50},{-14,-2}}, color={0,0,127}));
+  connect(vacSense.y, pll.v)
+    annotation (Line(points={{-69,-50},{-52,-50},{-52,-50}}, color={0,0,127}));
+  connect(vdcSense.y, control.vdc)
+    annotation (Line(points={{-69,-80},{-6,-80},{-6,-2}}, color={0,0,127}));
+  annotation (experiment(StopTime=0.3));
 end Inverter1phClosedSynch;
