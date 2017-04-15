@@ -22,7 +22,7 @@ model Inverter1phClosedSynch
         transformation(extent={{34,80},{54,100}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Resistor R(R=0.1) annotation (Placement(
         transformation(extent={{60,80},{80,100}}, rotation=0)));
-  Control.Assemblies.ControllerInverter1phCurrent control(d(start=0.5))
+  Control.Assemblies.Inverter1phCurrentController control(d(start=0.5))
     annotation (Placement(transformation(
         origin={-10,10},
         extent={{-10,-10},{10,10}},

@@ -1,5 +1,5 @@
 within PVSystems.Control.Assemblies;
-block ControllerMPPT "Maximum Power Point Tracking Controller"
+block MPPTController "Maximum Power Point Tracking Controller"
   extends Modelica.Blocks.Interfaces.SI2SO;
   parameter Modelica.SIunits.Time sampleTime=1 "Sample time of control block";
   parameter Modelica.SIunits.Voltage vrefStep=5 "Step of change for vref";
@@ -73,4 +73,4 @@ equation
           fillColor={95,95,95},
           fillPattern=FillPattern.Solid,
           textString="MPPT")}));
-end ControllerMPPT;
+end MPPTController;

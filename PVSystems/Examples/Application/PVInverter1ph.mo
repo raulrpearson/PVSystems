@@ -33,7 +33,7 @@ model PVInverter1ph "Simple PV system including PV array, inverter and no grid"
         transformation(extent={{-20,20},{0,40}}, rotation=0)));
   Modelica.Blocks.Sources.Cosine sine(freqHz=50) annotation (Placement(
         transformation(extent={{-40,-70},{-20,-50}},rotation=0)));
-  Control.Assemblies.ControllerInverter1ph controller(
+  Control.Assemblies.Inverter1phCompleteController controller(
     fline=50,
     ik=0.1,
     iT=0.01,

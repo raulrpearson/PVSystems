@@ -12,7 +12,7 @@ model MPPTControllerValidation "Model to validate MPPT controller"
         origin={0,-10},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Control.Assemblies.ControllerMPPT controller(
+  Control.Assemblies.MPPTController controller(
     sampleTime=1,
     pkThreshold=0.01,
     vrefStep=1,

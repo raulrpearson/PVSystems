@@ -31,7 +31,7 @@ model Inverter1phClosed
   Modelica.Blocks.Sources.SawTooth sawTooth(amplitude=2*Modelica.Constants.pi,
       period=0.02) annotation (Placement(transformation(extent={{-40,-60},{-20,
             -40}},rotation=0)));
-  Control.Assemblies.ControllerInverter1phCurrent control annotation (Placement(
+  Control.Assemblies.Inverter1phCurrentController control annotation (Placement(
         transformation(
         origin={10,-10},
         extent={{-10,-10},{10,10}},

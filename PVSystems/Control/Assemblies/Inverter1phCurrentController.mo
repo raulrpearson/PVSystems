@@ -1,5 +1,5 @@
 within PVSystems.Control.Assemblies;
-block ControllerInverter1phCurrent
+block Inverter1phCurrentController
   "Simple synchronous reference frame PI current controller"
   extends Modelica.Blocks.Icons.Block;
   parameter Real k(final unit="1") = 0.1 "PI controllers gain";
@@ -182,4 +182,4 @@ equation
       </p>
       </html>"),
     Diagram(coordinateSystem(extent={{-120,-100},{120,100}}, initialScale=0.1)));
-end ControllerInverter1phCurrent;
+end Inverter1phCurrentController;

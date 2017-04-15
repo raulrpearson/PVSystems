@@ -33,8 +33,8 @@ model PVInverter1phSynch
         origin={24,70},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Control.Assemblies.ControllerInverter1ph Controller annotation (Placement(
-        transformation(
+  Control.Assemblies.Inverter1phCompleteController Controller annotation (
+      Placement(transformation(
         origin={30,-10},
         extent={{-10,-10},{10,10}},
         rotation=0)));
