@@ -32,17 +32,14 @@ equation
           -50}}, color={0,0,255}));
   annotation (
     Diagram(graphics),
-    Icon(graphics={
-        Text(
+    Icon(graphics={Text(
           extent={{-60,30},{60,-30}},
           lineColor={0,0,255},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString="1-ph"),
-        Line(points={{-70,50},{-10,50}}, color={0,0,255}),
-        Line(points={{-70,70},{-10,70}}, color={0,0,255}),
-        Line(points={{10,-70},{70,-70}},color={0,0,255}),
-        Line(
+          textString="1-ph"),Line(points={{-70,50},{-10,50}}, color={0,0,255}),
+          Line(points={{-70,70},{-10,70}}, color={0,0,255}),Line(points={{10,-70},
+          {70,-70}}, color={0,0,255}),Line(
           points={{10,-50},{24,-40},{40,-50},{56,-60},{70,-50}},
           color={0,0,255},
           smooth=Smooth.Bezier)}),

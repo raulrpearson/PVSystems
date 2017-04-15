@@ -53,8 +53,8 @@ equation
           80}}, color={0,0,255}));
   connect(HBav.n2, Rav.n) annotation (Line(points={{40,45},{46,45},{46,20},{70,
           20}}, color={0,0,255}));
-  connect(sawTooth.y, control.theta) annotation (Line(points={{-19,-50},{-19,
-          -50},{6,-50},{6,-22}}, color={0,0,127}));
+  connect(sawTooth.y, control.theta) annotation (Line(points={{-19,-50},{-19,-50},
+          {6,-50},{6,-22}}, color={0,0,127}));
   connect(control.d, HBav.d)
     annotation (Line(points={{21,-10},{30,-10},{30,38}}, color={0,0,127}));
   connect(iqSetpoint.y, control.ids) annotation (Line(points={{-49,10},{-10,10},

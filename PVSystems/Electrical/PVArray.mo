@@ -62,16 +62,14 @@ equation
     Icon(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},
-        grid={2,2}), graphics={
-        Line(points={{-90,0},{-60,0}}, color={0,0,0}),
-        Rectangle(
+        grid={2,2}), graphics={Line(points={{-90,0},{-60,0}}, color={0,0,0}),
+          Rectangle(
           extent={{-60,-40},{60,40}},
           lineColor={0,0,0},
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-        Line(points={{-60,-40},{-20,0}}, color={0,0,0}),
-        Line(points={{-20,0},{-60,40}}, color={0,0,0}),
-        Line(points={{60,0},{90,0}}, color={0,0,0})}),
+          fillPattern=FillPattern.Solid),Line(points={{-60,-40},{-20,0}}, color
+          ={0,0,0}),Line(points={{-20,0},{-60,40}}, color={0,0,0}),Line(points=
+          {{60,0},{90,0}}, color={0,0,0})}),
     Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},

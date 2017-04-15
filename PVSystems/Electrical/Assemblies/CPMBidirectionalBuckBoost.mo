@@ -123,16 +123,14 @@ equation
           extent={{-28,-44},{36,-48}},
           lineColor={0,0,255},
           textString="vm1_buck = vm2_boost")}),
-    Icon(graphics={
-        Text(
+    Icon(graphics={Text(
           extent={{-60,30},{60,-30}},
           lineColor={0,0,255},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString="1-ph"),
-        Line(points={{-70,50},{-10,50}}, color={0,0,255}),
-        Line(points={{-70,70},{-10,70}}, color={0,0,255}),
-        Line(points={{10,-70},{70,-70}},color={0,0,255}),
-        Line(points={{10,-50},{70,-50}},color={0,0,255})}),
+          textString="1-ph"),Line(points={{-70,50},{-10,50}}, color={0,0,255}),
+          Line(points={{-70,70},{-10,70}}, color={0,0,255}),Line(points={{10,-70},
+          {70,-70}}, color={0,0,255}),Line(points={{10,-50},{70,-50}}, color={0,
+          0,255})}),
     Documentation(info="<html><p>Bidirectional buck boost converter</p></html>"));
 end CPMBidirectionalBuckBoost;

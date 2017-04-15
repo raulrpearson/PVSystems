@@ -30,8 +30,8 @@ model MPPTControllerValidation "Model to validate MPPT controller"
     height=-25,
     offset=273.15 + 25,
     startTime=50,
-    duration=50) annotation (Placement(transformation(extent={{-80,-80},{-60,
-            -60}}, rotation=0)));
+    duration=50) annotation (Placement(transformation(extent={{-80,-80},{-60,-60}},
+          rotation=0)));
   Modelica.Blocks.Math.Add add annotation (Placement(transformation(
         origin={30,54},
         extent={{-10,-10},{10,10}},
@@ -64,8 +64,8 @@ model MPPTControllerValidation "Model to validate MPPT controller"
 equation
   connect(G.y, pVArray.G) annotation (Line(points={{-69,10},{-60,10},{-60,-7},{
           -45.5,-7}}, color={0,0,127}));
-  connect(add.y, sink.v) annotation (Line(points={{41,54},{60,54},{60,-10},{7,
-          -10}},color={0,0,127}));
+  connect(add.y, sink.v) annotation (Line(points={{41,54},{60,54},{60,-10},{7,-10}},
+        color={0,0,127}));
   connect(Perturbation.y, add.u2) annotation (Line(points={{-19,34},{0,34},{0,
           48},{18,48}}, color={0,0,127}));
   connect(pVArray.p, sink.p)
@@ -76,12 +76,12 @@ equation
           {18,60}}, color={0,0,127}));
   connect(isense.y, controller.u2) annotation (Line(points={{-59,54},{-50,54},{
           -50,68},{-42,68}}, color={0,0,127}));
-  connect(pVArray1.p, sink1.p) annotation (Line(points={{-40,-40},{-28,-40},{
-          -14,-40},{0,-40}}, color={0,0,255}));
+  connect(pVArray1.p, sink1.p) annotation (Line(points={{-40,-40},{-28,-40},{-14,
+          -40},{0,-40}}, color={0,0,255}));
   connect(sink1.v, isense1.y)
     annotation (Line(points={{7,-50},{39,-50}}, color={0,0,127}));
-  connect(T.y, pVArray1.T) annotation (Line(points={{-59,-70},{-52,-70},{-52,
-          -53},{-45.5,-53}}, color={0,0,127}));
+  connect(T.y, pVArray1.T) annotation (Line(points={{-59,-70},{-52,-70},{-52,-53},
+          {-45.5,-53}}, color={0,0,127}));
   connect(T.y, pVArray.T) annotation (Line(points={{-59,-70},{-52,-70},{-52,-13},
           {-45.5,-13}}, color={0,0,127}));
   connect(G.y, pVArray1.G) annotation (Line(points={{-69,10},{-60,10},{-60,-47},

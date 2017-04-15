@@ -173,5 +173,4 @@ equation
     Diagram(coordinateSystem(extent={{-140,-100},{140,100}}, initialScale=0.1)),
 
     Icon(coordinateSystem(initialScale=0.1)));
-
 end Inverter1phOpenSynch;

@@ -25,15 +25,13 @@ equation
           -100,0}}, color={0,0,255}));
   connect(c, idealClosingSwitch.control)
     annotation (Line(points={{0,-70},{0,-7}}, color={255,0,255}));
-  annotation (Icon(graphics={
-        Line(points={{-98,0},{-20,0}}, color={0,0,255}),
-        Line(points={{-20,-20},{20,0},{100,0}}, color={0,0,255}),
-        Line(points={{-40,0},{-40,40},{-20,40}}, color={0,0,255}),
-        Line(points={{-20,40},{10,60},{10,20},{-20,40}}, color={0,0,255}),
-        Line(points={{10,40},{40,40},{40,0}}, color={0,0,255}),
-        Line(points={{-20,60},{-20,20}}, color={0,0,255}),
-        Line(points={{0,-78},{0,-10}}, color={255,85,255})}), Documentation(
-        info="<html>
+  annotation (Icon(graphics={Line(points={{-98,0},{-20,0}}, color={0,0,255}),
+          Line(points={{-20,-20},{20,0},{100,0}}, color={0,0,255}),Line(points=
+          {{-40,0},{-40,40},{-20,40}}, color={0,0,255}),Line(points={{-20,40},{
+          10,60},{10,20},{-20,40}}, color={0,0,255}),Line(points={{10,40},{40,
+          40},{40,0}}, color={0,0,255}),Line(points={{-20,60},{-20,20}}, color=
+          {0,0,255}),Line(points={{0,-78},{0,-10}}, color={255,85,255})}),
+      Documentation(info="<html>
       <p>This model represents and idealized current bi-directional
       switch. This is the typical IGBT in anti-parallel with a diode from
       which many converters are built.</p>
