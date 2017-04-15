@@ -170,7 +170,11 @@ equation
           fillColor={0,0,127},
           fillPattern=FillPattern.Solid,
           origin={-22,-20},
-          rotation=270)}),
+          rotation=270),
+        Text(
+          extent={{-100,80},{100,70}},
+          lineColor={0,0,255},
+          textString="Idq control")}),
     Documentation(info="<html>
       <p>
         Partial current controller for monophasic inverter. Currently
