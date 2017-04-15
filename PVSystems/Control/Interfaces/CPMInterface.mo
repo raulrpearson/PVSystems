@@ -1,5 +1,5 @@
 within PVSystems.Control.Interfaces;
-model CPMInterface "Common interface for averaged CPM block"
+partial model CPMInterface "Common interface for averaged CPM block"
   extends Modelica.Blocks.Icons.Block;
   parameter Modelica.SIunits.Inductance L "Inductance";
   parameter Modelica.SIunits.Resistance Rf "Equivalent sensing resistance";
