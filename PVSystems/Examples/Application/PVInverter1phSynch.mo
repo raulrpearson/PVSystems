@@ -75,7 +75,7 @@ equation
           73}}, color={0,0,127}));
   connect(Tn.y, PV.T) annotation (Line(points={{-127,50},{-122,50},{-122,67},{-115.5,
           67}}, color={0,0,127}));
-  connect(C.p, Inverter.dcp) annotation (Line(points={{-26,80},{-16,80},{-16,75},
+  connect(C.p, Inverter.p1) annotation (Line(points={{-26,80},{-16,80},{-16,75},
           {-10,75}}, color={0,0,255}));
   connect(Controller.d, Inverter.d) annotation (Line(points={{-6.73533e-016,39},
           {-6.73533e-016,58},{0,58}}, color={0,0,127}));
@@ -101,7 +101,7 @@ equation
     annotation (Line(points={{90,20},{90,0}}, color={0,0,255}));
   connect(L.n, R.p)
     annotation (Line(points={{90,56},{90,40}}, color={0,0,255}));
-  connect(Inverter.acp, CSac.p) annotation (Line(points={{10,75},{26,75},{26,90},
+  connect(Inverter.p2, CSac.p) annotation (Line(points={{10,75},{26,75},{26,90},
           {30,90}}, color={0,0,255}));
   connect(CSac.i, Controller.iac)
     annotation (Line(points={{40,80},{40,6},{8,6},{8,17}}, color={0,0,127}));
@@ -119,7 +119,7 @@ equation
     annotation (Line(points={{70,80},{70,-20},{60,-20}}, color={0,0,255}));
   connect(L1.n, R1.p) annotation (Line(points={{26,32},{26,28},{26,28},{26,24},
           {26,16},{26,16}}, color={0,0,255}));
-  connect(Inverter.acn, L1.p)
+  connect(Inverter.n2, L1.p)
     annotation (Line(points={{10,65},{26,65},{26,52}}, color={0,0,255}));
   connect(R1.n, VSac.n)
     annotation (Line(points={{26,-4},{26,-20},{60,-20}}, color={0,0,255}));
@@ -129,7 +129,7 @@ equation
     annotation (Line(points={{-110,80},{-102,80}}, color={0,0,255}));
   connect(PSdc.nc, resistor.p)
     annotation (Line(points={{-82,80},{-76,80}}, color={0,0,255}));
-  connect(C.n, Inverter.dcn) annotation (Line(points={{-26,60},{-16,60},{-16,65},
+  connect(C.n, Inverter.n1) annotation (Line(points={{-26,60},{-16,60},{-16,65},
           {-10,65}}, color={0,0,255}));
   connect(ground.p, VSdc.n)
     annotation (Line(points={{-52,-28},{-52,-20}}, color={0,0,255}));

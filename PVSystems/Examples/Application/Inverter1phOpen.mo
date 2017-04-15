@@ -45,36 +45,36 @@ model Inverter1phOpen
 equation
   connect(dcsrc.n, ground.p)
     annotation (Line(points={{-80,40},{-80,34}}, color={0,0,255}));
-  connect(HBsw.dcn, dcsrc.n) annotation (Line(points={{20,45},{-46,45},{-46,40},
+  connect(HBsw.n1, dcsrc.n) annotation (Line(points={{20,45},{-46,45},{-46,40},
           {-80,40}},color={0,0,255}));
-  connect(HBsw.dcp, dcsrc.p) annotation (Line(points={{20,55},{-46,55},{-46,60},
+  connect(HBsw.p1, dcsrc.p) annotation (Line(points={{20,55},{-46,55},{-46,60},
           {-80,60}},color={0,0,255}));
-  connect(HBsw.acp, indsw.p) annotation (Line(points={{40,55},{56,55},{56,80},{
+  connect(HBsw.p2, indsw.p) annotation (Line(points={{40,55},{56,55},{56,80},{
           90,80}}, color={0,0,255}));
-  connect(HBsw.acn, ressw.n) annotation (Line(points={{40,45},{56,45},{56,20},{
+  connect(HBsw.n2, ressw.n) annotation (Line(points={{40,45},{56,45},{56,20},{
           90,20}}, color={0,0,255}));
   connect(ressw.p, indsw.n) annotation (Line(points={{90,40},{90,46},{90,50},{
           90,60}}, color={0,0,255}));
   connect(resav.p, indav.n) annotation (Line(points={{90,-40},{90,-36},{90,-30},
           {90,-20}}, color={0,0,255}));
-  connect(HBav.acp, indav.p) annotation (Line(points={{40,-25},{56,-25},{56,0},
-          {90,0}},color={0,0,255}));
-  connect(resav.n, HBav.acn) annotation (Line(points={{90,-60},{56,-60},{56,-35},
+  connect(HBav.p2, indav.p) annotation (Line(points={{40,-25},{56,-25},{56,0},{
+          90,0}}, color={0,0,255}));
+  connect(resav.n, HBav.n2) annotation (Line(points={{90,-60},{56,-60},{56,-35},
           {40,-35}}, color={0,0,255}));
   connect(HBav.d, duty.y)
     annotation (Line(points={{30,-42},{30,-50},{-79,-50}}, color={0,0,127}));
-  connect(HBav.dcp, dcsrc.p) annotation (Line(points={{20,-25},{-52,-25},{-52,
-          60},{-80,60}}, color={0,0,255}));
-  connect(HBav.dcn, dcsrc.n) annotation (Line(points={{20,-35},{-60,-35},{-60,
-          40},{-80,40}}, color={0,0,255}));
+  connect(HBav.p1, dcsrc.p) annotation (Line(points={{20,-25},{-52,-25},{-52,60},
+          {-80,60}}, color={0,0,255}));
+  connect(HBav.n1, dcsrc.n) annotation (Line(points={{20,-35},{-60,-35},{-60,40},
+          {-80,40}}, color={0,0,255}));
   connect(duty.y, signalPWM.vc) annotation (Line(points={{-79,-50},{-74,-50},{-70,
           -50},{-70,10},{-42,10}}, color={0,0,127}));
   connect(signalPWM.c1, deadTime.c)
     annotation (Line(points={{-19,10},{-10.5,10},{-2,10}}, color={255,0,255}));
   connect(deadTime.c1, HBsw.c1)
-    annotation (Line(points={{21,14},{27,14},{27,40}}, color={255,0,255}));
+    annotation (Line(points={{21,14},{26,14},{26,40}}, color={255,0,255}));
   connect(deadTime.c2, HBsw.c2)
-    annotation (Line(points={{21,6},{33,6},{33,40}}, color={255,0,255}));
+    annotation (Line(points={{21,6},{34,6},{34,40}}, color={255,0,255}));
   annotation (
     Diagram(graphics={Text(
           extent={{10,74},{48,62}},

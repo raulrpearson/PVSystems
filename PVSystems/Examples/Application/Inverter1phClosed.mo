@@ -55,16 +55,16 @@ equation
           {-20,54}}, color={0,0,255}));
   connect(resav.p, indav.n)
     annotation (Line(points={{90,60},{90,80}}, color={0,0,255}));
-  connect(HBav.dcp, dcsrc.p) annotation (Line(points={{20,75},{0,75},{0,80},{-20,
+  connect(HBav.p1, dcsrc.p) annotation (Line(points={{20,75},{0,75},{0,80},{-20,
           80}}, color={0,0,255}));
-  connect(HBav.dcn, dcsrc.n) annotation (Line(points={{20,65},{0,65},{0,60},{-20,
+  connect(HBav.n1, dcsrc.n) annotation (Line(points={{20,65},{0,65},{0,60},{-20,
           60}}, color={0,0,255}));
   connect(CSac.p, resav.n)
     annotation (Line(points={{70,40},{90,40}}, color={0,0,255}));
-  connect(HBav.acn, CSac.n) annotation (Line(points={{40,65},{46,65},{46,40},{
-          50,40}}, color={0,0,255}));
-  connect(HBav.acp, indav.p) annotation (Line(points={{40,75},{46,75},{46,100},
-          {90,100}}, color={0,0,255}));
+  connect(HBav.n2, CSac.n) annotation (Line(points={{40,65},{46,65},{46,40},{50,
+          40}}, color={0,0,255}));
+  connect(HBav.p2, indav.p) annotation (Line(points={{40,75},{46,75},{46,100},{
+          90,100}}, color={0,0,255}));
   connect(cos.u, sawTooth.y) annotation (Line(points={{-52,-90},{-60,-90},{-60,
           6},{-71,6}}, color={0,0,127}));
   connect(cos.y, gain.u)

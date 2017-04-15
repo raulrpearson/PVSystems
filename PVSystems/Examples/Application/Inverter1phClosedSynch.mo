@@ -65,20 +65,20 @@ equation
     annotation (Line(points={{30,90},{36,90}}, color={0,0,255}));
   connect(R2.n, L2.p)
     annotation (Line(points={{36,50},{30,50}}, color={0,0,255}));
-  connect(HB.acp, L1.p) annotation (Line(points={{-40,75},{-34,75},{-34,90},{10,
+  connect(HB.p2, L1.p) annotation (Line(points={{-40,75},{-34,75},{-34,90},{10,
           90}}, color={0,0,255}));
   connect(R1.n, Grid.p)
     annotation (Line(points={{56,90},{56,80}}, color={0,0,255}));
   connect(Grid.n, R2.p)
     annotation (Line(points={{56,60},{56,50}}, color={0,0,255}));
-  connect(DCsrc.p, HB.dcp) annotation (Line(points={{-80,80},{-64,80},{-64,75},
-          {-60,75}}, color={0,0,255}));
-  connect(DCsrc.n, HB.dcn) annotation (Line(points={{-80,60},{-64,60},{-64,65},
-          {-60,65}}, color={0,0,255}));
+  connect(DCsrc.p, HB.p1) annotation (Line(points={{-80,80},{-64,80},{-64,75},{
+          -60,75}}, color={0,0,255}));
+  connect(DCsrc.n, HB.n1) annotation (Line(points={{-80,60},{-64,60},{-64,65},{
+          -60,65}}, color={0,0,255}));
   connect(currentSensor.p, L2.n)
     annotation (Line(points={{0,50},{10,50}}, color={0,0,255}));
-  connect(HB.acn, currentSensor.n) annotation (Line(points={{-40,65},{-34,65},{
-          -34,50},{-20,50}}, color={0,0,255}));
+  connect(HB.n2, currentSensor.n) annotation (Line(points={{-40,65},{-34,65},{-34,
+          50},{-20,50}}, color={0,0,255}));
   connect(pll.v, VSac.v) annotation (Line(points={{62,6},{100,6},{100,70},{90,
           70}}, color={0,0,127}));
   connect(VSdc.p, DCsrc.p)

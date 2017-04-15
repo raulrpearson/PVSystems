@@ -67,8 +67,8 @@ equation
           73}}, color={0,0,127}));
   connect(Tn.y, PV.T) annotation (Line(points={{-127,50},{-122,50},{-122,67},{-115.5,
           67}}, color={0,0,127}));
-  connect(C.p, Inverter.dcp) annotation (Line(points={{-20,80},{-6,80},{-6,75},
-          {0,75}}, color={0,0,255}));
+  connect(C.p, Inverter.p1) annotation (Line(points={{-20,80},{-6,80},{-6,75},{
+          0,75}}, color={0,0,255}));
   connect(PV.n, VSdc.n) annotation (Line(points={{-110,60},{-110,-80},{-52,-80}},
         color={0,0,255}));
   connect(VSdc.n, C.n)
@@ -93,18 +93,18 @@ equation
     annotation (Line(points={{-110,80},{-102,80}}, color={0,0,255}));
   connect(PSdc.nc, resistor.p)
     annotation (Line(points={{-82,80},{-76,80}}, color={0,0,255}));
-  connect(C.n, Inverter.dcn) annotation (Line(points={{-20,60},{-6,60},{-6,65},
-          {0,65}}, color={0,0,255}));
+  connect(C.n, Inverter.n1) annotation (Line(points={{-20,60},{-6,60},{-6,65},{
+          0,65}}, color={0,0,255}));
   connect(ground.p, VSdc.n)
     annotation (Line(points={{-52,-88},{-52,-80}}, color={0,0,255}));
-  connect(Inverter.acn, R.n) annotation (Line(points={{20,65},{50,65},{50,20},{
+  connect(Inverter.n2, R.n) annotation (Line(points={{20,65},{50,65},{50,20},{
           90,20}}, color={0,0,255}));
   connect(PSac.nv, R.n)
     annotation (Line(points={{70,80},{70,20},{90,20}}, color={0,0,255}));
   connect(currentSensor.n, PSac.pc)
     annotation (Line(points={{50,90},{60,90}}, color={0,0,255}));
-  connect(Inverter.acp, currentSensor.p) annotation (Line(points={{20,75},{26,
-          75},{26,90},{30,90}}, color={0,0,255}));
+  connect(Inverter.p2, currentSensor.p) annotation (Line(points={{20,75},{26,75},
+          {26,90},{30,90}}, color={0,0,255}));
   connect(limiter.y, Inverter.d)
     annotation (Line(points={{10,41},{10,58}}, color={0,0,127}));
   connect(const.y, add.u2)
