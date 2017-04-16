@@ -76,11 +76,6 @@ model CPMBidirectionalBuckBoost
     annotation (Placement(transformation(extent={{0,60},{20,80}})));
   Modelica.Blocks.Sources.RealExpression zero(y=0)
     annotation (Placement(transformation(extent={{0,-32},{20,-12}})));
-  Modelica.Blocks.Nonlinear.SlewRateLimiter slewRateLimiter(Rising=1000)
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-40,-70})));
   BidirectionalBuckBoost conv(
     Cin=Cin,
     Cout=Cout,
@@ -94,10 +89,6 @@ model CPMBidirectionalBuckBoost
     dmax=1,
     dmin=1e-3) annotation (Placement(transformation(extent={{66,80},{86,100}})));
 equation
-  connect(vc, slewRateLimiter.u)
-    annotation (Line(points={{-40,-120},{-40,-82}}, color={0,0,127}));
-  connect(slewRateLimiter.y, buck_cpm.vc) annotation (Line(points={{-40,-59},{
-          -40,-59},{-40,52},{-2,52}}, color={0,0,127}));
   connect(buck_cpm.d, buckSelector.u3)
     annotation (Line(points={{21,42},{21,42},{44,42}}, color={0,0,127}));
   connect(zero.y, boostSelector.u3) annotation (Line(points={{21,-22},{26,-22},
@@ -108,18 +99,12 @@ equation
     annotation (Line(points={{66,95},{-100,95},{-100,50}}, color={0,0,255}));
   connect(conv.p2, p2)
     annotation (Line(points={{86,95},{100,95},{100,50}}, color={0,0,255}));
-  connect(conv.n2, n2) annotation (Line(points={{86,85},{92,85},{92,-50},{100,
+  connect(conv.n2, n2) annotation (Line(points={{86,85},{92,85},{92,-50},{100,-50}},
+        color={0,0,255}));
+  connect(conv.n1, n1) annotation (Line(points={{66,85},{-92,85},{-92,-50},{-100,
           -50}}, color={0,0,255}));
-  connect(conv.n1, n1) annotation (Line(points={{66,85},{-92,85},{-92,-50},{
-          -100,-50}}, color={0,0,255}));
   connect(vm2_buck.y, buck_cpm.vm2)
     annotation (Line(points={{-59,32},{-59,32},{-2,32}}, color={0,0,127}));
-  connect(slewRateLimiter.y, boost_cpm.vc)
-    annotation (Line(points={{-40,-59},{-40,14},{-2,14}}, color={0,0,127}));
-  connect(buckSelector.y, conv.dbuck)
-    annotation (Line(points={{67,50},{72,50},{72,78}}, color={0,0,127}));
-  connect(boostSelector.y, conv.dboost)
-    annotation (Line(points={{67,-4},{80,-4},{80,78}}, color={0,0,127}));
   connect(mode, buckSelector.u2) annotation (Line(points={{40,-120},{40,-120},{
           40,50},{44,50}}, color={255,0,255}));
   connect(mode, boostSelector.u2) annotation (Line(points={{40,-120},{40,-120},
@@ -128,14 +113,22 @@ equation
           58},{44,58}}, color={0,0,127}));
   connect(vsense.y, boost_cpm.vs) annotation (Line(points={{-42.2,70},{-30,70},
           {-30,8},{-2,8}}, color={0,0,127}));
-  connect(vm1_buck.y, boost_cpm.vm2) annotation (Line(points={{-59,-20},{-20,
-          -20},{-20,-6},{-2,-6}}, color={0,0,127}));
+  connect(vm1_buck.y, boost_cpm.vm2) annotation (Line(points={{-59,-20},{-20,-20},
+          {-20,-6},{-2,-6}}, color={0,0,127}));
   connect(vm1_boost.y, boost_cpm.vm1)
     annotation (Line(points={{-59,0},{-59,0},{-2,0}}, color={0,0,127}));
   connect(vm1_buck.y, buck_cpm.vm1) annotation (Line(points={{-59,-20},{-20,-20},
           {-20,38},{-2,38}}, color={0,0,127}));
   connect(vsense.y, buck_cpm.vs) annotation (Line(points={{-42.2,70},{-30,70},{
           -30,46},{-2,46}}, color={0,0,127}));
+  connect(buckSelector.y, conv.dbuck)
+    annotation (Line(points={{67,50},{72,50},{72,78}}, color={0,0,127}));
+  connect(boostSelector.y, conv.dboost)
+    annotation (Line(points={{67,-4},{80,-4},{80,78}}, color={0,0,127}));
+  connect(vc, buck_cpm.vc)
+    annotation (Line(points={{-40,-120},{-40,52},{-2,52}}, color={0,0,127}));
+  connect(vc, boost_cpm.vc)
+    annotation (Line(points={{-40,-120},{-40,14},{-2,14}}, color={0,0,127}));
   annotation (
     Diagram(graphics={Text(
           extent={{-22,2},{22,-2}},
