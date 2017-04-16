@@ -1,7 +1,6 @@
 within PVSystems.Examples.Application;
 model PVInverter1ph "Simple PV system including PV array, inverter and no grid"
   extends Modelica.Icons.Example;
-  extends Modelica.Icons.UnderConstruction;
   Electrical.PVArray PV(v(start=450)) annotation (Placement(transformation(
         origin={-40,60},
         extent={{-10,-10},{10,10}},
@@ -66,11 +65,11 @@ equation
   connect(Tn.y, PV.T) annotation (Line(points={{-59,40},{-54,40},{-54,57},{-45.5,
           57}}, color={0,0,127}));
   connect(C.p, Inverter.p1) annotation (Line(points={{20,70},{34,70},{34,65},{
-          40,65}},color={0,0,255}));
+          40,65}}, color={0,0,255}));
   connect(L.n, R.p)
     annotation (Line(points={{90,64},{90,58}}, color={0,0,255}));
   connect(C.n, Inverter.n1) annotation (Line(points={{20,50},{34,50},{34,55},{
-          40,55}},color={0,0,255}));
+          40,55}}, color={0,0,255}));
   connect(PV.p, Rdc.p) annotation (Line(points={{-40,70},{-40,70},{-40,80},{-20,
           80}}, color={0,0,255}));
   connect(C.n, ground.p) annotation (Line(points={{20,50},{20,48},{20,40},{-10,
@@ -95,5 +94,6 @@ equation
           -30}}, color={0,0,127}));
   connect(controller.d, Inverter.d)
     annotation (Line(points={{41,-30},{50,-30},{50,48}}, color={0,0,127}));
-  annotation (Diagram(coordinateSystem(initialScale=0.1)));
+  annotation (Diagram(coordinateSystem(initialScale=0.1)), experiment(StopTime=
+          55, Interval=0.001));
 end PVInverter1ph;

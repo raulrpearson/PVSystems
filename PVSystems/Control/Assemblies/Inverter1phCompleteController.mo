@@ -2,7 +2,6 @@ within PVSystems.Control.Assemblies;
 block Inverter1phCompleteController
   "Complete synchronous reference frame inverter controller"
   extends Modelica.Blocks.Icons.Block;
-  extends Modelica.Icons.UnderConstruction;
   // Parameters
   parameter Real ik=0.1 "Current PI gain";
   parameter Modelica.SIunits.Time iT=0.01 "Current PI time constant";
@@ -25,7 +24,7 @@ block Inverter1phCompleteController
         transformation(extent={{100,-10},{120,10}}, rotation=0)));
   // Components
   Modelica.Blocks.Sources.Constant iqs(k=0) annotation (Placement(
-        transformation(extent={{-20,-30},{0,-10}}, rotation=0)));
+        transformation(extent={{-40,-30},{-20,-10}}, rotation=0)));
   PVSystems.Control.Assemblies.MPPTController mppt(
     sampleTime=1,
     vrefStep=0.5,
@@ -36,7 +35,7 @@ block Inverter1phCompleteController
     k=vk,
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     Ti=vT,
-    yMax=vdcMax) annotation (Placement(transformation(extent={{-20,56},{0,36}},
+    yMax=vdcMax) annotation (Placement(transformation(extent={{-40,56},{-20,36}},
           rotation=0)));
   Inverter1phCurrentController currentController(
     k=ik,
@@ -44,34 +43,38 @@ block Inverter1phCompleteController
     fline=fline,
     idMax=idMax,
     iqMax=iqMax)
-    annotation (Placement(transformation(extent={{40,-10},{60,10}})));
+    annotation (Placement(transformation(extent={{60,-10},{80,10}})));
   PLL pLL(frequency=fline)
     annotation (Placement(transformation(extent={{-80,-90},{-60,-70}})));
   Modelica.Blocks.Sources.RealExpression vdcClone(y=vdc)
-    annotation (Placement(transformation(extent={{-20,-100},{0,-80}})));
+    annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
+  Modelica.Blocks.Math.Gain invertIds(k=-1)
+    annotation (Placement(transformation(extent={{0,36},{20,56}})));
 equation
   connect(currentController.d, d)
-    annotation (Line(points={{61,0},{110,0}}, color={0,0,127}));
+    annotation (Line(points={{81,0},{110,0}}, color={0,0,127}));
   connect(idc, mppt.u2)
     annotation (Line(points={{-120,40},{-120,40},{-82,40}},color={0,0,127}));
   connect(vdc, mppt.u1) annotation (Line(points={{-120,80},{-90,80},{-90,52},{-82,
           52}}, color={0,0,127}));
-  connect(vdcPI.y, currentController.ids)
-    annotation (Line(points={{1,46},{20,46},{20,6},{38,6}}, color={0,0,127}));
   connect(iac, currentController.i) annotation (Line(points={{-120,-40},{-70,-40},
-          {-70,0},{38,0}}, color={0,0,127}));
-  connect(iqs.y, currentController.iqs) annotation (Line(points={{1,-20},{20,-20},
-          {20,-6},{38,-6}}, color={0,0,127}));
+          {-70,0},{58,0}}, color={0,0,127}));
+  connect(iqs.y, currentController.iqs) annotation (Line(points={{-19,-20},{40,
+          -20},{40,-6},{58,-6}}, color={0,0,127}));
   connect(vac, pLL.v) annotation (Line(points={{-120,-80},{-120,-80},{-82,-80}},
         color={0,0,127}));
   connect(pLL.theta, currentController.theta)
-    annotation (Line(points={{-59,-80},{46,-80},{46,-12}}, color={0,0,127}));
-  connect(vdcClone.y, currentController.vdc) annotation (Line(points={{1,-90},{
-          1,-90},{54,-90},{54,-12}}, color={0,0,127}));
+    annotation (Line(points={{-59,-80},{66,-80},{66,-12}}, color={0,0,127}));
+  connect(vdcClone.y, currentController.vdc) annotation (Line(points={{-19,-90},
+          {-19,-90},{74,-90},{74,-12}}, color={0,0,127}));
   connect(mppt.y, vdcPI.u_s)
-    annotation (Line(points={{-59,46},{-22,46}}, color={0,0,127}));
+    annotation (Line(points={{-59,46},{-42,46}}, color={0,0,127}));
   connect(vdc, vdcPI.u_m)
-    annotation (Line(points={{-120,80},{-10,80},{-10,58}}, color={0,0,127}));
+    annotation (Line(points={{-120,80},{-30,80},{-30,58}}, color={0,0,127}));
+  connect(vdcPI.y, invertIds.u)
+    annotation (Line(points={{-19,46},{-10,46},{-2,46}}, color={0,0,127}));
+  connect(invertIds.y, currentController.ids)
+    annotation (Line(points={{21,46},{40,46},{40,6},{58,6}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}), graphics={
         Rectangle(
