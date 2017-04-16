@@ -1,64 +1,103 @@
 within PVSystems.Examples.Application;
 model USBBatteryConverter "Bidirectional converter for USB battery interface"
   extends Modelica.Icons.Example;
-  extends Modelica.Icons.UnderConstruction;
-  Electrical.Assemblies.CPMBidirectionalBuckBoost converter(
+  Electrical.Assemblies.CPMBidirectionalBuckBoost conv(
     Cin=10e-6,
     Cout=88e-6,
     L=10e-6,
     Rf=1,
     fs=200e3,
-    Va_buck=0.65,
-    Va_boost=1.3,
+    RL=8e-3,
+    Va_buck=0.3,
+    Va_boost=0.9,
     vCin_ini=12.6,
     vCout_ini=5,
-    iL_ini=2,
-    RL=8e-3) annotation (Placement(transformation(extent={{20,40},{40,60}})));
-  Modelica.Electrical.Analog.Sources.ConstantVoltage Vbatt(V=12.6) annotation (
-      Placement(transformation(
+    iL_ini=2) annotation (Placement(transformation(extent={{4,40},{24,60}})));
+  Modelica.Blocks.Sources.RealExpression boostVs(y=20)
+    annotation (Placement(transformation(extent={{-70,-30},{-50,-10}})));
+  Modelica.Blocks.Sources.RealExpression buckVs(y=5)
+    annotation (Placement(transformation(extent={{-70,-70},{-50,-50}})));
+  Modelica.Electrical.Analog.Basic.Ground ground
+    annotation (Placement(transformation(extent={{40,20},{60,40}})));
+  Modelica.Electrical.Analog.Basic.Resistor Rbatt(R=50e-3)
+    annotation (Placement(transformation(extent={{-40,50},{-20,70}})));
+  Modelica.Blocks.Continuous.LimPID buckPI(
+    k=10,
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    Ti=1,
+    yMin=0,
+    yMax=10)
+    annotation (Placement(transformation(extent={{-30,-50},{-10,-70}})));
+  Modelica.Blocks.Sources.RealExpression voutSense(y=conv.v2)
+    annotation (Placement(transformation(extent={{-70,-50},{-50,-30}})));
+  Modelica.Blocks.Continuous.LimPID boostPI(
+    k=10,
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    Ti=1,
+    yMin=0,
+    yMax=10)
+    annotation (Placement(transformation(extent={{-30,-30},{-10,-10}})));
+  Modelica.Blocks.Logical.Switch modeSelector annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-80,50})));
-  Modelica.Electrical.Analog.Basic.Resistor Rload(R=2.5) annotation (Placement(
+        rotation=90,
+        origin={10,10})));
+  Modelica.Blocks.Sources.BooleanExpression modeCommand(y=time > 10)
+    annotation (Placement(transformation(extent={{70,-30},{44,-10}})));
+  Modelica.Electrical.Analog.Basic.VariableResistor Rload annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={80,50})));
-  Modelica.Blocks.Sources.RealExpression vc_boost(y=0)
-    annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
-  Modelica.Blocks.Sources.RealExpression vc_buck(y=5)
-    annotation (Placement(transformation(extent={{-80,0},{-60,20}})));
-  Modelica.Electrical.Analog.Basic.Ground ground
-    annotation (Placement(transformation(extent={{70,0},{90,20}})));
-  Modelica.Electrical.Analog.Basic.Resistor Rbatt(R=50e-3)
-    annotation (Placement(transformation(extent={{-60,50},{-40,70}})));
-  Modelica.Blocks.Continuous.PI PI(k=10, T=1)
-    annotation (Placement(transformation(extent={{-20,0},{0,20}})));
-  Modelica.Blocks.Math.Feedback feedback
-    annotation (Placement(transformation(extent={{-50,0},{-30,20}})));
-  Modelica.Blocks.Sources.RealExpression vout_sense(y=converter.v2)
-    annotation (Placement(transformation(extent={{-90,-30},{-60,-10}})));
+        origin={50,50})));
+  Modelica.Electrical.Analog.Sources.SignalVoltage Vbatt annotation (Placement(
+        transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=270,
+        origin={-50,50})));
+  Modelica.Blocks.Sources.Ramp VbattSignal(
+    height=-3,
+    duration=0.1,
+    offset=12.6,
+    startTime=10)
+    annotation (Placement(transformation(extent={{-90,40},{-70,60}})));
+  Modelica.Blocks.Sources.Ramp RloadSignal(
+    duration=0.1,
+    startTime=10,
+    height=6.67 - 2.5,
+    offset=2.5) annotation (Placement(transformation(extent={{90,40},{70,60}})));
 equation
-  connect(Vbatt.n, converter.n1) annotation (Line(points={{-80,40},{0,40},{0,45},
-          {20,45}}, color={0,0,255}));
-  connect(converter.p2, Rload.p) annotation (Line(points={{40,55},{60,55},{60,
-          60},{80,60}}, color={0,0,255}));
-  connect(converter.n2, Rload.n) annotation (Line(points={{40,45},{60,45},{60,
-          40},{80,40}}, color={0,0,255}));
-  connect(ground.p, Rload.n)
-    annotation (Line(points={{80,20},{80,20},{80,40}}, color={0,0,255}));
+  connect(Rbatt.n, conv.p1) annotation (Line(points={{-20,60},{-6,60},{-6,55},{
+          4,55}}, color={0,0,255}));
+  connect(buckVs.y, buckPI.u_s)
+    annotation (Line(points={{-49,-60},{-32,-60}}, color={0,0,127}));
+  connect(voutSense.y, buckPI.u_m)
+    annotation (Line(points={{-49,-40},{-20,-40},{-20,-48}}, color={0,0,127}));
+  connect(boostVs.y, boostPI.u_s)
+    annotation (Line(points={{-49,-20},{-32,-20}}, color={0,0,127}));
+  connect(conv.n2, ground.p) annotation (Line(points={{24,45},{34,45},{34,40},{
+          50,40}}, color={0,0,255}));
+  connect(modeCommand.y, modeSelector.u2)
+    annotation (Line(points={{42.7,-20},{10,-20},{10,-2}}, color={255,0,255}));
+  connect(modeCommand.y, conv.mode) annotation (Line(points={{42.7,-20},{34,-20},
+          {34,30},{18,30},{18,38}}, color={255,0,255}));
+  connect(voutSense.y, boostPI.u_m) annotation (Line(points={{-49,-40},{-34,-40},
+          {-20,-40},{-20,-32}},color={0,0,127}));
+  connect(modeSelector.y, conv.vc)
+    annotation (Line(points={{10,21},{10,21},{10,38}}, color={0,0,127}));
+  connect(boostPI.y, modeSelector.u1)
+    annotation (Line(points={{-9,-20},{2,-20},{2,-2}}, color={0,0,127}));
+  connect(buckPI.y, modeSelector.u3)
+    annotation (Line(points={{-9,-60},{18,-60},{18,-2}}, color={0,0,127}));
   connect(Vbatt.p, Rbatt.p)
-    annotation (Line(points={{-80,60},{-70,60},{-60,60}}, color={0,0,255}));
-  connect(Rbatt.n, converter.p1) annotation (Line(points={{-40,60},{0,60},{0,55},
-          {20,55}}, color={0,0,255}));
-  connect(feedback.y, PI.u)
-    annotation (Line(points={{-31,10},{-22,10}}, color={0,0,127}));
-  connect(PI.y, converter.vc_buck)
-    annotation (Line(points={{1,10},{25,10},{25,38}}, color={0,0,127}));
-  connect(vc_buck.y, feedback.u1)
-    annotation (Line(points={{-59,10},{-48,10}}, color={0,0,127}));
-  connect(vc_boost.y, converter.vc_boost)
-    annotation (Line(points={{-59,-50},{35,-50},{35,38}}, color={0,0,127}));
-  connect(vout_sense.y, feedback.u2)
-    annotation (Line(points={{-58.5,-20},{-40,-20},{-40,2}}, color={0,0,127}));
+    annotation (Line(points={{-50,60},{-46,60},{-40,60}}, color={0,0,255}));
+  connect(Vbatt.n, conv.n1) annotation (Line(points={{-50,40},{-50,40},{-6,40},
+          {-6,45},{4,45}}, color={0,0,255}));
+  connect(ground.p, Rload.n)
+    annotation (Line(points={{50,40},{50,40}}, color={0,0,255}));
+  connect(Rload.p, conv.p2) annotation (Line(points={{50,60},{34,60},{34,55},{
+          24,55}}, color={0,0,255}));
+  connect(VbattSignal.y, Vbatt.v)
+    annotation (Line(points={{-69,50},{-57,50}}, color={0,0,127}));
+  connect(RloadSignal.y, Rload.R)
+    annotation (Line(points={{69,50},{61,50}}, color={0,0,127}));
 end USBBatteryConverter;
