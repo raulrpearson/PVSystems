@@ -1,8 +1,21 @@
 within PVSystems.Control;
 model CPM_CCM "Current Peak Mode modulator for averaged CCM models"
   extends Interfaces.CPMInterface;
+  parameter Real d_disabled(final unit="1") "Value of duty cycle when disabled";
+  Modelica.Blocks.Interfaces.BooleanInput enable
+    "Voltage accross inductor in DTs" annotation (Placement(transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,-120}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,-120})));
 equation
-  d = 2*(vc - vs)/(Rf/L/fs*(vm1 + vm2)*(1 - d) + 2*Va);
+  if enable then
+    d = 2*(vc - vs)/(Rf/L/fs*(vm1 + vm2)*(1 - d) + 2*Va);
+  else
+    d = d_disabled;
+  end if;
   annotation (Icon(graphics={
         Line(points={{-80,20},{-50,-20},{-30,60},{30,-20},{50,60},{80,20}},
             color={255,0,0}),

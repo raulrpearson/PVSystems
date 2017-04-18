@@ -53,15 +53,16 @@ model USBBatteryConverter "Bidirectional converter for USB battery interface"
   Modelica.Blocks.Sources.Ramp VbattSignal(
     duration=0.1,
     startTime=10,
-    height=0,
-    offset=12.6)
+    offset=12.6,
+    height=9.6 - 12.6)
     annotation (Placement(transformation(extent={{-90,60},{-70,80}})));
   Modelica.Blocks.Sources.Ramp RloadSignal(
     duration=0.1,
     startTime=10,
-    height=0,
-    offset=2.5) annotation (Placement(transformation(extent={{90,60},{70,80}})));
-  Modelica.Blocks.Sources.BooleanExpression modeCommand(y=false)
+    offset=2.5,
+    height=6.67 - 2.5)
+    annotation (Placement(transformation(extent={{90,60},{70,80}})));
+  Modelica.Blocks.Sources.BooleanExpression modeCommand(y=time > 10)
     annotation (Placement(transformation(extent={{-82,-80},{-50,-60}})));
 equation
   connect(Rbatt.n, conv.p1) annotation (Line(points={{-20,80},{-6,80},{-6,75},{
