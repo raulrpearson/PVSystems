@@ -15,13 +15,17 @@ block SwitchingCPM "Current Peak Mode modulator for switching models"
   parameter Modelica.SIunits.Voltage Va(final min=0)
     "Amplitude of artificial ramp";
   parameter Modelica.SIunits.Voltage vcMax "Maximum control voltage";
-  Modelica.Blocks.Interfaces.RealInput vc annotation (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput vc "Control voltage"
+    annotation (Placement(transformation(
           extent={{-140,20},{-100,60}}, rotation=0)));
-  Modelica.Blocks.Interfaces.RealInput vs annotation (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput vs "Sensed voltage"
+    annotation (Placement(transformation(
           extent={{-140,-60},{-100,-20}}, rotation=0)));
-  Modelica.Blocks.Interfaces.BooleanOutput c annotation (Placement(
+  Modelica.Blocks.Interfaces.BooleanOutput c "Boolean firing signal"
+    annotation (Placement(
         transformation(extent={{100,30},{120,50}}, rotation=0)));
-  Modelica.Blocks.Interfaces.RealOutput ramp annotation (Placement(
+  Modelica.Blocks.Interfaces.RealOutput ramp "Artificial ramp signal"
+    annotation (Placement(
         transformation(extent={{100,-50},{120,-30}}, rotation=0)));
   Modelica.Blocks.Logical.GreaterEqual greaterEqual
     annotation (Placement(transformation(extent={{-10,38},{10,58}})));
@@ -96,5 +100,18 @@ equation
           color={0,0,255},
           pattern=LinePattern.Dash),
         Line(points={{-80,-80},{-50,-80},{-50,-40},{-30,-40},{-30,-80},{30,-80},
-              {30,-40},{50,-40},{50,-80},{80,-80}}, color={255,0,255})}));
+              {30,-40},{50,-40},{50,-80},{80,-80}}, color={255,0,255})}),
+    Documentation(info="<html>
+        <p>
+          Current-programmed mode (CPM), i.e. Peak Current Mode modulator
+          switching model. Generates PWM signal based on sensed current
+          signal <i>vs</i> and control current signal <i>vc</i>. Also
+          outputs the artificial ramp signal.
+        </p>
+      
+        <p>
+          Model taken
+          from <a href=\"modelica://PVSystems.UsersGuide.References.EM01\">EM01</a>
+          and <a href=\"modelica://PVSystems.UsersGuide.References.EMA16\">EMA16</a>.</p>
+      </html>"));
 end SwitchingCPM;

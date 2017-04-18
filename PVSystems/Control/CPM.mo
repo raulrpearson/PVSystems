@@ -33,5 +33,25 @@ equation
               30,-40},{50,-40},{50,-80},{80,-80}},
           color={255,0,255},
           pattern=LinePattern.Dot),
-        Line(points={{-80,-70},{80,-70}}, color={0,0,0})}));
+        Line(points={{-80,-70},{80,-70}}, color={0,0,0})}),
+    Documentation(info="<html>
+        <p>
+          Current-Programmed-Mode controller model. Computes duty ratio
+          based on averaged inductor current, voltages applied to the
+          inductor, and amplitude of the artificial ramp. The CPM controller
+          model is valid <b>for CCM and DCM operation</b> of the power
+          converter. All parameters and inputs are referred to the primary
+          side.
+        </p>
+      
+        <p>
+          <i>Limitation</i>: does not include sampling effects or preditions
+          of period-doubling instability.
+        </p>
+      
+        <p>
+          Model taken
+          from <a href=\"modelica://PVSystems.UsersGuide.References.EM01\">EM01</a>
+          and <a href=\"modelica://PVSystems.UsersGuide.References.EMA16\">EMA16</a>.</p>
+      </html>"));
 end CPM;

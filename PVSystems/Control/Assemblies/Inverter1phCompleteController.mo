@@ -163,9 +163,16 @@ equation
           extent={{-100,80},{100,70}},
           lineColor={0,0,255},
           textString="PV control")}), Documentation(info="<html>
-      <p>
-        Complete controller for monophasic inverter. Currently under
-        construction.
-      </p>
-      </html>"));
+              <p>
+                An
+                additional <a href=\"modelica://Modelica.Blocks.Continuous.LimPID\">LimPID</a>
+                block is used to closed the DC voltage loop around the <i>d</i>
+                component of the AC current,
+                using <a href=\"modelica://PVSystems.Control.Assemblies.Inverter1phCurrentController\">Inverter1phCurrentController</a>.
+              </p>
+            
+              <p>
+                Currently, this block doesn't provide control of the <i>q</i>
+                component, which is set to 0.</p>
+            </html>"));
 end Inverter1phCompleteController;

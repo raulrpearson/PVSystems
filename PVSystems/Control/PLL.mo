@@ -7,8 +7,8 @@ block PLL "Phase-locked loop"
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T=1e-3, k=100) annotation (
       Placement(transformation(extent={{-4,-10},{16,10}},rotation=0)));
   Modelica.Blocks.Nonlinear.FixedDelay QuarterTDelay(delayTime=1/frequency/4)
-    annotation (Placement(transformation(extent={{-80,-30},{-60,-10}}, rotation
-          =0)));
+    annotation (Placement(transformation(extent={{-80,-30},{-60,-10}}, rotation=
+           0)));
   Modelica.Blocks.Interfaces.RealInput v annotation (Placement(transformation(
           extent={{-140,-20},{-100,20}}, rotation=0)));
   Modelica.Blocks.Interfaces.RealOutput theta annotation (Placement(

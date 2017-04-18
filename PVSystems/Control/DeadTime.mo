@@ -41,7 +41,6 @@ equation
           lineColor={0,0,255}),
         Line(points={{-70,70},{-20,70},{-20,10},{70,10}}, color={255,0,255}),
         Line(points={{-70,-70},{20,-70},{20,-10},{70,-10}}, color={255,0,255}),
-
         Line(
           points={{20,80},{20,-80}},
           color={0,0,255},
@@ -49,5 +48,10 @@ equation
         Line(
           points={{-20,80},{-20,-80}},
           color={0,0,255},
-          pattern=LinePattern.Dash)}));
+          pattern=LinePattern.Dash)}),
+    Documentation(info="<html>
+        <p>
+          Given an input boolean firing signal, output that signal and it's
+          complement with <i>deadTime</i> seconds of dead time.</p>
+      </html>"));
 end DeadTime;

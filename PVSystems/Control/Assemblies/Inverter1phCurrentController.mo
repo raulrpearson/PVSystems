@@ -10,8 +10,8 @@ block Inverter1phCurrentController
   parameter Real iqMax=Modelica.Constants.inf "Maximum effort for iq loop";
   Park park annotation (Placement(transformation(extent={{-70,-14},{-50,6}},
           rotation=0)));
-  Modelica.Blocks.Nonlinear.FixedDelay T4Delay(delayTime=1/4/fline) annotation
-    (Placement(transformation(extent={{-108,-30},{-88,-10}}, rotation=0)));
+  Modelica.Blocks.Nonlinear.FixedDelay T4Delay(delayTime=1/4/fline) annotation (
+     Placement(transformation(extent={{-108,-30},{-88,-10}}, rotation=0)));
   Modelica.Blocks.Continuous.LimPID idPI(
     k=k,
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
@@ -32,8 +32,8 @@ block Inverter1phCurrentController
         transformation(extent={{-160,-20},{-120,20}}, rotation=0),
         iconTransformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.RealInput ids "Current d component setpoint"
-    annotation (Placement(transformation(extent={{-160,40},{-120,80}}, rotation
-          =0), iconTransformation(extent={{-140,40},{-100,80}})));
+    annotation (Placement(transformation(extent={{-160,40},{-120,80}}, rotation=
+           0), iconTransformation(extent={{-140,40},{-100,80}})));
   Modelica.Blocks.Interfaces.RealInput iqs "Current q component setpoint"
     annotation (Placement(transformation(extent={{-160,-80},{-120,-40}},
           rotation=0), iconTransformation(extent={{-140,-80},{-100,-40}})));
@@ -178,10 +178,19 @@ equation
           lineColor={0,0,255},
           textString="Idq control")}),
     Documentation(info="<html>
-      <p>
-        Partial current controller for monophasic inverter. Currently
-        under construction.
-      </p>
+        <p>
+          Synchronous reference frame current controller for a 1-phase
+          inverter. It takes the measured and the dq setpoints and
+          calculates the duty cycle, which can be then used as the input to
+          the <a href=\"modelica://PVSystems.Control.SignalPWM\">SignalPWM</a>
+          block in switching models or directly as the input of the switch
+          or converter in averaged models.
+        </p>
+      
+        <p>
+          The control is performed with
+          two <a href=\"modelica://Modelica.Blocks.Continuous.LimPID\">LimPID</a>
+          blocks (one per component) configured as a PI controller.</p>
       </html>"),
     Diagram(coordinateSystem(extent={{-120,-100},{120,100}}, initialScale=0.1)));
 end Inverter1phCurrentController;
