@@ -50,15 +50,12 @@ model PVInverter1ph "Simple PV system including PV array, inverter and no grid"
     annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
   Modelica.Blocks.Sources.RealExpression vdcSense(y=PV.v)
     annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
-  Modelica.Blocks.Sources.RealExpression realExpression(y=0.4*sin(100*Modelica.Constants.pi
-        *time) + 0.5)
-    annotation (Placement(transformation(extent={{-80,-100},{40,-80}})));
   Modelica.Blocks.Sources.RealExpression dcPower(y=-PV.i*PV.v)
-    annotation (Placement(transformation(extent={{-100,-20},{-80,0}})));
+    annotation (Placement(transformation(extent={{40,-72},{60,-52}})));
   Modelica.Blocks.Sources.RealExpression acPower(y=R.i*R.v)
-    annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
+    annotation (Placement(transformation(extent={{40,-92},{60,-72}})));
   Modelica.Blocks.Math.Mean mean(f=50)
-    annotation (Placement(transformation(extent={{-70,-40},{-50,-20}})));
+    annotation (Placement(transformation(extent={{70,-92},{90,-72}})));
 equation
   connect(Gn.y, PV.G) annotation (Line(points={{-59,80},{-54,80},{-54,63},{-45.5,
           63}}, color={0,0,127}));
@@ -90,8 +87,8 @@ equation
           -38},{18,-38}}, color={0,0,127}));
   connect(iacSense.y, controller.iac)
     annotation (Line(points={{-19,-34},{-0.5,-34},{18,-34}}, color={0,0,127}));
-  connect(acPower.y, mean.u) annotation (Line(points={{-79,-30},{-75.5,-30},{-72,
-          -30}}, color={0,0,127}));
+  connect(acPower.y, mean.u) annotation (Line(points={{61,-82},{64.5,-82},{68,
+          -82}}, color={0,0,127}));
   connect(controller.d, Inverter.d)
     annotation (Line(points={{41,-30},{50,-30},{50,48}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(initialScale=0.1)), experiment(StopTime=

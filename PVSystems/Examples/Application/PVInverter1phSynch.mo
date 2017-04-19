@@ -57,11 +57,11 @@ model PVInverter1phSynch
   Modelica.Blocks.Sources.RealExpression vacSense(y=Grid.v)
     annotation (Placement(transformation(extent={{-40,-64},{-20,-44}})));
   Modelica.Blocks.Sources.RealExpression dcPower(y=-PV.i*PV.v)
-    annotation (Placement(transformation(extent={{-100,-20},{-80,0}})));
+    annotation (Placement(transformation(extent={{40,-72},{60,-52}})));
   Modelica.Blocks.Sources.RealExpression acPower(y=Grid.v*Grid.i)
-    annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
+    annotation (Placement(transformation(extent={{40,-92},{60,-72}})));
   Modelica.Blocks.Math.Mean mean(f=50)
-    annotation (Placement(transformation(extent={{-70,-40},{-50,-20}})));
+    annotation (Placement(transformation(extent={{70,-92},{90,-72}})));
 equation
   connect(Gn.y, PV.G) annotation (Line(points={{-59,80},{-52,80},{-52,73},{-45.5,
           73}}, color={0,0,127}));
@@ -97,7 +97,7 @@ equation
           {-10,-14},{18,-14}}, color={0,0,127}));
   connect(vacSense.y, Controller.vac) annotation (Line(points={{-19,-54},{0,-54},
           {0,-18},{18,-18}}, color={0,0,127}));
-  connect(acPower.y, mean.u) annotation (Line(points={{-79,-30},{-75.5,-30},{-72,
-          -30}}, color={0,0,127}));
+  connect(acPower.y, mean.u) annotation (Line(points={{61,-82},{64.5,-82},{68,
+          -82}}, color={0,0,127}));
   annotation (Icon(graphics), experiment(StopTime=55, Interval=0.001));
 end PVInverter1phSynch;

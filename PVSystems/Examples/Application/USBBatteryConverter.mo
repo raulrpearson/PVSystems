@@ -1,6 +1,7 @@
 within PVSystems.Examples.Application;
 model USBBatteryConverter "Bidirectional converter for USB battery interface"
   extends Modelica.Icons.Example;
+  extends Modelica.Icons.UnderConstruction;
   Electrical.Assemblies.CPMBidirectionalBuckBoost conv(
     Cin=10e-6,
     Cout=88e-6,
@@ -99,4 +100,5 @@ equation
           {10,-70},{10,18}}, color={255,0,255}));
   connect(modeCommand.y, conv.mode) annotation (Line(points={{-48.4,-70},{30,
           -70},{30,50},{18,50},{18,58}}, color={255,0,255}));
+  annotation (experiment(StopTime=5, Interval=0.001));
 end USBBatteryConverter;
