@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Modelica.Electrical.Analog.Basic.Resistor</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;Ideal linear electrical resistor&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Resistor<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Electrical.Analo9312c33dbe431f97istorI.png" alt="Modelica.Electrical.Analog.Basic.Resistor" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Electrical.Analog.Basic.Resistor"></a>Modelica.Electrical.Analog.Basic.Resistor</h2>
+<p>
+<span class="ModelicaDescription">Ideal linear electrical resistor</span>
+<br>
+<br><img src="Modelica.Electrical.Analo9312c33dbe431f97istorD.png" alt="Modelica.Electrical.Analog.Basic.Resistor">
+</p>
+<h3>Information</h3>
+
+<p>The linear resistor connects the branch voltage <i>v</i> with the branch current <i>i</i> by <i>i*R = v</i>. The Resistance <i>R</i> is allowed to be positive, zero, or negative.</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Modelica.Electrical.Analog.Interfaces.OnePort</a> (Component with two electrical pins p and n and current i from p to n), Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort (Partial model to include a conditional HeatPort in order to describe the power loss via a thermal network).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Resistance</a></td><td>R</td><td>&nbsp;</td><td>Resistance at temperature T_ref [Ohm]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Temperature"
+>Temperature</a></td><td>T_ref</td><td>300.15</td><td>Reference temperature [K]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.LinearTemperatureCoefficient"
+>LinearTemperatureCoefficient</a></td><td>alpha</td><td>0</td><td>Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref)) [1/K]</td></tr>
+<tr><td>Boolean</td><td>useHeatPort</td><td>false</td><td>=true, if heatPort is enabled</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Temperature"
+>Temperature</a></td><td>T</td><td>T_ref</td><td>Fixed device temperature if useHeatPort = false [K]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>PositivePin</a></td><td>p</td><td>Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>NegativePin</a></td><td>n</td><td>Negative pin</td></tr>
+<tr><td>HeatPort_a</td><td>heatPort</td><td>Conditional heat port</td></tr>
+</table>
+<h3>Revisions</h3>
+
+<ul>
+<li><i> August 07, 2009   </i>
+       by Anton Haumer<br> temperature dependency of resistance added<br>
+       </li>
+<li><i> March 11, 2009   </i>
+       by Christoph Clauss<br> conditional heat port added<br>
+       </li>
+<li><i> 1998   </i>
+       by Christoph Clauss<br> initially implemented<br>
+       </li>
+</ul>
+
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> Resistor <span class="ModelicaComment">&quot;Ideal linear electrical resistor&quot;</span>
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>SI.Resistance</a> R(start=1)
+    <span class="ModelicaComment">&quot;Resistance at temperature T_ref&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Temperature"
+>SI.Temperature</a> T_ref=300.15 <span class="ModelicaComment">&quot;Reference temperature&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.LinearTemperatureCoefficient"
+>SI.LinearTemperatureCoefficient</a> alpha=0
+    <span class="ModelicaComment">&quot;Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))&quot;</span>;
+
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Modelica.Electrical.Analog.Interfaces.OnePort</a>;
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort"
+>Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort</a>(T=T_ref);
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>SI.Resistance</a> R_actual
+    <span class="ModelicaComment">&quot;Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))&quot;</span>;
+
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">assert</span>((1 + alpha*(T_heatPort - T_ref)) &gt;= Modelica.Constants.eps,
+    &quot;Temperature outside scope of model!&quot;);
+  R_actual = R*(1 + alpha*(T_heatPort - T_ref));
+  v = R_actual*i;
+  LossPower = v*i;
+<span class="ModelicaKeyword">end </span>Resistor;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Inductor<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Electrical.Analoce85c3da518b1f4ductorI.png" alt="Modelica.Electrical.Analog.Basic.Inductor" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Electrical.Analog.Basic.Inductor"></a>Modelica.Electrical.Analog.Basic.Inductor</h2>
+<p>
+<span class="ModelicaDescription">Ideal linear electrical inductor</span>
+<br>
+<br><img src="Modelica.Electrical.Analoce85c3da518b1f4ductorD.png" alt="Modelica.Electrical.Analog.Basic.Inductor">
+</p>
+<h3>Information</h3>
+
+<p>The linear inductor connects the branch voltage <i>v</i> with the branch current <i>i</i> by <i>v = L * di/dt</i>. The Inductance <i>L</i> is allowed to be positive, or zero.</p>
+
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Interfaces.OnePort</a> (Component with two electrical pins p and n and current i from p to n).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Inductance"
+>Inductance</a></td><td>L</td><td>&nbsp;</td><td>Inductance [H]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>PositivePin</a></td><td>p</td><td>Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>NegativePin</a></td><td>n</td><td>Negative pin</td></tr>
+</table>
+<h3>Revisions</h3>
+
+<ul>
+<li><i> 1998   </i>
+       by Christoph Clauss<br> initially implemented<br>
+       </li>
+</ul>
+
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> Inductor <span class="ModelicaComment">&quot;Ideal linear electrical inductor&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Interfaces.OnePort</a>(i(start=0));
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Inductance"
+>SI.Inductance</a> L(start=1) <span class="ModelicaComment">&quot;Inductance&quot;</span>;
+
+<span class="ModelicaKeyword">equation </span>
+  L*<span class="ModelicaFunction">der</span>(i) = v;
+<span class="ModelicaKeyword">end </span>Inductor;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Capacitor<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Electrical.Analod87237d619610c05citorI.png" alt="Modelica.Electrical.Analog.Basic.Capacitor" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Electrical.Analog.Basic.Capacitor"></a>Modelica.Electrical.Analog.Basic.Capacitor</h2>
+<p>
+<span class="ModelicaDescription">Ideal linear electrical capacitor</span>
+<br>
+<br><img src="Modelica.Electrical.Analod87237d619610c05citorD.png" alt="Modelica.Electrical.Analog.Basic.Capacitor">
+</p>
+<h3>Information</h3>
+
+<p>The linear capacitor connects the branch voltage <i>v</i> with the branch current <i>i</i> by <i>i = C * dv/dt</i>. The Capacitance <i>C</i> is allowed to be positive or zero.</p>
+
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Interfaces.OnePort</a> (Component with two electrical pins p and n and current i from p to n).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Capacitance"
+>Capacitance</a></td><td>C</td><td>&nbsp;</td><td>Capacitance [F]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>PositivePin</a></td><td>p</td><td>Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>NegativePin</a></td><td>n</td><td>Negative pin</td></tr>
+</table>
+<h3>Revisions</h3>
+
+<ul>
+<li><i> 1998   </i>
+       by Christoph Clauss<br> initially implemented<br>
+       </li>
+</ul>
+
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> Capacitor <span class="ModelicaComment">&quot;Ideal linear electrical capacitor&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Interfaces.OnePort</a>(v(start=0));
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Capacitance"
+>SI.Capacitance</a> C(start=1) <span class="ModelicaComment">&quot;Capacitance&quot;</span>;
+
+<span class="ModelicaKeyword">equation </span>
+  i = C*<span class="ModelicaFunction">der</span>(v);
+<span class="ModelicaKeyword">end </span>Capacitor;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Ground<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Electrical.Analog.Basic.GroundI.png" alt="Modelica.Electrical.Analog.Basic.Ground" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Electrical.Analog.Basic.Ground"></a>Modelica.Electrical.Analog.Basic.Ground</h2>
+<p>
+<span class="ModelicaDescription">Ground node</span>
+<br>
+<br><img src="Modelica.Electrical.Analog.Basic.GroundD.png" alt="Modelica.Electrical.Analog.Basic.Ground">
+</p>
+<h3>Information</h3>
+
+<p>Ground of an electrical circuit. The potential at the ground node is zero. Every electrical circuit has to contain at least one ground object.</p>
+
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>Pin</td><td>p</td><td>&nbsp;</td></tr>
+</table>
+<h3>Revisions</h3>
+
+<ul>
+<li><i> 1998   </i>
+       by Christoph Clauss<br> initially implemented<br>
+       </li>
+</ul>
+
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> Ground <span class="ModelicaComment">&quot;Ground node&quot;</span>
+
+  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.Pin"
+>Interfaces.Pin</a> p;
+<span class="ModelicaKeyword">equation </span>
+  p.v = 0;
+<span class="ModelicaKeyword">end </span>Ground;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE VariableResistor<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Electrical.Analo19f469ede9ef9ea7istorI.png" alt="Modelica.Electrical.Analog.Basic.VariableResistor" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Electrical.Analog.Basic.VariableResistor"></a>Modelica.Electrical.Analog.Basic.VariableResistor</h2>
+<p>
+<span class="ModelicaDescription">Ideal linear electrical resistor with variable resistance</span>
+<br>
+<br><img src="Modelica.Electrical.Analo19f469ede9ef9ea7istorD.png" alt="Modelica.Electrical.Analog.Basic.VariableResistor">
+</p>
+<h3>Information</h3>
+
+<p>The linear resistor connects the branch voltage <i>v</i> with the branch current <i>i</i> by
+<br><i><b>i*R = v</b></i>
+<br>The Resistance <i>R</i> is given as input signal.
+<br><br><b>Attention!!!</b><br>It is recommended that the R signal should not cross the zero value. Otherwise depending on the surrounding circuit the probability of singularities is high.</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Modelica.Electrical.Analog.Interfaces.OnePort</a> (Component with two electrical pins p and n and current i from p to n), <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort"
+>Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort</a> (Partial model to include a conditional HeatPort in order to describe the power loss via a thermal network).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Temperature"
+>Temperature</a></td><td>T_ref</td><td>300.15</td><td>Reference temperature [K]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.LinearTemperatureCoefficient"
+>LinearTemperatureCoefficient</a></td><td>alpha</td><td>0</td><td>Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref)) [1/K]</td></tr>
+<tr><td>Boolean</td><td>useHeatPort</td><td>false</td><td>=true, if heatPort is enabled</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Temperature"
+>Temperature</a></td><td>T</td><td>T_ref</td><td>Fixed device temperature if useHeatPort = false [K]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
+>PositivePin</a></td><td>p</td><td>Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
+<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
+>NegativePin</a></td><td>n</td><td>Negative pin</td></tr>
+<tr><td>HeatPort_a</td><td>heatPort</td><td>Conditional heat port</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>R</td><td>[Ohm]</td></tr>
+</table>
+<h3>Revisions</h3>
+
+<ul>
+<li><i> August 07, 2009   </i>
+       by Anton Haumer<br> temperature dependency of resistance added<br>
+       </li>
+<li><i> March 11, 2009   </i>
+       by Christoph Clauss<br> conditional heat port added<br>
+       </li>
+<li><i>June 7, 2004   </i>
+       by Christoph Clauss<br>changed, docu added<br>
+       </li>
+<li><i>April 30, 2004</i>
+       by Anton Haumer<br>implemented.
+       </li>
+</ul>
+
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> VariableResistor
+  <span class="ModelicaComment">&quot;Ideal linear electrical resistor with variable resistance&quot;</span>
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Temperature"
+>SI.Temperature</a> T_ref=300.15 <span class="ModelicaComment">&quot;Reference temperature&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.LinearTemperatureCoefficient"
+>SI.LinearTemperatureCoefficient</a> alpha=0
+    <span class="ModelicaComment">&quot;Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))&quot;</span>;
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
+>Modelica.Electrical.Analog.Interfaces.OnePort</a>;
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort"
+>Modelica.Electrical.Analog.Interfaces.ConditionalHeatPort</a>(T=T_ref);
+  <a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>SI.Resistance</a> R_actual
+    <span class="ModelicaComment">&quot;Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> R(unit=&quot;Ohm&quot;);
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">assert</span>((1 + alpha*(T_heatPort - T_ref)) &gt;= Modelica.Constants.eps,
+    &quot;Temperature outside scope of model!&quot;);
+  R_actual = R*(1 + alpha*(T_heatPort - T_ref));
+  v = R_actual*i;
+  LossPower = v*i;
+<span class="ModelicaKeyword">end </span>VariableResistor;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:13 2017.
+</address>
+</body>
+</html>

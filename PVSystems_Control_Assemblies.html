@@ -1,0 +1,447 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>PVSystems.Control.Assemblies</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;Block assemblies useful in PV and power electronics&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Assemblies<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><a name="PVSystems.Control.Assemblies"></a><a href="PVSystems_Control.html#PVSystems.Control"
+>PVSystems.Control</a>.Assemblies</h2>
+<p>
+<span class="ModelicaDescription">Block assemblies useful in PV and power electronics</span><br>
+</p>
+<h3>Information</h3>
+<pre>
+    </pre>
+      <p>
+        Block assemblies useful in PV and power electronics</p>
+    
+<p><span class="ModelicaBaseClass">Extends from <a href="PVSystems_Icons.html#PVSystems.Icons.AssembliesPackage"
+>Icons.AssembliesPackage</a> (Icon for packages of assemblies).</span></p>
+<h3>Package Content</h3>
+<table summary="Package Content" class="ModelicaTablePackageContent">
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><img src="PVSystems.Control.Assembl02e7e6a8ad9fe021ollerS.png" alt="PVSystems.Control.Assemblies.MPPTController" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.MPPTController"
+>MPPTController</a>
+</td>
+<td>Maximum Power Point Tracking Controller</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Control.Assemblc2295910afc6ec89ollerS.png" alt="PVSystems.Control.Assemblies.Inverter1phCurrentController" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCurrentController"
+>Inverter1phCurrentController</a>
+</td>
+<td>Simple synchronous reference frame PI current controller</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Control.Assemblca6668c2f26acee8ollerS.png" alt="PVSystems.Control.Assemblies.Inverter1phCompleteController" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCompleteController"
+>Inverter1phCompleteController</a>
+</td>
+<td>Complete synchronous reference frame inverter controller</td>
+</tr>
+</table>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE MPPTController<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Control.Assembl02e7e6a8ad9fe021ollerI.png" alt="PVSystems.Control.Assemblies.MPPTController" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Control.Assemblies.MPPTController"></a><a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies"
+>PVSystems.Control.Assemblies</a>.MPPTController</h2>
+<p>
+<span class="ModelicaDescription">Maximum Power Point Tracking Controller</span>
+<br>
+<br><img src="PVSystems.Control.Assembl02e7e6a8ad9fe021ollerD.png" alt="PVSystems.Control.Assemblies.MPPTController">
+</p>
+<h3>Information</h3>
+
+        <p>
+          Maximum power-point tracking controller. Given the DC voltage and
+          current, this controller will output a moving reference for a DC
+          voltage control loop in order to maximize the power extracted from a
+          PV array for a given (unknown) solar irradiation and junction
+          temperature.
+        </p>
+
+        <p>
+          The operation of the block can be customized by setting the
+          following parameters:
+        </p>
+
+        <ul class="org-ul">
+          <li><i>sampleTime</i>: sample time of the control block. The control
+            output will be updated with this period.
+          </li>
+          <li><i>vrefStep</i>: amount of change to vref when updated.
+          </li>
+          <li><i>pkThreshold</i>: amount of power below which it is considered
+            that no change in power has occurred.
+          </li>
+        </ul>
+      
+<p><span class="ModelicaBaseClass">Extends from Modelica.Blocks.Interfaces.SI2SO (2 Single Input / 1 Single Output continuous control block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>sampleTime</td><td>1</td><td>Sample time of control block [s]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a></td><td>vrefStep</td><td>5</td><td>Step of change for vref [V]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Power"
+>Power</a></td><td>pkThreshold</td><td>1</td><td>Power threshold below which no change is considered [W]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a></td><td>vrefStart</td><td>10</td><td>Voltage reference initial value [V]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u1</td><td>Connector of Real input signal 1</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u2</td><td>Connector of Real input signal 2</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> MPPTController <span class="ModelicaComment">&quot;Maximum Power Point Tracking Controller&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
+>Modelica.Blocks.Interfaces.SI2SO</a>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Modelica.SIunits.Time</a> sampleTime=1 <span class="ModelicaComment">&quot;Sample time of control block&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> vrefStep=5 <span class="ModelicaComment">&quot;Step of change for vref&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Power"
+>Modelica.SIunits.Power</a> pkThreshold=1
+    <span class="ModelicaComment">&quot;Power threshold below which no change is considered&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> vrefStart=10
+    <span class="ModelicaComment">&quot;Voltage reference initial value&quot;</span>;
+<span class="ModelicaKeyword">protected </span>
+  <span class="ModelicaKeyword">discrete </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> vk;
+  <span class="ModelicaKeyword">discrete </span><a href="Modelica_SIunits.html#Modelica.SIunits.Current"
+>Modelica.SIunits.Current</a> ik;
+  <span class="ModelicaKeyword">discrete </span><a href="Modelica_SIunits.html#Modelica.SIunits.Power"
+>Modelica.SIunits.Power</a> pk;
+  <span class="ModelicaKeyword">discrete </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> vref(start=vrefStart);
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaKeyword">when </span><span class="ModelicaFunction">sample</span>(sampleTime, sampleTime)<span class="ModelicaKeyword"> then</span>
+    vk =<span class="ModelicaFunction"> pre</span>(u1);
+    ik =<span class="ModelicaFunction"> pre</span>(u2);
+    pk = vk*ik;
+    <span class="ModelicaKeyword">if </span><span class="ModelicaFunction">abs</span>(pk -<span class="ModelicaFunction"> pre</span>(pk)) &lt; pkThreshold<span class="ModelicaKeyword"> then</span>
+      <span class="ModelicaComment">// power unchanged =&gt; don&#39;t change vref</span>
+      vref =<span class="ModelicaFunction"> pre</span>(vref);
+    <span class="ModelicaKeyword">elseif </span>pk -<span class="ModelicaFunction"> pre</span>(pk) &gt; 0<span class="ModelicaKeyword"> then</span>
+      <span class="ModelicaComment">// power increased =&gt; repeat last action</span>
+      vref =<span class="ModelicaFunction"> pre</span>(vref) + vrefStep*<span class="ModelicaFunction">sign</span>(vk -<span class="ModelicaFunction"> pre</span>(vk));
+    <span class="ModelicaKeyword">else</span>
+      <span class="ModelicaComment">// power decreased =&gt; change last action</span>
+      vref =<span class="ModelicaFunction"> pre</span>(vref) - vrefStep*<span class="ModelicaFunction">sign</span>(vk -<span class="ModelicaFunction"> pre</span>(vk));
+    <span class="ModelicaKeyword">end if</span>;
+  <span class="ModelicaKeyword">end when</span>;
+  y = vref;
+<span class="ModelicaKeyword">end </span>MPPTController;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Inverter1phCurrentController<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Control.Assemblc2295910afc6ec89ollerI.png" alt="PVSystems.Control.Assemblies.Inverter1phCurrentController" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Control.Assemblies.Inverter1phCurrentController"></a><a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies"
+>PVSystems.Control.Assemblies</a>.Inverter1phCurrentController</h2>
+<p>
+<span class="ModelicaDescription">Simple synchronous reference frame PI current controller</span>
+<br>
+<br><img src="PVSystems.Control.Assemblc2295910afc6ec89ollerD.png" alt="PVSystems.Control.Assemblies.Inverter1phCurrentController">
+</p>
+<h3>Information</h3>
+
+        <p>
+          Synchronous reference frame current controller for a 1-phase
+          inverter. It takes the measured and the dq setpoints and
+          calculates the duty cycle, which can be then used as the input to
+          the <a href="PVSystems_Control.html#PVSystems.Control.SignalPWM"
+>SignalPWM</a>
+          block in switching models or directly as the input of the switch
+          or converter in averaged models.
+        </p>
+      
+        <p>
+          The control is performed with
+          two <a href="Modelica_Blocks_Continuous.html#Modelica.Blocks.Continuous.LimPID"
+>LimPID</a>
+          blocks (one per component) configured as a PI controller.</p>
+      
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
+>Modelica.Blocks.Icons.Block</a> (Basic graphical layout of input/output block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Real</td><td>k</td><td>0.1</td><td>PI controllers gain [1]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>T</td><td>0.01</td><td>PI controllers time constant (T&gt;0 required) [s]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Frequency"
+>Frequency</a></td><td>fline</td><td>50</td><td>AC line frequency [Hz]</td></tr>
+<tr><td>Real</td><td>idMax</td><td>Modelica.Constants.inf</td><td>Maximum effort for id loop</td></tr>
+<tr><td>Real</td><td>iqMax</td><td>Modelica.Constants.inf</td><td>Maximum effort for iq loop</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>i</td><td>Sensed current</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>ids</td><td>Current d component setpoint</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>iqs</td><td>Current q component setpoint</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>theta</td><td>Sensed AC voltage phase</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>vdc</td><td>Sensed DC voltage</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>d</td><td>Duty cycle output</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Inverter1phCurrentController
+  <span class="ModelicaComment">&quot;Simple synchronous reference frame PI current controller&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
+>Modelica.Blocks.Icons.Block</a>;
+  <span class="ModelicaKeyword">parameter </span>Real k(<span class="ModelicaKeyword">final </span>unit=&quot;1&quot;) = 0.1 <span class="ModelicaComment">&quot;PI controllers gain&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Modelica.SIunits.Time</a> T(<span class="ModelicaKeyword">final </span>min=Modelica.Constants.small) = 0.01
+    <span class="ModelicaComment">&quot;PI controllers time constant (T&gt;0 required)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Frequency"
+>Modelica.SIunits.Frequency</a> fline=50 <span class="ModelicaComment">&quot;AC line frequency&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real idMax=Modelica.Constants.inf <span class="ModelicaComment">&quot;Maximum effort for id loop&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real iqMax=Modelica.Constants.inf <span class="ModelicaComment">&quot;Maximum effort for iq loop&quot;</span>;
+  <a href="PVSystems_Control.html#PVSystems.Control.Park"
+>Park</a> park;
+  <a href="Modelica_Blocks_Nonlinear.html#Modelica.Blocks.Nonlinear.FixedDelay"
+>Modelica.Blocks.Nonlinear.FixedDelay</a> T4Delay(delayTime=1/4/fline);
+  <a href="Modelica_Blocks_Continuous.html#Modelica.Blocks.Continuous.LimPID"
+>Modelica.Blocks.Continuous.LimPID</a> idPI(
+    k=k,
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    Ti=T,
+    yMax=idMax);
+  <a href="Modelica_Blocks_Continuous.html#Modelica.Blocks.Continuous.LimPID"
+>Modelica.Blocks.Continuous.LimPID</a> iqPI(
+    k=k,
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    Ti=T,
+    yMax=iqMax);
+  <a href="PVSystems_Control.html#PVSystems.Control.InversePark"
+>InversePark</a> inversePark;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</a> dOffset(k=0.5);
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> i <span class="ModelicaComment">&quot;Sensed current&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> ids <span class="ModelicaComment">&quot;Current d component setpoint&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> iqs <span class="ModelicaComment">&quot;Current q component setpoint&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> theta <span class="ModelicaComment">&quot;Sensed AC voltage phase&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> vdc <span class="ModelicaComment">&quot;Sensed DC voltage&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</a> d <span class="ModelicaComment">&quot;Duty cycle output&quot;</span>;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Division"
+>Modelica.Blocks.Math.Division</a> dScaling;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</a> dCalc;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaComment">// Connections</span>
+  <span class="ModelicaFunction">connect</span>(park.beta, T4Delay.y);
+  <span class="ModelicaFunction">connect</span>(iqPI.y, inversePark.q);
+  <span class="ModelicaFunction">connect</span>(idPI.y, inversePark.d);
+  <span class="ModelicaFunction">connect</span>(i, park.alpha);
+  <span class="ModelicaFunction">connect</span>(i, T4Delay.u);
+  <span class="ModelicaFunction">connect</span>(inversePark.theta, theta);
+  <span class="ModelicaFunction">connect</span>(inversePark.alpha, dScaling.u1);
+  <span class="ModelicaFunction">connect</span>(vdc, dScaling.u2);
+  <span class="ModelicaFunction">connect</span>(dScaling.y, dCalc.u2);
+  <span class="ModelicaFunction">connect</span>(dCalc.y, d);
+  <span class="ModelicaFunction">connect</span>(theta, park.theta);
+  <span class="ModelicaFunction">connect</span>(dOffset.y, dCalc.u1);
+  <span class="ModelicaFunction">connect</span>(idPI.u_s, ids);
+  <span class="ModelicaFunction">connect</span>(idPI.u_m, park.d);
+  <span class="ModelicaFunction">connect</span>(park.q, iqPI.u_m);
+  <span class="ModelicaFunction">connect</span>(iqPI.u_s, iqs);
+<span class="ModelicaKeyword">end </span>Inverter1phCurrentController;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Inverter1phCompleteController<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Control.Assemblca6668c2f26acee8ollerI.png" alt="PVSystems.Control.Assemblies.Inverter1phCompleteController" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Control.Assemblies.Inverter1phCompleteController"></a><a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies"
+>PVSystems.Control.Assemblies</a>.Inverter1phCompleteController</h2>
+<p>
+<span class="ModelicaDescription">Complete synchronous reference frame inverter controller</span>
+<br>
+<br><img src="PVSystems.Control.Assemblca6668c2f26acee8ollerD.png" alt="PVSystems.Control.Assemblies.Inverter1phCompleteController">
+</p>
+<h3>Information</h3>
+
+              <p>
+                An
+                additional <a href="Modelica_Blocks_Continuous.html#Modelica.Blocks.Continuous.LimPID"
+>LimPID</a>
+                block is used to closed the DC voltage loop around the <i>d</i>
+                component of the AC current,
+                using <a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCurrentController"
+>Inverter1phCurrentController</a>.
+              </p>
+            
+              <p>
+                Currently, this block doesn't provide control of the <i>q</i>
+                component, which is set to 0.</p>
+            
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
+>Modelica.Blocks.Icons.Block</a> (Basic graphical layout of input/output block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Real</td><td>ik</td><td>0.1</td><td>Current PI gain</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>iT</td><td>0.01</td><td>Current PI time constant [s]</td></tr>
+<tr><td>Real</td><td>idMax</td><td>Modelica.Constants.inf</td><td>Maximum effort for id loop</td></tr>
+<tr><td>Real</td><td>iqMax</td><td>Modelica.Constants.inf</td><td>Maximum effort for iq loop</td></tr>
+<tr><td>Real</td><td>vk</td><td>0.1</td><td>Voltage PI gain</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>vT</td><td>0.01</td><td>Voltage PI time constant [s]</td></tr>
+<tr><td>Real</td><td>vdcMax</td><td>Modelica.Constants.inf</td><td>Maximum effort for vdc loop</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Frequency"
+>Frequency</a></td><td>fline</td><td>50</td><td>Line frequency [Hz]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>iac</td><td>AC current sense</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>vac</td><td>AC voltage sense</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>idc</td><td>DC current sense</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>vdc</td><td>DC voltage sense</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>d</td><td>Duty cycle</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Inverter1phCompleteController
+  <span class="ModelicaComment">&quot;Complete synchronous reference frame inverter controller&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
+>Modelica.Blocks.Icons.Block</a>;
+  <span class="ModelicaComment">// Parameters</span>
+  <span class="ModelicaKeyword">parameter </span>Real ik=0.1 <span class="ModelicaComment">&quot;Current PI gain&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Modelica.SIunits.Time</a> iT=0.01 <span class="ModelicaComment">&quot;Current PI time constant&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real idMax=Modelica.Constants.inf <span class="ModelicaComment">&quot;Maximum effort for id loop&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real iqMax=Modelica.Constants.inf <span class="ModelicaComment">&quot;Maximum effort for iq loop&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real vk=0.1 <span class="ModelicaComment">&quot;Voltage PI gain&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Modelica.SIunits.Time</a> vT=0.01 <span class="ModelicaComment">&quot;Voltage PI time constant&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real vdcMax=Modelica.Constants.inf <span class="ModelicaComment">&quot;Maximum effort for vdc loop&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Frequency"
+>Modelica.SIunits.Frequency</a> fline=50 <span class="ModelicaComment">&quot;Line frequency&quot;</span>;
+  <span class="ModelicaComment">// Interface</span>
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> iac <span class="ModelicaComment">&quot;AC current sense&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> vac <span class="ModelicaComment">&quot;AC voltage sense&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> idc <span class="ModelicaComment">&quot;DC current sense&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> vdc <span class="ModelicaComment">&quot;DC voltage sense&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</a> d <span class="ModelicaComment">&quot;Duty cycle&quot;</span>;
+  <span class="ModelicaComment">// Components</span>
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</a> iqs(k=0);
+  <a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.MPPTController"
+>PVSystems.Control.Assemblies.MPPTController</a> mppt(
+    sampleTime=1,
+    vrefStep=0.5,
+    pkThreshold=0.5,
+    vrefStart=15);
+  <a href="Modelica_Blocks_Continuous.html#Modelica.Blocks.Continuous.LimPID"
+>Modelica.Blocks.Continuous.LimPID</a> vdcPI(
+    k=vk,
+    controllerType=Modelica.Blocks.Types.SimpleController.PI,
+    Ti=vT,
+    yMax=vdcMax);
+  <a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCurrentController"
+>Inverter1phCurrentController</a> currentController(
+    k=ik,
+    T=iT,
+    fline=fline,
+    idMax=idMax,
+    iqMax=iqMax);
+  <a href="PVSystems_Control.html#PVSystems.Control.PLL"
+>PLL</a> pLL(frequency=fline);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</a> vdcClone(y=vdc);
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Modelica.Blocks.Math.Gain</a> invertIds(k=-1);
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(currentController.d, d);
+  <span class="ModelicaFunction">connect</span>(idc, mppt.u2);
+  <span class="ModelicaFunction">connect</span>(vdc, mppt.u1);
+  <span class="ModelicaFunction">connect</span>(iac, currentController.i);
+  <span class="ModelicaFunction">connect</span>(iqs.y, currentController.iqs);
+  <span class="ModelicaFunction">connect</span>(vac, pLL.v);
+  <span class="ModelicaFunction">connect</span>(pLL.theta, currentController.theta);
+  <span class="ModelicaFunction">connect</span>(vdcClone.y, currentController.vdc);
+  <span class="ModelicaFunction">connect</span>(mppt.y, vdcPI.u_s);
+  <span class="ModelicaFunction">connect</span>(vdc, vdcPI.u_m);
+  <span class="ModelicaFunction">connect</span>(vdcPI.y, invertIds.u);
+  <span class="ModelicaFunction">connect</span>(invertIds.y, currentController.ids);
+<span class="ModelicaKeyword">end </span>Inverter1phCompleteController;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:12 2017.
+</address>
+</body>
+</html>

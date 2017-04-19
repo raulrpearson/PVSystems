@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>PVSystems.Control.Interfaces</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;Common interfaces for control blocks&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Interfaces<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><a name="PVSystems.Control.Interfaces"></a><a href="PVSystems_Control.html#PVSystems.Control"
+>PVSystems.Control</a>.Interfaces</h2>
+<p>
+<span class="ModelicaDescription">Common interfaces for control blocks</span><br>
+</p>
+<h3>Information</h3>
+<pre>
+    </pre>
+      <p>
+        Common interfaces for control blocks</p>
+    
+<p><span class="ModelicaBaseClass">Extends from Modelica.Icons.InterfacesPackage (Icon for packages containing interfaces).</span></p>
+<h3>Package Content</h3>
+<table summary="Package Content" class="ModelicaTablePackageContent">
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><img src="PVSystems.Control.Interfa1610beb8910dc80crfaceS.png" alt="PVSystems.Control.Interfaces.CPMInterface" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Control_Interfaces.html#PVSystems.Control.Interfaces.CPMInterface"
+>CPMInterface</a>
+</td>
+<td>Common interface for averaged CPM block</td>
+</tr>
+</table>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE CPMInterface<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Control.Interfa1610beb8910dc80crfaceI.png" alt="PVSystems.Control.Interfaces.CPMInterface" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Control.Interfaces.CPMInterface"></a><a href="PVSystems_Control_Interfaces.html#PVSystems.Control.Interfaces"
+>PVSystems.Control.Interfaces</a>.CPMInterface</h2>
+<p>
+<span class="ModelicaDescription">Common interface for averaged CPM block</span>
+<br>
+<br><img src="PVSystems.Control.Interfa1610beb8910dc80crfaceD.png" alt="PVSystems.Control.Interfaces.CPMInterface">
+</p>
+<h3>Information</h3>
+<pre>
+    </pre>
+      <p>
+        Common interface for averaged CPM block</p>
+    
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
+>Modelica.Blocks.Icons.Block</a> (Basic graphical layout of input/output block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Inductance"
+>Inductance</a></td><td>L</td><td>&nbsp;</td><td>Equivalent inductance, referred to primary [H]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Frequency"
+>Frequency</a></td><td>fs</td><td>&nbsp;</td><td>Switching frequency [Hz]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a></td><td>Va</td><td>&nbsp;</td><td>Amplitude of the artificial ramp, Va=Rf*ma/fs [V]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Resistance</a></td><td>Rf</td><td>&nbsp;</td><td>Equivalent current-sense resistance [Ohm]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>vc</td><td>Control input, vc=Rf*ic</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>vs</td><td>Sensed average inductor current vs=Rf*iL</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>vm1</td><td>Voltage across L in interval 1, slope m1=vm1/L</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>vm2</td><td>(-) Voltage across L in interval 2, slope m2=vm2/L</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>d</td><td>Duty cycle</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> CPMInterface <span class="ModelicaComment">&quot;Common interface for averaged CPM block&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
+>Modelica.Blocks.Icons.Block</a>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Inductance"
+>Modelica.SIunits.Inductance</a> L
+    <span class="ModelicaComment">&quot;Equivalent inductance, referred to primary&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Frequency"
+>Modelica.SIunits.Frequency</a> fs
+    <span class="ModelicaComment">&quot;Switching frequency&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> Va
+    <span class="ModelicaComment">&quot;Amplitude of the artificial ramp, Va=Rf*ma/fs&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
+>Modelica.SIunits.Resistance</a> Rf
+    <span class="ModelicaComment">&quot;Equivalent current-sense resistance&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> vc
+    <span class="ModelicaComment">&quot;Control input, vc=Rf*ic&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> vs
+    <span class="ModelicaComment">&quot;Sensed average inductor current vs=Rf*iL&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> vm1
+    <span class="ModelicaComment">&quot;Voltage across L in interval 1, slope m1=vm1/L&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Modelica.Blocks.Interfaces.RealInput</a> vm2
+    <span class="ModelicaComment">&quot;(-) Voltage across L in interval 2, slope m2=vm2/L&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</a> d
+    <span class="ModelicaComment">&quot;Duty cycle&quot;</span>;
+<span class="ModelicaKeyword">end </span>CPMInterface;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:12 2017.
+</address>
+</body>
+</html>

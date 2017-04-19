@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Modelica.Blocks.MathBoolean.OnDelay</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;Delay a rising edge of the input, but do not delay a falling edge.&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE OnDelay<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.MathBoolean.OnDelayI.png" alt="Modelica.Blocks.MathBoolean.OnDelay" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.MathBoolean.OnDelay"></a>Modelica.Blocks.MathBoolean.OnDelay</h2>
+<p>
+<span class="ModelicaDescription">Delay a rising edge of the input, but do not delay a falling edge.</span>
+<br>
+<br><img src="Modelica.Blocks.MathBoolean.OnDelayD.png" alt="Modelica.Blocks.MathBoolean.OnDelay">
+</p>
+<h3>Information</h3>
+
+<p>
+A rising edge of the Boolean input u gives a delayed output.
+A falling edge of the input is immediately given to the output.
+</p>
+
+<p>
+Simulation results of a typical example with a delay time of 0.1 s
+is shown in the next figure.
+</p>
+
+<p>
+<img src="C:/Program%20Files%20(x86)/Dymola%202017%20FD01/Modelica/Library/Modelica%203.2.2/Resources/Images/Blocks/MathBoolean/OnDelay1.png"
+     alt="OnDelay1.png">
+<br>
+<img src="C:/Program%20Files%20(x86)/Dymola%202017%20FD01/Modelica/Library/Modelica%203.2.2/Resources/Images/Blocks/MathBoolean/OnDelay2.png"
+     alt="OnDelay2.png">
+</p>
+
+<p>
+The usage is demonstrated, e.g., in example
+<a  >Modelica.Blocks.Examples.BooleanNetwork1</a>.
+</p>
+
+
+<p><span class="ModelicaBaseClass">Extends from Modelica.Blocks.Interfaces.PartialBooleanSISO_small (Partial block with a BooleanInput and a BooleanOutput signal and a small block icon).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>delayTime</td><td>&nbsp;</td><td>Delay time [s]</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>u</td><td>Boolean input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>BooleanOutput</a></td><td>y</td><td>Boolean output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> OnDelay
+  <span class="ModelicaComment">&quot;Delay a rising edge of the input, but do not delay a falling edge.&quot;</span>
+      <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.PartialBooleanSISO_small"
+>Modelica.Blocks.Interfaces.PartialBooleanSISO_small</a>;
+      <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Modelica.SIunits.Time</a> delayTime <span class="ModelicaComment">&quot;Delay time&quot;</span>;
+
+<span class="ModelicaKeyword">protected </span>
+      Boolean delaySignal(start=false,fixed=true);
+      <span class="ModelicaKeyword">discrete </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Modelica.SIunits.Time</a> t_next;
+<span class="ModelicaKeyword">initial </span><span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">    pre</span>(u) = false;
+  <span class="ModelicaFunction">    pre</span>(t_next) = time - 1;
+<span class="ModelicaKeyword">algorithm </span>
+      <span class="ModelicaKeyword">when </span><span class="ModelicaFunction">initial</span>()<span class="ModelicaKeyword"> then</span>
+         delaySignal := u;
+         t_next := time - 1;
+      <span class="ModelicaKeyword">elsewhen </span>u<span class="ModelicaKeyword"> then</span>
+         delaySignal := true;
+         t_next := time + delayTime;
+      <span class="ModelicaKeyword">elsewhen </span><span class="ModelicaKeyword">not </span>u<span class="ModelicaKeyword"> then</span>
+         delaySignal := false;
+         t_next := time - 1;
+      <span class="ModelicaKeyword">end when</span>;
+<span class="ModelicaKeyword">equation </span>
+      <span class="ModelicaKeyword">if </span>delaySignal<span class="ModelicaKeyword"> then</span>
+         y = time &gt;= t_next;
+      <span class="ModelicaKeyword">else</span>
+         y = false;
+      <span class="ModelicaKeyword">end if</span>;
+<span class="ModelicaKeyword">end </span>OnDelay;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:16 2017.
+</address>
+</body>
+</html>

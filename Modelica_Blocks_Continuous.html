@@ -1,0 +1,722 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Modelica.Blocks.Continuous.LimPID</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;P, PI, PD, and PID controller with limited output, anti-windup compensation and setpoint weighting&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE LimPID<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Continuous.LimPIDI.png" alt="Modelica.Blocks.Continuous.LimPID" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Continuous.LimPID"></a>Modelica.Blocks.Continuous.LimPID</h2>
+<p>
+<span class="ModelicaDescription">P, PI, PD, and PID controller with limited output, anti-windup compensation and setpoint weighting</span>
+<br>
+<br><img src="Modelica.Blocks.Continuous.LimPIDD.png" alt="Modelica.Blocks.Continuous.LimPID">
+</p>
+<h3>Information</h3>
+
+<p>
+Via parameter <b>controllerType</b> either <b>P</b>, <b>PI</b>, <b>PD</b>,
+or <b>PID</b> can be selected. If, e.g., PI is selected, all components belonging to the
+D-part are removed from the block (via conditional declarations).
+The example model
+<a  >Modelica.Blocks.Examples.PID_Controller</a>
+demonstrates the usage of this controller.
+Several practical aspects of PID controller design are incorporated
+according to chapter 3 of the book:
+</p>
+
+<dl>
+<dt>&Aring;str&ouml;m K.J., and H&auml;gglund T.:</dt>
+<dd> <b>PID Controllers: Theory, Design, and Tuning</b>.
+     Instrument Society of America, 2nd edition, 1995.
+</dd>
+</dl>
+
+<p>
+Besides the additive <b>proportional, integral</b> and <b>derivative</b>
+part of this controller, the following features are present:
+</p>
+<ul>
+<li> The output of this controller is limited. If the controller is
+     in its limits, anti-windup compensation is activated to drive
+     the integrator state to zero. </li>
+<li> The high-frequency gain of the derivative part is limited
+     to avoid excessive amplification of measurement noise.</li>
+<li> Setpoint weighting is present, which allows to weight
+     the setpoint in the proportional and the derivative part
+     independently from the measurement. The controller will respond
+     to load disturbances and measurement noise independently of this setting
+     (parameters wp, wd). However, setpoint changes will depend on this
+     setting. For example, it is useful to set the setpoint weight wd
+     for the derivative part to zero, if steps may occur in the
+     setpoint signal.</li>
+</ul>
+
+<p>
+The parameters of the controller can be manually adjusted by performing
+simulations of the closed loop system (= controller + plant connected
+together) and using the following strategy:
+</p>
+
+<ol>
+<li> Set very large limits, e.g., yMax = Modelica.Constants.inf</li>
+<li> Select a <b>P</b>-controller and manually enlarge parameter <b>k</b>
+     (the total gain of the controller) until the closed-loop response
+     cannot be improved any more.</li>
+<li> Select a <b>PI</b>-controller and manually adjust parameters
+     <b>k</b> and <b>Ti</b> (the time constant of the integrator).
+     The first value of Ti can be selected, such that it is in the
+     order of the time constant of the oscillations occurring with
+     the P-controller. If, e.g., vibrations in the order of T=10 ms
+     occur in the previous step, start with Ti=0.01 s.</li>
+<li> If you want to make the reaction of the control loop faster
+     (but probably less robust against disturbances and measurement noise)
+     select a <b>PID</b>-Controller and manually adjust parameters
+     <b>k</b>, <b>Ti</b>, <b>Td</b> (time constant of derivative block).</li>
+<li> Set the limits yMax and yMin according to your specification.</li>
+<li> Perform simulations such that the output of the PID controller
+     goes in its limits. Tune <b>Ni</b> (Ni*Ti is the time constant of
+     the anti-windup compensation) such that the input to the limiter
+     block (= limiter.u) goes quickly enough back to its limits.
+     If Ni is decreased, this happens faster. If Ni=infinity, the
+     anti-windup compensation is switched off and the controller works bad.</li>
+</ol>
+
+<p>
+<b>Initialization</b>
+</p>
+
+<p>
+This block can be initialized in different
+ways controlled by parameter <b>initType</b>. The possible
+values of initType are defined in
+<a  >Modelica.Blocks.Types.InitPID</a>.
+This type is identical to
+<a  >Types.Init</a>,
+with the only exception that the additional option
+<b>DoNotUse_InitialIntegratorState</b> is added for
+backward compatibility reasons (= integrator is initialized with
+InitialState whereas differential part is initialized with
+NoInit which was the initialization in version 2.2 of the Modelica
+standard library).
+</p>
+
+<p>
+Based on the setting of initType, the integrator (I) and derivative (D)
+blocks inside the PID controller are initialized according to the following table:
+</p>
+
+<table border=1 cellspacing=0 cellpadding=2>
+  <tr><td valign="top"><b>initType</b></td>
+      <td valign="top"><b>I.initType</b></td>
+      <td valign="top"><b>D.initType</b></td></tr>
+
+  <tr><td valign="top"><b>NoInit</b></td>
+      <td valign="top">NoInit</td>
+      <td valign="top">NoInit</td></tr>
+
+  <tr><td valign="top"><b>SteadyState</b></td>
+      <td valign="top">SteadyState</td>
+      <td valign="top">SteadyState</td></tr>
+
+  <tr><td valign="top"><b>InitialState</b></td>
+      <td valign="top">InitialState</td>
+      <td valign="top">InitialState</td></tr>
+
+  <tr><td valign="top"><b>InitialOutput</b><br>
+          and initial equation: y = y_start</td>
+      <td valign="top">NoInit</td>
+      <td valign="top">SteadyState</td></tr>
+
+  <tr><td valign="top"><b>DoNotUse_InitialIntegratorState</b></td>
+      <td valign="top">InitialState</td>
+      <td valign="top">NoInit</td></tr>
+</table>
+
+<p>
+In many cases, the most useful initial condition is
+<b>SteadyState</b> because initial transients are then no longer
+present. If initType = InitPID.SteadyState, then in some
+cases difficulties might occur. The reason is the
+equation of the integrator:
+</p>
+
+<pre>
+   <b>der</b>(y) = k*u;
+</pre>
+
+<p>
+The steady state equation "der(x)=0" leads to the condition that the input u to the
+integrator is zero. If the input u is already (directly or indirectly) defined
+by another initial condition, then the initialization problem is <b>singular</b>
+(has none or infinitely many solutions). This situation occurs often
+for mechanical systems, where, e.g., u = desiredSpeed - measuredSpeed and
+since speed is both a state and a derivative, it is natural to
+initialize it with zero. As sketched this is, however, not possible.
+The solution is to not initialize u_m or the variable that is used
+to compute u_m by an algebraic equation.
+</p>
+
+<p>
+If parameter <b>limitAtInit</b> = <b>false</b>, the limits at the
+output of this controller block are removed from the initialization problem which
+leads to a much simpler equation system. After initialization has been
+performed, it is checked via an assert whether the output is in the
+defined limits. For backward compatibility reasons
+<b>limitAtInit</b> = <b>true</b>. In most cases it is best
+to use <b>limitAtInit</b> = <b>false</b>.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from Interfaces.SVcontrol (Single-Variable continuous controller).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>SimpleController</td><td>controllerType</td><td>.Modelica.Blocks.Types.Simpl...</td><td>Type of controller</td></tr>
+<tr><td>Real</td><td>k</td><td>1</td><td>Gain of controller [1]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>Ti</td><td>0.5</td><td>Time constant of Integrator block [s]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>Td</td><td>0.1</td><td>Time constant of Derivative block [s]</td></tr>
+<tr><td>Real</td><td>yMax</td><td>&nbsp;</td><td>Upper limit of output</td></tr>
+<tr><td>Real</td><td>yMin</td><td>-yMax</td><td>Lower limit of output</td></tr>
+<tr><td>Real</td><td>wp</td><td>1</td><td>Set-point weight for Proportional block (0..1)</td></tr>
+<tr><td>Real</td><td>wd</td><td>0</td><td>Set-point weight for Derivative block (0..1)</td></tr>
+<tr><td>Real</td><td>Ni</td><td>0.9</td><td>Ni*Ti is time constant of anti-windup compensation</td></tr>
+<tr><td>Real</td><td>Nd</td><td>10</td><td>The higher Nd, the more ideal the derivative block</td></tr>
+<tr class="ModelicaParameterGroup"><td colspan="4">Initialization</td></tr>
+<tr><td>InitPID</td><td>initType</td><td>.Modelica.Blocks.Types.InitP...</td><td>Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)</td></tr>
+<tr><td>Boolean</td><td>limitsAtInit</td><td>true</td><td>= false, if limits are ignored during initialization</td></tr>
+<tr><td>Real</td><td>xi_start</td><td>0</td><td>Initial or guess value value for integrator output (= integrator state)</td></tr>
+<tr><td>Real</td><td>xd_start</td><td>0</td><td>Initial or guess value for state of derivative block</td></tr>
+<tr><td>Real</td><td>y_start</td><td>0</td><td>Initial value of output</td></tr>
+<tr class="ModelicaParameterTab"><td colspan="4">Advanced</td></tr>
+<tr><td>Boolean</td><td>strict</td><td>false</td><td>= true, if strict limits with noEvent(..)</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u_s</td><td>Connector of setpoint input signal</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u_m</td><td>Connector of measurement input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of actuator output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> LimPID
+  <span class="ModelicaComment">&quot;P, PI, PD, and PID controller with limited output, anti-windup compensation and setpoint weighting&quot;</span>
+  <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.InitPID"
+>Modelica.Blocks.Types.InitPID</a>;
+  <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Modelica.Blocks.Types.Init</a>;
+  <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.SimpleController"
+>Modelica.Blocks.Types.SimpleController</a>;
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SVcontrol"
+>Interfaces.SVcontrol</a>;
+  <span class="ModelicaKeyword">output </span>Real controlError = u_s - u_m
+    <span class="ModelicaComment">&quot;Control error (set point - measurement)&quot;</span>;
+
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.SimpleController"
+>.Modelica.Blocks.Types.SimpleController</a> controllerType=
+         .Modelica.Blocks.Types.SimpleController.PID <span class="ModelicaComment">&quot;Type of controller&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real k(min=0, unit=&quot;1&quot;) = 1 <span class="ModelicaComment">&quot;Gain of controller&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>SIunits.Time</a> Ti(min=Modelica.Constants.small)=0.5
+    <span class="ModelicaComment">&quot;Time constant of Integrator block&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>SIunits.Time</a> Td(min=0)= 0.1 <span class="ModelicaComment">&quot;Time constant of Derivative block&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real yMax(start=1) <span class="ModelicaComment">&quot;Upper limit of output&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real yMin=-yMax <span class="ModelicaComment">&quot;Lower limit of output&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real wp(min=0) = 1
+    <span class="ModelicaComment">&quot;Set-point weight for Proportional block (0..1)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real wd(min=0) = 0 <span class="ModelicaComment">&quot;Set-point weight for Derivative block (0..1)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real Ni(min=100*Modelica.Constants.eps) = 0.9
+    <span class="ModelicaComment">&quot;Ni*Ti is time constant of anti-windup compensation&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real Nd(min=100*Modelica.Constants.eps) = 10
+    <span class="ModelicaComment">&quot;The higher Nd, the more ideal the derivative block&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.InitPID"
+>.Modelica.Blocks.Types.InitPID</a> initType= .Modelica.Blocks.Types.InitPID.DoNotUse_InitialIntegratorState
+    <span class="ModelicaComment">&quot;Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Boolean limitsAtInit = true
+    <span class="ModelicaComment">&quot;= false, if limits are ignored during initialization&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real xi_start=0
+    <span class="ModelicaComment">&quot;Initial or guess value value for integrator output (= integrator state)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real xd_start=0
+    <span class="ModelicaComment">&quot;Initial or guess value for state of derivative block&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real y_start=0 <span class="ModelicaComment">&quot;Initial value of output&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Boolean strict=false <span class="ModelicaComment">&quot;= true, if strict limits with noEvent(..)&quot;</span>;
+  <span class="ModelicaKeyword">constant </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>SI.Time</a> unitTime=1;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Blocks.Math.Add</a> addP(k1=wp, k2=-1);
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Blocks.Math.Add</a> addD(k1=wd, k2=-1) <span class="ModelicaKeyword">if </span>with_D;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Blocks.Math.Gain</a> P(k=1);
+  <a href="Modelica_Blocks_Continuous.html#Modelica.Blocks.Continuous.Integrator"
+>Blocks.Continuous.Integrator</a> I(k=unitTime/Ti, y_start=xi_start,
+    initType=<span class="ModelicaKeyword">if </span>initType==InitPID.SteadyState<span class="ModelicaKeyword"> then </span>
+                Init.SteadyState<span class="ModelicaKeyword"> else </span>
+             <span class="ModelicaKeyword">if </span>initType==InitPID.InitialState<span class="ModelicaKeyword"> or </span>
+                initType==InitPID.DoNotUse_InitialIntegratorState<span class="ModelicaKeyword"> then </span>
+                Init.InitialState<span class="ModelicaKeyword"> else </span>Init.NoInit) <span class="ModelicaKeyword">if </span>with_I;
+  <a href="Modelica_Blocks_Continuous.html#Modelica.Blocks.Continuous.Derivative"
+>Blocks.Continuous.Derivative</a> D(k=Td/unitTime, T=<span class="ModelicaFunction">max</span>([Td/Nd, 1.e-14]), x_start=xd_start,
+    initType=<span class="ModelicaKeyword">if </span>initType==InitPID.SteadyState<span class="ModelicaKeyword"> or </span>
+                initType==InitPID.InitialOutput<span class="ModelicaKeyword"> then </span>Init.SteadyState<span class="ModelicaKeyword"> else </span>
+             <span class="ModelicaKeyword">if </span>initType==InitPID.InitialState<span class="ModelicaKeyword"> then </span>Init.InitialState<span class="ModelicaKeyword"> else </span>
+                Init.NoInit) <span class="ModelicaKeyword">if </span>with_D;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Blocks.Math.Gain</a> gainPID(k=k);
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Blocks.Math.Add3</a> addPID;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add3"
+>Blocks.Math.Add3</a> addI(k2=-1) <span class="ModelicaKeyword">if </span>with_I;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Blocks.Math.Add</a> addSat(k1=+1, k2=-1) <span class="ModelicaKeyword">if </span>
+                                   with_I;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Gain"
+>Blocks.Math.Gain</a> gainTrack(k=1/(k*Ni)) <span class="ModelicaKeyword">if </span>with_I;
+  <a href="Modelica_Blocks_Nonlinear.html#Modelica.Blocks.Nonlinear.Limiter"
+>Blocks.Nonlinear.Limiter</a> limiter(uMax=yMax, uMin=yMin, strict=strict, limitsAtInit=limitsAtInit);
+<span class="ModelicaKeyword">protected </span>
+  <span class="ModelicaKeyword">parameter </span>Boolean with_I = controllerType==SimpleController.PI<span class="ModelicaKeyword"> or </span>
+                             controllerType==SimpleController.PID;
+  <span class="ModelicaKeyword">parameter </span>Boolean with_D = controllerType==SimpleController.PD<span class="ModelicaKeyword"> or </span>
+                             controllerType==SimpleController.PID;
+<span class="ModelicaKeyword">public </span>
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Sources.Constant</a> Dzero(k=0) <span class="ModelicaKeyword">if </span><span class="ModelicaKeyword">not </span>with_D;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Sources.Constant</a> Izero(k=0) <span class="ModelicaKeyword">if </span><span class="ModelicaKeyword">not </span>with_I;
+<span class="ModelicaKeyword">initial </span><span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaKeyword">if </span>initType==InitPID.InitialOutput<span class="ModelicaKeyword"> then</span>
+     gainPID.y = y_start;
+  <span class="ModelicaKeyword">end if</span>;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaKeyword">if </span>initType == InitPID.InitialOutput<span class="ModelicaKeyword"> and </span>(y_start &lt; yMin<span class="ModelicaKeyword"> or </span>y_start &gt; yMax)<span class="ModelicaKeyword"> then</span>
+    <span class="ModelicaFunction">  Modelica.Utilities.Streams.error</span>(&quot;LimPID: Start value y_start (=&quot; +<span class="ModelicaFunction"> String</span>(y_start) +
+         &quot;) is outside of the limits of yMin (=&quot; +<span class="ModelicaFunction"> String</span>(yMin) +&quot;) and yMax (=&quot; +<span class="ModelicaFunction"> String</span>(yMax) + &quot;)&quot;);
+  <span class="ModelicaKeyword">end if</span>;
+
+  <span class="ModelicaFunction">connect</span>(u_s, addP.u1);
+  <span class="ModelicaFunction">connect</span>(u_s, addD.u1);
+  <span class="ModelicaFunction">connect</span>(u_s, addI.u1);
+  <span class="ModelicaFunction">connect</span>(addP.y, P.u);
+  <span class="ModelicaFunction">connect</span>(addD.y, D.u);
+  <span class="ModelicaFunction">connect</span>(addI.y, I.u);
+  <span class="ModelicaFunction">connect</span>(P.y, addPID.u1);
+  <span class="ModelicaFunction">connect</span>(D.y, addPID.u2);
+  <span class="ModelicaFunction">connect</span>(I.y, addPID.u3);
+  <span class="ModelicaFunction">connect</span>(addPID.y, gainPID.u);
+  <span class="ModelicaFunction">connect</span>(gainPID.y, addSat.u2);
+  <span class="ModelicaFunction">connect</span>(gainPID.y, limiter.u);
+  <span class="ModelicaFunction">connect</span>(limiter.y, addSat.u1);
+  <span class="ModelicaFunction">connect</span>(limiter.y, y);
+  <span class="ModelicaFunction">connect</span>(addSat.y, gainTrack.u);
+  <span class="ModelicaFunction">connect</span>(gainTrack.y, addI.u3);
+  <span class="ModelicaFunction">connect</span>(u_m, addP.u2);
+  <span class="ModelicaFunction">connect</span>(u_m, addD.u2);
+  <span class="ModelicaFunction">connect</span>(u_m, addI.u2);
+  <span class="ModelicaFunction">connect</span>(Dzero.y, addPID.u2);
+  <span class="ModelicaFunction">connect</span>(Izero.y, addPID.u3);
+<span class="ModelicaKeyword">end </span>LimPID;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Integrator<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Continuous.IntegratorI.png" alt="Modelica.Blocks.Continuous.Integrator" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Continuous.Integrator"></a>Modelica.Blocks.Continuous.Integrator</h2>
+<p>
+<span class="ModelicaDescription">Output the integral of the input signal</span>
+<br>
+<br><img src="Modelica.Blocks.Continuous.IntegratorD.png" alt="Modelica.Blocks.Continuous.Integrator">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks computes output <b>y</b> (element-wise) as
+<i>integral</i> of the input <b>u</b> multiplied with
+the gain <i>k</i>:
+</p>
+<pre>
+         k
+     y = - u
+         s
+</pre>
+
+<p>
+It might be difficult to initialize the integrator in steady state.
+This is discussed in the description of package
+<a  >Continuous</a>.
+</p>
+
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a> (Single Input Single Output continuous control block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Real</td><td>k</td><td>1</td><td>Integrator gain [1]</td></tr>
+<tr class="ModelicaParameterGroup"><td colspan="4">Initialization</td></tr>
+<tr><td><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Init</a></td><td>initType</td><td>Modelica.Blocks.Types.Init.I...</td><td>Type of initialization (1: no init, 2: steady state, 3,4: initial output)</td></tr>
+<tr><td>Real</td><td>y_start</td><td>0</td><td>Initial or guess value of output (= state)</td></tr>
+<tr><td><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y.start</td><td>y_start</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Integrator <span class="ModelicaComment">&quot;Output the integral of the input signal&quot;</span>
+  <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Modelica.Blocks.Types.Init</a>;
+  <span class="ModelicaKeyword">parameter </span>Real k(unit=&quot;1&quot;)=1 <span class="ModelicaComment">&quot;Integrator gain&quot;</span>;
+
+  <span class="ModelicaComment">/* InitialState is the default, because it was the default in Modelica 2.2
+     and therefore this setting is backward compatible
+  */</span>
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Modelica.Blocks.Types.Init</a> initType=Modelica.Blocks.Types.Init.InitialState
+    <span class="ModelicaComment">&quot;Type of initialization (1: no init, 2: steady state, 3,4: initial output)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real y_start=0 <span class="ModelicaComment">&quot;Initial or guess value of output (= state)&quot;</span>;
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a>(y(start=y_start));
+
+<span class="ModelicaKeyword">initial </span><span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaKeyword">if </span>initType == Init.SteadyState<span class="ModelicaKeyword"> then</span>
+    <span class="ModelicaFunction"> der</span>(y) = 0;
+  <span class="ModelicaKeyword">elseif </span>initType == Init.InitialState<span class="ModelicaKeyword"> or </span>
+         initType == Init.InitialOutput<span class="ModelicaKeyword"> then</span>
+    y = y_start;
+  <span class="ModelicaKeyword">end if</span>;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">der</span>(y) = k*u;
+<span class="ModelicaKeyword">end </span>Integrator;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE LimIntegrator<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Continuous.LimIntegratorI.png" alt="Modelica.Blocks.Continuous.LimIntegrator" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Continuous.LimIntegrator"></a>Modelica.Blocks.Continuous.LimIntegrator</h2>
+<p>
+<span class="ModelicaDescription">Integrator with limited value of the output</span>
+<br>
+<br><img src="Modelica.Blocks.Continuous.LimIntegratorD.png" alt="Modelica.Blocks.Continuous.LimIntegrator">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks computes <b>y</b> (element-wise) as <i>integral</i>
+of the input <b>u</b> multiplied with the gain <i>k</i>. If the
+integral reaches a given upper or lower <i>limit</i> and the
+input will drive the integral outside of this bound, the
+integration is halted and only restarted if the input drives
+the integral away from the bounds.
+</p>
+
+<p>
+It might be difficult to initialize the integrator in steady state.
+This is discussed in the description of package
+<a  >Continuous</a>.
+</p>
+
+<p>
+If parameter <b>limitAtInit</b> = <b>false</b>, the limits of the
+integrator are removed from the initialization problem which
+leads to a much simpler equation system. After initialization has been
+performed, it is checked via an assert whether the output is in the
+defined limits. For backward compatibility reasons
+<b>limitAtInit</b> = <b>true</b>. In most cases it is best
+to use <b>limitAtInit</b> = <b>false</b>.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a> (Single Input Single Output continuous control block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Real</td><td>k</td><td>1</td><td>Integrator gain [1]</td></tr>
+<tr><td>Real</td><td>outMax</td><td>&nbsp;</td><td>Upper limit of output</td></tr>
+<tr><td>Real</td><td>outMin</td><td>-outMax</td><td>Lower limit of output</td></tr>
+<tr class="ModelicaParameterGroup"><td colspan="4">Initialization</td></tr>
+<tr><td><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Init</a></td><td>initType</td><td>Modelica.Blocks.Types.Init.I...</td><td>Type of initialization (1: no init, 2: steady state, 3/4: initial output)</td></tr>
+<tr><td>Boolean</td><td>limitsAtInit</td><td>true</td><td>= false, if limits are ignored during initialization (i.e., der(y)=k*u)</td></tr>
+<tr><td>Real</td><td>y_start</td><td>0</td><td>Initial or guess value of output (must be in the limits outMin .. outMax)</td></tr>
+<tr><td><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y.start</td><td>y_start</td><td>Connector of Real output signal</td></tr>
+<tr class="ModelicaParameterTab"><td colspan="4">Advanced</td></tr>
+<tr><td>Boolean</td><td>strict</td><td>false</td><td>= true, if strict limits with noEvent(..)</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> LimIntegrator <span class="ModelicaComment">&quot;Integrator with limited value of the output&quot;</span>
+  <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Modelica.Blocks.Types.Init</a>;
+  <span class="ModelicaKeyword">parameter </span>Real k(unit=&quot;1&quot;)=1 <span class="ModelicaComment">&quot;Integrator gain&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real outMax(start=1) <span class="ModelicaComment">&quot;Upper limit of output&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real outMin=-outMax <span class="ModelicaComment">&quot;Lower limit of output&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Modelica.Blocks.Types.Init</a> initType=Modelica.Blocks.Types.Init.InitialState
+    <span class="ModelicaComment">&quot;Type of initialization (1: no init, 2: steady state, 3/4: initial output)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Boolean limitsAtInit = true
+    <span class="ModelicaComment">&quot;= false, if limits are ignored during initialization (i.e., der(y)=k*u)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real y_start=0
+    <span class="ModelicaComment">&quot;Initial or guess value of output (must be in the limits outMin .. outMax)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Boolean strict=false <span class="ModelicaComment">&quot;= true, if strict limits with noEvent(..)&quot;</span>;
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a>(y(start=y_start));
+
+<span class="ModelicaKeyword">initial </span><span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaKeyword">if </span>initType == Init.SteadyState<span class="ModelicaKeyword"> then</span>
+    <span class="ModelicaFunction"> der</span>(y) = 0;
+  <span class="ModelicaKeyword">elseif </span>initType == Init.InitialState<span class="ModelicaKeyword"> or </span>
+         initType == Init.InitialOutput<span class="ModelicaKeyword"> then</span>
+    y = y_start;
+  <span class="ModelicaKeyword">end if</span>;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaKeyword">if </span><span class="ModelicaFunction">initial</span>()<span class="ModelicaKeyword"> and </span><span class="ModelicaKeyword">not </span>limitsAtInit<span class="ModelicaKeyword"> then</span>
+    <span class="ModelicaFunction"> der</span>(y) = k*u;
+    <span class="ModelicaFunction"> assert</span>(y &gt;= outMin - 0.001*<span class="ModelicaFunction">abs</span>(outMax-outMin)<span class="ModelicaKeyword"> and </span>y &lt;= outMax + 0.001*<span class="ModelicaFunction">abs</span>(outMax-outMin),
+          &quot;LimIntegrator: During initialization the limits have been ignored.\n&quot;
+        + &quot;However, the result is that the output y is not within the required limits:\n&quot;
+        + &quot;  y = &quot; +<span class="ModelicaFunction"> String</span>(y) + &quot;, outMin = &quot; +<span class="ModelicaFunction"> String</span>(outMin) + &quot;, outMax = &quot; +<span class="ModelicaFunction"> String</span>(outMax));
+  <span class="ModelicaKeyword">elseif </span>strict<span class="ModelicaKeyword"> then</span>
+    <span class="ModelicaFunction"> der</span>(y) =<span class="ModelicaFunction"> noEvent</span>(<span class="ModelicaKeyword">if </span>y &lt; outMin<span class="ModelicaKeyword"> and </span>k*u &lt; 0<span class="ModelicaKeyword"> or </span>y &gt; outMax<span class="ModelicaKeyword"> and </span>k*u &gt; 0<span class="ModelicaKeyword"> then </span>0<span class="ModelicaKeyword"> else </span>k*u);
+  <span class="ModelicaKeyword">else</span>
+    <span class="ModelicaFunction"> der</span>(y) = <span class="ModelicaKeyword">if </span>y &lt; outMin<span class="ModelicaKeyword"> and </span>k*u &lt; 0<span class="ModelicaKeyword"> or </span>y &gt; outMax<span class="ModelicaKeyword"> and </span>k*u &gt; 0<span class="ModelicaKeyword"> then </span>0<span class="ModelicaKeyword"> else </span>k*u;
+  <span class="ModelicaKeyword">end if</span>;
+<span class="ModelicaKeyword">end </span>LimIntegrator;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE FirstOrder<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Continuous.FirstOrderI.png" alt="Modelica.Blocks.Continuous.FirstOrder" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Continuous.FirstOrder"></a>Modelica.Blocks.Continuous.FirstOrder</h2>
+<p>
+<span class="ModelicaDescription">First order transfer function block (= 1 pole)</span>
+<br>
+<br><img src="Modelica.Blocks.Continuous.FirstOrderD.png" alt="Modelica.Blocks.Continuous.FirstOrder">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks defines the transfer function between the input u
+and the output y (element-wise) as <i>first order</i> system:
+</p>
+<pre>
+               k
+     y = ------------ * u
+            T * s + 1
+</pre>
+<p>
+If you would like to be able to change easily between different
+transfer functions (FirstOrder, SecondOrder, ... ) by changing
+parameters, use the general block <b>TransferFunction</b> instead
+and model a first order SISO system with parameters<br>
+b = {k}, a = {T, 1}.
+</p>
+<pre>
+Example:
+   parameter: k = 0.3, T = 0.4
+   results in:
+             0.3
+      y = ----------- * u
+          0.4 s + 1.0
+</pre>
+
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a> (Single Input Single Output continuous control block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Real</td><td>k</td><td>1</td><td>Gain [1]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>T</td><td>&nbsp;</td><td>Time Constant [s]</td></tr>
+<tr class="ModelicaParameterGroup"><td colspan="4">Initialization</td></tr>
+<tr><td><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Init</a></td><td>initType</td><td>Modelica.Blocks.Types.Init.N...</td><td>Type of initialization (1: no init, 2: steady state, 3/4: initial output)</td></tr>
+<tr><td>Real</td><td>y_start</td><td>0</td><td>Initial or guess value of output (= state)</td></tr>
+<tr><td><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y.start</td><td>y_start</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> FirstOrder <span class="ModelicaComment">&quot;First order transfer function block (= 1 pole)&quot;</span>
+  <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Modelica.Blocks.Types.Init</a>;
+  <span class="ModelicaKeyword">parameter </span>Real k(unit=&quot;1&quot;)=1 <span class="ModelicaComment">&quot;Gain&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>SIunits.Time</a> T(start=1) <span class="ModelicaComment">&quot;Time Constant&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Modelica.Blocks.Types.Init</a> initType=Modelica.Blocks.Types.Init.NoInit
+    <span class="ModelicaComment">&quot;Type of initialization (1: no init, 2: steady state, 3/4: initial output)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real y_start=0 <span class="ModelicaComment">&quot;Initial or guess value of output (= state)&quot;</span>;
+
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a>(y(start=y_start));
+
+<span class="ModelicaKeyword">initial </span><span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaKeyword">if </span>initType == Init.SteadyState<span class="ModelicaKeyword"> then</span>
+    <span class="ModelicaFunction">der</span>(y) = 0;
+  <span class="ModelicaKeyword">elseif </span>initType == Init.InitialState<span class="ModelicaKeyword"> or </span>initType == Init.InitialOutput<span class="ModelicaKeyword"> then</span>
+    y = y_start;
+  <span class="ModelicaKeyword">end if</span>;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">der</span>(y) = (k*u - y)/T;
+<span class="ModelicaKeyword">end </span>FirstOrder;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Derivative<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Continuous.DerivativeI.png" alt="Modelica.Blocks.Continuous.Derivative" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Continuous.Derivative"></a>Modelica.Blocks.Continuous.Derivative</h2>
+<p>
+<span class="ModelicaDescription">Approximated derivative block</span>
+<br>
+<br><img src="Modelica.Blocks.Continuous.DerivativeD.png" alt="Modelica.Blocks.Continuous.Derivative">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks defines the transfer function between the
+input u and the output y
+(element-wise) as <i>approximated derivative</i>:
+</p>
+<pre>
+             k * s
+     y = ------------ * u
+            T * s + 1
+</pre>
+<p>
+If you would like to be able to change easily between different
+transfer functions (FirstOrder, SecondOrder, ... ) by changing
+parameters, use the general block <b>TransferFunction</b> instead
+and model a derivative block with parameters<br>
+b = {k,0}, a = {T, 1}.
+</p>
+
+<p>
+If k=0, the block reduces to y=0.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a> (Single Input Single Output continuous control block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Real</td><td>k</td><td>1</td><td>Gains [1]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>T</td><td>0.01</td><td>Time constants (T&gt;0 required; T=0 is ideal derivative block) [s]</td></tr>
+<tr class="ModelicaParameterGroup"><td colspan="4">Initialization</td></tr>
+<tr><td><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Init</a></td><td>initType</td><td>Modelica.Blocks.Types.Init.N...</td><td>Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)</td></tr>
+<tr><td>Real</td><td>x_start</td><td>0</td><td>Initial or guess value of state</td></tr>
+<tr><td>Real</td><td>y_start</td><td>0</td><td>Initial value of output (= state)</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Derivative <span class="ModelicaComment">&quot;Approximated derivative block&quot;</span>
+  <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Modelica.Blocks.Types.Init</a>;
+  <span class="ModelicaKeyword">parameter </span>Real k(unit=&quot;1&quot;)=1 <span class="ModelicaComment">&quot;Gains&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>SIunits.Time</a> T(min=Modelica.Constants.small) = 0.01
+    <span class="ModelicaComment">&quot;Time constants (T&gt;0 required; T=0 is ideal derivative block)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
+>Modelica.Blocks.Types.Init</a> initType=Modelica.Blocks.Types.Init.NoInit
+    <span class="ModelicaComment">&quot;Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real x_start=0 <span class="ModelicaComment">&quot;Initial or guess value of state&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Real y_start=0 <span class="ModelicaComment">&quot;Initial value of output (= state)&quot;</span>;
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a>;
+
+  <span class="ModelicaKeyword">output </span>Real x(start=x_start) <span class="ModelicaComment">&quot;State of block&quot;</span>;
+
+<span class="ModelicaKeyword">protected </span>
+  <span class="ModelicaKeyword">parameter </span>Boolean zeroGain =<span class="ModelicaFunction"> abs</span>(k) &lt; Modelica.Constants.eps;
+<span class="ModelicaKeyword">initial </span><span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaKeyword">if </span>initType == Init.SteadyState<span class="ModelicaKeyword"> then</span>
+    <span class="ModelicaFunction">der</span>(x) = 0;
+  <span class="ModelicaKeyword">elseif </span>initType == Init.InitialState<span class="ModelicaKeyword"> then</span>
+    x = x_start;
+  <span class="ModelicaKeyword">elseif </span>initType == Init.InitialOutput<span class="ModelicaKeyword"> then</span>
+    <span class="ModelicaKeyword">if </span>zeroGain<span class="ModelicaKeyword"> then</span>
+       x = u;
+    <span class="ModelicaKeyword">else</span>
+       y = y_start;
+    <span class="ModelicaKeyword">end if</span>;
+  <span class="ModelicaKeyword">end if</span>;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">der</span>(x) = <span class="ModelicaKeyword">if </span>zeroGain<span class="ModelicaKeyword"> then </span>0<span class="ModelicaKeyword"> else </span>(u - x)/T;
+  y = <span class="ModelicaKeyword">if </span>zeroGain<span class="ModelicaKeyword"> then </span>0<span class="ModelicaKeyword"> else </span>(k/T)*(u - x);
+<span class="ModelicaKeyword">end </span>Derivative;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:14 2017.
+</address>
+</body>
+</html>

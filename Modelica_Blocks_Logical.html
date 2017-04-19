@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Modelica.Blocks.Logical.Switch</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;Switch between two Real signals&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Switch<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Logical.SwitchI.png" alt="Modelica.Blocks.Logical.Switch" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Logical.Switch"></a>Modelica.Blocks.Logical.Switch</h2>
+<p>
+<span class="ModelicaDescription">Switch between two Real signals</span>
+<br>
+<br><img src="Modelica.Blocks.Logical.SwitchD.png" alt="Modelica.Blocks.Logical.Switch">
+</p>
+<h3>Information</h3>
+
+<p>The Logical.Switch switches, depending on the
+logical connector u2 (the middle connector)
+between the two possible input signals
+u1 (upper connector) and u3 (lower connector).</p>
+<p>If u2 is <b>true</b>, the output signal y is set equal to
+u1, else it is set equal to u3.</p>
+
+<p><span class="ModelicaBaseClass">Extends from Modelica.Blocks.Icons.PartialBooleanBlock (Basic graphical layout of logical block).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u1</td><td>Connector of first Real input signal</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>u2</td><td>Connector of Boolean input signal</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u3</td><td>Connector of second Real input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Switch <span class="ModelicaComment">&quot;Switch between two Real signals&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.PartialBooleanBlock"
+>Modelica.Blocks.Icons.PartialBooleanBlock</a>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Blocks.Interfaces.RealInput</a> u1 <span class="ModelicaComment">&quot;Connector of first Real input signal&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>Blocks.Interfaces.BooleanInput</a> u2 <span class="ModelicaComment">&quot;Connector of Boolean input signal&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>Blocks.Interfaces.RealInput</a> u3 <span class="ModelicaComment">&quot;Connector of second Real input signal&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Blocks.Interfaces.RealOutput</a> y <span class="ModelicaComment">&quot;Connector of Real output signal&quot;</span>;
+
+<span class="ModelicaKeyword">equation </span>
+  y = <span class="ModelicaKeyword">if </span>u2<span class="ModelicaKeyword"> then </span>u1<span class="ModelicaKeyword"> else </span>u3;
+<span class="ModelicaKeyword">end </span>Switch;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Not<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Logical.NotI.png" alt="Modelica.Blocks.Logical.Not" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Logical.Not"></a>Modelica.Blocks.Logical.Not</h2>
+<p>
+<span class="ModelicaDescription">Logical &#39;not&#39;: y = not u</span>
+<br>
+<br><img src="Modelica.Blocks.Logical.NotD.png" alt="Modelica.Blocks.Logical.Not">
+</p>
+<h3>Information</h3>
+
+<p>
+The output is <b>true</b> if the input is <b>false</b>, otherwise
+the output is <b>false</b>.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from Blocks.Interfaces.partialBooleanSISO (Partial block with 1 input and 1 output Boolean signal).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>u</td><td>Connector of Boolean input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Not <span class="ModelicaComment">&quot;Logical &#39;not&#39;: y = not u&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.partialBooleanSISO"
+>Blocks.Interfaces.partialBooleanSISO</a>;
+
+<span class="ModelicaKeyword">equation </span>
+  y = <span class="ModelicaKeyword">not </span>u;
+<span class="ModelicaKeyword">end </span>Not;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Less<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Logical.LessI.png" alt="Modelica.Blocks.Logical.Less" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Logical.Less"></a>Modelica.Blocks.Logical.Less</h2>
+<p>
+<span class="ModelicaDescription">Output y is true, if input u1 is less than input u2</span>
+<br>
+<br><img src="Modelica.Blocks.Logical.LessD.png" alt="Modelica.Blocks.Logical.Less">
+</p>
+<h3>Information</h3>
+
+<p>
+The output is <b>true</b> if Real input u1 is less than
+Real input u2, otherwise the output is <b>false</b>.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from Blocks.Interfaces.partialBooleanComparison (Partial block with 2 Real input and 1 Boolean output signal (the result of a comparison of the two Real inputs)).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u1</td><td>Connector of first Boolean input signal</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u2</td><td>Connector of second Boolean input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Less <span class="ModelicaComment">&quot;Output y is true, if input u1 is less than input u2&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.partialBooleanComparison"
+>Blocks.Interfaces.partialBooleanComparison</a>;
+
+<span class="ModelicaKeyword">equation </span>
+  y = u1 &lt; u2;
+<span class="ModelicaKeyword">end </span>Less;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE GreaterEqual<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Logical.GreaterEqualI.png" alt="Modelica.Blocks.Logical.GreaterEqual" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Logical.GreaterEqual"></a>Modelica.Blocks.Logical.GreaterEqual</h2>
+<p>
+<span class="ModelicaDescription">Output y is true, if input u1 is greater or equal than input u2</span>
+<br>
+<br><img src="Modelica.Blocks.Logical.LessD.png" alt="Modelica.Blocks.Logical.GreaterEqual">
+</p>
+<h3>Information</h3>
+
+<p>
+The output is <b>true</b> if Real input u1 is greater than or equal to
+Real input u2, otherwise the output is <b>false</b>.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.partialBooleanComparison"
+>Blocks.Interfaces.partialBooleanComparison</a> (Partial block with 2 Real input and 1 Boolean output signal (the result of a comparison of the two Real inputs)).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u1</td><td>Connector of first Boolean input signal</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u2</td><td>Connector of second Boolean input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> GreaterEqual
+  <span class="ModelicaComment">&quot;Output y is true, if input u1 is greater or equal than input u2&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.partialBooleanComparison"
+>Blocks.Interfaces.partialBooleanComparison</a>;
+
+<span class="ModelicaKeyword">equation </span>
+  y = u1 &gt;= u2;
+<span class="ModelicaKeyword">end </span>GreaterEqual;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE RSFlipFlop<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Logical.RSFlipFlopI.png" alt="Modelica.Blocks.Logical.RSFlipFlop" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Logical.RSFlipFlop"></a>Modelica.Blocks.Logical.RSFlipFlop</h2>
+<p>
+<span class="ModelicaDescription">A basic RS Flip Flop</span>
+<br>
+<br><img src="Modelica.Blocks.Logical.RSFlipFlopD.png" alt="Modelica.Blocks.Logical.RSFlipFlop">
+</p>
+<h3>Information</h3>
+
+<p>
+The output <code>Q</code> is set by the input <code>S</code> and reset by the input <code>R</code>, and keeps its value in between. <code>QI</code> is the inverse of <code>Q</code>.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.PartialBooleanBlock"
+>Modelica.Blocks.Icons.PartialBooleanBlock</a> (Basic graphical layout of logical block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Boolean</td><td>Qini</td><td>false</td><td>Start value of Q at initial time</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>BooleanOutput</a></td><td>Q</td><td>&nbsp;</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>BooleanOutput</a></td><td>QI</td><td>&nbsp;</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>S</td><td>&nbsp;</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>R</td><td>&nbsp;</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> RSFlipFlop <span class="ModelicaComment">&quot;A basic RS Flip Flop&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.PartialBooleanBlock"
+>Modelica.Blocks.Icons.PartialBooleanBlock</a>;
+  <span class="ModelicaKeyword">parameter </span>Boolean Qini=false <span class="ModelicaComment">&quot;Start value of Q at initial time&quot;</span>;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>Modelica.Blocks.Interfaces.BooleanOutput</a> Q;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>Modelica.Blocks.Interfaces.BooleanOutput</a> QI;
+  <a href="Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Nor"
+>Modelica.Blocks.Logical.Nor</a> nor;
+  <a href="Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Nor"
+>Modelica.Blocks.Logical.Nor</a> nor1;
+  <a href="Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Pre"
+>Modelica.Blocks.Logical.Pre</a> pre(pre_u_start=<span class="ModelicaKeyword">not </span>(Qini));
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>Modelica.Blocks.Interfaces.BooleanInput</a> S;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>Modelica.Blocks.Interfaces.BooleanInput</a> R;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(nor1.y, nor.u2);
+  <span class="ModelicaFunction">connect</span>(nor1.y, Q);
+  <span class="ModelicaFunction">connect</span>(nor.y, pre.u);
+  <span class="ModelicaFunction">connect</span>(pre.y, nor1.u1);
+  <span class="ModelicaFunction">connect</span>(pre.y, QI);
+  <span class="ModelicaFunction">connect</span>(S, nor.u1);
+  <span class="ModelicaFunction">connect</span>(R, nor1.u2);
+<span class="ModelicaKeyword">end </span>RSFlipFlop;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Or<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Logical.OrI.png" alt="Modelica.Blocks.Logical.Or" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Logical.Or"></a>Modelica.Blocks.Logical.Or</h2>
+<p>
+<span class="ModelicaDescription">Logical &#39;or&#39;: y = u1 or u2</span>
+<br>
+<br><img src="Modelica.Blocks.Logical.OrD.png" alt="Modelica.Blocks.Logical.Or">
+</p>
+<h3>Information</h3>
+
+<p>
+The output is <b>true</b> if at least one input is <b>true</b>, otherwise
+the output is <b>false</b>.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from Blocks.Interfaces.partialBooleanSI2SO (Partial block with 2 input and 1 output Boolean signal).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>u1</td><td>Connector of first Boolean input signal</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>u2</td><td>Connector of second Boolean input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Or <span class="ModelicaComment">&quot;Logical &#39;or&#39;: y = u1 or u2&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.partialBooleanSI2SO"
+>Blocks.Interfaces.partialBooleanSI2SO</a>;
+<span class="ModelicaKeyword">equation </span>
+  y = u1<span class="ModelicaKeyword"> or </span>u2;
+<span class="ModelicaKeyword">end </span>Or;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Nor<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Logical.OrI.png" alt="Modelica.Blocks.Logical.Nor" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Logical.Nor"></a>Modelica.Blocks.Logical.Nor</h2>
+<p>
+<span class="ModelicaDescription">Logical &#39;nor&#39;: y = not (u1 or u2)</span>
+<br>
+<br><img src="Modelica.Blocks.Logical.OrD.png" alt="Modelica.Blocks.Logical.Nor">
+</p>
+<h3>Information</h3>
+
+<p>
+The output is <b>true</b> if none of the inputs is <b>true</b>, otherwise
+the output is <b>false</b>.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.partialBooleanSI2SO"
+>Blocks.Interfaces.partialBooleanSI2SO</a> (Partial block with 2 input and 1 output Boolean signal).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>u1</td><td>Connector of first Boolean input signal</td></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>u2</td><td>Connector of second Boolean input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Nor <span class="ModelicaComment">&quot;Logical &#39;nor&#39;: y = not (u1 or u2)&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.partialBooleanSI2SO"
+>Blocks.Interfaces.partialBooleanSI2SO</a>;
+<span class="ModelicaKeyword">equation </span>
+  y = <span class="ModelicaKeyword">not </span>(u1<span class="ModelicaKeyword"> or </span>u2);
+<span class="ModelicaKeyword">end </span>Nor;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Pre<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Logical.PreI.png" alt="Modelica.Blocks.Logical.Pre" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Logical.Pre"></a>Modelica.Blocks.Logical.Pre</h2>
+<p>
+<span class="ModelicaDescription">Breaks algebraic loops by an infinitesimal small time delay (y = pre(u): event iteration continues until u = pre(u))</span>
+<br>
+<br><img src="Modelica.Blocks.Logical.PreD.png" alt="Modelica.Blocks.Logical.Pre">
+</p>
+<h3>Information</h3>
+
+<p>
+This block delays the Boolean input by an infinitesimal small time delay and
+therefore breaks algebraic loops. In a network of logical blocks, in every
+"closed connection loop" at least one logical block must have a delay,
+since algebraic systems of Boolean equations are not solvable.
+</p>
+
+<p>
+The "Pre" block returns the value of the "input" signal from the
+last "event iteration". The "event iteration" stops, once both
+values are identical (u = pre(u)).
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.partialBooleanSISO"
+>Blocks.Interfaces.partialBooleanSISO</a> (Partial block with 1 input and 1 output Boolean signal).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Boolean</td><td>pre_u_start</td><td>false</td><td>Start value of pre(u) at initial time</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
+>BooleanInput</a></td><td>u</td><td>Connector of Boolean input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
+>BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Pre
+  <span class="ModelicaComment">&quot;Breaks algebraic loops by an infinitesimal small time delay (y = pre(u): event iteration continues until u = pre(u))&quot;</span>
+
+  <span class="ModelicaKeyword">parameter </span>Boolean pre_u_start=false <span class="ModelicaComment">&quot;Start value of pre(u) at initial time&quot;</span>;
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.partialBooleanSISO"
+>Blocks.Interfaces.partialBooleanSISO</a>;
+
+<span class="ModelicaKeyword">initial </span><span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">pre</span>(u) = pre_u_start;
+<span class="ModelicaKeyword">equation </span>
+  y =<span class="ModelicaFunction"> pre</span>(u);
+<span class="ModelicaKeyword">end </span>Pre;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:14 2017.
+</address>
+</body>
+</html>

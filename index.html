@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>PVSystems</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;A Modelica library for photovoltaic system and power converter design&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE PVSystems<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><a name="PVSystems"></a>PVSystems</h2>
+<p>
+<span class="ModelicaDescription">A Modelica library for photovoltaic system and power converter design</span><br>
+</p>
+<h3>Information</h3>
+
+        <p>
+          <b>Overview</b>
+        </p>
+      
+        <p>
+          <b>PVSystems</b> is
+          a <a href="https://www.modelica.org/">Modelica</a> library
+          providing models useful for the design and evaluation of
+          photovoltaic systems and power converters as well as their
+          associated control algorithms.
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Resources/Images/screenshot_small.png"
+                  alt="screenshot.png" />
+          </p>
+        </div>
+      
+        <p>
+          The library is the result of a research project carried out in the
+          form of a master's degree thesis. There are two intended audiences
+          for the library:
+        </p>
+      
+        <ul class="org-ul">
+          <li><b><b>Users</b></b>: the library is intended to be rich enough
+            in component and subsystem models that it proves useful for
+            those interested in designing and evaluating photovoltaic
+            systems, power converters and their associated control
+            algorithms. Check out the usage section to learn more.
+          </li>
+          <li><b><b>Developers</b></b>: the library is also intended to
+            explore and showcase best practices for the development of
+            Modelica libraries. Many of these best practices are inspired or
+            taken from
+            other <a href="https://github.com/raulrpearson?language=modelica&tab=stars">Modelica
+            libraries on GitHub</a> and from the
+            excellent <a href="http://book.xogeny.com/">Modelica by
+            Example</a>.
+          </li>
+        </ul>
+      
+        <p>
+          The library is currently in the early stages of development, so
+          the structure and contents will probably be updated regularly. The
+          intention is to provide models in the following categories:
+        </p>
+      
+        <ul class="org-ul">
+          <li><b><b><a href="PVSystems_Control.html#PVSystems.Control"
+>Control</a></b></b>:
+            based on the interfaces provided
+            in <a  >Modelica.Blocks</a>,
+            common blocks used in the control of power converters, including
+            Park and Clarke transforms, Space Vector Modulation and grid
+            synchronization blocks.
+          </li>
+          <li><b><b><a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>Electrical</a></b></b>:
+            based on the interfaces provided
+            in <a  >Modelica.Electrical.Analog</a>,
+            common electrical models including PV arrays, energy storage
+            devices, power converters, transformers, loads and other grid
+            elements. The library features both switched and averaged models
+            of power converters.
+          </li>
+          <li><b><b><a href="PVSystems_Examples.html#PVSystems.Examples"
+>Examples</a></b></b>:
+            a comprehensive set of examples will be provided to showcase the
+            capabilities and explain the use of the library.
+          </li>
+        </ul>
+      
+        <p>
+          <b>Download and usage</b>
+        </p>
+      
+        <p>
+          You can grab a copy of the library by clonning the repository or
+          downloading
+          a <a href="https://github.com/raulrpearson/PVSystems/archive/master.zip">zip
+          of the latest commit</a>. Take into account that the library is
+          currently in the early stages of development, so some models might
+          not be stable and the structure and contents of the library will
+          probably be updated regularly. If you want to stay up to date with
+          development, you
+          can <a href="https://github.com/raulrpearson/PVSystems/subscription">watch
+          the project</a> if you have a GitHub account or you can subscribe
+          to
+          the <a href="https://github.com/raulrpearson/PVSystems/commits/master.atom">commits
+          feed</a>.
+        </p>
+      
+        <p>
+          The library can be used inside tools
+          like <a href="http://www.3ds.com/products-services/catia/products/dymola/">Dymola</a>
+          or <a href="https://openmodelica.org/">OpenModelica</a> to
+          create models of PV systems. These same tools can be used in
+          conjuntion with other tools supporting
+          the <a href="https://fmi-standard.org">FMI standard</a> for
+          model exchange and co-simulation. For example, a PV system model
+          developed in OpenModelica using this library could then be used to
+          validate a control algorithm developed in MATLAB/Simulink or
+          LabVIEW.
+        </p>
+      
+        <p>
+          <b>Contributing</b>
+        </p>
+      
+        <p>
+          If you have any <b><b>questions, comments, suggestions, ideas or
+              feature requests</b></b>, please do share those as well as
+              any <b><b>mistakes or bugs</b></b> you might discover. You can
+              open an issue in
+              the <a href="https://github.com/raulrpearson/PVSystems/issues">Issues</a>
+              section of the repository or, if you prefer, contact me
+              by <a href="mailto:raul.rodriguez.pearson@gmail.com">email</a>. Contributions
+              in the form
+              of <a href="https://github.com/raulrpearson/PVSystems/pulls">Pull
+              Requests</a> are always welcome.
+        </p>
+      
+        <p>
+          <b>License</b>
+        </p>
+      
+        <p>
+          PVSystems is licensed under the MIT
+          License. See <a href="PVSystems_UsersGuide.html#PVSystems.UsersGuide.License"
+>License</a>
+          for the full license text.
+        </p>
+      
+<p><span class="ModelicaBaseClass">Extends from Modelica.Icons.Package (Icon for standard packages).</span></p>
+<h3>Package Content</h3>
+<table summary="Package Content" class="ModelicaTablePackageContent">
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><img src="PVSystems.UsersGuideS.png" alt="PVSystems.UsersGuide" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide.html#PVSystems.UsersGuide"
+>UsersGuide</a>
+</td>
+<td>User&#39;s Guide</td>
+</tr>
+<tr>
+<td><img src="PVSystems.ExamplesS.png" alt="PVSystems.Examples" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples.html#PVSystems.Examples"
+>Examples</a>
+</td>
+<td>Application and validation examples</td>
+</tr>
+<tr>
+<td><img src="PVSystems.ElectricalS.png" alt="PVSystems.Electrical" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical.html#PVSystems.Electrical"
+>Electrical</a>
+</td>
+<td>Library for electrical models</td>
+</tr>
+<tr>
+<td><img src="PVSystems.ControlS.png" alt="PVSystems.Control" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Control.html#PVSystems.Control"
+>Control</a>
+</td>
+<td>Control elements for power converters</td>
+</tr>
+<tr>
+<td><img src="PVSystems.IconsS.png" alt="PVSystems.Icons" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Icons.html#PVSystems.Icons"
+>Icons</a>
+</td>
+<td>Library of icons</td>
+</tr>
+</table>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:07 2017.
+</address>
+</body>
+</html>
