@@ -13,4 +13,19 @@ equation
   mu = max(dsat, 1/(1 + Re*i1/v2));
   v1 = (1 - mu)*v2/mu/n;
   -i2 = (1 - mu)*i1/mu/n;
+  annotation(Documentation(info="<html>
+      <p>
+        <em>Application</em>: two-switch PWM converters, CCM or DCM with
+        (possibly) transformer.
+      </p>
+    
+      <p>
+        <em>Limitations</em>: ideal switches.
+      </p>
+    
+      <p>
+        Model taken
+        from <a href=\"modelica://PVSystems.UsersGuide.References.EM01\">EM01</a>
+        and <a href=\"modelica://PVSystems.UsersGuide.References.EMA16\">EMA16</a>.</p>
+    </html>"));
 end CCM_DCM2;
