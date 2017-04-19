@@ -3,11 +3,15 @@ extends Modelica.Icons.Package;
 
 
 
+
+
+
+
 annotation (
   uses(Modelica(version="3.2.2")),
   preferredView="info",
-  version="0.6.0",
-  versionDate="2017-04-03",
+  version="0.6.1",
+  versionDate="2017-04-19",
   Documentation(info="<html>
         <p>
           <b>Overview</b>
