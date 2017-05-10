@@ -2,127 +2,118 @@ within PVSystems.Examples.Application;
 model Inverter1phOpenSynch
   "Grid synchronized 1-phase open-loop inverter fed by constant DC source"
   extends Modelica.Icons.Example;
-  PVSystems.Electrical.Assemblies.HBridgeSwitched HBsw annotation (Placement(
-        transformation(extent={{30,70},{50,90}}, rotation=0)));
-  Modelica.Electrical.Analog.Sources.ConstantVoltage DCsrc(V=580) annotation (
+  Electrical.Assemblies.HBridge HBsw(redeclare model SwitchModel =
+        Electrical.SwitchedSynchronous (fs=3125))
+    annotation (Placement(transformation(extent={{0,40},{20,60}}, rotation=0)));
+  Modelica.Electrical.Analog.Sources.ConstantVoltage Ssw(V=580) annotation (
       Placement(transformation(
-        origin={-10,70},
+        origin={-30,50},
         extent={{-10,-10},{10,10}},
-        rotation=180)));
+        rotation=270)));
   Modelica.Electrical.Analog.Sources.SineVoltage Gsw(freqHz=50, V=480)
     annotation (Placement(transformation(
-        origin={130,70},
+        origin={50,30},
         extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Inductor Lsw(L=500e-6) annotation (Placement(
         transformation(
-        origin={80,90},
+        origin={50,70},
         extent={{-10,-10},{10,10}},
-        rotation=0)));
+        rotation=270)));
   Control.PLL pLL annotation (Placement(transformation(
-        origin={-90,-16},
+        origin={-80,-56},
         extent={{10,-10},{-10,10}},
         rotation=180)));
-  Control.SignalPWM signalPWM(fs=3125) annotation (Placement(transformation(
-        origin={40,10},
-        extent={{-10,-10},{10,10}},
-        rotation=90)));
   Modelica.Blocks.Math.Cos sin annotation (Placement(transformation(
-        origin={-56,-16},
+        origin={-46,-56},
         extent={{10,-10},{-10,10}},
         rotation=180)));
   Modelica.Blocks.Math.Add add(k2=1, k1=580/580/2) annotation (Placement(
         transformation(
-        origin={-20,-10},
+        origin={-10,-50},
         extent={{10,-10},{-10,10}},
         rotation=180)));
   Modelica.Blocks.Sources.Constant const(k=0.5) annotation (Placement(
         transformation(
-        origin={-90,16},
+        origin={-80,-24},
         extent={{10,-10},{-10,10}},
         rotation=180)));
-  Modelica.Electrical.Analog.Basic.Ground gsrc annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-40,70})));
   Modelica.Electrical.Analog.Basic.Resistor Rsw(R=0.1) annotation (Placement(
         transformation(
-        origin={110,90},
-        extent={{-10,-10},{10,10}},
-        rotation=0)));
-  PVSystems.Electrical.Assemblies.HBridgeAveraged HBav annotation (Placement(
-        transformation(extent={{30,-40},{50,-20}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Inductor Lav(L=500e-6) annotation (Placement(
-        transformation(
-        origin={80,-20},
-        extent={{-10,-10},{10,10}},
-        rotation=0)));
-  Modelica.Electrical.Analog.Basic.Resistor Rav(R=0.1) annotation (Placement(
-        transformation(
-        origin={110,-20},
-        extent={{-10,-10},{10,10}},
-        rotation=0)));
-  Modelica.Electrical.Analog.Basic.Ground gsw annotation (Placement(
-        transformation(extent={{10,52},{30,72}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Ground gav annotation (Placement(
-        transformation(extent={{10,-60},{30,-40}}, rotation=0)));
-  Control.DeadTime deadTime annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={40,50})));
-  Modelica.Blocks.Sources.RealExpression VacSense(y=Gsw.v)
-    annotation (Placement(transformation(extent={{-134,-26},{-114,-6}})));
-  Modelica.Electrical.Analog.Sources.SineVoltage Gav(freqHz=50, V=480)
-    annotation (Placement(transformation(
-        origin={130,-50},
+        origin={50,50},
         extent={{-10,-10},{10,10}},
         rotation=270)));
+  PVSystems.Electrical.Assemblies.HBridge HBav annotation (Placement(
+        transformation(extent={{70,-20},{90,0}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Inductor Lav(L=500e-6) annotation (Placement(
+        transformation(
+        origin={120,10},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+  Modelica.Electrical.Analog.Basic.Resistor Rav(R=0.1) annotation (Placement(
+        transformation(
+        origin={120,-10},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+  Modelica.Electrical.Analog.Basic.Ground gsw annotation (Placement(
+        transformation(extent={{-40,20},{-20,40}},
+                                                 rotation=0)));
+  Modelica.Blocks.Sources.RealExpression VacSense(y=Gsw.v)
+    annotation (Placement(transformation(extent={{-120,-66},{-100,-46}})));
+  Modelica.Electrical.Analog.Sources.SineVoltage Gav(freqHz=50, V=480)
+    annotation (Placement(transformation(
+        origin={120,-30},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+  Modelica.Electrical.Analog.Sources.ConstantVoltage Sav(V=580) annotation (
+      Placement(transformation(
+        origin={40,-10},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+  Modelica.Electrical.Analog.Basic.Ground gav annotation (Placement(
+        transformation(extent={{30,-40},{50,-20}}, rotation=0)));
 equation
-  connect(gsw.p, HBsw.n1)
-    annotation (Line(points={{20,72},{20,75},{30,75}}, color={0,0,255}));
   connect(pLL.theta, sin.u)
-    annotation (Line(points={{-79,-16},{-68,-16}}, color={0,0,127}));
-  connect(const.y, add.u2) annotation (Line(points={{-79,16},{-40,16},{-40,-4},
-          {-32,-4}},color={0,0,127}));
-  connect(HBav.n1, gav.p)
-    annotation (Line(points={{30,-35},{20,-35},{20,-40}}, color={0,0,255}));
+    annotation (Line(points={{-69,-56},{-58,-56}}, color={0,0,127}));
+  connect(const.y, add.u2) annotation (Line(points={{-69,-24},{-30,-24},{-30,
+          -44},{-22,-44}},
+                    color={0,0,127}));
   connect(sin.y, add.u1)
-    annotation (Line(points={{-45,-16},{-32,-16}}, color={0,0,127}));
+    annotation (Line(points={{-35,-56},{-22,-56}}, color={0,0,127}));
+  connect(VacSense.y, pLL.v) annotation (Line(points={{-99,-56},{-99,-56},{-92,
+          -56}}, color={0,0,127}));
+  connect(Gav.p, Rav.n)
+    annotation (Line(points={{120,-20},{120,-20}}, color={0,0,255}));
+  connect(Rav.p, Lav.n)
+    annotation (Line(points={{120,0},{120,0}}, color={0,0,255}));
+  connect(HBav.p2, Lav.p) annotation (Line(points={{90,-5},{100,-5},{100,20},{
+          120,20}}, color={0,0,255}));
+  connect(HBav.n2, Gav.n) annotation (Line(points={{90,-15},{100,-15},{100,-40},
+          {120,-40}}, color={0,0,255}));
+  connect(Gsw.p, Rsw.n)
+    annotation (Line(points={{50,40},{50,40}}, color={0,0,255}));
   connect(Rsw.p, Lsw.n)
-    annotation (Line(points={{100,90},{90,90}}, color={0,0,255}));
-  connect(Lav.n, Rav.p)
-    annotation (Line(points={{90,-20},{100,-20}}, color={0,0,255}));
-  connect(HBsw.p2, Lsw.p) annotation (Line(points={{50,85},{60,85},{60,90},{70,
-          90}}, color={0,0,255}));
-  connect(HBav.p2, Lav.p) annotation (Line(points={{50,-25},{60,-25},{60,-20},{
-          70,-20}}, color={0,0,255}));
-  connect(gsrc.p, DCsrc.n)
-    annotation (Line(points={{-30,70},{-20,70}}, color={0,0,255}));
-  connect(DCsrc.p, HBsw.p1) annotation (Line(points={{0,70},{10,70},{10,85},{30,
-          85}}, color={0,0,255}));
-  connect(DCsrc.p, HBav.p1) annotation (Line(points={{0,70},{10,70},{10,-25},{
-          30,-25}}, color={0,0,255}));
-  connect(Rsw.n, Gsw.p)
-    annotation (Line(points={{120,90},{130,90},{130,80}}, color={0,0,255}));
-  connect(deadTime.c1, HBsw.c1)
-    annotation (Line(points={{36,61},{36,70},{36,70}}, color={255,0,255}));
-  connect(deadTime.c2, HBsw.c2)
-    annotation (Line(points={{44,61},{44,65.5},{44,70}}, color={255,0,255}));
-  connect(signalPWM.c1, deadTime.c)
-    annotation (Line(points={{40,21},{40,30},{40,38}}, color={255,0,255}));
-  connect(Gsw.n, HBsw.n2) annotation (Line(points={{130,60},{130,50},{54,50},{
-          54,75},{50,75}}, color={0,0,255}));
-  connect(add.y, signalPWM.vc) annotation (Line(points={{-9,-10},{0,-10},{40,-10},
-          {40,-2}}, color={0,0,127}));
-  connect(HBav.d, signalPWM.vc) annotation (Line(points={{40,-42},{40,-70},{0,-70},
-          {0,-10},{40,-10},{40,-2}}, color={0,0,127}));
-  connect(VacSense.y, pLL.v) annotation (Line(points={{-113,-16},{-113,-16},{-102,
-          -16}}, color={0,0,127}));
-  connect(Rav.n, Gav.p)
-    annotation (Line(points={{120,-20},{130,-20},{130,-40}}, color={0,0,255}));
-  connect(HBav.n2, Gav.n) annotation (Line(points={{50,-35},{60,-35},{60,-70},{
-          130,-70},{130,-60}}, color={0,0,255}));
+    annotation (Line(points={{50,60},{50,60}}, color={0,0,255}));
+  connect(HBsw.n2, Gsw.n) annotation (Line(points={{20,45},{30,45},{30,20},{50,
+          20}}, color={0,0,255}));
+  connect(HBsw.p2, Lsw.p) annotation (Line(points={{20,55},{30,55},{30,80},{50,
+          80}}, color={0,0,255}));
+  connect(Sav.n, gav.p)
+    annotation (Line(points={{40,-20},{40,-20}}, color={0,0,255}));
+  connect(Ssw.n, gsw.p)
+    annotation (Line(points={{-30,40},{-30,40}}, color={0,0,255}));
+  connect(Ssw.p, HBsw.p1) annotation (Line(points={{-30,60},{-14,60},{-14,55},{
+          0,55}}, color={0,0,255}));
+  connect(Ssw.n, HBsw.n1) annotation (Line(points={{-30,40},{-14,40},{-14,45},{
+          0,45}}, color={0,0,255}));
+  connect(Sav.n, HBav.n1) annotation (Line(points={{40,-20},{56,-20},{56,-15},{
+          70,-15}}, color={0,0,255}));
+  connect(Sav.p, HBav.p1)
+    annotation (Line(points={{40,0},{56,0},{56,-5},{70,-5}}, color={0,0,255}));
+  connect(add.y, HBav.d)
+    annotation (Line(points={{1,-50},{80,-50},{80,-22}}, color={0,0,127}));
+  connect(HBsw.d, HBav.d) annotation (Line(points={{10,38},{10,-50},{80,-50},{
+          80,-22}}, color={0,0,127}));
   annotation (
     experiment(
       StartTime=0,

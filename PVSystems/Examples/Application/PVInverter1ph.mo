@@ -9,8 +9,8 @@ model PVInverter1ph "Simple PV system including PV array, inverter and no grid"
         transformation(extent={{-80,70},{-60,90}}, rotation=0)));
   Modelica.Blocks.Sources.Constant Tn(k=298.15) annotation (Placement(
         transformation(extent={{-80,30},{-60,50}}, rotation=0)));
-  PVSystems.Electrical.Assemblies.HBridgeAveraged Inverter annotation (
-      Placement(transformation(extent={{40,50},{60,70}}, rotation=0)));
+  PVSystems.Electrical.Assemblies.HBridge Inverter annotation (Placement(
+        transformation(extent={{40,50},{60,70}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Inductor L(L=200e-6) annotation (Placement(
         transformation(
         origin={90,74},

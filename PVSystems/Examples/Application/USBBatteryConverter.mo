@@ -1,7 +1,6 @@
 within PVSystems.Examples.Application;
 model USBBatteryConverter "Bidirectional converter for USB battery interface"
   extends Modelica.Icons.Example;
-  extends Modelica.Icons.UnderConstruction;
   Electrical.Assemblies.CPMBidirectionalBuckBoost conv(
     Cin=10e-6,
     Cout=88e-6,

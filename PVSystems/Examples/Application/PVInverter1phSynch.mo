@@ -10,7 +10,8 @@ model PVInverter1phSynch
         transformation(extent={{-80,70},{-60,90}}, rotation=0)));
   Modelica.Blocks.Sources.Constant Tn(k=298.15) annotation (Placement(
         transformation(extent={{-80,30},{-60,50}}, rotation=0)));
-  PVSystems.Electrical.Assemblies.HBridgeAveraged Inverter annotation (
+  PVSystems.Electrical.Assemblies.HBridge Inverter(redeclare model SwitchModel
+      = Electrical.SwitchedSynchronousBidirectional (fs=3125)) annotation (
       Placement(transformation(extent={{40,60},{60,80}}, rotation=0)));
   Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=15)
     annotation (Placement(transformation(

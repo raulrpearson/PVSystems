@@ -16,7 +16,7 @@ model Inverter1phClosedSynch
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-40,-50})));
-  PVSystems.Electrical.Assemblies.HBridgeAveraged HB(d(start=0.5))
+  PVSystems.Electrical.Assemblies.HBridge HB(d(start=0.5))
     annotation (Placement(transformation(extent={{2,60},{22,80}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Inductor L(L=500e-6) annotation (Placement(
         transformation(extent={{34,80},{54,100}}, rotation=0)));

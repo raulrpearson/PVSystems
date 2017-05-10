@@ -9,7 +9,7 @@ model Inverter1phClosed
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
         transformation(extent={{-30,14},{-10,34}}, rotation=0)));
-  PVSystems.Electrical.Assemblies.HBridgeAveraged HBav annotation (Placement(
+  PVSystems.Electrical.Assemblies.HBridge HBav annotation (Placement(
         transformation(extent={{20,40},{40,60}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Resistor Rav(R=0.1) annotation (Placement(
         transformation(

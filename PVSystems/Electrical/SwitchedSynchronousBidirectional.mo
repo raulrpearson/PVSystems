@@ -1,5 +1,6 @@
 within PVSystems.Electrical;
-model SwitchedSynchronous "Switched model implemented with switch x 2"
+model SwitchedSynchronousBidirectional
+  "Switched model implemented with switch + anti-parallel diode x 2"
   extends Interfaces.SwitchNetworkInterface;
   Modelica.Electrical.Analog.Ideal.IdealClosingSwitch sw1(Ron=Ron) annotation (
       Placement(transformation(
@@ -31,6 +32,16 @@ model SwitchedSynchronous "Switched model implemented with switch x 2"
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,-30})));
+  Modelica.Electrical.Analog.Ideal.IdealDiode d1 annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-80,0})));
+  Modelica.Electrical.Analog.Ideal.IdealDiode d2 annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={80,0})));
 equation
   connect(p1, sw1.p)
     annotation (Line(points={{-100,50},{-40,50},{-40,10}}, color={0,0,255}));
@@ -48,6 +59,14 @@ equation
     annotation (Line(points={{100,-50},{40,-50},{40,-10}}, color={0,0,255}));
   connect(deadTime.c2, sw2.control) annotation (Line(points={{4,-19},{4,-19},{4,
           0},{33,0}}, color={255,0,255}));
+  connect(d1.n, sw1.p) annotation (Line(points={{-80,10},{-80,50},{-40,50},{-40,
+          10}}, color={0,0,255}));
+  connect(d1.p, sw1.n) annotation (Line(points={{-80,-10},{-80,-50},{-40,-50},{
+          -40,-10}}, color={0,0,255}));
+  connect(d2.n, p2) annotation (Line(points={{80,10},{80,10},{80,50},{100,50}},
+        color={0,0,255}));
+  connect(d2.p, n2) annotation (Line(points={{80,-10},{80,-10},{80,-50},{100,
+          -50}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end SwitchedSynchronous;
+end SwitchedSynchronousBidirectional;

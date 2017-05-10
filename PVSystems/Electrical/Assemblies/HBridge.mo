@@ -1,5 +1,5 @@
 within PVSystems.Electrical.Assemblies;
-model HBridgeAveraged "Basic ideal H-bridge topology (averaged)"
+model HBridge "Basic ideal H-bridge topology (averaged)"
   extends Interfaces.TwoPort;
   extends PVSystems.Icons.ConverterIcon;
   Modelica.Blocks.Interfaces.RealInput d annotation (Placement(transformation(
@@ -51,4 +51,4 @@ equation
     composes IdealAverageCCMSwitch to form a typical H-bridge
     configuration from which a 1-phase inverter can be constructed.
     This model is based in averaged switch models.</p></html>"));
-end HBridgeAveraged;
+end HBridge;
