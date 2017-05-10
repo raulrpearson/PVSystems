@@ -32,21 +32,31 @@ equation
     annotation (Line(points={{-39,0},{0,0},{0,8},{38,8}}, color={0,0,127}));
   connect(greaterEqual.y, c1)
     annotation (Line(points={{61,0},{110,0}}, color={255,0,255}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
-            {100,100}}),graphics={
-        Line(points={{-100,0},{-98,0},{12,0}}, color={0,0,255}),
-        Line(points={{-60,-22},{-60,-64},{44,-64},{44,-36}}, color={0,0,255}),
-        Line(points={{-80,-16},{-80,-20},{-40,20},{-40,-20},{-36,-16}}, color={
-              0,0,255}),
-        Line(points={{-62,0},{-76,4},{-76,-4},{-62,0}}, color={0,0,255}),
-        Line(points={{44,-36},{44,-36},{40,-50},{44,-50},{48,-50},{44,-36}},
-            color={0,0,255}),
-        Line(points={{20,-20},{22,-20},{24,-20},{24,20},{44,20},{44,-20},{64,-20},
-              {64,-16}}, color={255,0,255}),
-        Line(points={{-40,-16},{-40,-20},{0,20},{0,-20},{4,-16}}, color={0,0,
-              255}),
-        Line(points={{60,-20},{62,-20},{64,-20},{64,20},{84,20},{84,-20},{84,-20},
-              {88,-20}}, color={255,0,255})}), Documentation(info="<html>
+  annotation (Icon(graphics={
+        Line(points={{-80,40},{80,40}},
+            color={255,0,0}),
+        Line(points={{-52,-140}}, color={0,0,255}),
+        Line(points={{-80.1563,54.922},{-50,70},{-50,30},{30,70},{30,30},{79.531,
+              54.766}},        color={0,0,255}),
+        Line(
+          points={{-50,80},{-50,-80}},
+          color={0,0,255},
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-30,80},{-30,-80}},
+          color={0,0,255},
+          pattern=LinePattern.Dash),
+        Line(
+          points={{30,80},{30,-80}},
+          color={0,0,255},
+          pattern=LinePattern.Dash),
+        Line(
+          points={{50,80},{50,-80}},
+          color={0,0,255},
+          pattern=LinePattern.Dash),
+        Line(points={{-80,-80},{-50,-80},{-50,-40},{-30,-40},{-30,-80},{30,-80},
+              {30,-40},{50,-40},{50,-80},{80,-80}}, color={255,0,255})}),
+      Documentation(info="<html>
         <p>
           Generate boolean firing signal from duty cycle input. Adapted
           from <a href=\"modelica://Modelica.Electrical.PowerConverters.DCDC.Control.SignalPWM\">SignalPWM</a>.</p>
