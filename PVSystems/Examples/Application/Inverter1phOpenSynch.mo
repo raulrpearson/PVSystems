@@ -177,6 +177,6 @@ equation
       </html>"),
     Diagram(coordinateSystem(extent={{-140,-100},{140,100}}, initialScale=0.1)),
     Icon(coordinateSystem(initialScale=0.1)),
-    __Dymola_Commands(file="Resources/Scripts/Dymola/RunSimulation.mos"
-        "RunSimulation"));
+    __Dymola_Commands(file="Resources/Scripts/Dymola/Inverter1phOpenSynch_RunPlotAndSave.mos"
+        "RunPlotAndSave"));
 end Inverter1phOpenSynch;
