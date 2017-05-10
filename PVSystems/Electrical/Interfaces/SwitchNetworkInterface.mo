@@ -1,7 +1,7 @@
 within PVSystems.Electrical.Interfaces;
 partial model SwitchNetworkInterface
   "Interface for the averaged switch network models"
-  extends Modelica.Electrical.Analog.Interfaces.TwoPort;
+  extends TwoPort;
   parameter Real dmin(final unit="1") = 1e-3 "Minimum duty cycle";
   parameter Real dmax(final unit="1") = 1 "Maximum duty cycle";
   Modelica.Blocks.Interfaces.RealInput d "Duty cycle" annotation (Placement(

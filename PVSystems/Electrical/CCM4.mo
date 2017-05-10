@@ -6,6 +6,8 @@ model CCM4 "Average CCM model with conduction losses and tranformer"
   parameter Real n(final unit="1") = 1
     "Transformer turns ratio 1:n (primary:secondary)";
 equation
+  0 = p1.i + n1.i;
+  0 = p2.i + n2.i;
   v1 = i1*(Ron/dsat + (1 - dsat)*RD/n^2/dsat^2) + (1 - dsat)/dsat/n*v2;
   -i2 = i1*(1 - dsat)/dsat/n;
   annotation(Documentation(info="<html>

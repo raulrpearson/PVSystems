@@ -9,9 +9,9 @@ model Inverter1phOpenSynch
         origin={-10,70},
         extent={{-10,-10},{10,10}},
         rotation=180)));
-  Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=480)
+  Modelica.Electrical.Analog.Sources.SineVoltage Gsw(freqHz=50, V=480)
     annotation (Placement(transformation(
-        origin={130,-70},
+        origin={130,70},
         extent={{-10,-10},{10,10}},
         rotation=270)));
   Modelica.Electrical.Analog.Basic.Inductor Lsw(L=500e-6) annotation (Placement(
@@ -71,8 +71,13 @@ model Inverter1phOpenSynch
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={40,50})));
-  Modelica.Blocks.Sources.RealExpression VacSense(y=Grid.v)
+  Modelica.Blocks.Sources.RealExpression VacSense(y=Gsw.v)
     annotation (Placement(transformation(extent={{-134,-26},{-114,-6}})));
+  Modelica.Electrical.Analog.Sources.SineVoltage Gav(freqHz=50, V=480)
+    annotation (Placement(transformation(
+        origin={130,-50},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
 equation
   connect(gsw.p, HBsw.n1)
     annotation (Line(points={{20,72},{20,75},{30,75}}, color={0,0,255}));
@@ -88,8 +93,6 @@ equation
     annotation (Line(points={{100,90},{90,90}}, color={0,0,255}));
   connect(Lav.n, Rav.p)
     annotation (Line(points={{90,-20},{100,-20}}, color={0,0,255}));
-  connect(Rav.n, Grid.p)
-    annotation (Line(points={{120,-20},{130,-20},{130,-60}}, color={0,0,255}));
   connect(HBsw.p2, Lsw.p) annotation (Line(points={{50,85},{60,85},{60,90},{70,
           90}}, color={0,0,255}));
   connect(HBav.p2, Lav.p) annotation (Line(points={{50,-25},{60,-25},{60,-20},{
@@ -100,24 +103,26 @@ equation
           85}}, color={0,0,255}));
   connect(DCsrc.p, HBav.p1) annotation (Line(points={{0,70},{10,70},{10,-25},{
           30,-25}}, color={0,0,255}));
-  connect(Rsw.n, Grid.p)
-    annotation (Line(points={{120,90},{130,90},{130,-60}}, color={0,0,255}));
+  connect(Rsw.n, Gsw.p)
+    annotation (Line(points={{120,90},{130,90},{130,80}}, color={0,0,255}));
   connect(deadTime.c1, HBsw.c1)
     annotation (Line(points={{36,61},{36,70},{36,70}}, color={255,0,255}));
   connect(deadTime.c2, HBsw.c2)
     annotation (Line(points={{44,61},{44,65.5},{44,70}}, color={255,0,255}));
   connect(signalPWM.c1, deadTime.c)
     annotation (Line(points={{40,21},{40,30},{40,38}}, color={255,0,255}));
-  connect(Grid.n, HBsw.n2) annotation (Line(points={{130,-80},{130,-90},{56,-90},
-          {56,75},{50,75}}, color={0,0,255}));
-  connect(Grid.n, HBav.n2) annotation (Line(points={{130,-80},{130,-90},{56,-90},
-          {56,-35},{50,-35}}, color={0,0,255}));
+  connect(Gsw.n, HBsw.n2) annotation (Line(points={{130,60},{130,50},{54,50},{
+          54,75},{50,75}}, color={0,0,255}));
   connect(add.y, signalPWM.vc) annotation (Line(points={{-9,-10},{0,-10},{40,-10},
           {40,-2}}, color={0,0,127}));
   connect(HBav.d, signalPWM.vc) annotation (Line(points={{40,-42},{40,-70},{0,-70},
           {0,-10},{40,-10},{40,-2}}, color={0,0,127}));
   connect(VacSense.y, pLL.v) annotation (Line(points={{-113,-16},{-113,-16},{-102,
           -16}}, color={0,0,127}));
+  connect(Rav.n, Gav.p)
+    annotation (Line(points={{120,-20},{130,-20},{130,-40}}, color={0,0,255}));
+  connect(HBav.n2, Gav.n) annotation (Line(points={{50,-35},{60,-35},{60,-70},{
+          130,-70},{130,-60}}, color={0,0,255}));
   annotation (
     experiment(
       StartTime=0,
@@ -136,8 +141,8 @@ equation
 
 
       <div class=\"figure\">
-        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenSynchResults.png\"
-                alt=\"Inverter1phOpenSynchResults.png\" />
+        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenSynch_Plot.png\"
+                alt=\"Inverter1phOpenSynch_Plot.png\" />
         </p>
       </div>
 
@@ -171,6 +176,7 @@ equation
       </p>
       </html>"),
     Diagram(coordinateSystem(extent={{-140,-100},{140,100}}, initialScale=0.1)),
-
-    Icon(coordinateSystem(initialScale=0.1)));
+    Icon(coordinateSystem(initialScale=0.1)),
+    __Dymola_Commands(file="Resources/Scripts/Dymola/RunSimulation.mos"
+        "RunSimulation"));
 end Inverter1phOpenSynch;

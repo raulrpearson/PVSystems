@@ -2,6 +2,8 @@ within PVSystems.Electrical;
 model CCM1 "Average CCM model with no losses"
   extends Interfaces.SwitchNetworkInterface;
 equation
+  0 = p1.i + n1.i;
+  0 = p2.i + n2.i;
   v1 = (1 - dsat)/dsat*v2;
   -i2 = (1 - dsat)/dsat*i1;
   annotation(Documentation(info="<html>

@@ -4,6 +4,8 @@ model CCM3 "Average CCM model with no losses and tranformer"
   parameter Real n(final unit="1") = 1
     "Transformer turns ratio 1:n (primary:secondary)";
 equation
+  0 = p1.i + n1.i;
+  0 = p2.i + n2.i;
   v1 = (1 - dsat)*v2/dsat/n;
   -i2 = (1 - dsat)*i1/dsat/n;
   annotation(Documentation(info="<html>

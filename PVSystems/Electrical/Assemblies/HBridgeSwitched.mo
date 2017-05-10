@@ -1,6 +1,7 @@
 within PVSystems.Electrical.Assemblies;
 model HBridgeSwitched "Basic ideal H-bridge topology (switched)"
-  extends Interfaces.TwoPortConverter;
+  extends Interfaces.TwoPort;
+  extends PVSystems.Icons.ConverterIcon;
   Modelica.Blocks.Interfaces.BooleanInput c1 annotation (Placement(
         transformation(
         origin={-40,-100},

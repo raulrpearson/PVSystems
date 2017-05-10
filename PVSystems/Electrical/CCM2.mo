@@ -5,6 +5,8 @@ model CCM2 "Average CCM model with conduction losses"
   parameter Modelica.SIunits.Resistance RD=0 "Diode on resistance";
   parameter Modelica.SIunits.Voltage VD=0 "Diode forward voltage drop";
 equation
+  0 = p1.i + n1.i;
+  0 = p2.i + n2.i;
   v1 = i1*(Ron/dsat + (1 - dsat)*RD/dsat^2) + (1 - dsat)/dsat*(v2 + VD);
   -i2 = i1*(1 - dsat)/dsat;
   annotation(Documentation(info="<html>

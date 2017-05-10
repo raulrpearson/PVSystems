@@ -1,7 +1,8 @@
 within PVSystems.Electrical.Assemblies;
 model CPMBidirectionalBuckBoost
   "Bidirectional Buck Boost for battery USB interface"
-  extends Interfaces.TwoPortConverter;
+  extends Interfaces.TwoPort;
+  extends PVSystems.Icons.ConverterIcon;
   parameter Modelica.SIunits.Capacitance Cin "Input capacitance"
     annotation (Dialog(group="Power stage"));
   parameter Modelica.SIunits.Voltage vCin_ini=0

@@ -1,13 +1,17 @@
 within PVSystems.Electrical.Assemblies;
 model HBridgeAveraged "Basic ideal H-bridge topology (averaged)"
-  extends Interfaces.TwoPortConverter;
+  extends Interfaces.TwoPort;
+  extends PVSystems.Icons.ConverterIcon;
   Modelica.Blocks.Interfaces.RealInput d annotation (Placement(transformation(
         origin={0,-120},
         extent={{-20,-20},{20,20}},
         rotation=90)));
-  CCM1 s1 annotation (Placement(transformation(extent={{20,60},{40,80}},
+  replaceable model SwitchModel = CCM1 constrainedby
+    Interfaces.SwitchNetworkInterface
+    annotation(choicesAllMatching=true);
+  SwitchModel s1 annotation (Placement(transformation(extent={{20,60},{40,80}},
           rotation=0)));
-  CCM1 s2 annotation (Placement(transformation(extent={{-40,-80},{-20,-60}},
+  SwitchModel s2 annotation (Placement(transformation(extent={{-40,-80},{-20,-60}},
           rotation=0)));
 equation
   connect(s1.p1, p1) annotation (Line(points={{20,75},{-68,75},{-68,50},{-100,

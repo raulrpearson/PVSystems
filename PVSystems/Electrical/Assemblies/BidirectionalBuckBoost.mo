@@ -1,6 +1,7 @@
 within PVSystems.Electrical.Assemblies;
 model BidirectionalBuckBoost "Bidirectional Buck Boost converter"
-  extends Interfaces.TwoPortConverter;
+  extends Interfaces.TwoPort;
+  extends PVSystems.Icons.ConverterIcon;
   parameter Modelica.SIunits.Capacitance Cin "Input capacitance"
     annotation (Dialog(group="Power stage"));
   parameter Modelica.SIunits.Resistance Rcin
@@ -39,12 +40,15 @@ model BidirectionalBuckBoost "Bidirectional Buck Boost converter"
         origin={-80,20})));
   Modelica.Electrical.Analog.Basic.Inductor inductor(L=L, i(start=iL_ini))
     annotation (Placement(transformation(extent={{-24,50},{-4,70}})));
-  Electrical.CCM1 buckSw(dmin=dmin, dmax=dmax)
+  replaceable model SwitchModel = CCM1 constrainedby
+    Interfaces.SwitchNetworkInterface
+    annotation(choicesAllMatching=true);
+  SwitchModel buckSw(dmin=dmin, dmax=dmax)
     annotation (Placement(transformation(extent={{-50,30},{-30,50}})));
-  Electrical.CCM1 boostSw(dmin=dmin, dmax=dmax)
+  SwitchModel boostSw(dmin=dmin, dmax=dmax)
     annotation (Placement(transformation(extent={{30,30},{50,50}})));
-  Modelica.Blocks.Interfaces.RealInput dbuck "Buck control voltage" annotation
-    (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput dbuck "Buck control voltage" annotation (
+     Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=90,
         origin={-40,-120})));
@@ -112,6 +116,6 @@ equation
         Line(points={{-70,50},{-10,50}}, color={0,0,255}),
         Line(points={{-70,70},{-10,70}}, color={0,0,255}),
         Line(points={{10,-70},{70,-70}}, color={0,0,255}),
-        Line(points={{10,-50},{70,-50}}, color={0,0,255})}), Documentation(info
-        ="<html><p>Bidirectional buck boost converter</p></html>"));
+        Line(points={{10,-50},{70,-50}}, color={0,0,255})}), Documentation(info=
+         "<html><p>Bidirectional buck boost converter</p></html>"));
 end BidirectionalBuckBoost;
