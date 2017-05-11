@@ -3,7 +3,9 @@ class Contact "Contact"
   extends Modelica.Icons.Contact;
   annotation (Documentation(info="<html>
       <p>
-        Copyright (c) 2016-2017 Raúl Rodríguez Pearson
+        Copyright (c)
+        2016-2017 <a href=\"mailto:raul.rodriguez.pearson@gmail.com\">Raúl
+        Rodríguez Pearson</a>
       </p>
     
       <p>
@@ -37,15 +39,6 @@ class Contact "Contact"
         Nacional de Educación a Distancia</a>. The master's
         degree is organized in collaboration
         with <a href=\"http://www.ucm.es\">Universidad
-        Complutense de Madrid</a>.
-      </p>
-    
-      <p>
-        <a href=\"http://www.uned.es\"><img src=\"modelica://PVSystems/Resources/Images/logouned_small.jpg\"
-                                            alt=\"logouned_small.jpg\"
-                                            /></a>
-        <a href=\"http://www.ucm.es\"><img src=\"modelica://PVSystems/Resources/Images/logoucm_small.png\"
-                                           alt=\"logoucm_small.png\"
-                                           /></a></p>
+        Complutense de Madrid</a>.</p>
     </html>"));
 end Contact;
