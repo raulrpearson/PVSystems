@@ -1,7 +1,7 @@
 within PVSystems.Examples.Validation;
 model SignalPWMValidation "Simple model to validate SignalPWM behaviour"
   extends Modelica.Icons.Example;
-  Control.SignalPWM signalPWM(fs=100)
+  Control.SwitchingPWM signalPWM(fs=100)
     annotation (Placement(transformation(extent={{20,0},{40,20}}, rotation=0)));
   Modelica.Blocks.Sources.Step step(
     height=0.3,

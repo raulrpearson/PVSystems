@@ -29,7 +29,7 @@ model BuckOpen "Ideal synchronous open-loop buck converter"
         origin={20,28},
         extent={{-10,-10},{10,10}},
         rotation=90)));
-  Control.SignalPWM signalPWM(fs=1e5) annotation (Placement(transformation(
+  Control.SwitchingPWM signalPWM(fs=1e5) annotation (Placement(transformation(
           extent={{-30,58},{-10,78}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Resistor ressw(R=0.4) annotation (Placement(
         transformation(

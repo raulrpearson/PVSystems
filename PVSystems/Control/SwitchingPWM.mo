@@ -1,5 +1,6 @@
 within PVSystems.Control;
-block SignalPWM "Generates a pulse width modulated (PWM) boolean fire signal"
+block SwitchingPWM
+  "Generates a pulse width modulated (PWM) boolean fire signal"
   extends Modelica.Blocks.Icons.Block;
   parameter Real dMax=1 "Maximum duty cycle";
   parameter Real dMin=0 "Minimum duty cycle";
@@ -61,4 +62,4 @@ equation
           Generate boolean firing signal from duty cycle input. Adapted
           from <a href=\"modelica://Modelica.Electrical.PowerConverters.DCDC.Control.SignalPWM\">SignalPWM</a>.</p>
       </html>"));
-end SignalPWM;
+end SwitchingPWM;

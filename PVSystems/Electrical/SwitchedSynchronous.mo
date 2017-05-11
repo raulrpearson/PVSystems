@@ -6,12 +6,12 @@ model SwitchedSynchronous "Switched model implemented with switch x 2"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-40,0})));
-  Control.SignalPWM signalPWM(
+  Control.SwitchingPWM signalPWM(
     dMax=dMax,
     dMin=dMin,
     fs=fs,
-    startTime=startTime)
-    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+    startTime=startTime) annotation (Placement(transformation(
+        extent={{10,10},{-10,-10}},
         rotation=270,
         origin={0,-70})));
   parameter Real dMax=1 "Maximum duty cycle";
