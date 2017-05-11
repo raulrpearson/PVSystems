@@ -1,4 +1,4 @@
-within PVSystems.Control.Assemblies;
+within PVSystems.Control;
 block MPPTController "Maximum Power Point Tracking Controller"
   extends Modelica.Blocks.Interfaces.SI2SO;
   parameter Modelica.SIunits.Time sampleTime=1 "Sample time of control block";

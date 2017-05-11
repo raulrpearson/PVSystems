@@ -25,7 +25,7 @@ block Inverter1phCompleteController
   // Components
   Modelica.Blocks.Sources.Constant iqs(k=0) annotation (Placement(
         transformation(extent={{-40,-30},{-20,-10}}, rotation=0)));
-  PVSystems.Control.Assemblies.MPPTController mppt(
+  PVSystems.Control.MPPTController mppt(
     sampleTime=1,
     vrefStep=0.5,
     pkThreshold=0.5,
