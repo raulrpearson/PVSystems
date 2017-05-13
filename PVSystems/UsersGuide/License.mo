@@ -34,29 +34,16 @@ class License "License"
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
         DEALINGS IN THE SOFTWARE.
       </p>
-    </html>"), Icon(graphics={
-        Line(points={{-60,60},{60,60}}, color={95,95,95}),
-        Line(points={{0,60},{0,-60}}, color={95,95,95}),
-        Line(points={{-60,-60},{60,-60}}, color={95,95,95}),
-        Ellipse(
-          extent={{-10,70},{10,50}},
-          lineColor={95,95,95},
+    </html>"), Icon(graphics={  Line(points = {{-60, 60}, {60, 60}}, color = {95, 95, 95}), Line(points = {{0, 60}, {0, -60}}, color = {95, 95, 95}), Line(points = {{-60, -60}, {60, -60}}, color = {95, 95, 95}), Ellipse(lineColor = {95, 95, 95}, fillColor = {175, 175, 175},
+            fillPattern =                                                                                                                                                                                                        FillPattern.Solid, extent = {{-10, 70}, {10, 50}}, endAngle = 360),                                                                                                                                                                                                        Line(points = {{-90, -10}, {-60, 60}, {-30, -10}}, color = {95, 95, 95}), Line(points = {{30, -10}, {60, 60}, {90, -10}}, color = {95, 95, 95}),
+        Polygon(
+          points={{-90,-10},{-30,-10},{-60,-30},{-90,-10}},
+          lineColor={0,0,0},
           fillColor={175,175,175},
           fillPattern=FillPattern.Solid),
-        Ellipse(
-          extent={{-90,-10},{-30,-50}},
-          lineColor={95,95,95},
+        Polygon(
+          points={{30,-10},{90,-10},{60,-30},{30,-10}},
+          lineColor={0,0,0},
           fillColor={175,175,175},
-          fillPattern=FillPattern.Solid,
-          startAngle=0,
-          endAngle=180),
-        Ellipse(
-          extent={{30,-10},{90,-50}},
-          lineColor={95,95,95},
-          fillColor={175,175,175},
-          fillPattern=FillPattern.Solid,
-          startAngle=0,
-          endAngle=180),
-        Line(points={{-90,-10},{-60,60},{-30,-10}}, color={95,95,95}),
-        Line(points={{30,-10},{60,60},{90,-10}}, color={95,95,95})}));
+          fillPattern=FillPattern.Solid)},                                                                                                                                                                                                        coordinateSystem(initialScale = 0.1)));
 end License;
