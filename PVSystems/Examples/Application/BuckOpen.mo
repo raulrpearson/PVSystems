@@ -1,44 +1,44 @@
 within PVSystems.Examples.Application;
 model BuckOpen "Ideal synchronous open-loop buck converter"
   extends Modelica.Icons.Example;
-  Modelica.Electrical.Analog.Sources.ConstantVoltage src(V=5) annotation (
+  Modelica.Electrical.Analog.Sources.ConstantVoltage dcin(V=5) annotation (
       Placement(transformation(
         origin={-20,-32},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Resistor resav(R=0.4) annotation (Placement(
+  Modelica.Electrical.Analog.Basic.Resistor Rav(R=0.4) annotation (Placement(
         transformation(
         origin={80,-42},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Inductor indav(L=1e-6) annotation (Placement(
+  Modelica.Electrical.Analog.Basic.Inductor Lav(L=1e-6) annotation (Placement(
         transformation(extent={{30,-32},{50,-12}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Capacitor capav(C=200e-6) annotation (
+  Modelica.Electrical.Analog.Basic.Capacitor Cav(C=200e-6) annotation (
       Placement(transformation(
         origin={60,-42},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  replaceable Electrical.CCM_DCM1 avgswitch(Le=1e-6, fs=1e5) constrainedby
+  replaceable Electrical.CCM_DCM1 av(fs=1e5, Le=1e-6) constrainedby
     PVSystems.Electrical.Interfaces.SwitchNetworkInterface annotation (
       Placement(transformation(extent={{0,-28},{20,-8}}, rotation=0)),
       choicesAllMatching=true);
-  Modelica.Electrical.Analog.Ideal.IdealClosingSwitch idealClosingSwitch
-    annotation (Placement(transformation(extent={{-10,38},{10,58}}, rotation=0)));
-  Modelica.Electrical.Analog.Ideal.IdealDiode idealDiode annotation (Placement(
+  Modelica.Electrical.Analog.Ideal.IdealClosingSwitch sw annotation (Placement(
+        transformation(extent={{-10,38},{10,58}}, rotation=0)));
+  Modelica.Electrical.Analog.Ideal.IdealDiode dsw annotation (Placement(
         transformation(
         origin={20,28},
         extent={{-10,-10},{10,10}},
         rotation=90)));
-  Control.SwitchingPWM signalPWM(fs=1e5) annotation (Placement(transformation(
-          extent={{-30,58},{-10,78}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Resistor ressw(R=0.4) annotation (Placement(
+  Control.SwitchingPWM PWM(fs=1e5) annotation (Placement(transformation(extent=
+            {{-30,58},{-10,78}}, rotation=0)));
+  Modelica.Electrical.Analog.Basic.Resistor Rsw(R=0.4) annotation (Placement(
         transformation(
         origin={80,28},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Inductor indsw(L=1e-6) annotation (Placement(
+  Modelica.Electrical.Analog.Basic.Inductor Lsw(L=1e-6) annotation (Placement(
         transformation(extent={{30,38},{50,58}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Capacitor capsw(C=200e-6) annotation (
+  Modelica.Electrical.Analog.Basic.Capacitor Csw(C=200e-6) annotation (
       Placement(transformation(
         origin={60,28},
         extent={{-10,-10},{10,10}},
@@ -55,57 +55,57 @@ model BuckOpen "Ideal synchronous open-loop buck converter"
             40}}, rotation=0)));
   Modelica.Blocks.Math.Add add annotation (Placement(transformation(extent={{-62,
             -2},{-42,18}}, rotation=0)));
-  Modelica.Electrical.Analog.Basic.Ground gsrc annotation (Placement(
+  Modelica.Electrical.Analog.Basic.Ground gin annotation (Placement(
         transformation(extent={{-30,-68},{-10,-48}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Ground gsw annotation (Placement(
         transformation(extent={{30,-2},{50,18}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Ground gav annotation (Placement(
         transformation(extent={{30,-72},{50,-52}}, rotation=0)));
 equation
-  connect(capav.n, gav.p)
+  connect(Cav.n, gav.p)
     annotation (Line(points={{60,-52},{40,-52}}, color={0,0,255}));
-  connect(resav.n, gav.p)
+  connect(Rav.n, gav.p)
     annotation (Line(points={{80,-52},{40,-52}}, color={0,0,255}));
-  connect(indav.n, resav.p)
+  connect(Lav.n, Rav.p)
     annotation (Line(points={{50,-22},{80,-22},{80,-32}}, color={0,0,255}));
-  connect(capav.p, indav.n)
+  connect(Cav.p, Lav.n)
     annotation (Line(points={{60,-32},{60,-22},{50,-22}}, color={0,0,255}));
-  connect(src.p, avgswitch.p1)
+  connect(dcin.p, av.p1)
     annotation (Line(points={{-20,-22},{-20,-13},{0,-13}}, color={0,0,255}));
-  connect(avgswitch.p2, indav.p)
+  connect(av.p2, Lav.p)
     annotation (Line(points={{20,-13},{30,-13},{30,-22}}, color={0,0,255}));
-  connect(avgswitch.n2, gav.p)
+  connect(av.n2, gav.p)
     annotation (Line(points={{20,-23},{20,-52},{40,-52}}, color={0,0,255}));
-  connect(avgswitch.n1, indav.p) annotation (Line(points={{0,-23},{0,-42},{30,-42},
-          {30,-22}}, color={0,0,255}));
-  connect(idealClosingSwitch.p, src.p)
+  connect(av.n1, Lav.p) annotation (Line(points={{0,-23},{0,-42},{30,-42},{30,-22}},
+        color={0,0,255}));
+  connect(sw.p, dcin.p)
     annotation (Line(points={{-10,48},{-20,48},{-20,-22}}, color={0,0,255}));
-  connect(idealClosingSwitch.n, idealDiode.n)
+  connect(sw.n, dsw.n)
     annotation (Line(points={{10,48},{20,48},{20,38}}, color={0,0,255}));
-  connect(indsw.n, ressw.p)
+  connect(Lsw.n, Rsw.p)
     annotation (Line(points={{50,48},{80,48},{80,38}}, color={0,0,255}));
-  connect(capsw.p, indsw.n)
+  connect(Csw.p, Lsw.n)
     annotation (Line(points={{60,38},{60,48},{50,48}}, color={0,0,255}));
-  connect(indsw.p, idealDiode.n)
+  connect(Lsw.p, dsw.n)
     annotation (Line(points={{30,48},{20,48},{20,38}}, color={0,0,255}));
   connect(fStep.y, add.u1) annotation (Line(points={{-79,30},{-70,30},{-70,14},
           {-64,14}},color={0,0,127}));
   connect(iStep.y, add.u2) annotation (Line(points={{-79,-12},{-70,-12},{-70,2},
           {-64,2}}, color={0,0,127}));
-  connect(add.y, avgswitch.d)
-    annotation (Line(points={{-41,8},{10,8},{10,-30}}, color={0,0,127}));
-  connect(capsw.n, ressw.n)
+  connect(add.y, av.d) annotation (Line(points={{-41,8},{-36,8},{-36,-70},{10,
+          -70},{10,-30}}, color={0,0,127}));
+  connect(Csw.n, Rsw.n)
     annotation (Line(points={{60,18},{80,18}}, color={0,0,255}));
-  connect(idealDiode.p, gsw.p)
+  connect(dsw.p, gsw.p)
     annotation (Line(points={{20,18},{40,18}}, color={0,0,255}));
-  connect(gsw.p, capsw.n)
+  connect(gsw.p, Csw.n)
     annotation (Line(points={{40,18},{60,18}}, color={0,0,255}));
-  connect(gsrc.p, src.n) annotation (Line(points={{-20,-48},{-20,-45},{-20,-42},
-          {-20,-42}}, color={0,0,255}));
-  connect(signalPWM.c1, idealClosingSwitch.control)
+  connect(gin.p, dcin.n)
+    annotation (Line(points={{-20,-48},{-20,-45},{-20,-42}}, color={0,0,255}));
+  connect(PWM.c1, sw.control)
     annotation (Line(points={{-9,68},{0,68},{0,55}}, color={255,0,255}));
-  connect(add.y, signalPWM.vc) annotation (Line(points={{-41,8},{-36,8},{-36,68},
-          {-32,68}}, color={0,0,127}));
+  connect(add.y, PWM.vc) annotation (Line(points={{-41,8},{-36,8},{-36,68},{-32,
+          68}}, color={0,0,127}));
   annotation (
     Diagram(graphics={Text(
           extent={{20,70},{64,62}},
