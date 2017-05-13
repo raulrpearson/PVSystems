@@ -1,7 +1,7 @@
 within PVSystems.Examples.Application;
 model BuckOpen "Ideal synchronous open-loop buck converter"
   extends Modelica.Icons.Example;
-  Modelica.Electrical.Analog.Sources.ConstantVoltage dcin(V=5) annotation (
+  Modelica.Electrical.Analog.Sources.ConstantVoltage DC(V=5) annotation (
       Placement(transformation(
         origin={-20,-32},
         extent={{-10,-10},{10,10}},
@@ -18,7 +18,7 @@ model BuckOpen "Ideal synchronous open-loop buck converter"
         origin={60,-42},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  replaceable Electrical.CCM_DCM1 av(fs=1e5, Le=1e-6) constrainedby
+  replaceable Electrical.CCM_DCM1 sn(fs=1e5, Le=1e-6) constrainedby
     PVSystems.Electrical.Interfaces.SwitchNetworkInterface annotation (
       Placement(transformation(extent={{0,-28},{20,-8}}, rotation=0)),
       choicesAllMatching=true);
@@ -70,15 +70,15 @@ equation
     annotation (Line(points={{50,-22},{80,-22},{80,-32}}, color={0,0,255}));
   connect(Cav.p, Lav.n)
     annotation (Line(points={{60,-32},{60,-22},{50,-22}}, color={0,0,255}));
-  connect(dcin.p, av.p1)
+  connect(DC.p, sn.p1)
     annotation (Line(points={{-20,-22},{-20,-13},{0,-13}}, color={0,0,255}));
-  connect(av.p2, Lav.p)
+  connect(sn.p2, Lav.p)
     annotation (Line(points={{20,-13},{30,-13},{30,-22}}, color={0,0,255}));
-  connect(av.n2, gav.p)
+  connect(sn.n2, gav.p)
     annotation (Line(points={{20,-23},{20,-52},{40,-52}}, color={0,0,255}));
-  connect(av.n1, Lav.p) annotation (Line(points={{0,-23},{0,-42},{30,-42},{30,-22}},
+  connect(sn.n1, Lav.p) annotation (Line(points={{0,-23},{0,-42},{30,-42},{30,-22}},
         color={0,0,255}));
-  connect(sw.p, dcin.p)
+  connect(sw.p, DC.p)
     annotation (Line(points={{-10,48},{-20,48},{-20,-22}}, color={0,0,255}));
   connect(sw.n, dsw.n)
     annotation (Line(points={{10,48},{20,48},{20,38}}, color={0,0,255}));
@@ -92,7 +92,7 @@ equation
           {-64,14}},color={0,0,127}));
   connect(iStep.y, add.u2) annotation (Line(points={{-79,-12},{-70,-12},{-70,2},
           {-64,2}}, color={0,0,127}));
-  connect(add.y, av.d) annotation (Line(points={{-41,8},{-36,8},{-36,-70},{10,
+  connect(add.y, sn.d) annotation (Line(points={{-41,8},{-36,8},{-36,-70},{10,
           -70},{10,-30}}, color={0,0,127}));
   connect(Csw.n, Rsw.n)
     annotation (Line(points={{60,18},{80,18}}, color={0,0,255}));
@@ -100,20 +100,21 @@ equation
     annotation (Line(points={{20,18},{40,18}}, color={0,0,255}));
   connect(gsw.p, Csw.n)
     annotation (Line(points={{40,18},{60,18}}, color={0,0,255}));
-  connect(gin.p, dcin.n)
+  connect(gin.p, DC.n)
     annotation (Line(points={{-20,-48},{-20,-45},{-20,-42}}, color={0,0,255}));
   connect(PWM.c1, sw.control)
     annotation (Line(points={{-9,68},{0,68},{0,55}}, color={255,0,255}));
   connect(add.y, PWM.vc) annotation (Line(points={{-41,8},{-36,8},{-36,68},{-32,
           68}}, color={0,0,127}));
   annotation (
-    Diagram(graphics={Text(
-          extent={{20,70},{64,62}},
+    Diagram(graphics={                 Text(
+          extent={{28,0},{66,-12}},
           lineColor={0,0,255},
-          textString="Switched buck"),Text(
-          extent={{18,-74},{62,-82}},
+          textString="Modifiable model"),
+                      Text(
+          extent={{8,70},{46,58}},
           lineColor={0,0,255},
-          textString="Averaged buck")}),
+          textString="Switched model")}),
     experiment(
       StartTime=0,
       StopTime=0.02,

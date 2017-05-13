@@ -86,8 +86,8 @@ equation
     annotation (Line(points={{-30,48},{-30,0},{-49,0}}, color={0,0,127}));
   connect(park.q, iqPI.u_m)
     annotation (Line(points={{-49,-8},{-30,-8},{-30,-48}}, color={0,0,127}));
-  connect(iqPI.u_s, iqs) annotation (Line(points={{-42,-60},{-86,-60},{-86,-60},
-          {-140,-60}}, color={0,0,127}));
+  connect(iqPI.u_s, iqs) annotation (Line(points={{-42,-60},{-86,-60},{-140,-60}},
+                       color={0,0,127}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={

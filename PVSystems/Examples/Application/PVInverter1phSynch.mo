@@ -10,25 +10,24 @@ model PVInverter1phSynch
         transformation(extent={{-80,70},{-60,90}}, rotation=0)));
   Modelica.Blocks.Sources.Constant Tn(k=298.15) annotation (Placement(
         transformation(extent={{-80,30},{-60,50}}, rotation=0)));
-  PVSystems.Electrical.Assemblies.HBridge Inverter(redeclare model SwitchModel =
-        Electrical.SwitchedSynchronousBidirectional (fs=3125)) annotation (
+  PVSystems.Electrical.Assemblies.HBridge Inverter             annotation (
       Placement(transformation(extent={{40,60},{60,80}}, rotation=0)));
-  Modelica.Electrical.Analog.Sources.SineVoltage Grid(freqHz=50, V=15)
+  Modelica.Electrical.Analog.Sources.SineVoltage AC(freqHz=50, V=15)
     annotation (Placement(transformation(
         origin={86,10},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Inductor L(L=200e-6) annotation (Placement(
+  Modelica.Electrical.Analog.Basic.Inductor L(L=1e-3)   annotation (Placement(
         transformation(
         origin={86,70},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Resistor R(R=10e-3) annotation (Placement(
+  Modelica.Electrical.Analog.Basic.Resistor R(R=1e-2)  annotation (Placement(
         transformation(
         origin={86,40},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Electrical.Analog.Basic.Capacitor C(v(start=32.8), C=0.5)
+  Modelica.Electrical.Analog.Basic.Capacitor Cdc(v(start=32.8), C=0.5)
     annotation (Placement(transformation(
         origin={24,70},
         extent={{-10,-10},{10,10}},
@@ -45,7 +44,7 @@ model PVInverter1phSynch
         origin={30,-10},
         extent={{-10,-10},{10,10}},
         rotation=0)));
-  Modelica.Electrical.Analog.Basic.Resistor resistor(R=1e-3, v(start=30))
+  Modelica.Electrical.Analog.Basic.Resistor Rdc(R=1e-3, v(start=30))
     annotation (Placement(transformation(extent={{-20,70},{0,90}}, rotation=0)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
         transformation(extent={{-20,40},{0,60}}, rotation=0)));
@@ -53,13 +52,13 @@ model PVInverter1phSynch
     annotation (Placement(transformation(extent={{-40,10},{-20,30}})));
   Modelica.Blocks.Sources.RealExpression idcSense(y=-PV.i)
     annotation (Placement(transformation(extent={{-40,-16},{-20,4}})));
-  Modelica.Blocks.Sources.RealExpression iacSense(y=Grid.i)
+  Modelica.Blocks.Sources.RealExpression iacSense(y=AC.i)
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
-  Modelica.Blocks.Sources.RealExpression vacSense(y=Grid.v)
+  Modelica.Blocks.Sources.RealExpression vacSense(y=AC.v)
     annotation (Placement(transformation(extent={{-40,-64},{-20,-44}})));
   Modelica.Blocks.Sources.RealExpression dcPower(y=-PV.i*PV.v)
     annotation (Placement(transformation(extent={{40,-72},{60,-52}})));
-  Modelica.Blocks.Sources.RealExpression acPower(y=Grid.v*Grid.i)
+  Modelica.Blocks.Sources.RealExpression acPower(y=AC.v*AC.i)
     annotation (Placement(transformation(extent={{40,-92},{60,-72}})));
   Modelica.Blocks.Math.Mean mean(f=50)
     annotation (Placement(transformation(extent={{70,-92},{90,-72}})));
@@ -68,23 +67,23 @@ equation
           73}}, color={0,0,127}));
   connect(Tn.y, PV.T) annotation (Line(points={{-59,40},{-52,40},{-52,67},{-45.5,
           67}}, color={0,0,127}));
-  connect(C.p, Inverter.p1) annotation (Line(points={{24,80},{34,80},{34,75},{
-          40,75}}, color={0,0,255}));
-  connect(R.n, Grid.p)
-    annotation (Line(points={{86,30},{86,20}},color={0,0,255}));
+  connect(Cdc.p, Inverter.p1) annotation (Line(points={{24,80},{34,80},{34,75},
+          {40,75}}, color={0,0,255}));
+  connect(R.n, AC.p)
+    annotation (Line(points={{86,30},{86,20}}, color={0,0,255}));
   connect(L.n, R.p)
     annotation (Line(points={{86,60},{86,56},{86,50}}, color={0,0,255}));
-  connect(C.n, Inverter.n1) annotation (Line(points={{24,60},{34,60},{34,65},{
-          40,65}}, color={0,0,255}));
+  connect(Cdc.n, Inverter.n1) annotation (Line(points={{24,60},{34,60},{34,65},
+          {40,65}}, color={0,0,255}));
   connect(Inverter.p2, L.p) annotation (Line(points={{60,75},{70,75},{70,80},{
           86,80}}, color={0,0,255}));
-  connect(Inverter.n2, Grid.n)
+  connect(Inverter.n2, AC.n)
     annotation (Line(points={{60,65},{70,65},{70,0},{86,0}}, color={0,0,255}));
-  connect(resistor.n, C.p)
+  connect(Rdc.n, Cdc.p)
     annotation (Line(points={{0,80},{24,80}}, color={0,0,255}));
-  connect(PV.p, resistor.p)
+  connect(PV.p, Rdc.p)
     annotation (Line(points={{-40,80},{-30,80},{-20,80}}, color={0,0,255}));
-  connect(PV.n, C.n)
+  connect(PV.n, Cdc.n)
     annotation (Line(points={{-40,60},{24,60}}, color={0,0,255}));
   connect(PV.n, ground.p)
     annotation (Line(points={{-40,60},{-10,60}}, color={0,0,255}));
@@ -100,5 +99,5 @@ equation
           {0,-18},{18,-18}}, color={0,0,127}));
   connect(acPower.y, mean.u) annotation (Line(points={{61,-82},{64.5,-82},{68,
           -82}}, color={0,0,127}));
-  annotation (Icon(graphics), experiment(StopTime=55, Interval=0.001));
+  annotation (Icon(graphics), experiment(StopTime=40, Interval=0.001));
 end PVInverter1phSynch;
