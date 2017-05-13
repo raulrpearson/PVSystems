@@ -1,6 +1,5 @@
 within PVSystems.Electrical;
-model SwitchedSynchronousBidirectional
-  "Switched model implemented with switch + anti-parallel diode x 2"
+model SW3 "Switched model implemented with switch + anti-parallel diode x 2"
   extends Interfaces.SwitchNetworkInterface;
   Modelica.Electrical.Analog.Ideal.IdealClosingSwitch sw1(Ron=Ron) annotation (
       Placement(transformation(
@@ -69,4 +68,4 @@ equation
           -50}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end SwitchedSynchronousBidirectional;
+end SW3;
