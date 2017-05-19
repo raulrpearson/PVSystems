@@ -1,0 +1,88 @@
+loadModel(Modelica);
+loadFile("../../../package.mo");
+
+
+//////////////////////
+// Create annotation-less versions with dependencies
+//////////////////////
+
+mkdir("temp");
+
+// Electrical
+saveTotalModel("temp/CCM1.mo", PVSystems.Electrical.CCM1);
+saveTotalModel("temp/CCM2.mo", PVSystems.Electrical.CCM2);
+saveTotalModel("temp/CCM3.mo", PVSystems.Electrical.CCM3);
+saveTotalModel("temp/CCM4.mo", PVSystems.Electrical.CCM4);
+saveTotalModel("temp/CCM5.mo", PVSystems.Electrical.CCM5);
+saveTotalModel("temp/CCM_DCM1.mo", PVSystems.Electrical.CCM_DCM1);
+saveTotalModel("temp/CCM_DCM2.mo", PVSystems.Electrical.CCM_DCM2);
+saveTotalModel("temp/PVArray.mo", PVSystems.Electrical.PVArray);
+saveTotalModel("temp/SimpleBattery.mo", PVSystems.Electrical.SimpleBattery);
+
+// Electrical.Interfaces
+saveTotalModel("temp/BatteryInterface.mo", PVSystems.Electrical.Interfaces.BatteryInterface);
+saveTotalModel("temp/SwitchNetworkInterface.mo", PVSystems.Electrical.Interfaces.SwitchNetworkInterface);
+saveTotalModel("temp/TwoPort.mo", PVSystems.Electrical.Interfaces.TwoPort);
+
+// Control
+saveTotalModel("temp/CPM_CCM.mo", PVSystems.Control.CPM_CCM);
+saveTotalModel("temp/CPM.mo", PVSystems.Control.CPM);
+saveTotalModel("temp/Park.mo", PVSystems.Control.Park);
+saveTotalModel("temp/InversePark.mo", PVSystems.Control.InversePark);
+saveTotalModel("temp/MPPTController.mo", PVSystems.Control.MPPTController);
+
+// Control.Interfaces
+saveTotalModel("temp/CPMInterface.mo", PVSystems.Control.Interfaces.CPMInterface);
+
+
+//////////////////////
+// Save clean annotation-less versions
+//////////////////////
+
+// Create directory structure
+mkdir("PVSystems/Electrical/Interfaces");
+mkdir("PVSystems/Control/Interfaces");
+
+// Electrical
+clear();
+loadFile("temp/CCM1.mo"); writeFile("PVSystems/Electrical/CCM1.mo", list(PVSystems.Electrical.CCM1));
+clear();
+loadFile("temp/CCM2.mo"); writeFile("PVSystems/Electrical/CCM2.mo", list(PVSystems.Electrical.CCM2));
+clear();
+loadFile("temp/CCM3.mo"); writeFile("PVSystems/Electrical/CCM3.mo", list(PVSystems.Electrical.CCM3));
+clear();
+loadFile("temp/CCM4.mo"); writeFile("PVSystems/Electrical/CCM4.mo", list(PVSystems.Electrical.CCM4));
+clear();
+loadFile("temp/CCM5.mo"); writeFile("PVSystems/Electrical/CCM5.mo", list(PVSystems.Electrical.CCM5));
+clear();
+loadFile("temp/CCM_DCM1.mo"); writeFile("PVSystems/Electrical/CCM_DCM1.mo", list(PVSystems.Electrical.CCM_DCM1));
+clear();
+loadFile("temp/CCM_DCM2.mo"); writeFile("PVSystems/Electrical/CCM_DCM2.mo", list(PVSystems.Electrical.CCM_DCM2));
+clear();
+loadFile("temp/PVArray.mo"); writeFile("PVSystems/Electrical/PVArray.mo", list(PVSystems.Electrical.PVArray));
+clear();
+loadFile("temp/SimpleBattery.mo"); writeFile("PVSystems/Electrical/SimpleBattery.mo", list(PVSystems.Electrical.SimpleBattery));
+
+// Electrical.Interfaces
+clear();
+loadFile("temp/BatteryInterface.mo"); writeFile("PVSystems/Electrical/Interfaces/BatteryInterface.mo", list(PVSystems.Electrical.Interfaces.BatteryInterface));
+clear();
+loadFile("temp/SwitchNetworkInterface.mo"); writeFile("PVSystems/Electrical/Interfaces/SwitchNetworkInterface.mo", list(PVSystems.Electrical.Interfaces.SwitchNetworkInterface));
+clear();
+loadFile("temp/TwoPort.mo"); writeFile("PVSystems/Electrical/Interfaces/TwoPort.mo", list(PVSystems.Electrical.Interfaces.TwoPort));
+
+// Control
+clear();
+loadFile("temp/CPM_CCM.mo"); writeFile("PVSystems/Control/CPM_CCM.mo", list(PVSystems.Control.CPM_CCM));
+clear();
+loadFile("temp/CPM.mo"); writeFile("PVSystems/Control/CPM.mo", list(PVSystems.Control.CPM));
+clear();
+loadFile("temp/Park.mo"); writeFile("PVSystems/Control/Park.mo", list(PVSystems.Control.Park));
+clear();
+loadFile("temp/InversePark.mo"); writeFile("PVSystems/Control/InversePark.mo", list(PVSystems.Control.InversePark));
+clear();
+loadFile("temp/MPPTController.mo"); writeFile("PVSystems/Control/MPPTController.mo", list(PVSystems.Control.MPPTController));
+
+// Control.Interfaces
+clear();
+loadFile("temp/CPMInterface.mo"); writeFile("PVSystems/Control/Interfaces/CPMInterface.mo", list(PVSystems.Control.Interfaces.CPMInterface));
