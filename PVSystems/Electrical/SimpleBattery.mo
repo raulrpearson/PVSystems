@@ -1,15 +1,5 @@
 within PVSystems.Electrical;
 model SimpleBattery "Simple battery model"
-  // Model taken from
-  // TODO:
-  // + Would be cool to have capacities relative to absolute battery capacity,
-  //   i.e., 'it' from 0 to 1 instead of from 0 to Q.
-  // + Would probably be more intuitive to provide parameter for initial State
-  //   of charge (in relative terms) instead of initial depth of discharge.
-  // + Would probably be nice to introduce safeguards around Q = it, which
-  //   currently just produces a division by 0 an a simulation error.
-  // + Would probably be more convenient to move the type definition of
-  //   BatteryCapacity to another place.
   extends Interfaces.BatteryInterface;
   import Modelica.SIunits.Resistance;
   import Modelica.SIunits.Voltage;
