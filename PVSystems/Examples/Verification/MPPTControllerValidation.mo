@@ -1,4 +1,4 @@
-within PVSystems.Examples.Validation;
+within PVSystems.Examples.Verification;
 model MPPTControllerValidation "Model to validate MPPT controller"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(

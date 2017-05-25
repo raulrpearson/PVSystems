@@ -1,4 +1,4 @@
-within PVSystems.Examples.Validation;
+within PVSystems.Examples.Verification;
 model ParkValidation "Validation of the Park transformations"
   extends Modelica.Icons.Example;
   Control.Park park

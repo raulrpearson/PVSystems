@@ -1,4 +1,4 @@
-within PVSystems.Examples.Validation;
+within PVSystems.Examples.Verification;
 model SignalPWMValidation "Simple model to validate SignalPWM behaviour"
   extends Modelica.Icons.Example;
   Control.SwitchingPWM signalPWM(fs=100)

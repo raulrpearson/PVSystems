@@ -1,4 +1,4 @@
-within PVSystems.Examples.Validation;
+within PVSystems.Examples.Verification;
 model IdealCBSwitchValidation "Ideal current bidirectional switch validation"
   extends Modelica.Icons.Example;
   Electrical.IdealCBSwitch idealCBSwitch annotation (Placement(transformation(

@@ -1,4 +1,4 @@
-within PVSystems.Examples.Validation;
+within PVSystems.Examples.Verification;
 model SwitchingCPMValidation "Simple model to validate SwitchingCPM behaviour"
   extends Modelica.Icons.Example;
   Control.SwitchingCPM switchingCPM(

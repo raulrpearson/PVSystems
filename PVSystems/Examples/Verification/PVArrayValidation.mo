@@ -1,4 +1,4 @@
-within PVSystems.Examples.Validation;
+within PVSystems.Examples.Verification;
 model PVArrayValidation "Model to validate PVArray"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Sources.RampVoltage rampVoltage(

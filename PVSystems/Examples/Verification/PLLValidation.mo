@@ -1,4 +1,4 @@
-within PVSystems.Examples.Validation;
+within PVSystems.Examples.Verification;
 model PLLValidation "PLL validation example"
   extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Sine source(freqHz=50) annotation (Placement(

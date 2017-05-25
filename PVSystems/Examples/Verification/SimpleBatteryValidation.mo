@@ -1,4 +1,4 @@
-within PVSystems.Examples.Validation;
+within PVSystems.Examples.Verification;
 model SimpleBatteryValidation "Validation of SimpleBattery"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Sources.SignalCurrent CC annotation (Placement(
