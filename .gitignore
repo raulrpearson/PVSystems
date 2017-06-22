@@ -4,7 +4,7 @@
 
 # Dymola genrated files
 *.bak-mo
-*.mat
+PVSystems/*.mat
 buildlog.txt
 dsfinal.txt
 dsin.txt

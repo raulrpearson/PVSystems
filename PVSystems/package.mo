@@ -153,5 +153,7 @@ annotation (
         points={{-78,-60},{-42,14},{42,14},{86,-60},{-78,-60}},
         fillColor={27,77,130},
         fillPattern=FillPattern.Solid,
-        pattern=LinePattern.None)}));
+        pattern=LinePattern.None)}),
+  __Dymola_Commands(file="Resources/Scripts/Dymola/callCheckLibrary.mos"
+      "Run regression tests"));
 end PVSystems;
