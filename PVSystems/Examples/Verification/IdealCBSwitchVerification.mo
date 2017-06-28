@@ -1,5 +1,6 @@
 within PVSystems.Examples.Verification;
-model IdealCBSwitchValidation "Ideal current bidirectional switch validation"
+model IdealCBSwitchVerification
+  "Ideal current bidirectional switch verification"
   extends Modelica.Icons.Example;
   Electrical.IdealCBSwitch idealCBSwitch annotation (Placement(transformation(
         origin={-30,10},
@@ -75,4 +76,4 @@ equation
       </p>
 
       </html>"));
-end IdealCBSwitchValidation;
+end IdealCBSwitchVerification;

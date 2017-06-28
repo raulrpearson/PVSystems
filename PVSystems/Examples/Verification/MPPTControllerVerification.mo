@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model MPPTControllerValidation "Model to validate MPPT controller"
+model MPPTControllerVerification "Model to verify MPPT controller"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
         transformation(extent={{-30,-40},{-10,-20}}, rotation=0)));
@@ -118,4 +118,4 @@ equation
         </p>
       </div>
       </html>"));
-end MPPTControllerValidation;
+end MPPTControllerVerification;

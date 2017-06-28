@@ -1,8 +1,8 @@
-IdealCBSwitchValidation
-MPPTControllerValidation
-ParkValidation
-PLLValidation
-PVArrayValidation
-SignalPWMValidation
-SwitchingCPMValidation
-SimpleBatteryValidation
+IdealCBSwitchVerification
+MPPTControllerVerification
+ParkVerification
+PLLVerification
+PVArrayVerification
+SignalPWMVerification
+SwitchingCPMVerification
+SimpleBatteryVerification

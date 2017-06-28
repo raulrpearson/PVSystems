@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model ParkValidation "Validation of the Park transformations"
+model ParkVerification "Verification of the Park transformations"
   extends Modelica.Icons.Example;
   Control.Park park
     annotation (Placement(transformation(extent={{0,20},{20,40}}, rotation=0)));
@@ -51,4 +51,4 @@ equation
         inverse transformation block recreates the original signals.
       </p>
       </html>"));
-end ParkValidation;
+end ParkVerification;

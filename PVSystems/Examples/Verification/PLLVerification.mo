@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model PLLValidation "PLL validation example"
+model PLLVerification "PLL verification example"
   extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Sine source(freqHz=50) annotation (Placement(
         transformation(extent={{-50,-10},{-30,10}}, rotation=0)));
@@ -39,4 +39,4 @@ equation
         </p>
       </div>
       </html>"));
-end PLLValidation;
+end PLLVerification;

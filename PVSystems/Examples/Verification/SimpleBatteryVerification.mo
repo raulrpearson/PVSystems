@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model SimpleBatteryValidation "Validation of SimpleBattery"
+model SimpleBatteryVerification "Verification of SimpleBattery"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Sources.SignalCurrent CC annotation (Placement(
         transformation(
@@ -31,4 +31,4 @@ equation
         coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=15, Interval=0.001),
     __Dymola_experimentSetupOutput);
-end SimpleBatteryValidation;
+end SimpleBatteryVerification;
