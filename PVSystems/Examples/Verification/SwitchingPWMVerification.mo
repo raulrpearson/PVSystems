@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model SignalPWMVerification "Simple model to verify SignalPWM behaviour"
+model SwitchingPWMVerification "Simple model to verify SwitchingPWM behaviour"
   extends Modelica.Icons.Example;
   Control.SwitchingPWM signalPWM(fs=100)
     annotation (Placement(transformation(extent={{20,0},{40,20}}, rotation=0)));
@@ -48,4 +48,4 @@ equation
         fact as well as the value of the period, set at 10 milliseconds.
       </p>
       </html>"));
-end SignalPWMVerification;
+end SwitchingPWMVerification;

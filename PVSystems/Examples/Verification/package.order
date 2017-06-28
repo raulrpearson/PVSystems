@@ -3,6 +3,6 @@ MPPTControllerVerification
 ParkVerification
 PLLVerification
 PVArrayVerification
-SignalPWMVerification
+SwitchingPWMVerification
 SwitchingCPMVerification
 SimpleBatteryVerification
