@@ -1,6 +1,6 @@
 within PVSystems.Examples.Application;
 model Inverter1phOpenSynch
-  "Grid synchronized 1-phase open-loop inverter fed by constant DC source"
+  "Grid-tied 1-phase open-loop inverter with constant DC source"
   extends Modelica.Icons.Example;
   Electrical.Assemblies.HBridgeSwitched
                                 HBsw
@@ -28,7 +28,7 @@ model Inverter1phOpenSynch
         origin={-46,-56},
         extent={{10,-10},{-10,10}},
         rotation=180)));
-  Modelica.Blocks.Math.Add add(k2=1, k1=0.5)       annotation (Placement(
+  Modelica.Blocks.Math.Add add(k2=1, k1=580/580/2) annotation (Placement(
         transformation(
         origin={-10,-50},
         extent={{10,-10},{-10,10}},
@@ -146,7 +146,7 @@ equation
 
 
       <div class=\"figure\">
-        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenSynch_Plot.png\"
+        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenSynchResults.png\"
                 alt=\"Inverter1phOpenSynch_Plot.png\" />
         </p>
       </div>

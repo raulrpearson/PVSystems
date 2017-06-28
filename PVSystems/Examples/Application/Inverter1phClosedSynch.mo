@@ -1,6 +1,6 @@
 within PVSystems.Examples.Application;
 model Inverter1phClosedSynch
-  "Grid synchronized 1-phase closed-loop inverter fed by constant DC source"
+  "Grid-tied 1-phase closed-loop inverter with constant DC source"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Sources.ConstantVoltage DC(V=580) annotation (
       Placement(transformation(
@@ -69,5 +69,36 @@ equation
     annotation (Line(points={{-69,-50},{-52,-50},{-52,-50}}, color={0,0,127}));
   connect(vdcSense.y, control.vdc)
     annotation (Line(points={{-69,-80},{-6,-80},{-6,-2}}, color={0,0,127}));
-  annotation (experiment(StopTime=0.5, __Dymola_NumberOfIntervals=5000));
+  annotation (experiment(StopTime=0.3, __Dymola_NumberOfIntervals=3000),
+      __Dymola_experimentSetupOutput,
+      Documentation(info="<html>
+          <p>
+            This example includes a voltage source on the AC
+            side. This will add the synchronization challenge for
+            the controller: in order to provide adequate control of
+            the output current, the duty cycle needs to be carefully
+            in synch with the AC grid voltage.
+          </p>
+        
+          <p>
+            Plotting the current through the load, the dq setpoints,
+            the grid voltage and the actual computed d value of the
+            current yields the following graph:
+          </p>
+        
+        
+          <div class=\"figure\">
+            <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phClosedSynchResults.png\"
+                    alt=\"Inverter1phClosedSynchResults.png\" />
+            </p>
+          </div>
+        
+          <p>
+            After an initial period where the signals are reaching
+            their steady-state values, the current successfully
+            reaches the setpoint value. Since the q setpoint is
+            equal to zero, the output current stays in phase with
+            the grid voltage and the d setpoint value equals the
+            peak current value.</p>
+        </html>"));
 end Inverter1phClosedSynch;

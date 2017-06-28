@@ -1,6 +1,6 @@
 within PVSystems.Examples.Application;
 model PVInverter1phSynch
-  "Simple PV system including PV array, inverter and grid"
+  "Grid-tied 1-phase closed-loop inverter with PV source"
   extends Modelica.Icons.Example;
   Electrical.PVArray PV(v(start=450)) annotation (Placement(transformation(
         origin={-40,70},
@@ -35,12 +35,13 @@ model PVInverter1phSynch
   Control.Assemblies.Inverter1phCompleteController Controller(
     ik=0.1,
     iT=0.01,
-    vdcMax=40,
     fline=50,
-    idMax=15,
-    iqMax=10,
     vk=10,
-    vT=0.5) annotation (Placement(transformation(
+    vT=0.5,
+    idMax=20,
+    iqMax=20,
+    vdcMax=50)
+            annotation (Placement(transformation(
         origin={30,-10},
         extent={{-10,-10},{10,10}},
         rotation=0)));
@@ -56,11 +57,11 @@ model PVInverter1phSynch
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   Modelica.Blocks.Sources.RealExpression vacSense(y=AC.v)
     annotation (Placement(transformation(extent={{-40,-64},{-20,-44}})));
-  Modelica.Blocks.Sources.RealExpression dcPower(y=-PV.i*PV.v)
+  Modelica.Blocks.Sources.RealExpression DCPower(y=-PV.i*PV.v)
     annotation (Placement(transformation(extent={{40,-72},{60,-52}})));
-  Modelica.Blocks.Sources.RealExpression acPower(y=AC.v*AC.i)
+  Modelica.Blocks.Sources.RealExpression ACPower(y=AC.v*AC.i)
     annotation (Placement(transformation(extent={{40,-92},{60,-72}})));
-  Modelica.Blocks.Math.Mean mean(f=50)
+  Modelica.Blocks.Math.Mean meanACPower(f=50)
     annotation (Placement(transformation(extent={{70,-92},{90,-72}})));
 equation
   connect(Gn.y, PV.G) annotation (Line(points={{-59,80},{-52,80},{-52,73},{-45.5,
@@ -97,7 +98,44 @@ equation
           {-10,-14},{18,-14}}, color={0,0,127}));
   connect(vacSense.y, Controller.vac) annotation (Line(points={{-19,-54},{0,-54},
           {0,-18},{18,-18}}, color={0,0,127}));
-  connect(acPower.y, mean.u) annotation (Line(points={{61,-82},{64.5,-82},{68,
-          -82}}, color={0,0,127}));
-  annotation (Icon(graphics), experiment(StopTime=40, Interval=0.001));
+  connect(ACPower.y, meanACPower.u)
+    annotation (Line(points={{61,-82},{64.5,-82},{68,-82}}, color={0,0,127}));
+  annotation (Icon(graphics), experiment(StopTime=28, Interval=0.001),
+    __Dymola_experimentSetupOutput,
+    Documentation(info="<html>
+        <p>
+          This example represents a simple yet complete grid-tied
+          PV inverter system. A long simulation is performed so as
+          to visualize the time evolution of the MPPT control,
+          which is necessarily much slower than the output current
+          control. This long simulation time is manageable because
+          an averaged switch model is being used, which means that
+          the simulation can have longer time steps.
+        </p>
+      
+        <p>
+          This evolution can be observed by plotting the DC bus
+          voltage as well as the input and output power to the
+          inverter:
+        </p>
+      
+      
+        <div class=\"figure\">
+          <p><img src=\"modelica://PVSystems/Resources/Images/PVInverter1phSynchResultsA.png\"
+                  alt=\"PVInverter1phSynchResultsA.png\" />
+          </p>
+        </div>
+      
+        <p>
+          As expected, the power factor of the output power is 1
+          (all active power), having the output current in synch
+          with the grid voltage:
+        </p>
+      
+      
+        <div class=\"figure\">
+          <p><img src=\"modelica://PVSystems/Resources/Images/PVInverter1phSynchResultsB.png\"
+                  alt=\"PVInverter1phSynchResultsB.png\" /></p>
+        </div>
+      </html>"));
 end PVInverter1phSynch;

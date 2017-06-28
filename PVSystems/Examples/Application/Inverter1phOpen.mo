@@ -1,6 +1,6 @@
 within PVSystems.Examples.Application;
 model Inverter1phOpen
-  "Basic 1-phase open-loop inverter with constant DC voltage source and no synchronization"
+  "Stand-alone 1-phase open-loop inverter with constant DC source"
   extends Modelica.Icons.Example;
   Electrical.Assemblies.HBridgeSwitched
                                 HBsw              annotation (Placement(
@@ -27,7 +27,7 @@ model Inverter1phOpen
     offset=0.5,
     freqHz=50,
     amplitude=0.05)
-               annotation (Placement(transformation(extent={{-100,-90},{-80,-70}},
+               annotation (Placement(transformation(extent={{-90,-90},{-70,-70}},
           rotation=0)));
   PVSystems.Electrical.Assemblies.HBridge HBav annotation (Placement(
         transformation(extent={{20,-40},{40,-20}}, rotation=0)));
@@ -75,7 +75,7 @@ equation
   connect(Rav.n, HBav.n2) annotation (Line(points={{90,-60},{60,-60},{60,-35},{
           40,-35}}, color={0,0,255}));
   connect(HBav.d, duty.y)
-    annotation (Line(points={{30,-42},{30,-80},{-79,-80}}, color={0,0,127}));
+    annotation (Line(points={{30,-42},{30,-80},{-69,-80}}, color={0,0,127}));
   connect(DCav.n, gav.p)
     annotation (Line(points={{-10,-40},{-10,-43},{-10,-46}}, color={0,0,255}));
   connect(DCav.p, HBav.p1) annotation (Line(points={{-10,-20},{10,-20},{10,-25},
@@ -88,8 +88,8 @@ equation
     annotation (Line(points={{34,31},{34,40}}, color={255,0,255}));
   connect(switchingPWM.c1, deadTime.c)
     annotation (Line(points={{-19,0},{30,0},{30,8}}, color={255,0,255}));
-  connect(switchingPWM.vc, duty.y) annotation (Line(points={{-42,0},{-60,0},{
-          -60,-80},{-79,-80}}, color={0,0,127}));
+  connect(switchingPWM.vc, duty.y) annotation (Line(points={{-42,0},{-50,0},{-50,
+          -80},{-69,-80}},     color={0,0,127}));
   annotation (
     Diagram(graphics={Text(
           extent={{10,74},{48,62}},
@@ -100,62 +100,67 @@ equation
           textString="Modifiable model")}),
     experiment(StopTime=0.5, __Dymola_NumberOfIntervals=5000),
     Documentation(info="<html>
-      <p>
-        IdealInverter1phOpen presents two implementations of an open loop
-        1-phase inverter. The function of the inverter is to convert DC
-        voltage and current into AC voltage and current. To keep things
-        simple, a constant DC source is included on the DC side and an LC
-        load is included on the AC side. Typically, inverters are placed
-        inside a more complicated setup, which might require MPPT (Maximum
-        Power Point Tracking) on the DC side when connected to a PV array
-        and AC synchronization when connected to a grid on the AC side
-        instead of just a simple passive load.
-      </p>
-
-      <p>
-        Nevertheless, the example still showcases an interesting
-        application. Upon running the simulation with the provided values,
-        plotting the resistor voltage and current and the DC source voltage
-        yields the following figure:
-      </p>
-
-
-      <div class=\"figure\">
-        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenResults.png\"
-                alt=\"Inverter1phOpenResults.png\" />
+        <p>
+          This example presents two implementations of an open
+          loop 1-phase inverter. The function of the inverter is
+          to convert DC voltage and current into AC voltage and
+          current. To keep things simple, a constant DC source is
+          included on the DC side and an RL load is included on
+          the AC side. Typically, inverters are placed inside a
+          more complicated setup, which might require MPPT
+          (Maximum Power Point Tracking) on the DC side when
+          connected to a PV array and AC synchronization when
+          connected to a grid on the AC side instead of just a
+          simple passive load.
         </p>
-      </div>
-
-      <p>
-        The AC is achieved with the inverter topology (called an H-bridge)
-        as well as with the duty cycle sinusoidal modulation. Have a look at
-        the duty cycle driving the SignalPWM block and compare it with the
-        voltage drop in the resistor.
-      </p>
-
-      <p>
-        Compare it with the voltage drop in the inductor. The voltage coming
-        out of the inverter is actually a square wave and the inductor is
-        providing some crude (but enough for some applications)
-        filtering. Play around with the value of the inductor to see how it
-        provides a better or worse filtering performance (decreasing or
-        increasing the voltage and current ripple in the resistor, which in
-        this example is assumed to be the load being fed). Since this is an
-        open loop configuration, it will also change the peak value of the
-        voltage drop in the resistor, as well as its phase.
-      </p>
-
-      <p>
-        Importantly, see how the the average model provides a very good
-        approximation for low frequencies. This kind of model won't be
-        useful to study ripples and to evaluate the performance of different
-        PWM modulations (sinusoidal modulation is being used in this
-        example) or of different filter configurations, since those are
-        concerned with the high frequencies in the system. On the other
-        hand, the average models will be very useful to study controllers
-        and to perform longer simulations since the simulation step doesn't
-        need to be so small as to accurately represent the switching
-        dynamics.
-      </p>
+      
+        <p>
+          Nevertheless, the example still showcases an interesting
+          application. Upon running the simulation with the
+          provided values, plotting the resistor voltages yields
+          the following figure:
+        </p>
+      
+      
+        <div class=\"figure\">
+          <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phOpenResults.png\"
+                  alt=\"Inverter1phOpenResults.png\" />
+          </p>
+        </div>
+      
+        <p>
+          The AC is achieved with the inverter topology (called an
+          H-bridge) as well as with the duty cycle sinusoidal
+          modulation. Have a look at the duty cycle driving the
+          SwitchingPWM block and compare it with the voltage drop
+          in the resistor.
+        </p>
+      
+        <p>
+          Compare it with the voltage drop in the inductor. The
+          voltage coming out of the inverter is actually a square
+          wave and the inductor is providing some crude (but
+          enough for some applications) filtering. Play around
+          with the value of the inductor to see how it provides a
+          better or worse filtering performance (decreasing or
+          increasing the voltage and current ripple in the
+          resistor, which in this example is assumed to be the
+          load being fed). Since this is an open loop
+          configuration, it will also change the peak value of the
+          voltage drop in the resistor, as well as its phase.
+        </p>
+      
+        <p>
+          Importantly, see how the the average model provides a
+          very good approximation for low frequencies. This kind
+          of model won't be useful to study ripples and to
+          evaluate the performance of different PWM modulations
+          (sinusoidal modulation is being used in this example) or
+          of different filter configurations, since those are
+          concerned with the high frequencies in the system. On
+          the other hand, the average models will be very useful
+          to study controllers and to perform longer simulations
+          since the simulation step doesn't need to be so small as
+          to accurately represent the switching dynamics.</p>
       </html>"));
 end Inverter1phOpen;

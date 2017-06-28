@@ -1,6 +1,6 @@
 within PVSystems.Examples.Application;
 model Inverter1phClosed
-  "Basic 1-phase closed-loop inverter with constant DC voltage source and no synchronization"
+  "Stand-alone 1-phase closed-loop inverter with constant DC source"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Sources.ConstantVoltage DC(V=580) annotation (
       Placement(transformation(
@@ -21,12 +21,12 @@ model Inverter1phClosed
         origin={70,70},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Blocks.Sources.Step iqSetpoint(height=141.4, startTime=0.5)
+  Modelica.Blocks.Sources.Step iqSetpoint(height=141.4, startTime=0.3)
     annotation (Placement(transformation(extent={{-70,0},{-50,20}}, rotation=0)));
   Modelica.Blocks.Sources.Step idSetpoint(
     height=141.4 - 200,
     offset=200,
-    startTime=0.5)     annotation (Placement(transformation(extent={{-70,-40},{
+    startTime=0.3)     annotation (Placement(transformation(extent={{-70,-40},{
             -50,-20}}, rotation=0)));
   Modelica.Blocks.Sources.SawTooth sawTooth(amplitude=2*Modelica.Constants.pi,
       period=0.02) annotation (Placement(transformation(extent={{-40,-60},{-20,
@@ -65,39 +65,42 @@ equation
     annotation (Line(points={{-19,-10},{-2,-10}}, color={0,0,127}));
   connect(vdcSense.y, control.vdc) annotation (Line(points={{-49,-70},{-49,-70},
           {14,-70},{14,-22}}, color={0,0,127}));
-  annotation (experiment(__Dymola_NumberOfIntervals=5000),
+  annotation (experiment(StopTime=0.6, __Dymola_NumberOfIntervals=3000),
                        Documentation(info="<html>
-      <p>
-        This example explores a closed-loop inverter. No grid is present,
-        which simplifies things. But, since the controller is implemented in
-        the synchronous (dq) refrecen frame, a synchronization source needs
-        to exist. This is implemented with the saw tooth generator, which
-        emulates the output of the PLL.
-      </p>
-
-      <p>
-        As can be seen in the following figure, one can now comfortably
-        specify the setpoint for the output current of the inverter:
-      </p>
-
-      <div class=\"figure\">
-        <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phClosedResults.png\"
-                alt=\"Inverter1phClosedResults.png\" />
+        <p>
+          This example explores a closed-loop inverter. No grid is
+          present, which simplifies things. But, since the
+          controller is implemented in the synchronous (dq)
+          reference frame, a synchronization source needs to
+          exist. This is implemented with the saw tooth generator,
+          which emulates the output of the PLL.
         </p>
-      </div>
-
-      <p>
-        Having the posibility to separately control the current in each dq
-        axis enables one to control the power factor (i.e. the phase lag
-        between the voltage and the current) as well as the amplitude of the
-        current.
-      </p>
-
-      <p>
-        In this example, the equivalent synchronization signal is plotted to
-        see this phase shift as the setpoints change. Notice how, when the q
-        component of the current is 0, the d component is equal to the peak
-        current.
-      </p>
-      </html>"));
+      
+        <p>
+          As can be seen in the following figure, one can now
+          comfortably specify the setpoint for the output current
+          of the inverter:
+        </p>
+      
+      
+        <div class=\"figure\">
+          <p><img src=\"modelica://PVSystems/Resources/Images/Inverter1phClosedResults.png\"
+                  alt=\"Inverter1phClosedResults.png\" />
+          </p>
+        </div>
+      
+        <p>
+          Having the posibility to separately control the current
+          in each dq axis enables one to control the power factor
+          (i.e. the phase lag between the voltage and the current)
+          as well as the amplitude of the current.
+        </p>
+      
+        <p>
+          In this example, the equivalent synchronization signal
+          is plotted to see this phase shift as the setpoints
+          change. Notice how, when the q component of the current
+          is 0, the d component is equal to the peak current.</p>
+      </html>"),
+    __Dymola_experimentSetupOutput);
 end Inverter1phClosed;

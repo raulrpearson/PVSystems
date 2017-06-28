@@ -31,10 +31,7 @@ equation
     annotation (Line(points={{50,18},{50,-30},{-59,-30}}, color={0,0,127}));
   annotation (
     Diagram(graphics),
-    experiment(
-      startTime=0,
-      stopTime=0.1,
-      tolerance=1e-4),
+    experiment(StopTime=0.1),
     Documentation(info="<html>
       <p>
         This example provides some easy input for the Park transform blocks

@@ -99,5 +99,6 @@ equation
           {10,-70},{10,18}}, color={255,0,255}));
   connect(modeCommand.y, conv.mode) annotation (Line(points={{-48.4,-70},{30,
           -70},{30,50},{18,50},{18,58}}, color={255,0,255}));
-  annotation (experiment(StopTime=5, Interval=0.001));
+  annotation (experiment(StopTime=5, Interval=0.001),
+      __Dymola_experimentSetupOutput);
 end USBBatteryConverter;
