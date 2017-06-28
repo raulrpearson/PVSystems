@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model ParkVerification "Verification of the Park transformations"
+model ParkVerification "Park transformations verification"
   extends Modelica.Icons.Example;
   Control.Park park
     annotation (Placement(transformation(extent={{0,20},{20,40}}, rotation=0)));

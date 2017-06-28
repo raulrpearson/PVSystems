@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model PVArrayVerification "Model to verify PVArray"
+model PVArrayVerification "PVArray verification"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Sources.RampVoltage rampVoltage(
     duration=1,

@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model SwitchingCPMVerification "Simple model to verify SwitchingCPM behaviour"
+model SwitchingCPMVerification "SwitchingCPM verification"
   extends Modelica.Icons.Example;
   Control.SwitchingCPM switchingCPM(
     vcMax=5,

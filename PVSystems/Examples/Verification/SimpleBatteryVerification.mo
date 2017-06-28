@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model SimpleBatteryVerification "Verification of SimpleBattery"
+model SimpleBatteryVerification "SimpleBattery verification"
   extends Modelica.Icons.Example;
   Modelica.Electrical.Analog.Sources.SignalCurrent CC annotation (Placement(
         transformation(
