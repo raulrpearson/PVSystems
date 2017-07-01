@@ -33,39 +33,40 @@ equation
     Diagram(graphics),
     Documentation(info="<html>
         <p>
-          PVArrayValidation presents a ramp DC voltage source in parallel with
-          an instance of the PVArray model. The voltage ramp is configured to
-          sweep from -10 volts to 35 volts in 1 second. This provides the
-          enough voltage range to cover all of the PV array's working range
-          when initialized with default values.
+          A ramp DC voltage source is applied in parallel to an
+          instance of the PVArray model. The voltage ramp is
+          configured to sweep from -10 volts to 35 volts in 1
+          second. This provides the enough voltage range to cover
+          all of the PV array's working range when initialized
+          with default values.
         </p>
-
+      
         <p>
-          To use the example, simulate the model and start by displaying both
-          voltage and current of the ramp voltage source. A figure like the
-          following should be displayed:
+          To use the example, simulate the model and start by
+          displaying both voltage and current of the ramp voltage
+          source. A figure like the following should be displayed:
         </p>
-
-
+      
+      
         <div class=\"figure\">
-          <p><img src=\"modelica://PVSystems/Resources/Images/PVArrayValidationResults.png\"
-                  alt=\"PVArrayValidationResults.png\" />
+          <p><img src=\"modelica://PVSystems/Resources/Images/PVArrayVerificationResults.png\"
+                  alt=\"PVArrayVerificationResults.png\" />
           </p>
         </div>
-
+      
         <p>
-          Notice how the variation in the current delivered by the PV array
-          (sinked by the voltage source) reflects the familiar PV module
-          curve.
+          Notice how the variation in the current delivered by the
+          PV array (sinked by the voltage source) reflects the
+          familiar PV module curve.
         </p>
-
+      
         <p>
-          Modify the values for the irradiance and temperature blocks and see
-          how these changes are reflected in a change in the PV curve,
-          accurately reflecting the effects of these variables in the PV
-          module performance.
-        </p>
-        </html>"),
+          Modify the values for the irradiance and temperature
+          blocks and see how these changes are reflected in a
+          change in the PV curve, accurately reflecting the
+          effects of these variables in the PV module
+          performance.  </p>
+      </html>"),
     experiment(
       StartTime=0,
       StopTime=1,

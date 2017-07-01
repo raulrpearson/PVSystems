@@ -19,24 +19,25 @@ equation
       StopTime=0.1,
       Tolerance=1e-4),
     Documentation(info="<html>
-      <p>
-        This simple example provides a sinusoidal input to the PLL block and
-        applies the output provided by the PLL, the calculated phase of the
-        input sine, to drive a sine block so that the synchronization
-        capabilities of the PLL can be visualized.
-      </p>
- 
-      <p>
-        Run the model and plot the output of the sinusoidal source and the
-        output of the sine block to see how, after some short transient, the
-        PLL successfully follows the reference:
-      </p>
- 
- 
-      <div class=\"figure\">
-        <p><img src=\"modelica://PVSystems/Resources/Images/PLLValidationResults.png\"
-                alt=\"PLLValidationResults.png\" />
+        <p>
+          This simple example provides a sinusoidal input to the
+          PLL block and applies the output provided by the PLL,
+          the calculated phase of the input sine, to drive a sine
+          block so that the synchronization capabilities of the
+          PLL can be visualized.
         </p>
-      </div>
+      
+        <p>
+          Run the model and plot the output of the sinusoidal
+          source and the output of the sine block to see how,
+          after some short transient, the PLL successfully follows
+          the reference:
+        </p>
+      
+      
+        <div class=\"figure\">
+          <p><img src=\"modelica://PVSystems/Resources/Images/PLLVerificationResults.png\"
+                  alt=\"PLLVerificationResults.png\" /></p>
+        </div>
       </html>"));
 end PLLVerification;

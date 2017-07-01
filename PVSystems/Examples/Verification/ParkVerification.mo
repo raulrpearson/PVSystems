@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model ParkVerification "Park transformations verification"
+model ParkVerification "Park transforms verification"
   extends Modelica.Icons.Example;
   Control.Park park
     annotation (Placement(transformation(extent={{0,20},{20,40}}, rotation=0)));
@@ -33,22 +33,25 @@ equation
     Diagram(graphics),
     experiment(StopTime=0.1),
     Documentation(info="<html>
-      <p>
-        This example provides some easy input for the Park transform blocks
-        to check that calculations are being done as expected. Run the
-        simulation and you should get something like the following figure:
-      </p>
-
-      <div class=\"figure\">
-        <p><img src=\"modelica://PVSystems/Resources/Images/ParkValidationResults.png\"
-                alt=\"ParkValidationResults.png\" />
+        <p>
+          This example provides some easy input for the Park
+          transform blocks to check that calculations are being
+          done as expected. Run the simulation and you should get
+          something like the following figure:
         </p>
-      </div>
-
-      <p>
-        As expected, <i>d</i> is equal to the peak amplitude of the input
-        signal and <i>q</i> sets at zero. Feeding the signals back to the
-        inverse transformation block recreates the original signals.
-      </p>
+      
+      
+        <div class=\"figure\">
+          <p><img src=\"modelica://PVSystems/Resources/Images/ParkVerificationResults.png\"
+                  alt=\"ParkVerificationResults.png\" />
+          </p>
+        </div>
+      
+        <p>
+          As expected, <em>d</em> is equal to the peak amplitude
+          of the input signal and <em>q</em> sets at zero. Feeding
+          the signals back to the inverse transformation block
+          recreates the original signals (which overlap them on
+          the plot).</p>
       </html>"));
 end ParkVerification;

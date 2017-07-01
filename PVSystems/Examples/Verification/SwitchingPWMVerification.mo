@@ -26,26 +26,25 @@ equation
       StopTime=1,
       Tolerance=1e-4),
     Documentation(info="<html>
-      <p>
-        SignalPWMValidation presents a very simple model aimed at validating
-        the behaviour of the SignalPWM block. It provides a changing duty
-        cycle with the use of two step blocks. When running the simulation
-        with the provided values, plotting the fire output generates the
-        following graph:
-      </p>
-
-
-      <div class=\"figure\">
-        <p><img src=\"modelica://PVSystems/Resources/Images/SignalPWMValidationResults.png\"
-                alt=\"SignalPWMValidationResults.png\" />
+        <p>
+          This model provides a changing duty cycle with the use
+          of two step blocks. When running the simulation with the
+          provided values, plotting the fire output generates the
+          following graph:
         </p>
-      </div>
-
-      <p>
-        Through inspection of the plot, it can be seen how the signal
-        constitutes a PWM signal with a duty cycle changing in steps through
-        the values 0.2, 0.5 and 0.8. Zoom into the signal to confirm this
-        fact as well as the value of the period, set at 10 milliseconds.
-      </p>
+      
+      
+        <div class=\"figure\">
+          <p><img src=\"modelica://PVSystems/Resources/Images/SwitchingPWMVerificationResults.png\"
+                  alt=\"SwitchingPWMVerificationResults.png\" />
+          </p>
+        </div>
+      
+        <p>
+          Through inspection of the plot, it can be seen how the
+          signal constitutes a PWM signal with a duty cycle
+          changing in steps through the values 0.2, 0.5 and
+          0.8. Zoom into the signal to confirm this fact as well
+          as the value of the period, set at 10 milliseconds.</p>
       </html>"));
 end SwitchingPWMVerification;

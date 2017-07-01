@@ -33,26 +33,21 @@ equation
     annotation (Line(points={{-39,0},{-22,0}}, color={0,0,127}));
   annotation (experiment(StopTime=0.001, __Dymola_NumberOfIntervals=5000),
       Documentation(info="<html>
-      <p>
-        SignalPWMValidation presents a very simple model aimed at validating
-        the behaviour of the SignalPWM block. It provides a changing duty
-        cycle with the use of two step blocks. When running the simulation
-        with the provided values, plotting the fire output generates the
-        following graph:
-      </p>
-
-
-      <div class=\"figure\">
-        <p><img src=\"modelica://PVSystems/Resources/Images/SignalPWMValidationResults.png\"
-                alt=\"SignalPWMValidationResults.png\" />
-        </p>
-      </div>
-
-      <p>
-        Through inspection of the plot, it can be seen how the signal
-        constitutes a PWM signal with a duty cycle changing in steps through
-        the values 0.2, 0.5 and 0.8. Zoom into the signal to confirm this
-        fact as well as the value of the period, set at 10 milliseconds.
-      </p>
-      </html>"));
+          <p>
+            The switching CPM block requires the <em>vs</em> input,
+            corresponding to the voltage output of the current
+            sensor. In order to simplify things, a switch with some
+            constant sources and an integrator are used to emulate
+            the behaviour of an inductor. This setup creates the
+            conditions to exercise the CPM block, as can be seen in
+            the following figure:
+          </p>
+        
+        
+          <div class=\"figure\">
+            <p><img src=\"modelica://PVSystems/Resources/Images/SwitchingCPMVerificationresults.Png\"
+                    alt=\"SwitchingCPMVerificationresults.Png\"
+                    /></p>
+          </div>
+        </html>>"));
 end SwitchingCPMVerification;
