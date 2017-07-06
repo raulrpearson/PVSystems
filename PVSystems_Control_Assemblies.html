@@ -60,12 +60,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <th>Description</th>
 </tr>
 <tr>
-<td><img src="PVSystems.Control.Assembl02e7e6a8ad9fe021ollerS.png" alt="PVSystems.Control.Assemblies.MPPTController" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.MPPTController"
->MPPTController</a>
-</td>
-<td>Maximum Power Point Tracking Controller</td>
-</tr>
-<tr>
 <td><img src="PVSystems.Control.Assemblc2295910afc6ec89ollerS.png" alt="PVSystems.Control.Assemblies.Inverter1phCurrentController" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCurrentController"
 >Inverter1phCurrentController</a>
 </td>
@@ -78,109 +72,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <td>Complete synchronous reference frame inverter controller</td>
 </tr>
 </table>
-<hr>
-<!--[if supportFields]><span style="mso-element:field-begin"></span>
-<span style="mso-spacerun:yes"></span>XE MPPTController<![endif]-->
-<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="PVSystems.Control.Assembl02e7e6a8ad9fe021ollerI.png" alt="PVSystems.Control.Assemblies.MPPTController" align="right" style="border: 1px solid" width="80" height="80">
-<a name="PVSystems.Control.Assemblies.MPPTController"></a><a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies"
->PVSystems.Control.Assemblies</a>.MPPTController</h2>
-<p>
-<span class="ModelicaDescription">Maximum Power Point Tracking Controller</span>
-<br>
-<br><img src="PVSystems.Control.Assembl02e7e6a8ad9fe021ollerD.png" alt="PVSystems.Control.Assemblies.MPPTController">
-</p>
-<h3>Information</h3>
-
-        <p>
-          Maximum power-point tracking controller. Given the DC voltage and
-          current, this controller will output a moving reference for a DC
-          voltage control loop in order to maximize the power extracted from a
-          PV array for a given (unknown) solar irradiation and junction
-          temperature.
-        </p>
-
-        <p>
-          The operation of the block can be customized by setting the
-          following parameters:
-        </p>
-
-        <ul class="org-ul">
-          <li><i>sampleTime</i>: sample time of the control block. The control
-            output will be updated with this period.
-          </li>
-          <li><i>vrefStep</i>: amount of change to vref when updated.
-          </li>
-          <li><i>pkThreshold</i>: amount of power below which it is considered
-            that no change in power has occurred.
-          </li>
-        </ul>
-      
-<p><span class="ModelicaBaseClass">Extends from Modelica.Blocks.Interfaces.SI2SO (2 Single Input / 1 Single Output continuous control block).</span></p>
-<h3>Parameters</h3>
-<table summary="Parameters" class="ModelicaTableParameters">
-<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
-<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
->Time</a></td><td>sampleTime</td><td>1</td><td>Sample time of control block [s]</td></tr>
-<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
->Voltage</a></td><td>vrefStep</td><td>5</td><td>Step of change for vref [V]</td></tr>
-<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Power"
->Power</a></td><td>pkThreshold</td><td>1</td><td>Power threshold below which no change is considered [W]</td></tr>
-<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
->Voltage</a></td><td>vrefStart</td><td>10</td><td>Voltage reference initial value [V]</td></tr>
-</table>
-<h3>Connectors</h3>
-<table summary="Connectors" class="ModelicaTableConnectors">
-<tr><th>Type</th><th>Name</th><th>Description</th></tr>
-<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
->RealInput</a></td><td>u1</td><td>Connector of Real input signal 1</td></tr>
-<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
->RealInput</a></td><td>u2</td><td>Connector of Real input signal 2</td></tr>
-<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
->RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
-</table>
-<h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">block</span> MPPTController <span class="ModelicaComment">&quot;Maximum Power Point Tracking Controller&quot;</span>
-  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
->Modelica.Blocks.Interfaces.SI2SO</a>;
-  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
->Modelica.SIunits.Time</a> sampleTime=1 <span class="ModelicaComment">&quot;Sample time of control block&quot;</span>;
-  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
->Modelica.SIunits.Voltage</a> vrefStep=5 <span class="ModelicaComment">&quot;Step of change for vref&quot;</span>;
-  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Power"
->Modelica.SIunits.Power</a> pkThreshold=1
-    <span class="ModelicaComment">&quot;Power threshold below which no change is considered&quot;</span>;
-  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
->Modelica.SIunits.Voltage</a> vrefStart=10
-    <span class="ModelicaComment">&quot;Voltage reference initial value&quot;</span>;
-<span class="ModelicaKeyword">protected </span>
-  <span class="ModelicaKeyword">discrete </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
->Modelica.SIunits.Voltage</a> vk;
-  <span class="ModelicaKeyword">discrete </span><a href="Modelica_SIunits.html#Modelica.SIunits.Current"
->Modelica.SIunits.Current</a> ik;
-  <span class="ModelicaKeyword">discrete </span><a href="Modelica_SIunits.html#Modelica.SIunits.Power"
->Modelica.SIunits.Power</a> pk;
-  <span class="ModelicaKeyword">discrete </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
->Modelica.SIunits.Voltage</a> vref(start=vrefStart);
-<span class="ModelicaKeyword">equation </span>
-  <span class="ModelicaKeyword">when </span><span class="ModelicaFunction">sample</span>(sampleTime, sampleTime)<span class="ModelicaKeyword"> then</span>
-    vk =<span class="ModelicaFunction"> pre</span>(u1);
-    ik =<span class="ModelicaFunction"> pre</span>(u2);
-    pk = vk*ik;
-    <span class="ModelicaKeyword">if </span><span class="ModelicaFunction">abs</span>(pk -<span class="ModelicaFunction"> pre</span>(pk)) &lt; pkThreshold<span class="ModelicaKeyword"> then</span>
-      <span class="ModelicaComment">// power unchanged =&gt; don&#39;t change vref</span>
-      vref =<span class="ModelicaFunction"> pre</span>(vref);
-    <span class="ModelicaKeyword">elseif </span>pk -<span class="ModelicaFunction"> pre</span>(pk) &gt; 0<span class="ModelicaKeyword"> then</span>
-      <span class="ModelicaComment">// power increased =&gt; repeat last action</span>
-      vref =<span class="ModelicaFunction"> pre</span>(vref) + vrefStep*<span class="ModelicaFunction">sign</span>(vk -<span class="ModelicaFunction"> pre</span>(vk));
-    <span class="ModelicaKeyword">else</span>
-      <span class="ModelicaComment">// power decreased =&gt; change last action</span>
-      vref =<span class="ModelicaFunction"> pre</span>(vref) - vrefStep*<span class="ModelicaFunction">sign</span>(vk -<span class="ModelicaFunction"> pre</span>(vk));
-    <span class="ModelicaKeyword">end if</span>;
-  <span class="ModelicaKeyword">end when</span>;
-  y = vref;
-<span class="ModelicaKeyword">end </span>MPPTController;
-</div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE Inverter1phCurrentController<![endif]-->
@@ -199,8 +90,7 @@ pre {white-space: pre; overflow-x : hidden;}
           Synchronous reference frame current controller for a 1-phase
           inverter. It takes the measured and the dq setpoints and
           calculates the duty cycle, which can be then used as the input to
-          the <a href="PVSystems_Control.html#PVSystems.Control.SignalPWM"
->SignalPWM</a>
+          the <a href="modelica://PVSystems.Control.SignalPWM">SignalPWM</a>
           block in switching models or directly as the input of the switch
           or converter in averaged models.
         </p>
@@ -240,6 +130,8 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>d</td><td>Duty cycle output</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>PVSystems_Control_Assemblies.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Inverter1phCurrentController
   <span class="ModelicaComment">&quot;Simple synchronous reference frame PI current controller&quot;</span>
@@ -368,6 +260,8 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>d</td><td>Duty cycle</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>PVSystems_Control_Assemblies.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Inverter1phCompleteController
   <span class="ModelicaComment">&quot;Complete synchronous reference frame inverter controller&quot;</span>
@@ -399,8 +293,8 @@ pre {white-space: pre; overflow-x : hidden;}
   <span class="ModelicaComment">// Components</span>
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
 >Modelica.Blocks.Sources.Constant</a> iqs(k=0);
-  <a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.MPPTController"
->PVSystems.Control.Assemblies.MPPTController</a> mppt(
+  <a href="PVSystems_Control.html#PVSystems.Control.MPPTController"
+>PVSystems.Control.MPPTController</a> mppt(
     sampleTime=1,
     vrefStep=0.5,
     pkThreshold=0.5,
@@ -441,7 +335,7 @@ pre {white-space: pre; overflow-x : hidden;}
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:12 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:29 2017.
 </address>
 </body>
 </html>

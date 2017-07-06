@@ -237,6 +237,8 @@ to use <b>limitAtInit</b> = <b>false</b>.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of actuator output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Continuous.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> LimPID
   <span class="ModelicaComment">&quot;P, PI, PD, and PID controller with limited output, anti-windup compensation and setpoint weighting&quot;</span>
@@ -407,6 +409,8 @@ This is discussed in the description of package
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
 >RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Continuous.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Integrator <span class="ModelicaComment">&quot;Output the integral of the input signal&quot;</span>
   <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
@@ -433,107 +437,6 @@ This is discussed in the description of package
 <span class="ModelicaKeyword">equation </span>
   <span class="ModelicaFunction">der</span>(y) = k*u;
 <span class="ModelicaKeyword">end </span>Integrator;
-</div>
-<hr>
-<!--[if supportFields]><span style="mso-element:field-begin"></span>
-<span style="mso-spacerun:yes"></span>XE LimIntegrator<![endif]-->
-<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="Modelica.Blocks.Continuous.LimIntegratorI.png" alt="Modelica.Blocks.Continuous.LimIntegrator" align="right" style="border: 1px solid" width="80" height="80">
-<a name="Modelica.Blocks.Continuous.LimIntegrator"></a>Modelica.Blocks.Continuous.LimIntegrator</h2>
-<p>
-<span class="ModelicaDescription">Integrator with limited value of the output</span>
-<br>
-<br><img src="Modelica.Blocks.Continuous.LimIntegratorD.png" alt="Modelica.Blocks.Continuous.LimIntegrator">
-</p>
-<h3>Information</h3>
-
-<p>
-This blocks computes <b>y</b> (element-wise) as <i>integral</i>
-of the input <b>u</b> multiplied with the gain <i>k</i>. If the
-integral reaches a given upper or lower <i>limit</i> and the
-input will drive the integral outside of this bound, the
-integration is halted and only restarted if the input drives
-the integral away from the bounds.
-</p>
-
-<p>
-It might be difficult to initialize the integrator in steady state.
-This is discussed in the description of package
-<a  >Continuous</a>.
-</p>
-
-<p>
-If parameter <b>limitAtInit</b> = <b>false</b>, the limits of the
-integrator are removed from the initialization problem which
-leads to a much simpler equation system. After initialization has been
-performed, it is checked via an assert whether the output is in the
-defined limits. For backward compatibility reasons
-<b>limitAtInit</b> = <b>true</b>. In most cases it is best
-to use <b>limitAtInit</b> = <b>false</b>.
-</p>
-
-<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
->Interfaces.SISO</a> (Single Input Single Output continuous control block).</span></p>
-<h3>Parameters</h3>
-<table summary="Parameters" class="ModelicaTableParameters">
-<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
-<tr><td>Real</td><td>k</td><td>1</td><td>Integrator gain [1]</td></tr>
-<tr><td>Real</td><td>outMax</td><td>&nbsp;</td><td>Upper limit of output</td></tr>
-<tr><td>Real</td><td>outMin</td><td>-outMax</td><td>Lower limit of output</td></tr>
-<tr class="ModelicaParameterGroup"><td colspan="4">Initialization</td></tr>
-<tr><td><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
->Init</a></td><td>initType</td><td>Modelica.Blocks.Types.Init.I...</td><td>Type of initialization (1: no init, 2: steady state, 3/4: initial output)</td></tr>
-<tr><td>Boolean</td><td>limitsAtInit</td><td>true</td><td>= false, if limits are ignored during initialization (i.e., der(y)=k*u)</td></tr>
-<tr><td>Real</td><td>y_start</td><td>0</td><td>Initial or guess value of output (must be in the limits outMin .. outMax)</td></tr>
-<tr><td><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
->RealOutput</a></td><td>y.start</td><td>y_start</td><td>Connector of Real output signal</td></tr>
-<tr class="ModelicaParameterTab"><td colspan="4">Advanced</td></tr>
-<tr><td>Boolean</td><td>strict</td><td>false</td><td>= true, if strict limits with noEvent(..)</td></tr>
-</table>
-<h3>Connectors</h3>
-<table summary="Connectors" class="ModelicaTableConnectors">
-<tr><th>Type</th><th>Name</th><th>Description</th></tr>
-<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
->RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
-</table>
-<h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">block</span> LimIntegrator <span class="ModelicaComment">&quot;Integrator with limited value of the output&quot;</span>
-  <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
->Modelica.Blocks.Types.Init</a>;
-  <span class="ModelicaKeyword">parameter </span>Real k(unit=&quot;1&quot;)=1 <span class="ModelicaComment">&quot;Integrator gain&quot;</span>;
-  <span class="ModelicaKeyword">parameter </span>Real outMax(start=1) <span class="ModelicaComment">&quot;Upper limit of output&quot;</span>;
-  <span class="ModelicaKeyword">parameter </span>Real outMin=-outMax <span class="ModelicaComment">&quot;Lower limit of output&quot;</span>;
-  <span class="ModelicaKeyword">parameter </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
->Modelica.Blocks.Types.Init</a> initType=Modelica.Blocks.Types.Init.InitialState
-    <span class="ModelicaComment">&quot;Type of initialization (1: no init, 2: steady state, 3/4: initial output)&quot;</span>;
-  <span class="ModelicaKeyword">parameter </span>Boolean limitsAtInit = true
-    <span class="ModelicaComment">&quot;= false, if limits are ignored during initialization (i.e., der(y)=k*u)&quot;</span>;
-  <span class="ModelicaKeyword">parameter </span>Real y_start=0
-    <span class="ModelicaComment">&quot;Initial or guess value of output (must be in the limits outMin .. outMax)&quot;</span>;
-  <span class="ModelicaKeyword">parameter </span>Boolean strict=false <span class="ModelicaComment">&quot;= true, if strict limits with noEvent(..)&quot;</span>;
-  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
->Interfaces.SISO</a>(y(start=y_start));
-
-<span class="ModelicaKeyword">initial </span><span class="ModelicaKeyword">equation </span>
-  <span class="ModelicaKeyword">if </span>initType == Init.SteadyState<span class="ModelicaKeyword"> then</span>
-    <span class="ModelicaFunction"> der</span>(y) = 0;
-  <span class="ModelicaKeyword">elseif </span>initType == Init.InitialState<span class="ModelicaKeyword"> or </span>
-         initType == Init.InitialOutput<span class="ModelicaKeyword"> then</span>
-    y = y_start;
-  <span class="ModelicaKeyword">end if</span>;
-<span class="ModelicaKeyword">equation </span>
-  <span class="ModelicaKeyword">if </span><span class="ModelicaFunction">initial</span>()<span class="ModelicaKeyword"> and </span><span class="ModelicaKeyword">not </span>limitsAtInit<span class="ModelicaKeyword"> then</span>
-    <span class="ModelicaFunction"> der</span>(y) = k*u;
-    <span class="ModelicaFunction"> assert</span>(y &gt;= outMin - 0.001*<span class="ModelicaFunction">abs</span>(outMax-outMin)<span class="ModelicaKeyword"> and </span>y &lt;= outMax + 0.001*<span class="ModelicaFunction">abs</span>(outMax-outMin),
-          &quot;LimIntegrator: During initialization the limits have been ignored.\n&quot;
-        + &quot;However, the result is that the output y is not within the required limits:\n&quot;
-        + &quot;  y = &quot; +<span class="ModelicaFunction"> String</span>(y) + &quot;, outMin = &quot; +<span class="ModelicaFunction"> String</span>(outMin) + &quot;, outMax = &quot; +<span class="ModelicaFunction"> String</span>(outMax));
-  <span class="ModelicaKeyword">elseif </span>strict<span class="ModelicaKeyword"> then</span>
-    <span class="ModelicaFunction"> der</span>(y) =<span class="ModelicaFunction"> noEvent</span>(<span class="ModelicaKeyword">if </span>y &lt; outMin<span class="ModelicaKeyword"> and </span>k*u &lt; 0<span class="ModelicaKeyword"> or </span>y &gt; outMax<span class="ModelicaKeyword"> and </span>k*u &gt; 0<span class="ModelicaKeyword"> then </span>0<span class="ModelicaKeyword"> else </span>k*u);
-  <span class="ModelicaKeyword">else</span>
-    <span class="ModelicaFunction"> der</span>(y) = <span class="ModelicaKeyword">if </span>y &lt; outMin<span class="ModelicaKeyword"> and </span>k*u &lt; 0<span class="ModelicaKeyword"> or </span>y &gt; outMax<span class="ModelicaKeyword"> and </span>k*u &gt; 0<span class="ModelicaKeyword"> then </span>0<span class="ModelicaKeyword"> else </span>k*u;
-  <span class="ModelicaKeyword">end if</span>;
-<span class="ModelicaKeyword">end </span>LimIntegrator;
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
@@ -595,6 +498,8 @@ Example:
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
 >RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Continuous.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> FirstOrder <span class="ModelicaComment">&quot;First order transfer function block (= 1 pole)&quot;</span>
   <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
@@ -677,6 +582,8 @@ If k=0, the block reduces to y=0.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Continuous.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Derivative <span class="ModelicaComment">&quot;Approximated derivative block&quot;</span>
   <span class="ModelicaKeyword">import </span><a href="Modelica_Blocks_Types.html#Modelica.Blocks.Types.Init"
@@ -716,7 +623,7 @@ If k=0, the block reduces to y=0.
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:14 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:30 2017.
 </address>
 </body>
 </html>

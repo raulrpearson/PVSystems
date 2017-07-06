@@ -54,6 +54,8 @@ Connector with one input signal of type Boolean.
 </p>
 
 <p><span class="ModelicaBaseClass">Extends from Boolean.</span></p>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">connector</span> BooleanInput = <span class="ModelicaKeyword">input </span>Boolean <span class="ModelicaComment">&quot;&#39;input Boolean&#39; as connector&quot;</span>;
 </div>
@@ -75,6 +77,8 @@ Connector with one input signal of type Real.
 </p>
 
 <p><span class="ModelicaBaseClass">Extends from Real.</span></p>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">connector</span> RealInput = <span class="ModelicaKeyword">input </span>Real <span class="ModelicaComment">&quot;&#39;input Real&#39; as connector&quot;</span>;
 </div>
@@ -96,6 +100,8 @@ Connector with one output signal of type Boolean.
 </p>
 
 <p><span class="ModelicaBaseClass">Extends from Boolean.</span></p>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">connector</span> BooleanOutput = <span class="ModelicaKeyword">output </span>Boolean <span class="ModelicaComment">&quot;&#39;output Boolean&#39; as connector&quot;</span>;
 </div>
@@ -117,6 +123,8 @@ Connector with one output signal of type Real.
 </p>
 
 <p><span class="ModelicaBaseClass">Extends from Real.</span></p>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">connector</span> RealOutput = <span class="ModelicaKeyword">output </span>Real <span class="ModelicaComment">&quot;&#39;output Real&#39; as connector&quot;</span>;
 </div>
@@ -150,6 +158,8 @@ continuous Real output signal y.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> SI2SO
   <span class="ModelicaComment">&quot;2 Single Input / 1 Single Output continuous control block&quot;</span>
@@ -168,14 +178,51 @@ continuous Real output signal y.
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE SO<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Interfaces.SOI.png" alt="Modelica.Blocks.Interfaces.SO" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Interfaces.SO"></a>Modelica.Blocks.Interfaces.SO</h2>
+<p>
+<span class="ModelicaDescription">Single Output continuous control block</span>
+<br>
+<br><img src="Modelica.Blocks.Interfaces.SOD.png" alt="Modelica.Blocks.Interfaces.SO">
+</p>
+<h3>Information</h3>
+
+<p>
+Block has one continuous Real output signal.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
+>Modelica.Blocks.Icons.Block</a> (Basic graphical layout of input/output block).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> SO <span class="ModelicaComment">&quot;Single Output continuous control block&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
+>Modelica.Blocks.Icons.Block</a>;
+
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a> y <span class="ModelicaComment">&quot;Connector of Real output signal&quot;</span>;
+
+<span class="ModelicaKeyword">end </span>SO;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE SignalSource<![endif]-->
 <!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="Modelica.Blocks.Interfaces.SignalSourceI.png" alt="Modelica.Blocks.Interfaces.SignalSource" align="right" style="border: 1px solid" width="80" height="80">
+<h2><img src="Modelica.Blocks.Interfaces.SOI.png" alt="Modelica.Blocks.Interfaces.SignalSource" align="right" style="border: 1px solid" width="80" height="80">
 <a name="Modelica.Blocks.Interfaces.SignalSource"></a>Modelica.Blocks.Interfaces.SignalSource</h2>
 <p>
 <span class="ModelicaDescription">Base class for continuous signal source</span>
 <br>
-<br><img src="Modelica.Blocks.Interfaces.SignalSourceD.png" alt="Modelica.Blocks.Interfaces.SignalSource">
+<br><img src="Modelica.Blocks.Interfaces.SOD.png" alt="Modelica.Blocks.Interfaces.SignalSource">
 </p>
 <h3>Information</h3>
 
@@ -201,6 +248,8 @@ generated signal.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> SignalSource <span class="ModelicaComment">&quot;Base class for continuous signal source&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SO"
@@ -209,41 +258,6 @@ generated signal.
   <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
 >SIunits.Time</a> startTime=0 <span class="ModelicaComment">&quot;Output y = offset for time &lt; startTime&quot;</span>;
 <span class="ModelicaKeyword">end </span>SignalSource;
-</div>
-<hr>
-<!--[if supportFields]><span style="mso-element:field-begin"></span>
-<span style="mso-spacerun:yes"></span>XE SO<![endif]-->
-<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="Modelica.Blocks.Interfaces.SignalSourceI.png" alt="Modelica.Blocks.Interfaces.SO" align="right" style="border: 1px solid" width="80" height="80">
-<a name="Modelica.Blocks.Interfaces.SO"></a>Modelica.Blocks.Interfaces.SO</h2>
-<p>
-<span class="ModelicaDescription">Single Output continuous control block</span>
-<br>
-<br><img src="Modelica.Blocks.Interfaces.SignalSourceD.png" alt="Modelica.Blocks.Interfaces.SO">
-</p>
-<h3>Information</h3>
-
-<p>
-Block has one continuous Real output signal.
-</p>
-
-<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
->Modelica.Blocks.Icons.Block</a> (Basic graphical layout of input/output block).</span></p>
-<h3>Connectors</h3>
-<table summary="Connectors" class="ModelicaTableConnectors">
-<tr><th>Type</th><th>Name</th><th>Description</th></tr>
-<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
->RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
-</table>
-<h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> SO <span class="ModelicaComment">&quot;Single Output continuous control block&quot;</span>
-  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
->Modelica.Blocks.Icons.Block</a>;
-
-  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
->RealOutput</a> y <span class="ModelicaComment">&quot;Connector of Real output signal&quot;</span>;
-
-<span class="ModelicaKeyword">end </span>SO;
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
@@ -272,6 +286,8 @@ and a 3D icon (e.g., used in Blocks.Logical library).
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
 >BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> partialBooleanSource
   <span class="ModelicaComment">&quot;Partial source block (has 1 output Boolean signal and an appropriate default icon)&quot;</span>
@@ -311,6 +327,8 @@ Block has one continuous Real input and one continuous Real output signal.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> SISO <span class="ModelicaComment">&quot;Single Input Single Output continuous control block&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
@@ -353,6 +371,8 @@ to be used as base class for a corresponding controller.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of actuator output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> SVcontrol <span class="ModelicaComment">&quot;Single-Variable continuous controller&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
@@ -394,6 +414,8 @@ with a 3D icon (e.g., used in Blocks.Logical library).
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
 >BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> partialBooleanSISO
   <span class="ModelicaComment">&quot;Partial block with 1 input and 1 output Boolean signal&quot;</span>
@@ -436,6 +458,8 @@ has a 3D icon (e.g., used in Blocks.Logical library).
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
 >BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> partialBooleanComparison
   <span class="ModelicaComment">&quot;Partial block with 2 Real input and 1 Boolean output signal (the result of a comparison of the two Real inputs)&quot;</span>
@@ -480,6 +504,8 @@ with a 3D icon (e.g., used in Blocks.Logical library).
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
 >BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">block</span> partialBooleanSI2SO
   <span class="ModelicaComment">&quot;Partial block with 2 input and 1 output Boolean signal&quot;</span>
@@ -498,7 +524,7 @@ with a 3D icon (e.g., used in Blocks.Logical library).
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:15 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:31 2017.
 </address>
 </body>
 </html>

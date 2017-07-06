@@ -1,10 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Modelica.Blocks.Sources.Step</title>
+<title>Modelica.Blocks.Sources.RealExpression</title>
 <meta name="HTML-Generator" content="Dymola">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="&quot;Generate step signal of type Real&quot;">
+<meta name="description" content="&quot;Set output signal to a time varying Real expression&quot;">
 <style type="text/css">
 *       { font-size: 100%; font-family: Arial, sans-serif; }
 .modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
@@ -38,51 +38,52 @@ pre {white-space: pre; overflow-x : hidden;}
 </head>
 <body>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
-<span style="mso-spacerun:yes"></span>XE Step<![endif]-->
+<span style="mso-spacerun:yes"></span>XE RealExpression<![endif]-->
 <!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="Modelica.Blocks.Sources.StepI.png" alt="Modelica.Blocks.Sources.Step" align="right" style="border: 1px solid" width="80" height="80">
-<a name="Modelica.Blocks.Sources.Step"></a>Modelica.Blocks.Sources.Step</h2>
+<h2><img src="Modelica.Blocks.Sources.RealExpressionI.png" alt="Modelica.Blocks.Sources.RealExpression" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Sources.RealExpression"></a>Modelica.Blocks.Sources.RealExpression</h2>
 <p>
-<span class="ModelicaDescription">Generate step signal of type Real</span>
+<span class="ModelicaDescription">Set output signal to a time varying Real expression</span>
 <br>
-<br><img src="Modelica.Blocks.Sources.StepD.png" alt="Modelica.Blocks.Sources.Step">
+<br><img src="Modelica.Blocks.Sources.RealExpressionD.png" alt="Modelica.Blocks.Sources.RealExpression">
 </p>
 <h3>Information</h3>
 
 <p>
-The Real output y is a step signal:
+The (time varying) Real output signal of this block can be defined in its
+parameter menu via variable <b>y</b>. The purpose is to support the
+easy definition of Real expressions in a block diagram. For example,
+in the y-menu the definition "if time &lt; 1 then 0 else 1" can be given in order
+to define that the output signal is one, if time &ge; 1 and otherwise
+it is zero. Note, that "time" is a built-in variable that is always
+accessible and represents the "model time" and that
+Variable <b>y</b> is both a variable and a connector.
 </p>
 
-<p>
-<img src="C:/Program%20Files%20(x86)/Dymola%202017%20FD01/Modelica/Library/Modelica%203.2.2/Resources/Images/Blocks/Sources/Step.png"
-     alt="Step.png">
-</p>
-
-
-<p><span class="ModelicaBaseClass">Extends from Interfaces.SignalSource (Base class for continuous signal source).</span></p>
 <h3>Parameters</h3>
 <table summary="Parameters" class="ModelicaTableParameters">
 <tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
-<tr><td>Real</td><td>height</td><td>1</td><td>Height of step</td></tr>
-<tr><td>Real</td><td>offset</td><td>0</td><td>Offset of output signal y</td></tr>
-<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
->Time</a></td><td>startTime</td><td>0</td><td>Output y = offset for time &lt; startTime [s]</td></tr>
+<tr class="ModelicaParameterGroup"><td colspan="4">Time varying output signal</td></tr>
+<tr><td><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>0.0</td><td>Value of Real output</td></tr>
 </table>
 <h3>Connectors</h3>
 <table summary="Connectors" class="ModelicaTableConnectors">
 <tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr class="ModelicaParameterGroup"><td colspan="3">Time varying output signal</td></tr>
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
->RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+>RealOutput</a></td><td>y</td><td>Value of Real output</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">block</span> Step <span class="ModelicaComment">&quot;Generate step signal of type Real&quot;</span>
-  <span class="ModelicaKeyword">parameter </span>Real height=1 <span class="ModelicaComment">&quot;Height of step&quot;</span>;
-  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SignalSource"
->Interfaces.SignalSource</a>;
+<div class="modelica"><span class="ModelicaKeyword">block</span> RealExpression <span class="ModelicaComment">&quot;Set output signal to a time varying Real expression&quot;</span>
 
-<span class="ModelicaKeyword">equation </span>
-  y = offset + (<span class="ModelicaKeyword">if </span>time &lt; startTime<span class="ModelicaKeyword"> then </span>0<span class="ModelicaKeyword"> else </span>height);
-<span class="ModelicaKeyword">end </span>Step;
+  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>Modelica.Blocks.Interfaces.RealOutput</a> y=0.0 <span class="ModelicaComment">&quot;Value of Real output&quot;</span>;
+
+
+<span class="ModelicaKeyword">end </span>RealExpression;
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
@@ -125,6 +126,8 @@ The Real output y is a sine signal:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Sine <span class="ModelicaComment">&quot;Generate sine signal&quot;</span>
   <span class="ModelicaKeyword">import </span>Modelica.Constants.pi;
@@ -178,6 +181,8 @@ The Real output y is a constant signal:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Constant <span class="ModelicaComment">&quot;Generate constant signal of type Real&quot;</span>
   <span class="ModelicaKeyword">parameter </span>Real k(start=1) <span class="ModelicaComment">&quot;Constant output value&quot;</span>;
@@ -190,50 +195,53 @@ The Real output y is a constant signal:
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
-<span style="mso-spacerun:yes"></span>XE RealExpression<![endif]-->
+<span style="mso-spacerun:yes"></span>XE Step<![endif]-->
 <!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="Modelica.Blocks.Sources.RealExpressionI.png" alt="Modelica.Blocks.Sources.RealExpression" align="right" style="border: 1px solid" width="80" height="80">
-<a name="Modelica.Blocks.Sources.RealExpression"></a>Modelica.Blocks.Sources.RealExpression</h2>
+<h2><img src="Modelica.Blocks.Sources.StepI.png" alt="Modelica.Blocks.Sources.Step" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Sources.Step"></a>Modelica.Blocks.Sources.Step</h2>
 <p>
-<span class="ModelicaDescription">Set output signal to a time varying Real expression</span>
+<span class="ModelicaDescription">Generate step signal of type Real</span>
 <br>
-<br><img src="Modelica.Blocks.Sources.RealExpressionD.png" alt="Modelica.Blocks.Sources.RealExpression">
+<br><img src="Modelica.Blocks.Sources.StepD.png" alt="Modelica.Blocks.Sources.Step">
 </p>
 <h3>Information</h3>
 
 <p>
-The (time varying) Real output signal of this block can be defined in its
-parameter menu via variable <b>y</b>. The purpose is to support the
-easy definition of Real expressions in a block diagram. For example,
-in the y-menu the definition "if time &lt; 1 then 0 else 1" can be given in order
-to define that the output signal is one, if time &ge; 1 and otherwise
-it is zero. Note, that "time" is a built-in variable that is always
-accessible and represents the "model time" and that
-Variable <b>y</b> is both a variable and a connector.
+The Real output y is a step signal:
 </p>
 
+<p>
+<img src="C:/Program%20Files%20(x86)/Dymola%202017%20FD01/Modelica/Library/Modelica%203.2.2/Resources/Images/Blocks/Sources/Step.png"
+     alt="Step.png">
+</p>
+
+
+<p><span class="ModelicaBaseClass">Extends from Interfaces.SignalSource (Base class for continuous signal source).</span></p>
 <h3>Parameters</h3>
 <table summary="Parameters" class="ModelicaTableParameters">
 <tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
-<tr class="ModelicaParameterGroup"><td colspan="4">Time varying output signal</td></tr>
-<tr><td><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
->RealOutput</a></td><td>y</td><td>0.0</td><td>Value of Real output</td></tr>
+<tr><td>Real</td><td>height</td><td>1</td><td>Height of step</td></tr>
+<tr><td>Real</td><td>offset</td><td>0</td><td>Offset of output signal y</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>startTime</td><td>0</td><td>Output y = offset for time &lt; startTime [s]</td></tr>
 </table>
 <h3>Connectors</h3>
 <table summary="Connectors" class="ModelicaTableConnectors">
 <tr><th>Type</th><th>Name</th><th>Description</th></tr>
-<tr class="ModelicaParameterGroup"><td colspan="3">Time varying output signal</td></tr>
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
->RealOutput</a></td><td>y</td><td>Value of Real output</td></tr>
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">block</span> RealExpression <span class="ModelicaComment">&quot;Set output signal to a time varying Real expression&quot;</span>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Step <span class="ModelicaComment">&quot;Generate step signal of type Real&quot;</span>
+  <span class="ModelicaKeyword">parameter </span>Real height=1 <span class="ModelicaComment">&quot;Height of step&quot;</span>;
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SignalSource"
+>Interfaces.SignalSource</a>;
 
-  <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
->Modelica.Blocks.Interfaces.RealOutput</a> y=0.0 <span class="ModelicaComment">&quot;Value of Real output&quot;</span>;
-
-
-<span class="ModelicaKeyword">end </span>RealExpression;
+<span class="ModelicaKeyword">equation </span>
+  y = offset + (<span class="ModelicaKeyword">if </span>time &lt; startTime<span class="ModelicaKeyword"> then </span>0<span class="ModelicaKeyword"> else </span>height);
+<span class="ModelicaKeyword">end </span>Step;
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
@@ -276,6 +284,8 @@ The Real output y is a saw tooth signal:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> SawTooth <span class="ModelicaComment">&quot;Generate saw tooth signal&quot;</span>
   <span class="ModelicaKeyword">parameter </span>Real amplitude=1 <span class="ModelicaComment">&quot;Amplitude of saw tooth&quot;</span>;
@@ -347,6 +357,8 @@ The Real output y is a cosine signal:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Cosine <span class="ModelicaComment">&quot;Generate cosine signal&quot;</span>
   <span class="ModelicaKeyword">import </span>Modelica.Constants.pi;
@@ -409,6 +421,8 @@ If parameter duration is set to 0.0, the limiting case of a Step signal is achie
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Ramp <span class="ModelicaComment">&quot;Generate ramp signal&quot;</span>
   <span class="ModelicaKeyword">parameter </span>Real height=1 <span class="ModelicaComment">&quot;Height of ramps&quot;</span>;
@@ -466,6 +480,8 @@ Variable <b>y</b> is both a variable and a connector.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
 >BooleanOutput</a></td><td>y</td><td>Value of Boolean output</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> BooleanExpression
   <span class="ModelicaComment">&quot;Set output signal to a time varying Boolean expression&quot;</span>
@@ -512,6 +528,8 @@ The Boolean output y is a step signal:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
 >BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> BooleanStep <span class="ModelicaComment">&quot;Generate step signal of type Boolean&quot;</span>
   <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
@@ -563,6 +581,8 @@ The Boolean output y is a pulse signal:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
 >BooleanOutput</a></td><td>y</td><td>Connector of Boolean output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Sources.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> BooleanPulse <span class="ModelicaComment">&quot;Generate pulse signal of type Boolean&quot;</span>
 
@@ -594,7 +614,7 @@ The Boolean output y is a pulse signal:
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:13 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:30 2017.
 </address>
 </body>
 </html>

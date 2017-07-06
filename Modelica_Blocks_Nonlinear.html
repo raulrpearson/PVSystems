@@ -1,10 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Modelica.Blocks.Nonlinear.Limiter</title>
+<title>Modelica.Blocks.Nonlinear.SlewRateLimiter</title>
 <meta name="HTML-Generator" content="Dymola">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="&quot;Limit the range of a signal&quot;">
+<meta name="description" content="&quot;Limits the slew rate of a signal&quot;">
 <style type="text/css">
 *       { font-size: 100%; font-family: Arial, sans-serif; }
 .modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
@@ -37,6 +37,91 @@ pre {white-space: pre; overflow-x : hidden;}
 </style>
 </head>
 <body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE SlewRateLimiter<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Nonlineara4ac54616c395b75miterI.png" alt="Modelica.Blocks.Nonlinear.SlewRateLimiter" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Nonlinear.SlewRateLimiter"></a>Modelica.Blocks.Nonlinear.SlewRateLimiter</h2>
+<p>
+<span class="ModelicaDescription">Limits the slew rate of a signal</span>
+<br>
+<br><img src="Modelica.Blocks.Nonlineara4ac54616c395b75miterD.png" alt="Modelica.Blocks.Nonlinear.SlewRateLimiter">
+</p>
+<h3>Information</h3>
+
+<p>The <code>SlewRateLimiter</code> block limits the slew rate of its input signal in the range of <code>[Falling, Rising]</code>.</p>
+<p>To ensure this for arbitrary inputs and in order to produce a differential output, the input is numerically differentiated
+with derivative time constant <code>Td</code>. Smaller time constant <code>Td</code> means nearer ideal derivative.</p>
+<p><em>Note: The user has to choose the derivative time constant according to the nature of the input signal.</em></p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Modelica.Blocks.Interfaces.SISO</a> (Single Input Single Output continuous control block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.DampingCoefficient"
+>DampingCoefficient</a></td><td>Rising</td><td>1</td><td>Maximum rising slew rate [+small..+inf) [s-1]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.DampingCoefficient"
+>DampingCoefficient</a></td><td>Falling</td><td>-Rising</td><td>Maximum falling slew rate (-inf..-small] [s-1]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>Td</td><td>0.001</td><td>Derivative time constant [s]</td></tr>
+<tr class="ModelicaParameterTab"><td colspan="4">Advanced</td></tr>
+<tr><td>Boolean</td><td>strict</td><td>false</td><td>= true, if strict limits with noEvent(..)</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Revisions</h3>
+
+<table cellspacing="0" cellpadding="2" border="1"><tr>
+<th>Revision</th>
+<th>Date</th>
+<th>Author</th>
+<th>Comment</th>
+</tr>
+<tr>
+<td valign="top">4954</td>
+<td valign="top">2012-03-02</td>
+<td valign="top">A. Haumer &amp; D. Winkler</td>
+<td valign="top"><p>Initial version based on discussion in ticket <a href="https://trac.modelica.org/Modelica/ticket/529">#529</a></p></td>
+</tr>
+</table>
+
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Nonlinear.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> SlewRateLimiter <span class="ModelicaComment">&quot;Limits the slew rate of a signal&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Modelica.Blocks.Interfaces.SISO</a>;
+  <span class="ModelicaKeyword">import </span>Modelica.Constants.small;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.DampingCoefficient"
+>Modelica.SIunits.DampingCoefficient</a> Rising( min= small) = 1
+    <span class="ModelicaComment">&quot;Maximum rising slew rate [+small..+inf)&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.DampingCoefficient"
+>Modelica.SIunits.DampingCoefficient</a> Falling(max=-small) = -Rising
+    <span class="ModelicaComment">&quot;Maximum falling slew rate (-inf..-small]&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Modelica.SIunits.Time</a> Td(min=small) = 0.001
+    <span class="ModelicaComment">&quot;Derivative time constant&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span>Boolean strict=false <span class="ModelicaComment">&quot;= true, if strict limits with noEvent(..)&quot;</span>;
+<span class="ModelicaKeyword">protected </span>
+  Real val=(u-y)/Td;
+<span class="ModelicaKeyword">initial </span><span class="ModelicaKeyword">equation </span>
+    y = u;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaKeyword">if </span>strict<span class="ModelicaKeyword"> then</span>
+    <span class="ModelicaFunction">der</span>(y) =<span class="ModelicaFunction"> smooth</span>(1,<span class="ModelicaFunction">noEvent</span>(<span class="ModelicaKeyword">if </span>val&lt;Falling<span class="ModelicaKeyword"> then </span>Falling<span class="ModelicaKeyword"> else </span><span class="ModelicaKeyword">if </span>val&gt;Rising<span class="ModelicaKeyword"> then </span>Rising<span class="ModelicaKeyword"> else </span>val));
+  <span class="ModelicaKeyword">else</span>
+    <span class="ModelicaFunction">der</span>(y) = <span class="ModelicaKeyword">if </span>val&lt;Falling<span class="ModelicaKeyword"> then </span>Falling<span class="ModelicaKeyword"> else </span><span class="ModelicaKeyword">if </span>val&gt;Rising<span class="ModelicaKeyword"> then </span>Rising<span class="ModelicaKeyword"> else </span>val;
+  <span class="ModelicaKeyword">end if</span>;
+<span class="ModelicaKeyword">end </span>SlewRateLimiter;
+</div>
+<hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE Limiter<![endif]-->
 <!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
@@ -76,6 +161,8 @@ as output.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Nonlinear.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Limiter <span class="ModelicaComment">&quot;Limit the range of a signal&quot;</span>
   <span class="ModelicaKeyword">parameter </span>Real uMax(start=1) <span class="ModelicaComment">&quot;Upper limits of input signals&quot;</span>;
@@ -134,6 +221,8 @@ The Input signal is delayed by a given time instant, or more precisely:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Nonlinear.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> FixedDelay <span class="ModelicaComment">&quot;Delay block with fixed DelayTime&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
@@ -148,7 +237,7 @@ The Input signal is delayed by a given time instant, or more precisely:
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:16 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:31 2017.
 </address>
 </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Modelica.Blocks.Math.Add</title>
+<title>Modelica.Blocks.Math.Cos</title>
 <meta name="HTML-Generator" content="Dymola">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="&quot;Output the sum of the two inputs&quot;">
+<meta name="description" content="&quot;Output the cosine of the input&quot;">
 <style type="text/css">
 *       { font-size: 100%; font-family: Arial, sans-serif; }
 .modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
@@ -37,6 +37,53 @@ pre {white-space: pre; overflow-x : hidden;}
 </style>
 </head>
 <body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Cos<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Math.CosI.png" alt="Modelica.Blocks.Math.Cos" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Math.Cos"></a>Modelica.Blocks.Math.Cos</h2>
+<p>
+<span class="ModelicaDescription">Output the cosine of the input</span>
+<br>
+<br><img src="Modelica.Blocks.Math.CosD.png" alt="Modelica.Blocks.Math.Cos">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks computes the output <b>y</b>
+as <b>cos</b> of the input <b>u</b>:
+</p>
+<pre>
+    y = <b>cos</b>( u );
+</pre>
+
+<p>
+<img src="C:/Program%20Files%20(x86)/Dymola%202017%20FD01/Modelica/Library/Modelica%203.2.2/Resources/Images/Math/cos.png"
+     alt="cos.png">
+</p>
+
+
+<p><span class="ModelicaBaseClass">Extends from Interfaces.SISO (Single Input Single Output continuous control block).</span></p>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Math.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Cos <span class="ModelicaComment">&quot;Output the cosine of the input&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a>;
+
+<span class="ModelicaKeyword">equation </span>
+  y =<span class="ModelicaFunction"> Modelica.Math.cos</span>(u);
+<span class="ModelicaKeyword">end </span>Cos;
+</div>
+<hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE Add<![endif]-->
 <!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
@@ -86,6 +133,8 @@ Example:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Add <span class="ModelicaComment">&quot;Output the sum of the two inputs&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
@@ -97,51 +146,6 @@ Example:
 <span class="ModelicaKeyword">equation </span>
   y = k1*u1 + k2*u2;
 <span class="ModelicaKeyword">end </span>Add;
-</div>
-<hr>
-<!--[if supportFields]><span style="mso-element:field-begin"></span>
-<span style="mso-spacerun:yes"></span>XE Cos<![endif]-->
-<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="Modelica.Blocks.Math.CosI.png" alt="Modelica.Blocks.Math.Cos" align="right" style="border: 1px solid" width="80" height="80">
-<a name="Modelica.Blocks.Math.Cos"></a>Modelica.Blocks.Math.Cos</h2>
-<p>
-<span class="ModelicaDescription">Output the cosine of the input</span>
-<br>
-<br><img src="Modelica.Blocks.Math.CosD.png" alt="Modelica.Blocks.Math.Cos">
-</p>
-<h3>Information</h3>
-
-<p>
-This blocks computes the output <b>y</b>
-as <b>cos</b> of the input <b>u</b>:
-</p>
-<pre>
-    y = <b>cos</b>( u );
-</pre>
-
-<p>
-<img src="C:/Program%20Files%20(x86)/Dymola%202017%20FD01/Modelica/Library/Modelica%203.2.2/Resources/Images/Math/cos.png"
-     alt="cos.png">
-</p>
-
-
-<p><span class="ModelicaBaseClass">Extends from Interfaces.SISO (Single Input Single Output continuous control block).</span></p>
-<h3>Connectors</h3>
-<table summary="Connectors" class="ModelicaTableConnectors">
-<tr><th>Type</th><th>Name</th><th>Description</th></tr>
-<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
->RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
-<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
->RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
-</table>
-<h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">block</span> Cos <span class="ModelicaComment">&quot;Output the cosine of the input&quot;</span>
-  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
->Interfaces.SISO</a>;
-
-<span class="ModelicaKeyword">equation </span>
-  y =<span class="ModelicaFunction"> Modelica.Math.cos</span>(u);
-<span class="ModelicaKeyword">end </span>Cos;
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
@@ -195,6 +199,8 @@ explicitly set to 0.0, if the mean value results in a negative value.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Mean <span class="ModelicaComment">&quot;Calculate mean over period 1/f&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
@@ -257,6 +263,8 @@ as <b>sine</b> of the input <b>u</b>:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Sin <span class="ModelicaComment">&quot;Output the sine of the input&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
@@ -300,6 +308,8 @@ the two inputs <b>u1</b> and <b>u2</b>:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Division <span class="ModelicaComment">&quot;Output first input divided by second input&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
@@ -345,6 +355,8 @@ input <i>u</i>:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Output signal connector</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Gain <span class="ModelicaComment">&quot;Output the product of a gain value with the input signal&quot;</span>
 
@@ -362,7 +374,7 @@ input <i>u</i>:
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:13 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:30 2017.
 </address>
 </body>
 </html>

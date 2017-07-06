@@ -66,8 +66,8 @@ pre {white-space: pre; overflow-x : hidden;}
 <td>Interface for the averaged switch network models</td>
 </tr>
 <tr>
-<td><img src="PVSystems.Electrical.Inte1f9139ad05cf64e0erterS.png" alt="PVSystems.Electrical.Interfaces.TwoPortConverter" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.TwoPortConverter"
->TwoPortConverter</a>
+<td><img src="PVSystems.Electrical.Interfaces.TwoPortS.png" alt="PVSystems.Electrical.Interfaces.TwoPort" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.TwoPort"
+>TwoPort</a>
 </td>
 <td>Common interface for power converters with two ports</td>
 </tr>
@@ -94,6 +94,8 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>PositivePin</td><td>p</td><td>Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
 <tr><td>NegativePin</td><td>n</td><td>Negative pin</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>PVSystems_Electrical_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> BatteryInterface <span class="ModelicaComment">&quot;Partial model for battery&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
@@ -113,7 +115,8 @@ pre {white-space: pre; overflow-x : hidden;}
 <br><img src="PVSystems.Electrical.Intec0ebfd6541241bd0rfaceD.png" alt="PVSystems.Electrical.Interfaces.SwitchNetworkInterface">
 </p>
 <h3>Information</h3>
-<p><span class="ModelicaBaseClass">Extends from Modelica.Electrical.Analog.Interfaces.TwoPort (Component with two electrical ports, including current).</span></p>
+<p><span class="ModelicaBaseClass">Extends from <a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.TwoPort"
+>TwoPort</a> (Common interface for power converters with two ports).</span></p>
 <h3>Parameters</h3>
 <table summary="Parameters" class="ModelicaTableParameters">
 <tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
@@ -130,11 +133,13 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
 >RealInput</a></td><td>d</td><td>Duty cycle</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>PVSystems_Electrical_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> SwitchNetworkInterface
   <span class="ModelicaComment">&quot;Interface for the averaged switch network models&quot;</span>
-  <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.TwoPort"
->Modelica.Electrical.Analog.Interfaces.TwoPort</a>;
+  <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.TwoPort"
+>TwoPort</a>;
   <span class="ModelicaKeyword">parameter </span>Real dmin(<span class="ModelicaKeyword">final </span>unit=&quot;1&quot;) = 1e-3 <span class="ModelicaComment">&quot;Minimum duty cycle&quot;</span>;
   <span class="ModelicaKeyword">parameter </span>Real dmax(<span class="ModelicaKeyword">final </span>unit=&quot;1&quot;) = 1 <span class="ModelicaComment">&quot;Maximum duty cycle&quot;</span>;
   <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
@@ -146,15 +151,15 @@ pre {white-space: pre; overflow-x : hidden;}
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
-<span style="mso-spacerun:yes"></span>XE TwoPortConverter<![endif]-->
+<span style="mso-spacerun:yes"></span>XE TwoPort<![endif]-->
 <!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="PVSystems.Electrical.Inte1f9139ad05cf64e0erterI.png" alt="PVSystems.Electrical.Interfaces.TwoPortConverter" align="right" style="border: 1px solid" width="80" height="80">
-<a name="PVSystems.Electrical.Interfaces.TwoPortConverter"></a><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces"
->PVSystems.Electrical.Interfaces</a>.TwoPortConverter</h2>
+<h2><img src="PVSystems.Electrical.Interfaces.TwoPortI.png" alt="PVSystems.Electrical.Interfaces.TwoPort" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Electrical.Interfaces.TwoPort"></a><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces"
+>PVSystems.Electrical.Interfaces</a>.TwoPort</h2>
 <p>
 <span class="ModelicaDescription">Common interface for power converters with two ports</span>
 <br>
-<br><img src="PVSystems.Electrical.Inte1f9139ad05cf64e0erterD.png" alt="PVSystems.Electrical.Interfaces.TwoPortConverter">
+<br><img src="PVSystems.Electrical.Interfaces.TwoPortD.png" alt="PVSystems.Electrical.Interfaces.TwoPort">
 </p>
 <h3>Connectors</h3>
 <table summary="Connectors" class="ModelicaTableConnectors">
@@ -164,9 +169,10 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>PositivePin</td><td>p2</td><td>Positive pin of the right port (potential p2.v &gt; n2.v for positive voltage drop v2)</td></tr>
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>PVSystems_Electrical_Interfaces.html</pre>
 <h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> TwoPortConverter
-  <span class="ModelicaComment">&quot;Common interface for power converters with two ports&quot;</span>
+<div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> TwoPort <span class="ModelicaComment">&quot;Common interface for power converters with two ports&quot;</span>
   <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
 >Modelica.SIunits.Voltage</a> v1 <span class="ModelicaComment">&quot;Voltage drop over the left port&quot;</span>;
   <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
@@ -194,11 +200,11 @@ pre {white-space: pre; overflow-x : hidden;}
   v2 = p2.v - n2.v;
   i1 = p1.i;
   i2 = p2.i;
-<span class="ModelicaKeyword">end </span>TwoPortConverter;
+<span class="ModelicaKeyword">end </span>TwoPort;
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:11 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:27 2017.
 </address>
 </body>
 </html>

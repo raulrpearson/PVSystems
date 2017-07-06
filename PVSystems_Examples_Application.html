@@ -57,46 +57,46 @@ pre {white-space: pre; overflow-x : hidden;}
 <td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Application.BuckOpen" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application.BuckOpen"
 >BuckOpen</a>
 </td>
-<td>Ideal synchronous open-loop buck converter</td>
+<td>Ideal open-loop buck converter</td>
 </tr>
 <tr>
 <td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Application.Inverter1phOpen" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application.Inverter1phOpen"
 >Inverter1phOpen</a>
 </td>
-<td>Basic 1-phase open-loop inverter with constant DC voltage source and no synchronization</td>
+<td>Stand-alone 1-phase open-loop inverter with constant DC source</td>
 </tr>
 <tr>
 <td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Application.Inverter1phOpenSynch" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application.Inverter1phOpenSynch"
 >Inverter1phOpenSynch</a>
 </td>
-<td>Grid synchronized 1-phase open-loop inverter fed by constant DC source</td>
+<td>Grid-tied 1-phase open-loop inverter with constant DC source</td>
 </tr>
 <tr>
 <td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Application.Inverter1phClosed" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application.Inverter1phClosed"
 >Inverter1phClosed</a>
 </td>
-<td>Basic 1-phase closed-loop inverter with constant DC voltage source and no synchronization</td>
+<td>Stand-alone 1-phase closed-loop inverter with constant DC source</td>
 </tr>
 <tr>
 <td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Application.Inverter1phClosedSynch" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application.Inverter1phClosedSynch"
 >Inverter1phClosedSynch</a>
 </td>
-<td>Grid synchronized 1-phase closed-loop inverter fed by constant DC source</td>
+<td>Grid-tied 1-phase closed-loop inverter with constant DC source</td>
 </tr>
 <tr>
 <td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Application.PVInverter1ph" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application.PVInverter1ph"
 >PVInverter1ph</a>
 </td>
-<td>Simple PV system including PV array, inverter and no grid</td>
+<td>Stand-alone 1-phase closed-loop inverter with PV source</td>
 </tr>
 <tr>
 <td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Application.PVInverter1phSynch" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application.PVInverter1phSynch"
 >PVInverter1phSynch</a>
 </td>
-<td>Simple PV system including PV array, inverter and grid</td>
+<td>Grid-tied 1-phase closed-loop inverter with PV source</td>
 </tr>
 <tr>
-<td><img src="PVSystems.Examples.Applica703c01c50956d05erterS.png" alt="PVSystems.Examples.Application.USBBatteryConverter" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application.USBBatteryConverter"
+<td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Application.USBBatteryConverter" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application.USBBatteryConverter"
 >USBBatteryConverter</a>
 </td>
 <td>Bidirectional converter for USB battery interface</td>
@@ -110,155 +110,140 @@ pre {white-space: pre; overflow-x : hidden;}
 <a name="PVSystems.Examples.Application.BuckOpen"></a><a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application"
 >PVSystems.Examples.Application</a>.BuckOpen</h2>
 <p>
-<span class="ModelicaDescription">Ideal synchronous open-loop buck converter</span>
+<span class="ModelicaDescription">Ideal open-loop buck converter</span>
 <br>
 <br><img src="PVSystems.Examples.Application.BuckOpenD.png" alt="PVSystems.Examples.Application.BuckOpen">
 </p>
 <h3>Information</h3>
 
-      <p>
-        This compares two implementations of a buck DC-DC converter. The
-        switched version is built using mostly blocks
-        from <a  >Modelica's
+        <p>
+          This example compares two implementations of a buck
+          DC-DC converter. The switched version is built using
+          mostly blocks
+          from <a  >Modelica's
           electrical library</a> but also includes
-        the <a href="PVSystems_Control.html#PVSystems.Control.SignalPWM"
->SignalPWM</a>
-        model. The averaged version is built around the average switch model
-        for CCM (continuous conduction mode).
-      </p>
-
-      <p>
-        This example showcases how components from PVSystems can be mixed with
-        components from the Modelica Standard Library to build systems that
-        might be of interest. Additionally, it aims validating the average
-        switch model performance by comparison with the more
-        accurate/detailed switched model.
-      </p>
-
-      <p>
-        This is still an open-loop system. A duty cycle value is fed to the
-        SignalPWM block to drive the ideal closing switch or to the
-        IdealAverageCCMSwitch model. The duty cycle value begins at 0.2 and
-        changes to 0.6 and finally to 0.7. The effect of this change can be
-        observed by plotting the output voltage:
-      </p>
-
-      <div class="figure">
-        <p><img src="Resources/Images/BuckOpenResultsA.png"
-                alt="BuckOpenResultsA.png" />
+          the <a href="PVSystems_Control.html#PVSystems.Control.SwitchingPWM"
+>SwitchingPWM</a>
+          model. The averaged version is built around a
+          replaceable instance of the average switch model for CCM
+          (continuous conduction mode) and DCM (discontinuous
+          conduction mode) considering no losses.
         </p>
-      </div>
-
-      <p>
-        This figure also displays the input voltage for the sake of
-        comparison. It make the point that the function of the buck
-        converter is to reduce the voltage level from the input to the
-        output.
-      </p>
-
-      <p>
-        Additionally, one can see that the output voltage for both
-        implementations is not exactly the same. The main difference can be
-        found at the begining of the simulation, when the duty cycle is
-        0.2. By close inspection of the inductor current one can see that
-        the converters are not operating in CCM but rather are working in
-        DCM (Discontinuous Conduction Mode). This condition is defined by
-        the fact that the inductor current remains at 0 for a certain part
-        of the switching period, as shown in the following figure:
-      </p>
-
-
-      <div class="figure">
-        <p><img src="Resources/Images/BuckOpenResultsB.png"
-                alt="BuckOpenResultsB.png" />
+      
+        <p>
+          This example showcases how components from PVSystems can
+          be mixed with components from the Modelica Standard
+          Library to build systems that might be of
+          interest. Additionally, it aims validating the average
+          switch model performance by comparison with the more
+          accurate/detailed switched model.
         </p>
-      </div>
-
-      <p>
-        Since the average model used is valid only in CCM, this innaccuaricy
-        is to be expected.
-      </p>
-
-      <p>
-        An interesting exercise to complete this example would be to build a
-        controller to close the loop and study the system's behaviour.
-      </p>
+      
+        <p>
+          This is still an open-loop system. A duty cycle value is
+          fed to the SwitchingPWM block to drive the ideal closing
+          switch or to the averaged switch network model. The duty
+          cycle value begins at 0.1 and changes to 0.6 in the
+          middle of the simulation. The effect of this change can
+          be observed by plotting the output voltages:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/BuckOpenResultsA.png"
+                  alt="BuckOpenResultsA.png" />
+          </p>
+        </div>
+      
+        <p>
+          The output voltage for both implementations is not
+          exactly the same but it can be seen that the averaged
+          model provides a very decent approximation. This is the
+          case because both the switching and the averaged
+          implementations are neglecting losses and because they
+          are both correctly modelling CCM and DCM modes. The
+          converter is operating in DCM in the first interval and
+          in CCM in the second:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/BuckOpenResultsB.png"
+                  alt="BuckOpenResultsB.png" />
+          </p>
+        </div>
+      
+        <p>
+          An interesting exercise to complete this example would
+          be to build a controller to close the loop and study the
+          system's behaviour.</p>
       
 <p><span class="ModelicaBaseClass">Extends from Modelica.Icons.Example (Icon for runnable examples).</span></p>
 <h3>Parameters</h3>
 <table summary="Parameters" class="ModelicaTableParameters">
 <tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
 <tr><td><a href="PVSystems_Electrical.html#PVSystems.Electrical.CCM_DCM1"
->CCM_DCM1</a></td><td>avgswitch</td><td>redeclare Electrical.CCM_DCM...</td><td>&nbsp;</td></tr>
+>CCM_DCM1</a></td><td>sn</td><td>redeclare Electrical.CCM_DCM...</td><td>&nbsp;</td></tr>
 </table>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">model</span> BuckOpen <span class="ModelicaComment">&quot;Ideal synchronous open-loop buck converter&quot;</span>
+<div class="modelica"><span class="ModelicaKeyword">model</span> BuckOpen <span class="ModelicaComment">&quot;Ideal open-loop buck converter&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a>;
   <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.ConstantVoltage"
->Modelica.Electrical.Analog.Sources.ConstantVoltage</a> src(V=5);
+>Modelica.Electrical.Analog.Sources.ConstantVoltage</a> DC(V=24);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> resav(R=0.4);
+>Modelica.Electrical.Analog.Basic.Resistor</a> Rav(R=3);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> indav(L=1e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> Lav(L=8e-6);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Capacitor"
->Modelica.Electrical.Analog.Basic.Capacitor</a> capav(C=200e-6);
+>Modelica.Electrical.Analog.Basic.Capacitor</a> Cav(C=10e-6);
   <span class="ModelicaKeyword">replaceable </span><a href="PVSystems_Electrical.html#PVSystems.Electrical.CCM_DCM1"
->Electrical.CCM_DCM1</a> avgswitch(Le=1e-6, fs=1e5) <span class="ModelicaKeyword">constrainedby </span>
+>Electrical.CCM_DCM1</a> sn(Le=Lav.L, fs=PWM.fs)
+                                                      <span class="ModelicaKeyword">constrainedby </span>
     PVSystems.Electrical.Interfaces.SwitchNetworkInterface;
   <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealClosingSwitch"
->Modelica.Electrical.Analog.Ideal.IdealClosingSwitch</a> idealClosingSwitch;
+>Modelica.Electrical.Analog.Ideal.IdealClosingSwitch</a> sw;
   <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealDiode"
->Modelica.Electrical.Analog.Ideal.IdealDiode</a> idealDiode;
-  <a href="PVSystems_Control.html#PVSystems.Control.SignalPWM"
->Control.SignalPWM</a> signalPWM(fs=1e5);
+>Modelica.Electrical.Analog.Ideal.IdealDiode</a> dsw;
+  <a href="PVSystems_Control.html#PVSystems.Control.SwitchingPWM"
+>Control.SwitchingPWM</a> PWM(fs=1e5);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> ressw(R=0.4);
+>Modelica.Electrical.Analog.Basic.Resistor</a> Rsw(R=3);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> indsw(L=1e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> Lsw(L=8e-6);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Capacitor"
->Modelica.Electrical.Analog.Basic.Capacitor</a> capsw(C=200e-6);
-  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Step"
->Modelica.Blocks.Sources.Step</a> iStep(
-    height=0.4,
-    startTime=0.01,
-    offset=0.2);
-  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Step"
->Modelica.Blocks.Sources.Step</a> fStep(
-    height=0.1,
-    offset=0,
-    startTime=0.015);
-  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
->Modelica.Blocks.Math.Add</a> add;
+>Modelica.Electrical.Analog.Basic.Capacitor</a> Csw(C=10e-6);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
->Modelica.Electrical.Analog.Basic.Ground</a> gsrc;
+>Modelica.Electrical.Analog.Basic.Ground</a> gin;
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
 >Modelica.Electrical.Analog.Basic.Ground</a> gsw;
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
 >Modelica.Electrical.Analog.Basic.Ground</a> gav;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</a> duty(y=<span class="ModelicaKeyword">if </span>time &lt; 5e-4<span class="ModelicaKeyword"> then </span>0.1<span class="ModelicaKeyword"> else </span>0.6);
 <span class="ModelicaKeyword">equation </span>
-  <span class="ModelicaFunction">connect</span>(capav.n, gav.p);
-  <span class="ModelicaFunction">connect</span>(resav.n, gav.p);
-  <span class="ModelicaFunction">connect</span>(indav.n, resav.p);
-  <span class="ModelicaFunction">connect</span>(capav.p, indav.n);
-  <span class="ModelicaFunction">connect</span>(src.p, avgswitch.p1);
-  <span class="ModelicaFunction">connect</span>(avgswitch.p2, indav.p);
-  <span class="ModelicaFunction">connect</span>(avgswitch.n2, gav.p);
-  <span class="ModelicaFunction">connect</span>(avgswitch.n1, indav.p);
-  <span class="ModelicaFunction">connect</span>(idealClosingSwitch.p, src.p);
-  <span class="ModelicaFunction">connect</span>(idealClosingSwitch.n, idealDiode.n);
-  <span class="ModelicaFunction">connect</span>(indsw.n, ressw.p);
-  <span class="ModelicaFunction">connect</span>(capsw.p, indsw.n);
-  <span class="ModelicaFunction">connect</span>(indsw.p, idealDiode.n);
-  <span class="ModelicaFunction">connect</span>(fStep.y, add.u1);
-  <span class="ModelicaFunction">connect</span>(iStep.y, add.u2);
-  <span class="ModelicaFunction">connect</span>(add.y, avgswitch.d);
-  <span class="ModelicaFunction">connect</span>(capsw.n, ressw.n);
-  <span class="ModelicaFunction">connect</span>(idealDiode.p, gsw.p);
-  <span class="ModelicaFunction">connect</span>(gsw.p, capsw.n);
-  <span class="ModelicaFunction">connect</span>(gsrc.p, src.n);
-  <span class="ModelicaFunction">connect</span>(signalPWM.c1, idealClosingSwitch.control);
-  <span class="ModelicaFunction">connect</span>(add.y, signalPWM.vc);
+  <span class="ModelicaFunction">connect</span>(Cav.n, gav.p);
+  <span class="ModelicaFunction">connect</span>(Rav.n, gav.p);
+  <span class="ModelicaFunction">connect</span>(Lav.n, Rav.p);
+  <span class="ModelicaFunction">connect</span>(Cav.p, Lav.n);
+  <span class="ModelicaFunction">connect</span>(DC.p, sn.p1);
+  <span class="ModelicaFunction">connect</span>(sn.p2, Lav.p);
+  <span class="ModelicaFunction">connect</span>(sn.n2, gav.p);
+  <span class="ModelicaFunction">connect</span>(sw.p, DC.p);
+  <span class="ModelicaFunction">connect</span>(sw.n, dsw.n);
+  <span class="ModelicaFunction">connect</span>(Lsw.n, Rsw.p);
+  <span class="ModelicaFunction">connect</span>(Csw.p, Lsw.n);
+  <span class="ModelicaFunction">connect</span>(Lsw.p, dsw.n);
+  <span class="ModelicaFunction">connect</span>(Csw.n, Rsw.n);
+  <span class="ModelicaFunction">connect</span>(dsw.p, gsw.p);
+  <span class="ModelicaFunction">connect</span>(gsw.p, Csw.n);
+  <span class="ModelicaFunction">connect</span>(gin.p, DC.n);
+  <span class="ModelicaFunction">connect</span>(PWM.c1, sw.control);
+  <span class="ModelicaFunction">connect</span>(PWM.vc, sn.d);
+  <span class="ModelicaFunction">connect</span>(sn.n1, Lav.p);
+  <span class="ModelicaFunction">connect</span>(duty.y, sn.d);
 <span class="ModelicaKeyword">end </span>BuckOpen;
 </div>
 <hr>
@@ -269,119 +254,132 @@ pre {white-space: pre; overflow-x : hidden;}
 <a name="PVSystems.Examples.Application.Inverter1phOpen"></a><a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application"
 >PVSystems.Examples.Application</a>.Inverter1phOpen</h2>
 <p>
-<span class="ModelicaDescription">Basic 1-phase open-loop inverter with constant DC voltage source and no synchronization</span>
+<span class="ModelicaDescription">Stand-alone 1-phase open-loop inverter with constant DC source</span>
 <br>
 <br><img src="PVSystems.Examples.Applic5b091e5d58711eb0hOpenD.png" alt="PVSystems.Examples.Application.Inverter1phOpen">
 </p>
 <h3>Information</h3>
 
-      <p>
-        IdealInverter1phOpen presents two implementations of an open loop
-        1-phase inverter. The function of the inverter is to convert DC
-        voltage and current into AC voltage and current. To keep things
-        simple, a constant DC source is included on the DC side and an LC
-        load is included on the AC side. Typically, inverters are placed
-        inside a more complicated setup, which might require MPPT (Maximum
-        Power Point Tracking) on the DC side when connected to a PV array
-        and AC synchronization when connected to a grid on the AC side
-        instead of just a simple passive load.
-      </p>
-
-      <p>
-        Nevertheless, the example still showcases an interesting
-        application. Upon running the simulation with the provided values,
-        plotting the resistor voltage and current and the DC source voltage
-        yields the following figure:
-      </p>
-
-
-      <div class="figure">
-        <p><img src="Resources/Images/Inverter1phOpenResults.png"
-                alt="Inverter1phOpenResults.png" />
+        <p>
+          This example presents two implementations of an open
+          loop 1-phase inverter. The function of the inverter is
+          to convert DC voltage and current into AC voltage and
+          current. To keep things simple, a constant DC source is
+          included on the DC side and an RL load is included on
+          the AC side. Typically, inverters are placed inside a
+          more complicated setup, which might require MPPT
+          (Maximum Power Point Tracking) on the DC side when
+          connected to a PV array and AC synchronization when
+          connected to a grid on the AC side instead of just a
+          simple passive load.
         </p>
-      </div>
-
-      <p>
-        The AC is achieved with the inverter topology (called an H-bridge)
-        as well as with the duty cycle sinusoidal modulation. Have a look at
-        the duty cycle driving the SignalPWM block and compare it with the
-        voltage drop in the resistor.
-      </p>
-
-      <p>
-        Compare it with the voltage drop in the inductor. The voltage coming
-        out of the inverter is actually a square wave and the inductor is
-        providing some crude (but enough for some applications)
-        filtering. Play around with the value of the inductor to see how it
-        provides a better or worse filtering performance (decreasing or
-        increasing the voltage and current ripple in the resistor, which in
-        this example is assumed to be the load being fed). Since this is an
-        open loop configuration, it will also change the peak value of the
-        voltage drop in the resistor, as well as its phase.
-      </p>
-
-      <p>
-        Importantly, see how the the average model provides a very good
-        approximation for low frequencies. This kind of model won't be
-        useful to study ripples and to evaluate the performance of different
-        PWM modulations (sinusoidal modulation is being used in this
-        example) or of different filter configurations, since those are
-        concerned with the high frequencies in the system. On the other
-        hand, the average models will be very useful to study controllers
-        and to perform longer simulations since the simulation step doesn't
-        need to be so small as to accurately represent the switching
-        dynamics.
-      </p>
+      
+        <p>
+          Nevertheless, the example still showcases an interesting
+          application. Upon running the simulation with the
+          provided values, plotting the resistor voltages yields
+          the following figure:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/Inverter1phOpenResults.png"
+                  alt="Inverter1phOpenResults.png" />
+          </p>
+        </div>
+      
+        <p>
+          The AC is achieved with the inverter topology (called an
+          H-bridge) as well as with the duty cycle sinusoidal
+          modulation. Have a look at the duty cycle driving the
+          SwitchingPWM block and compare it with the voltage drop
+          in the resistor.
+        </p>
+      
+        <p>
+          Compare it with the voltage drop in the inductor. The
+          voltage coming out of the inverter is actually a square
+          wave and the inductor is providing some crude (but
+          enough for some applications) filtering. Play around
+          with the value of the inductor to see how it provides a
+          better or worse filtering performance (decreasing or
+          increasing the voltage and current ripple in the
+          resistor, which in this example is assumed to be the
+          load being fed). Since this is an open loop
+          configuration, it will also change the peak value of the
+          voltage drop in the resistor, as well as its phase.
+        </p>
+      
+        <p>
+          Importantly, see how the the average model provides a
+          very good approximation for low frequencies. This kind
+          of model won't be useful to study ripples and to
+          evaluate the performance of different PWM modulations
+          (sinusoidal modulation is being used in this example) or
+          of different filter configurations, since those are
+          concerned with the high frequencies in the system. On
+          the other hand, the average models will be very useful
+          to study controllers and to perform longer simulations
+          since the simulation step doesn't need to be so small as
+          to accurately represent the switching dynamics.</p>
       
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> Inverter1phOpen
-  <span class="ModelicaComment">&quot;Basic 1-phase open-loop inverter with constant DC voltage source and no synchronization&quot;</span>
+  <span class="ModelicaComment">&quot;Stand-alone 1-phase open-loop inverter with constant DC source&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a>;
   <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridgeSwitched"
->PVSystems.Electrical.Assemblies.HBridgeSwitched</a> HBsw;
+>Electrical.Assemblies.HBridgeSwitched</a>
+                                HBsw;
   <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.ConstantVoltage"
->Modelica.Electrical.Analog.Sources.ConstantVoltage</a> dcsrc(V=500);
+>Modelica.Electrical.Analog.Sources.ConstantVoltage</a> DCsw(V=580);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
->Modelica.Electrical.Analog.Basic.Ground</a> ground;
+>Modelica.Electrical.Analog.Basic.Ground</a> gsw;
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> ressw(R=2);
+>Modelica.Electrical.Analog.Basic.Resistor</a> Rsw(R=1e-2);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> indsw(L=500e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> Lsw(L=1e-3);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Sine"
 >Modelica.Blocks.Sources.Sine</a> duty(
-    amplitude=0.4,
     offset=0.5,
-    freqHz=50);
-  <a href="PVSystems_Control.html#PVSystems.Control.SignalPWM"
->Control.SignalPWM</a> signalPWM(fs=3125);
-  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridgeAveraged"
->PVSystems.Electrical.Assemblies.HBridgeAveraged</a> HBav;
+    freqHz=50,
+    amplitude=0.05);
+  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridge"
+>PVSystems.Electrical.Assemblies.HBridge</a> HBav;
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> resav(R=2);
+>Modelica.Electrical.Analog.Basic.Resistor</a> Rav(R=1e-2);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> indav(L=500e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> Lav(L=1e-3);
+  <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.ConstantVoltage"
+>Modelica.Electrical.Analog.Sources.ConstantVoltage</a> DCav(V=580);
+  <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
+>Modelica.Electrical.Analog.Basic.Ground</a> gav;
+  <a href="PVSystems_Control.html#PVSystems.Control.SwitchingPWM"
+>Control.SwitchingPWM</a> switchingPWM(fs=3125);
   <a href="PVSystems_Control.html#PVSystems.Control.DeadTime"
 >Control.DeadTime</a> deadTime;
 <span class="ModelicaKeyword">equation </span>
-  <span class="ModelicaFunction">connect</span>(dcsrc.n, ground.p);
-  <span class="ModelicaFunction">connect</span>(HBsw.n1, dcsrc.n);
-  <span class="ModelicaFunction">connect</span>(HBsw.p1, dcsrc.p);
-  <span class="ModelicaFunction">connect</span>(HBsw.p2, indsw.p);
-  <span class="ModelicaFunction">connect</span>(HBsw.n2, ressw.n);
-  <span class="ModelicaFunction">connect</span>(ressw.p, indsw.n);
-  <span class="ModelicaFunction">connect</span>(resav.p, indav.n);
-  <span class="ModelicaFunction">connect</span>(HBav.p2, indav.p);
-  <span class="ModelicaFunction">connect</span>(resav.n, HBav.n2);
+  <span class="ModelicaFunction">connect</span>(DCsw.n, gsw.p);
+  <span class="ModelicaFunction">connect</span>(HBsw.n1, DCsw.n);
+  <span class="ModelicaFunction">connect</span>(HBsw.p1, DCsw.p);
+  <span class="ModelicaFunction">connect</span>(HBsw.p2, Lsw.p);
+  <span class="ModelicaFunction">connect</span>(HBsw.n2, Rsw.n);
+  <span class="ModelicaFunction">connect</span>(Rsw.p, Lsw.n);
+  <span class="ModelicaFunction">connect</span>(Rav.p, Lav.n);
+  <span class="ModelicaFunction">connect</span>(HBav.p2, Lav.p);
+  <span class="ModelicaFunction">connect</span>(Rav.n, HBav.n2);
   <span class="ModelicaFunction">connect</span>(HBav.d, duty.y);
-  <span class="ModelicaFunction">connect</span>(HBav.p1, dcsrc.p);
-  <span class="ModelicaFunction">connect</span>(HBav.n1, dcsrc.n);
-  <span class="ModelicaFunction">connect</span>(duty.y, signalPWM.vc);
-  <span class="ModelicaFunction">connect</span>(signalPWM.c1, deadTime.c);
+  <span class="ModelicaFunction">connect</span>(DCav.n, gav.p);
+  <span class="ModelicaFunction">connect</span>(DCav.p, HBav.p1);
+  <span class="ModelicaFunction">connect</span>(DCav.n, HBav.n1);
   <span class="ModelicaFunction">connect</span>(deadTime.c1, HBsw.c1);
   <span class="ModelicaFunction">connect</span>(deadTime.c2, HBsw.c2);
+  <span class="ModelicaFunction">connect</span>(switchingPWM.c1, deadTime.c);
+  <span class="ModelicaFunction">connect</span>(switchingPWM.vc, duty.y);
 <span class="ModelicaKeyword">end </span>Inverter1phOpen;
 </div>
 <hr>
@@ -392,7 +390,7 @@ pre {white-space: pre; overflow-x : hidden;}
 <a name="PVSystems.Examples.Application.Inverter1phOpenSynch"></a><a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application"
 >PVSystems.Examples.Application</a>.Inverter1phOpenSynch</h2>
 <p>
-<span class="ModelicaDescription">Grid synchronized 1-phase open-loop inverter fed by constant DC source</span>
+<span class="ModelicaDescription">Grid-tied 1-phase open-loop inverter with constant DC source</span>
 <br>
 <br><img src="PVSystems.Examples.Applic2937ae3ce5bdd63bSynchD.png" alt="PVSystems.Examples.Application.Inverter1phOpenSynch">
 </p>
@@ -411,8 +409,8 @@ pre {white-space: pre; overflow-x : hidden;}
 
 
       <div class="figure">
-        <p><img src="Resources/Images/Inverter1phOpenSynchResults.png"
-                alt="Inverter1phOpenSynchResults.png" />
+        <p><img src="Images/Inverter1phOpenSynchResults.png"
+                alt="Inverter1phOpenSynch_Plot.png" />
         </p>
       </div>
 
@@ -431,7 +429,7 @@ pre {white-space: pre; overflow-x : hidden;}
 
 
       <div class="figure">
-        <p><img src="Resources/Images/Inverter1phOpenSynchDialog.png"
+        <p><img src="Images/Inverter1phOpenSynchDialog.png"
                 alt="Inverter1phOpenSynchDialog.png" />
         </p>
       </div>
@@ -447,70 +445,76 @@ pre {white-space: pre; overflow-x : hidden;}
       
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> Inverter1phOpenSynch
-  <span class="ModelicaComment">&quot;Grid synchronized 1-phase open-loop inverter fed by constant DC source&quot;</span>
+  <span class="ModelicaComment">&quot;Grid-tied 1-phase open-loop inverter with constant DC source&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a>;
   <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridgeSwitched"
->PVSystems.Electrical.Assemblies.HBridgeSwitched</a> HBsw;
+>Electrical.Assemblies.HBridgeSwitched</a>
+                                HBsw;
   <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.ConstantVoltage"
->Modelica.Electrical.Analog.Sources.ConstantVoltage</a> DCsrc(V=580);
+>Modelica.Electrical.Analog.Sources.ConstantVoltage</a> DCsw(V=580);
   <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.SineVoltage"
->Modelica.Electrical.Analog.Sources.SineVoltage</a> Grid(freqHz=50, V=480);
+>Modelica.Electrical.Analog.Sources.SineVoltage</a> ACsw(freqHz=50, V=480);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> Lsw(L=500e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> Lsw(L=1e-3);
   <a href="PVSystems_Control.html#PVSystems.Control.PLL"
 >Control.PLL</a> pLL;
-  <a href="PVSystems_Control.html#PVSystems.Control.SignalPWM"
->Control.SignalPWM</a> signalPWM(fs=3125);
   <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Cos"
 >Modelica.Blocks.Math.Cos</a> sin;
   <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
 >Modelica.Blocks.Math.Add</a> add(k2=1, k1=580/580/2);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
 >Modelica.Blocks.Sources.Constant</a> const(k=0.5);
-  <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
->Modelica.Electrical.Analog.Basic.Ground</a> gsrc;
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> Rsw(R=0.1);
-  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridgeAveraged"
->PVSystems.Electrical.Assemblies.HBridgeAveraged</a> HBav;
+>Modelica.Electrical.Analog.Basic.Resistor</a> Rsw(R=1e-2);
+  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridge"
+>PVSystems.Electrical.Assemblies.HBridge</a> HBav;
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> Lav(L=500e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> Lav(L=1e-3);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> Rav(R=0.1);
+>Modelica.Electrical.Analog.Basic.Resistor</a> Rav(R=1e-2);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
 >Modelica.Electrical.Analog.Basic.Ground</a> gsw;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</a> VacSense(y=ACsw.v);
+  <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.SineVoltage"
+>Modelica.Electrical.Analog.Sources.SineVoltage</a> ACav(freqHz=50, V=480);
+  <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.ConstantVoltage"
+>Modelica.Electrical.Analog.Sources.ConstantVoltage</a> DCav(V=580);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
 >Modelica.Electrical.Analog.Basic.Ground</a> gav;
+  <a href="PVSystems_Control.html#PVSystems.Control.SwitchingPWM"
+>Control.SwitchingPWM</a> switchingPWM(fs=3125);
   <a href="PVSystems_Control.html#PVSystems.Control.DeadTime"
 >Control.DeadTime</a> deadTime;
-  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> VacSense(y=Grid.v);
 <span class="ModelicaKeyword">equation </span>
-  <span class="ModelicaFunction">connect</span>(gsw.p, HBsw.n1);
   <span class="ModelicaFunction">connect</span>(pLL.theta, sin.u);
   <span class="ModelicaFunction">connect</span>(const.y, add.u2);
-  <span class="ModelicaFunction">connect</span>(HBav.n1, gav.p);
   <span class="ModelicaFunction">connect</span>(sin.y, add.u1);
-  <span class="ModelicaFunction">connect</span>(Rsw.p, Lsw.n);
-  <span class="ModelicaFunction">connect</span>(Lav.n, Rav.p);
-  <span class="ModelicaFunction">connect</span>(Rav.n, Grid.p);
-  <span class="ModelicaFunction">connect</span>(HBsw.p2, Lsw.p);
+  <span class="ModelicaFunction">connect</span>(VacSense.y, pLL.v);
+  <span class="ModelicaFunction">connect</span>(ACav.p, Rav.n);
+  <span class="ModelicaFunction">connect</span>(Rav.p, Lav.n);
   <span class="ModelicaFunction">connect</span>(HBav.p2, Lav.p);
-  <span class="ModelicaFunction">connect</span>(gsrc.p, DCsrc.n);
-  <span class="ModelicaFunction">connect</span>(DCsrc.p, HBsw.p1);
-  <span class="ModelicaFunction">connect</span>(DCsrc.p, HBav.p1);
-  <span class="ModelicaFunction">connect</span>(Rsw.n, Grid.p);
+  <span class="ModelicaFunction">connect</span>(HBav.n2, ACav.n);
+  <span class="ModelicaFunction">connect</span>(ACsw.p, Rsw.n);
+  <span class="ModelicaFunction">connect</span>(Rsw.p, Lsw.n);
+  <span class="ModelicaFunction">connect</span>(HBsw.n2, ACsw.n);
+  <span class="ModelicaFunction">connect</span>(HBsw.p2, Lsw.p);
+  <span class="ModelicaFunction">connect</span>(DCav.n, gav.p);
+  <span class="ModelicaFunction">connect</span>(DCsw.n, gsw.p);
+  <span class="ModelicaFunction">connect</span>(DCsw.p, HBsw.p1);
+  <span class="ModelicaFunction">connect</span>(DCsw.n, HBsw.n1);
+  <span class="ModelicaFunction">connect</span>(DCav.n, HBav.n1);
+  <span class="ModelicaFunction">connect</span>(DCav.p, HBav.p1);
+  <span class="ModelicaFunction">connect</span>(add.y, HBav.d);
   <span class="ModelicaFunction">connect</span>(deadTime.c1, HBsw.c1);
   <span class="ModelicaFunction">connect</span>(deadTime.c2, HBsw.c2);
-  <span class="ModelicaFunction">connect</span>(signalPWM.c1, deadTime.c);
-  <span class="ModelicaFunction">connect</span>(Grid.n, HBsw.n2);
-  <span class="ModelicaFunction">connect</span>(Grid.n, HBav.n2);
-  <span class="ModelicaFunction">connect</span>(add.y, signalPWM.vc);
-  <span class="ModelicaFunction">connect</span>(HBav.d, signalPWM.vc);
-  <span class="ModelicaFunction">connect</span>(VacSense.y, pLL.v);
+  <span class="ModelicaFunction">connect</span>(switchingPWM.c1, deadTime.c);
+  <span class="ModelicaFunction">connect</span>(switchingPWM.vc, HBav.d);
 <span class="ModelicaKeyword">end </span>Inverter1phOpenSynch;
 </div>
 <hr>
@@ -521,87 +525,91 @@ pre {white-space: pre; overflow-x : hidden;}
 <a name="PVSystems.Examples.Application.Inverter1phClosed"></a><a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application"
 >PVSystems.Examples.Application</a>.Inverter1phClosed</h2>
 <p>
-<span class="ModelicaDescription">Basic 1-phase closed-loop inverter with constant DC voltage source and no synchronization</span>
+<span class="ModelicaDescription">Stand-alone 1-phase closed-loop inverter with constant DC source</span>
 <br>
 <br><img src="PVSystems.Examples.Applic873290ebdda1b9a5losedD.png" alt="PVSystems.Examples.Application.Inverter1phClosed">
 </p>
 <h3>Information</h3>
 
-      <p>
-        This example explores a closed-loop inverter. No grid is present,
-        which simplifies things. But, since the controller is implemented in
-        the synchronous (dq) refrecen frame, a synchronization source needs
-        to exist. This is implemented with the saw tooth generator, which
-        emulates the output of the PLL.
-      </p>
-
-      <p>
-        As can be seen in the following figure, one can now comfortably
-        specify the setpoint for the output current of the inverter:
-      </p>
-
-      <div class="figure">
-        <p><img src="Resources/Images/Inverter1phClosedResults.png"
-                alt="Inverter1phClosedResults.png" />
+        <p>
+          This example explores a closed-loop inverter. No grid is
+          present, which simplifies things. But, since the
+          controller is implemented in the synchronous (dq)
+          reference frame, a synchronization source needs to
+          exist. This is implemented with the saw tooth generator,
+          which emulates the output of the PLL.
         </p>
-      </div>
-
-      <p>
-        Having the posibility to separately control the current in each dq
-        axis enables one to control the power factor (i.e. the phase lag
-        between the voltage and the current) as well as the amplitude of the
-        current.
-      </p>
-
-      <p>
-        In this example, the equivalent synchronization signal is plotted to
-        see this phase shift as the setpoints change. Notice how, when the q
-        component of the current is 0, the d component is equal to the peak
-        current.
-      </p>
+      
+        <p>
+          As can be seen in the following figure, one can now
+          comfortably specify the setpoint for the output current
+          of the inverter:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/Inverter1phClosedResults.png"
+                  alt="Inverter1phClosedResults.png" />
+          </p>
+        </div>
+      
+        <p>
+          Having the posibility to separately control the current
+          in each dq axis enables one to control the power factor
+          (i.e. the phase lag between the voltage and the current)
+          as well as the amplitude of the current.
+        </p>
+      
+        <p>
+          In this example, the equivalent synchronization signal
+          is plotted to see this phase shift as the setpoints
+          change. Notice how, when the q component of the current
+          is 0, the d component is equal to the peak current.</p>
       
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> Inverter1phClosed
-  <span class="ModelicaComment">&quot;Basic 1-phase closed-loop inverter with constant DC voltage source and no synchronization&quot;</span>
+  <span class="ModelicaComment">&quot;Stand-alone 1-phase closed-loop inverter with constant DC source&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a>;
   <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.ConstantVoltage"
->Modelica.Electrical.Analog.Sources.ConstantVoltage</a> dcsrc(V=500);
+>Modelica.Electrical.Analog.Sources.ConstantVoltage</a> DC(V=580);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
 >Modelica.Electrical.Analog.Basic.Ground</a> ground;
-  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridgeAveraged"
->PVSystems.Electrical.Assemblies.HBridgeAveraged</a> HBav;
+  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridge"
+>PVSystems.Electrical.Assemblies.HBridge</a> HB;
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> Rav(R=0.1);
+>Modelica.Electrical.Analog.Basic.Resistor</a> R(R=1e-2);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> Lav(L=500e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> L(L=1e-3);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Step"
->Modelica.Blocks.Sources.Step</a> iqSetpoint(height=14.14, startTime=0.2);
+>Modelica.Blocks.Sources.Step</a> iqSetpoint(height=141.4, startTime=0.3);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Step"
 >Modelica.Blocks.Sources.Step</a> idSetpoint(
-    offset=20,
-    startTime=0.2,
-    height=14.14 - 20);
+    height=141.4 - 200,
+    offset=200,
+    startTime=0.3);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.SawTooth"
 >Modelica.Blocks.Sources.SawTooth</a> sawTooth(amplitude=2*Modelica.Constants.pi,
       period=0.02);
   <a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCurrentController"
 >Control.Assemblies.Inverter1phCurrentController</a> control;
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> iacSense(y=Lav.i);
+>Modelica.Blocks.Sources.RealExpression</a> iacSense(y=L.i);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> vdcSense(y=dcsrc.v);
+>Modelica.Blocks.Sources.RealExpression</a> vdcSense(y=DC.v);
 <span class="ModelicaKeyword">equation </span>
-  <span class="ModelicaFunction">connect</span>(dcsrc.n, ground.p);
-  <span class="ModelicaFunction">connect</span>(Rav.p, Lav.n);
-  <span class="ModelicaFunction">connect</span>(HBav.p1, dcsrc.p);
-  <span class="ModelicaFunction">connect</span>(HBav.n1, dcsrc.n);
-  <span class="ModelicaFunction">connect</span>(HBav.p2, Lav.p);
-  <span class="ModelicaFunction">connect</span>(HBav.n2, Rav.n);
+  <span class="ModelicaFunction">connect</span>(DC.n, ground.p);
+  <span class="ModelicaFunction">connect</span>(R.p, L.n);
+  <span class="ModelicaFunction">connect</span>(HB.p1, DC.p);
+  <span class="ModelicaFunction">connect</span>(HB.n1, DC.n);
+  <span class="ModelicaFunction">connect</span>(HB.p2, L.p);
+  <span class="ModelicaFunction">connect</span>(HB.n2, R.n);
   <span class="ModelicaFunction">connect</span>(sawTooth.y, control.theta);
-  <span class="ModelicaFunction">connect</span>(control.d, HBav.d);
+  <span class="ModelicaFunction">connect</span>(control.d, HB.d);
   <span class="ModelicaFunction">connect</span>(iqSetpoint.y, control.ids);
   <span class="ModelicaFunction">connect</span>(idSetpoint.y, control.iqs);
   <span class="ModelicaFunction">connect</span>(iacSense.y, control.i);
@@ -616,30 +624,62 @@ pre {white-space: pre; overflow-x : hidden;}
 <a name="PVSystems.Examples.Application.Inverter1phClosedSynch"></a><a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application"
 >PVSystems.Examples.Application</a>.Inverter1phClosedSynch</h2>
 <p>
-<span class="ModelicaDescription">Grid synchronized 1-phase closed-loop inverter fed by constant DC source</span>
+<span class="ModelicaDescription">Grid-tied 1-phase closed-loop inverter with constant DC source</span>
 <br>
 <br><img src="PVSystems.Examples.Applic6f9dbe064eb67d7bSynchD.png" alt="PVSystems.Examples.Application.Inverter1phClosedSynch">
 </p>
 <h3>Information</h3>
+
+          <p>
+            This example includes a voltage source on the AC
+            side. This will add the synchronization challenge for
+            the controller: in order to provide adequate control of
+            the output current, the duty cycle needs to be carefully
+            in synch with the AC grid voltage.
+          </p>
+        
+          <p>
+            Plotting the current through the load, the dq setpoints,
+            the grid voltage and the actual computed d value of the
+            current yields the following graph:
+          </p>
+        
+        
+          <div class="figure">
+            <p><img src="Images/Inverter1phClosedSynchResults.png"
+                    alt="Inverter1phClosedSynchResults.png" />
+            </p>
+          </div>
+        
+          <p>
+            After an initial period where the signals are reaching
+            their steady-state values, the current successfully
+            reaches the setpoint value. Since the q setpoint is
+            equal to zero, the output current stays in phase with
+            the grid voltage and the d setpoint value equals the
+            peak current value.</p>
+        
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> Inverter1phClosedSynch
-  <span class="ModelicaComment">&quot;Grid synchronized 1-phase closed-loop inverter fed by constant DC source&quot;</span>
+  <span class="ModelicaComment">&quot;Grid-tied 1-phase closed-loop inverter with constant DC source&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a>;
   <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.ConstantVoltage"
->Modelica.Electrical.Analog.Sources.ConstantVoltage</a> DCsrc(V=580);
+>Modelica.Electrical.Analog.Sources.ConstantVoltage</a> DC(V=580);
   <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.SineVoltage"
->Modelica.Electrical.Analog.Sources.SineVoltage</a> Grid(freqHz=50, V=480);
+>Modelica.Electrical.Analog.Sources.SineVoltage</a> AC(freqHz=50, V=480);
   <a href="PVSystems_Control.html#PVSystems.Control.PLL"
 >Control.PLL</a> pll;
-  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridgeAveraged"
->PVSystems.Electrical.Assemblies.HBridgeAveraged</a> HB(d(start=0.5));
+  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridge"
+>PVSystems.Electrical.Assemblies.HBridge</a> HB(d(start=0.5));
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> L(L=500e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> L(L=1e-3);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> R(R=0.1);
+>Modelica.Electrical.Analog.Basic.Resistor</a> R(R=1e-2);
   <a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCurrentController"
 >Control.Assemblies.Inverter1phCurrentController</a> control(d(start=0.5));
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
@@ -649,21 +689,21 @@ pre {white-space: pre; overflow-x : hidden;}
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
 >Modelica.Electrical.Analog.Basic.Ground</a> ground;
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> vacSense(y=Grid.v);
+>Modelica.Blocks.Sources.RealExpression</a> vacSense(y=AC.v);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> iacSense(y=Grid.i);
+>Modelica.Blocks.Sources.RealExpression</a> iacSense(y=AC.i);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> vdcSense(y=DCsrc.v);
+>Modelica.Blocks.Sources.RealExpression</a> vdcSense(y=DC.v);
 <span class="ModelicaKeyword">equation </span>
   <span class="ModelicaFunction">connect</span>(L.n, R.p);
   <span class="ModelicaFunction">connect</span>(HB.p2, L.p);
-  <span class="ModelicaFunction">connect</span>(R.n, Grid.p);
-  <span class="ModelicaFunction">connect</span>(DCsrc.p, HB.p1);
-  <span class="ModelicaFunction">connect</span>(DCsrc.n, HB.n1);
+  <span class="ModelicaFunction">connect</span>(R.n, AC.p);
+  <span class="ModelicaFunction">connect</span>(DC.p, HB.p1);
+  <span class="ModelicaFunction">connect</span>(DC.n, HB.n1);
   <span class="ModelicaFunction">connect</span>(iqSetpoint.y, control.iqs);
   <span class="ModelicaFunction">connect</span>(idSetpoint.y, control.ids);
-  <span class="ModelicaFunction">connect</span>(DCsrc.n, ground.p);
-  <span class="ModelicaFunction">connect</span>(Grid.n, HB.n2);
+  <span class="ModelicaFunction">connect</span>(DC.n, ground.p);
+  <span class="ModelicaFunction">connect</span>(AC.n, HB.n2);
   <span class="ModelicaFunction">connect</span>(control.d, HB.d);
   <span class="ModelicaFunction">connect</span>(iacSense.y, control.i);
   <span class="ModelicaFunction">connect</span>(pll.theta, control.theta);
@@ -679,15 +719,58 @@ pre {white-space: pre; overflow-x : hidden;}
 <a name="PVSystems.Examples.Application.PVInverter1ph"></a><a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application"
 >PVSystems.Examples.Application</a>.PVInverter1ph</h2>
 <p>
-<span class="ModelicaDescription">Simple PV system including PV array, inverter and no grid</span>
+<span class="ModelicaDescription">Stand-alone 1-phase closed-loop inverter with PV source</span>
 <br>
 <br><img src="PVSystems.Examples.Applicfdc05875fa2b1b30er1phD.png" alt="PVSystems.Examples.Application.PVInverter1ph">
 </p>
 <h3>Information</h3>
+
+              <p>
+                This example adds a PV array to the DC side. To start as
+                simple as possible, the AC side is just a passive RL
+                load. A general controller for this kind of setup is
+                devised and packaged
+                as <a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCompleteController"
+>Inverter1phCompleteController</a>. This
+                block accepts no input because it's assumed that the
+                controller will try to extract the maximum active power
+                from the PV array. Internally, the q current setpoint is
+                set to zero.
+              </p>
+            
+              <p>
+                Plotting the DC bus voltage and the output current
+                confirms shows that this is in fact how the controller
+                is behaving:
+              </p>
+            
+            
+              <div class="figure">
+                <p><img src="Images/PVInverter1phResultsA.png"
+                        alt="PVInverter1phResultsA.png" />
+                </p>
+              </div>
+            
+              <p>
+                The maximum power point is achieved by indirectly
+                balancing the difference between the power delivered by
+                the PV array and the power dumped on to the grid. As the
+                maximum power point is being reached, the difference
+                tends to zero:
+              </p>
+            
+            
+              <div class="figure">
+                <p><img src="Images/PVInverter1phResultsB.png"
+                        alt="PVInverter1phResultsB.png" /></p>
+              </div>
+            
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">model</span> PVInverter1ph <span class="ModelicaComment">&quot;Simple PV system including PV array, inverter and no grid&quot;</span>
+<div class="modelica"><span class="ModelicaKeyword">model</span> PVInverter1ph <span class="ModelicaComment">&quot;Stand-alone 1-phase closed-loop inverter with PV source&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a>;
   <a href="PVSystems_Electrical.html#PVSystems.Electrical.PVArray"
@@ -696,30 +779,31 @@ pre {white-space: pre; overflow-x : hidden;}
 >Modelica.Blocks.Sources.Constant</a> Gn(k=1000);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
 >Modelica.Blocks.Sources.Constant</a> Tn(k=298.15);
-  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridgeAveraged"
->PVSystems.Electrical.Assemblies.HBridgeAveraged</a> Inverter;
+  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridge"
+>PVSystems.Electrical.Assemblies.HBridge</a> Inverter;
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> L(L=200e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> L(L=1e-3);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> R(R=0.5);
+>Modelica.Electrical.Analog.Basic.Resistor</a> R(R=1e-2);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Capacitor"
->Modelica.Electrical.Analog.Basic.Capacitor</a> C(v(start=32.8), C=5e-1);
+>Modelica.Electrical.Analog.Basic.Capacitor</a> Cdc(               C=5e-1, v(start=
+          10));
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
 >Modelica.Electrical.Analog.Basic.Resistor</a> Rdc(R=1e-3, v(start=30));
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
 >Modelica.Electrical.Analog.Basic.Ground</a> ground;
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Cosine"
->Modelica.Blocks.Sources.Cosine</a> sine(freqHz=50);
+>Modelica.Blocks.Sources.Cosine</a> vacEmulation(freqHz=50);
   <a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCompleteController"
 >Control.Assemblies.Inverter1phCompleteController</a> controller(
     fline=50,
-    iqMax=10,
-    idMax=15,
-    vdcMax=40,
     ik=0.1,
     iT=0.01,
     vk=10,
-    vT=0.5);
+    vT=0.5,
+    iqMax=10,
+    vdcMax=71,
+    idMax=10);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
 >Modelica.Blocks.Sources.RealExpression</a> iacSense(y=L.i);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
@@ -727,28 +811,28 @@ pre {white-space: pre; overflow-x : hidden;}
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
 >Modelica.Blocks.Sources.RealExpression</a> vdcSense(y=PV.v);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> dcPower(y=-PV.i*PV.v);
+>Modelica.Blocks.Sources.RealExpression</a> DCPower(y=-PV.i*PV.v);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> acPower(y=R.i*R.v);
+>Modelica.Blocks.Sources.RealExpression</a> ACPower(y=R.i*R.v);
   <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Mean"
->Modelica.Blocks.Math.Mean</a> mean(f=50);
+>Modelica.Blocks.Math.Mean</a> meanACPower(f=50);
 <span class="ModelicaKeyword">equation </span>
   <span class="ModelicaFunction">connect</span>(Gn.y, PV.G);
   <span class="ModelicaFunction">connect</span>(Tn.y, PV.T);
-  <span class="ModelicaFunction">connect</span>(C.p, Inverter.p1);
+  <span class="ModelicaFunction">connect</span>(Cdc.p, Inverter.p1);
   <span class="ModelicaFunction">connect</span>(L.n, R.p);
-  <span class="ModelicaFunction">connect</span>(C.n, Inverter.n1);
+  <span class="ModelicaFunction">connect</span>(Cdc.n, Inverter.n1);
   <span class="ModelicaFunction">connect</span>(PV.p, Rdc.p);
-  <span class="ModelicaFunction">connect</span>(C.n, ground.p);
+  <span class="ModelicaFunction">connect</span>(Cdc.n, ground.p);
   <span class="ModelicaFunction">connect</span>(PV.n, ground.p);
-  <span class="ModelicaFunction">connect</span>(Rdc.n, C.p);
+  <span class="ModelicaFunction">connect</span>(Rdc.n, Cdc.p);
   <span class="ModelicaFunction">connect</span>(Inverter.p2, L.p);
   <span class="ModelicaFunction">connect</span>(Inverter.n2, R.n);
   <span class="ModelicaFunction">connect</span>(idcSense.y, controller.idc);
   <span class="ModelicaFunction">connect</span>(vdcSense.y, controller.vdc);
-  <span class="ModelicaFunction">connect</span>(sine.y, controller.vac);
+  <span class="ModelicaFunction">connect</span>(vacEmulation.y, controller.vac);
   <span class="ModelicaFunction">connect</span>(iacSense.y, controller.iac);
-  <span class="ModelicaFunction">connect</span>(acPower.y, mean.u);
+  <span class="ModelicaFunction">connect</span>(ACPower.y, meanACPower.u);
   <span class="ModelicaFunction">connect</span>(controller.d, Inverter.d);
 <span class="ModelicaKeyword">end </span>PVInverter1ph;
 </div>
@@ -760,16 +844,54 @@ pre {white-space: pre; overflow-x : hidden;}
 <a name="PVSystems.Examples.Application.PVInverter1phSynch"></a><a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application"
 >PVSystems.Examples.Application</a>.PVInverter1phSynch</h2>
 <p>
-<span class="ModelicaDescription">Simple PV system including PV array, inverter and grid</span>
+<span class="ModelicaDescription">Grid-tied 1-phase closed-loop inverter with PV source</span>
 <br>
 <br><img src="PVSystems.Examples.Applic6bebcf046759623eSynchD.png" alt="PVSystems.Examples.Application.PVInverter1phSynch">
 </p>
 <h3>Information</h3>
+
+        <p>
+          This example represents a simple yet complete grid-tied
+          PV inverter system. A long simulation is performed so as
+          to visualize the time evolution of the MPPT control,
+          which is necessarily much slower than the output current
+          control. This long simulation time is manageable because
+          an averaged switch model is being used, which means that
+          the simulation can have longer time steps.
+        </p>
+      
+        <p>
+          This evolution can be observed by plotting the DC bus
+          voltage as well as the input and output power to the
+          inverter:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/PVInverter1phSynchResultsA.png"
+                  alt="PVInverter1phSynchResultsA.png" />
+          </p>
+        </div>
+      
+        <p>
+          As expected, the power factor of the output power is 1
+          (all active power), having the output current in synch
+          with the grid voltage:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/PVInverter1phSynchResultsB.png"
+                  alt="PVInverter1phSynchResultsB.png" /></p>
+        </div>
+      
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> PVInverter1phSynch
-  <span class="ModelicaComment">&quot;Simple PV system including PV array, inverter and grid&quot;</span>
+  <span class="ModelicaComment">&quot;Grid-tied 1-phase closed-loop inverter with PV source&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a>;
   <a href="PVSystems_Electrical.html#PVSystems.Electrical.PVArray"
@@ -778,28 +900,28 @@ pre {white-space: pre; overflow-x : hidden;}
 >Modelica.Blocks.Sources.Constant</a> Gn(k=1000);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
 >Modelica.Blocks.Sources.Constant</a> Tn(k=298.15);
-  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridgeAveraged"
->PVSystems.Electrical.Assemblies.HBridgeAveraged</a> Inverter;
+  <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.HBridge"
+>PVSystems.Electrical.Assemblies.HBridge</a> Inverter;
   <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.SineVoltage"
->Modelica.Electrical.Analog.Sources.SineVoltage</a> Grid(freqHz=50, V=15);
+>Modelica.Electrical.Analog.Sources.SineVoltage</a> AC(freqHz=50, V=15);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Inductor"
->Modelica.Electrical.Analog.Basic.Inductor</a> L(L=200e-6);
+>Modelica.Electrical.Analog.Basic.Inductor</a> L(L=1e-3);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> R(R=10e-3);
+>Modelica.Electrical.Analog.Basic.Resistor</a> R(R=1e-2);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Capacitor"
->Modelica.Electrical.Analog.Basic.Capacitor</a> C(v(start=32.8), C=0.5);
+>Modelica.Electrical.Analog.Basic.Capacitor</a> Cdc(v(start=32.8), C=0.5);
   <a href="PVSystems_Control_Assemblies.html#PVSystems.Control.Assemblies.Inverter1phCompleteController"
 >Control.Assemblies.Inverter1phCompleteController</a> Controller(
     ik=0.1,
     iT=0.01,
-    vdcMax=40,
     fline=50,
-    idMax=15,
-    iqMax=10,
     vk=10,
-    vT=0.5);
+    vT=0.5,
+    idMax=20,
+    iqMax=20,
+    vdcMax=50);
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
->Modelica.Electrical.Analog.Basic.Resistor</a> resistor(R=1e-3, v(start=30));
+>Modelica.Electrical.Analog.Basic.Resistor</a> Rdc(R=1e-3, v(start=30));
   <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
 >Modelica.Electrical.Analog.Basic.Ground</a> ground;
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
@@ -807,41 +929,41 @@ pre {white-space: pre; overflow-x : hidden;}
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
 >Modelica.Blocks.Sources.RealExpression</a> idcSense(y=-PV.i);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> iacSense(y=Grid.i);
+>Modelica.Blocks.Sources.RealExpression</a> iacSense(y=AC.i);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> vacSense(y=Grid.v);
+>Modelica.Blocks.Sources.RealExpression</a> vacSense(y=AC.v);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> dcPower(y=-PV.i*PV.v);
+>Modelica.Blocks.Sources.RealExpression</a> DCPower(y=-PV.i*PV.v);
   <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
->Modelica.Blocks.Sources.RealExpression</a> acPower(y=Grid.v*Grid.i);
+>Modelica.Blocks.Sources.RealExpression</a> ACPower(y=AC.v*AC.i);
   <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Mean"
->Modelica.Blocks.Math.Mean</a> mean(f=50);
+>Modelica.Blocks.Math.Mean</a> meanACPower(f=50);
 <span class="ModelicaKeyword">equation </span>
   <span class="ModelicaFunction">connect</span>(Gn.y, PV.G);
   <span class="ModelicaFunction">connect</span>(Tn.y, PV.T);
-  <span class="ModelicaFunction">connect</span>(C.p, Inverter.p1);
-  <span class="ModelicaFunction">connect</span>(R.n, Grid.p);
+  <span class="ModelicaFunction">connect</span>(Cdc.p, Inverter.p1);
+  <span class="ModelicaFunction">connect</span>(R.n, AC.p);
   <span class="ModelicaFunction">connect</span>(L.n, R.p);
-  <span class="ModelicaFunction">connect</span>(C.n, Inverter.n1);
+  <span class="ModelicaFunction">connect</span>(Cdc.n, Inverter.n1);
   <span class="ModelicaFunction">connect</span>(Inverter.p2, L.p);
-  <span class="ModelicaFunction">connect</span>(Inverter.n2, Grid.n);
-  <span class="ModelicaFunction">connect</span>(resistor.n, C.p);
-  <span class="ModelicaFunction">connect</span>(PV.p, resistor.p);
-  <span class="ModelicaFunction">connect</span>(PV.n, C.n);
+  <span class="ModelicaFunction">connect</span>(Inverter.n2, AC.n);
+  <span class="ModelicaFunction">connect</span>(Rdc.n, Cdc.p);
+  <span class="ModelicaFunction">connect</span>(PV.p, Rdc.p);
+  <span class="ModelicaFunction">connect</span>(PV.n, Cdc.n);
   <span class="ModelicaFunction">connect</span>(PV.n, ground.p);
   <span class="ModelicaFunction">connect</span>(Controller.d, Inverter.d);
   <span class="ModelicaFunction">connect</span>(vdcSense.y, Controller.vdc);
   <span class="ModelicaFunction">connect</span>(idcSense.y, Controller.idc);
   <span class="ModelicaFunction">connect</span>(iacSense.y, Controller.iac);
   <span class="ModelicaFunction">connect</span>(vacSense.y, Controller.vac);
-  <span class="ModelicaFunction">connect</span>(acPower.y, mean.u);
+  <span class="ModelicaFunction">connect</span>(ACPower.y, meanACPower.u);
 <span class="ModelicaKeyword">end </span>PVInverter1phSynch;
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE USBBatteryConverter<![endif]-->
 <!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="PVSystems.Examples.Applica703c01c50956d05erterI.png" alt="PVSystems.Examples.Application.USBBatteryConverter" align="right" style="border: 1px solid" width="80" height="80">
+<h2><img src="PVSystems.Examples.Application.BuckOpenI.png" alt="PVSystems.Examples.Application.USBBatteryConverter" align="right" style="border: 1px solid" width="80" height="80">
 <a name="PVSystems.Examples.Application.USBBatteryConverter"></a><a href="PVSystems_Examples_Application.html#PVSystems.Examples.Application"
 >PVSystems.Examples.Application</a>.USBBatteryConverter</h2>
 <p>
@@ -851,13 +973,13 @@ pre {white-space: pre; overflow-x : hidden;}
 </p>
 <h3>Information</h3>
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
->Modelica.Icons.Example</a> (Icon for runnable examples), Modelica.Icons.UnderConstruction (Icon for classes that are still under construction).</span></p>
+>Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> USBBatteryConverter <span class="ModelicaComment">&quot;Bidirectional converter for USB battery interface&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a>;
-  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.UnderConstruction"
->Modelica.Icons.UnderConstruction</a>;
   <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.CPMBidirectionalBuckBoost"
 >Electrical.Assemblies.CPMBidirectionalBuckBoost</a> conv(
     Cin=10e-6,
@@ -937,7 +1059,7 @@ pre {white-space: pre; overflow-x : hidden;}
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:09 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:24 2017.
 </address>
 </body>
 </html>

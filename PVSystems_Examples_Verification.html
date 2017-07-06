@@ -1,0 +1,709 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>PVSystems.Examples.Verification</title>
+<meta name="HTML-Generator" content="Dymola">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="&quot;Simple examples for verification of library&#39;s components&quot;">
+<style type="text/css">
+*       { font-size: 100%; font-family: Arial, sans-serif; }
+.modelica, .modelica * { font-size: 90%; font-family: Courier, monospace; white-space: pre; } /* For the Modelica code (in exported html). */
+h4      { font-size: 100%; font-weight: bold; color: green; } 
+h3      { font-size: 110%; font-weight: bold; color: green; }
+h2      { font-size: 130%; font-weight: bold; color: green; }
+address { font-weight: normal; }
+td      { padding: 2px; border: 1px solid #808080; vertical-align: top; }
+th      { padding: 2px; border: 1px solid #808080; vertical-align: top; font-weight: bold; }
+table   { border: 1px solid #808080; border-collapse: collapse; }
+pre, code {font-family: "Courier New", monospace;}
+pre {white-space: pre; overflow-x : hidden;}
+.ModelicaDescription {font-weight: bold;} /* For the description string of the class. */
+.ModelicaBaseClass {} /* For the list of base-classes at the of the description. */
+.ModelicaKeyword { color: blue; font-weight: normal; font-style: normal; } /* Keywords in Modelica. */
+.ModelicaComment { color: #006400;  font-weight: normal; font-style: normal;} /* All three variants of comments in Modelica.  */
+.ModelicaString { color: #006400;  font-weight: normal; font-style: normal;} /* String constants. */
+.ModelicaClass { color: red; font-weight: normal; font-style: normal;} /* Formatting the names of referenced classes (for base-class and components). */
+.ModelicaFunction { color: red; font-weight: normal; font-style: normal;} /* Formatting for called functions. */
+.ModelicaTablePackageContent { } /* The table of contents for each package. */
+.ModelicaTableCrossReference { } /* The optional cross-reference table. */
+.ModelicaTableInputs {} /* The table of inputs for a function. */
+.ModelicaTableOutputs {} /* The table of outputs for a function. */
+.ModelicaTableParameters {} /* The table of parameters for a model/block. */
+.ModelicaTableConnectors {} /* The table of connectors for a model/block. */
+.ModelicaTableContents {} /* The table of contents for a connector. */
+.ModelicaStartAttribute { font-weight: bold; } /* The formatting used for start-attribute in the table of parameters, to separate them from parameter values. */
+.ModelicaParameterTab { background-color: #c0c0c0; font-weight: bold; } /* The tab-heading in the table of parameters */
+.ModelicaParameterGroup { background-color: #e0e0e0; } /* The group-heading in the table of parameters */
+</style>
+</head>
+<body>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Verification<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><a name="PVSystems.Examples.Verification"></a><a href="PVSystems_Examples.html#PVSystems.Examples"
+>PVSystems.Examples</a>.Verification</h2>
+<p>
+<span class="ModelicaDescription">Simple examples for verification of library&#39;s components</span><br>
+</p>
+<h3>Information</h3>
+<p><span class="ModelicaBaseClass">Extends from Modelica.Icons.ExamplesPackage (Icon for packages containing runnable examples).</span></p>
+<h3>Package Content</h3>
+<table summary="Package Content" class="ModelicaTablePackageContent">
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Verification.IdealCBSwitchVerification" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification.IdealCBSwitchVerification"
+>IdealCBSwitchVerification</a>
+</td>
+<td>Ideal current bidirectional switch verification</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Verification.MPPTControllerVerification" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification.MPPTControllerVerification"
+>MPPTControllerVerification</a>
+</td>
+<td>MPPT controller verification</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Verification.ParkVerification" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification.ParkVerification"
+>ParkVerification</a>
+</td>
+<td>Park transforms verification</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Verification.PLLVerification" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification.PLLVerification"
+>PLLVerification</a>
+</td>
+<td>PLL verification</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Verification.PVArrayVerification" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification.PVArrayVerification"
+>PVArrayVerification</a>
+</td>
+<td>PVArray verification</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Verification.SwitchingPWMVerification" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification.SwitchingPWMVerification"
+>SwitchingPWMVerification</a>
+</td>
+<td>SwitchingPWM verification</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Verification.SwitchingCPMVerification" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification.SwitchingCPMVerification"
+>SwitchingCPMVerification</a>
+</td>
+<td>SwitchingCPM verification</td>
+</tr>
+<tr>
+<td><img src="PVSystems.Examples.Application.BuckOpenS.png" alt="PVSystems.Examples.Verification.SimpleBatteryVerification" width="20" height="20" align="top">&nbsp;<a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification.SimpleBatteryVerification"
+>SimpleBatteryVerification</a>
+</td>
+<td>SimpleBattery verification</td>
+</tr>
+</table>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE IdealCBSwitchVerification<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Examples.Verifi5ee45379c461ee3aationI.png" alt="PVSystems.Examples.Verification.IdealCBSwitchVerification" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Examples.Verification.IdealCBSwitchVerification"></a><a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification"
+>PVSystems.Examples.Verification</a>.IdealCBSwitchVerification</h2>
+<p>
+<span class="ModelicaDescription">Ideal current bidirectional switch verification</span>
+<br>
+<br><img src="PVSystems.Examples.Verifi5ee45379c461ee3aationD.png" alt="PVSystems.Examples.Verification.IdealCBSwitchVerification">
+</p>
+<h3>Information</h3>
+
+        <p>
+          This example presents a circuit composed of a resistor
+          in series with a sinusoidal AC voltage source and the
+          ideal current bidirectional switch. The switch is
+          operated by a step block that changes from 0 to 1 in the
+          middle of the simulation. This changes the state of the
+          switch from open to closed.
+        </p>
+      
+        <p>
+          To use the example, simulate the model as provided and
+          plot the source voltage as well as the switch voltage,
+          the plot should look like this:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/IdealCBSwitchVerificationResults.png"
+                  alt="IdealCBSwitchVerificationResults.png" />
+          </p>
+        </div>
+      
+        <p>
+          Notice how at the begining of the simulation, when the
+          switch is not closed, it blocks all the positive
+          voltage, preventing current from flowing. On the other
+          hand, the negative voltage is not blocked, so the
+          current can flow (through the anti-parallel diode). When
+          the switch is closed using the firing signal, it never
+          blocks voltage, allowing bidirectional flow of current.
+        </p>
+      
+        <p>
+          Plot the voltage drop in the resistor to confirm these
+          results or play with the parameter values to see what
+          effects they have.</p>
+      
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Verification.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> IdealCBSwitchVerification
+  <span class="ModelicaComment">&quot;Ideal current bidirectional switch verification&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a>;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.IdealCBSwitch"
+>Electrical.IdealCBSwitch</a> idealCBSwitch;
+  <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.SineVoltage"
+>Modelica.Electrical.Analog.Sources.SineVoltage</a> sineVoltage(freqHz=5, V=1);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.BooleanStep"
+>Modelica.Blocks.Sources.BooleanStep</a> booleanStep(startTime=0.45, startValue=
+        false);
+  <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
+>Modelica.Electrical.Analog.Basic.Ground</a> ground;
+  <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Resistor"
+>Modelica.Electrical.Analog.Basic.Resistor</a> resistor(R=2);
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(booleanStep.y, idealCBSwitch.c);
+  <span class="ModelicaFunction">connect</span>(idealCBSwitch.p, resistor.n);
+  <span class="ModelicaFunction">connect</span>(idealCBSwitch.n, sineVoltage.n);
+  <span class="ModelicaFunction">connect</span>(resistor.p, sineVoltage.p);
+  <span class="ModelicaFunction">connect</span>(ground.p, sineVoltage.n);
+<span class="ModelicaKeyword">end </span>IdealCBSwitchVerification;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE MPPTControllerVerification<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Examples.Verifi5ee45379c461ee3aationI.png" alt="PVSystems.Examples.Verification.MPPTControllerVerification" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Examples.Verification.MPPTControllerVerification"></a><a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification"
+>PVSystems.Examples.Verification</a>.MPPTControllerVerification</h2>
+<p>
+<span class="ModelicaDescription">MPPT controller verification</span>
+<br>
+<br><img src="PVSystems.Examples.Verific2bfcd1879bfef6eationD.png" alt="PVSystems.Examples.Verification.MPPTControllerVerification">
+</p>
+<h3>Information</h3>
+
+        <p>
+          This examples places an MPPT controller closing the loop
+          for a voltage source connected to a PV array. The MPPT
+          controller senses the power coming out of the PV array
+          and provides a setpoint for the voltage source. This
+          changes the operation point of the PV array with the
+          goal of maximizing its output power for any given solar
+          irradiation and junction temperature conditions.
+        </p>
+      
+        <p>
+          The model is designed to challenge the control by
+          ramping solar irradiation, temperature at different
+          times and by injecting a perturbation into the control
+          loop:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/MPPTControllerVerificationResultsA.png"
+                  alt="MPPTControllerVerificationResultsA.png"
+                  />
+          </p>
+        </div>
+      
+        <p>
+          The MPPT controller successfully deals with these
+          changing conditions as shown in the following plots,
+          which compares the static PV array control with the MPPT
+          control:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/MPPTControllerVerificationResultsB.png"
+                  alt="MPPTControllerVerificationResultsB.png"
+                  /></p>
+        </div>
+      
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Verification.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> MPPTControllerVerification <span class="ModelicaComment">&quot;MPPT controller verification&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a>;
+  <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
+>Modelica.Electrical.Analog.Basic.Ground</a> ground;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.PVArray"
+>Electrical.PVArray</a> pVArray;
+  <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.SignalVoltage"
+>Modelica.Electrical.Analog.Sources.SignalVoltage</a> sink;
+  <a href="PVSystems_Control.html#PVSystems.Control.MPPTController"
+>Control.MPPTController</a> mpptController(
+    sampleTime=1,
+    pkThreshold=0.01,
+    vrefStep=1,
+    vrefStart=5);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Ramp"
+>Modelica.Blocks.Sources.Ramp</a> G(
+    offset=1000,
+    height=-500,
+    startTime=30,
+    duration=10);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Ramp"
+>Modelica.Blocks.Sources.Ramp</a> T(
+    height=-25,
+    offset=273.15 + 25,
+    startTime=50,
+    duration=50);
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</a> vdcSetpoint;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Ramp"
+>Modelica.Blocks.Sources.Ramp</a> perturbation(
+    height=10,
+    offset=0,
+    duration=20,
+    startTime=130);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</a> vsense(y=sink.v);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</a> isense(y=sink.i);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</a> vdcSetpoint1(y=26);
+  <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
+>Modelica.Electrical.Analog.Basic.Ground</a> ground1;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.PVArray"
+>Electrical.PVArray</a> pVArray1;
+  <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.SignalVoltage"
+>Modelica.Electrical.Analog.Sources.SignalVoltage</a> sink1;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(G.y, pVArray.G);
+  <span class="ModelicaFunction">connect</span>(vdcSetpoint.y, sink.v);
+  <span class="ModelicaFunction">connect</span>(perturbation.y, vdcSetpoint.u2);
+  <span class="ModelicaFunction">connect</span>(pVArray.p, sink.p);
+  <span class="ModelicaFunction">connect</span>(vsense.y, mpptController.u1);
+  <span class="ModelicaFunction">connect</span>(mpptController.y, vdcSetpoint.u1);
+  <span class="ModelicaFunction">connect</span>(isense.y, mpptController.u2);
+  <span class="ModelicaFunction">connect</span>(pVArray1.p, sink1.p);
+  <span class="ModelicaFunction">connect</span>(sink1.v, vdcSetpoint1.y);
+  <span class="ModelicaFunction">connect</span>(T.y, pVArray1.T);
+  <span class="ModelicaFunction">connect</span>(T.y, pVArray.T);
+  <span class="ModelicaFunction">connect</span>(G.y, pVArray1.G);
+  <span class="ModelicaFunction">connect</span>(pVArray.n, ground.p);
+  <span class="ModelicaFunction">connect</span>(sink.n, ground.p);
+  <span class="ModelicaFunction">connect</span>(pVArray1.n, ground1.p);
+  <span class="ModelicaFunction">connect</span>(ground1.p, sink1.n);
+<span class="ModelicaKeyword">end </span>MPPTControllerVerification;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE ParkVerification<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Examples.Verifi5ee45379c461ee3aationI.png" alt="PVSystems.Examples.Verification.ParkVerification" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Examples.Verification.ParkVerification"></a><a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification"
+>PVSystems.Examples.Verification</a>.ParkVerification</h2>
+<p>
+<span class="ModelicaDescription">Park transforms verification</span>
+<br>
+<br><img src="PVSystems.Examples.Verifi96dd95bbff4b2cebationD.png" alt="PVSystems.Examples.Verification.ParkVerification">
+</p>
+<h3>Information</h3>
+
+        <p>
+          This example provides some easy input for the Park
+          transform blocks to check that calculations are being
+          done as expected. Run the simulation and you should get
+          something like the following figure:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/ParkVerificationResults.png"
+                  alt="ParkVerificationResults.png" />
+          </p>
+        </div>
+      
+        <p>
+          As expected, <em>d</em> is equal to the peak amplitude
+          of the input signal and <em>q</em> sets at zero. Feeding
+          the signals back to the inverse transformation block
+          recreates the original signals (which overlap them on
+          the plot).</p>
+      
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Verification.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> ParkVerification <span class="ModelicaComment">&quot;Park transforms verification&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a>;
+  <a href="PVSystems_Control.html#PVSystems.Control.Park"
+>Control.Park</a> park;
+  <a href="PVSystems_Control.html#PVSystems.Control.InversePark"
+>Control.InversePark</a> inversePark;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.SawTooth"
+>Modelica.Blocks.Sources.SawTooth</a> sawTooth(amplitude=2*Modelica.Constants.pi,
+      period=0.02);
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Sin"
+>Modelica.Blocks.Math.Sin</a> sin;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Cos"
+>Modelica.Blocks.Math.Cos</a> cos;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(park.d, inversePark.d);
+  <span class="ModelicaFunction">connect</span>(park.q, inversePark.q);
+  <span class="ModelicaFunction">connect</span>(cos.u, sawTooth.y);
+  <span class="ModelicaFunction">connect</span>(sin.u, sawTooth.y);
+  <span class="ModelicaFunction">connect</span>(cos.y, park.alpha);
+  <span class="ModelicaFunction">connect</span>(sin.y, park.beta);
+  <span class="ModelicaFunction">connect</span>(park.theta, sawTooth.y);
+  <span class="ModelicaFunction">connect</span>(inversePark.theta, sawTooth.y);
+<span class="ModelicaKeyword">end </span>ParkVerification;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE PLLVerification<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Examples.Verifi5ee45379c461ee3aationI.png" alt="PVSystems.Examples.Verification.PLLVerification" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Examples.Verification.PLLVerification"></a><a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification"
+>PVSystems.Examples.Verification</a>.PLLVerification</h2>
+<p>
+<span class="ModelicaDescription">PLL verification</span>
+<br>
+<br><img src="PVSystems.Examples.Verifi9fd2fecd059eae87ationD.png" alt="PVSystems.Examples.Verification.PLLVerification">
+</p>
+<h3>Information</h3>
+
+        <p>
+          This simple example provides a sinusoidal input to the
+          PLL block and applies the output provided by the PLL,
+          the calculated phase of the input sine, to drive a sine
+          block so that the synchronization capabilities of the
+          PLL can be visualized.
+        </p>
+      
+        <p>
+          Run the model and plot the output of the sinusoidal
+          source and the output of the sine block to see how,
+          after some short transient, the PLL successfully follows
+          the reference:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/PLLVerificationResults.png"
+                  alt="PLLVerificationResults.png" /></p>
+        </div>
+      
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Verification.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> PLLVerification <span class="ModelicaComment">&quot;PLL verification&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a>;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Sine"
+>Modelica.Blocks.Sources.Sine</a> source(freqHz=50);
+  <a href="PVSystems_Control.html#PVSystems.Control.PLL"
+>Control.PLL</a> pLL;
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Cos"
+>Modelica.Blocks.Math.Cos</a> sync;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(source.y, pLL.v);
+  <span class="ModelicaFunction">connect</span>(pLL.theta, sync.u);
+<span class="ModelicaKeyword">end </span>PLLVerification;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE PVArrayVerification<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Examples.Verifi5ee45379c461ee3aationI.png" alt="PVSystems.Examples.Verification.PVArrayVerification" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Examples.Verification.PVArrayVerification"></a><a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification"
+>PVSystems.Examples.Verification</a>.PVArrayVerification</h2>
+<p>
+<span class="ModelicaDescription">PVArray verification</span>
+<br>
+<br><img src="PVSystems.Examples.Verifib05340a4ebc5fd1dationD.png" alt="PVSystems.Examples.Verification.PVArrayVerification">
+</p>
+<h3>Information</h3>
+
+        <p>
+          A ramp DC voltage source is applied in parallel to an
+          instance of the PVArray model. The voltage ramp is
+          configured to sweep from -10 volts to 35 volts in 1
+          second. This provides the enough voltage range to cover
+          all of the PV array's working range when initialized
+          with default values.
+        </p>
+      
+        <p>
+          To use the example, simulate the model and start by
+          displaying both voltage and current of the ramp voltage
+          source. A figure like the following should be displayed:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/PVArrayVerificationResults.png"
+                  alt="PVArrayVerificationResults.png" />
+          </p>
+        </div>
+      
+        <p>
+          Notice how the variation in the current delivered by the
+          PV array (sinked by the voltage source) reflects the
+          familiar PV module curve.
+        </p>
+      
+        <p>
+          Modify the values for the irradiance and temperature
+          blocks and see how these changes are reflected in a
+          change in the PV curve, accurately reflecting the
+          effects of these variables in the PV module
+          performance.  </p>
+      
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Verification.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> PVArrayVerification <span class="ModelicaComment">&quot;PVArray verification&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a>;
+  <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.RampVoltage"
+>Modelica.Electrical.Analog.Sources.RampVoltage</a> rampVoltage(
+    duration=1,
+    V=45,
+    offset=-10);
+  <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
+>Modelica.Electrical.Analog.Basic.Ground</a> ground;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.PVArray"
+>Electrical.PVArray</a> pVArray;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</a> Gn(k=1000);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</a> Tn(k=298.15);
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(Gn.y, pVArray.G);
+  <span class="ModelicaFunction">connect</span>(Tn.y, pVArray.T);
+  <span class="ModelicaFunction">connect</span>(pVArray.p, rampVoltage.p);
+  <span class="ModelicaFunction">connect</span>(pVArray.n, rampVoltage.n);
+  <span class="ModelicaFunction">connect</span>(ground.p, rampVoltage.n);
+<span class="ModelicaKeyword">end </span>PVArrayVerification;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE SwitchingPWMVerification<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Examples.Verifi5ee45379c461ee3aationI.png" alt="PVSystems.Examples.Verification.SwitchingPWMVerification" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Examples.Verification.SwitchingPWMVerification"></a><a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification"
+>PVSystems.Examples.Verification</a>.SwitchingPWMVerification</h2>
+<p>
+<span class="ModelicaDescription">SwitchingPWM verification</span>
+<br>
+<br><img src="PVSystems.Examples.Verifi42c5a3e1a54e579bationD.png" alt="PVSystems.Examples.Verification.SwitchingPWMVerification">
+</p>
+<h3>Information</h3>
+
+        <p>
+          This model provides a changing duty cycle with the use
+          of two step blocks. When running the simulation with the
+          provided values, plotting the fire output generates the
+          following graph:
+        </p>
+      
+      
+        <div class="figure">
+          <p><img src="Images/SwitchingPWMVerificationResults.png"
+                  alt="SwitchingPWMVerificationResults.png" />
+          </p>
+        </div>
+      
+        <p>
+          Through inspection of the plot, it can be seen how the
+          signal constitutes a PWM signal with a duty cycle
+          changing in steps through the values 0.2, 0.5 and
+          0.8. Zoom into the signal to confirm this fact as well
+          as the value of the period, set at 10 milliseconds.</p>
+      
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Verification.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> SwitchingPWMVerification <span class="ModelicaComment">&quot;SwitchingPWM verification&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a>;
+  <a href="PVSystems_Control.html#PVSystems.Control.SwitchingPWM"
+>Control.SwitchingPWM</a> signalPWM(fs=100);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Step"
+>Modelica.Blocks.Sources.Step</a> step(
+    height=0.3,
+    offset=0.2,
+    startTime=0.3);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Step"
+>Modelica.Blocks.Sources.Step</a> step1(height=0.3, startTime=0.6);
+  <a href="Modelica_Blocks_Math.html#Modelica.Blocks.Math.Add"
+>Modelica.Blocks.Math.Add</a> add;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(step.y, add.u1);
+  <span class="ModelicaFunction">connect</span>(step1.y, add.u2);
+  <span class="ModelicaFunction">connect</span>(add.y, signalPWM.vc);
+<span class="ModelicaKeyword">end </span>SwitchingPWMVerification;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE SwitchingCPMVerification<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Examples.Verifi5ee45379c461ee3aationI.png" alt="PVSystems.Examples.Verification.SwitchingCPMVerification" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Examples.Verification.SwitchingCPMVerification"></a><a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification"
+>PVSystems.Examples.Verification</a>.SwitchingCPMVerification</h2>
+<p>
+<span class="ModelicaDescription">SwitchingCPM verification</span>
+<br>
+<br><img src="PVSystems.Examples.Verifi81e1fd77a54e5355ationD.png" alt="PVSystems.Examples.Verification.SwitchingCPMVerification">
+</p>
+<h3>Information</h3>
+
+          <p>
+            The switching CPM block requires the <em>vs</em> input,
+            corresponding to the voltage output of the current
+            sensor. In order to simplify things, a switch with some
+            constant sources and an integrator are used to emulate
+            the behaviour of an inductor. This setup creates the
+            conditions to exercise the CPM block, as can be seen in
+            the following figure:
+          </p>
+        
+        
+          <div class="figure">
+            <p><img src="Images/SwitchingCPMVerificationresults.Png"
+                    alt="SwitchingCPMVerificationresults.Png"
+                    /></p>
+          </div>
+        <pre>&gt;</pre>
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Verification.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> SwitchingCPMVerification <span class="ModelicaComment">&quot;SwitchingCPM verification&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a>;
+  <a href="PVSystems_Control.html#PVSystems.Control.SwitchingCPM"
+>Control.SwitchingCPM</a> switchingCPM(
+    vcMax=5,
+    dMin=0.05,
+    dMax=0.95,
+    fs=200e3,
+    Va=0.005);
+  <a href="Modelica_Blocks_Continuous.html#Modelica.Blocks.Continuous.Integrator"
+>Modelica.Blocks.Continuous.Integrator</a> integrator(initType=Modelica.Blocks.Types.Init.InitialState,
+      y_start=3.99);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</a> vdT(k=2e4);
+  <a href="Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Switch"
+>Modelica.Blocks.Logical.Switch</a> switch1;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</a> vdpT(k=-1e4);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.Constant"
+>Modelica.Blocks.Sources.Constant</a> vc(k=4);
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(vdT.y, switch1.u1);
+  <span class="ModelicaFunction">connect</span>(switch1.y, integrator.u);
+  <span class="ModelicaFunction">connect</span>(vdpT.y, switch1.u3);
+  <span class="ModelicaFunction">connect</span>(switchingCPM.c, switch1.u2);
+  <span class="ModelicaFunction">connect</span>(integrator.y, switchingCPM.vs);
+  <span class="ModelicaFunction">connect</span>(vc.y, switchingCPM.vc);
+<span class="ModelicaKeyword">end </span>SwitchingCPMVerification;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE SimpleBatteryVerification<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.Examples.Verifi5ee45379c461ee3aationI.png" alt="PVSystems.Examples.Verification.SimpleBatteryVerification" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.Examples.Verification.SimpleBatteryVerification"></a><a href="PVSystems_Examples_Verification.html#PVSystems.Examples.Verification"
+>PVSystems.Examples.Verification</a>.SimpleBatteryVerification</h2>
+<p>
+<span class="ModelicaDescription">SimpleBattery verification</span>
+<br>
+<br><img src="PVSystems.Examples.Verifi3d681bdcc848204aationD.png" alt="PVSystems.Examples.Verification.SimpleBatteryVerification">
+</p>
+<h3>Information</h3>
+
+          <p>
+            This example provides a charge/discharge control logic
+            to a current source in parallel with the battery
+            model. The control is configured to put the battery
+            through charge/discharge cycles for as long as the
+            simulation runs:
+          </p>
+        
+        
+          <div class="figure">
+            <p><img src="Images/SimpleBatteryVerificationResults.png"
+                    alt="SimpleBatteryVerificationResults.png" />
+            </p>
+          </div>
+        
+          <p>
+            Notice how the charge and discharge cycles take about 30
+            minutes, which is what was to be expected by
+            charging/discharging a 1A.h battery with a 2A
+            current.</p>
+        
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_Examples_Verification.html</pre>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">model</span> SimpleBatteryVerification <span class="ModelicaComment">&quot;SimpleBattery verification&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
+>Modelica.Icons.Example</a>;
+  <a href="Modelica_Electrical_Analog_Sources.html#Modelica.Electrical.Analog.Sources.SignalCurrent"
+>Modelica.Electrical.Analog.Sources.SignalCurrent</a> CC;
+  <a href="Modelica_Electrical_Analog_Basic.html#Modelica.Electrical.Analog.Basic.Ground"
+>Modelica.Electrical.Analog.Basic.Ground</a> ground;
+  <a href="PVSystems_Electrical.html#PVSystems.Electrical.SimpleBattery"
+>Electrical.SimpleBattery</a> B(Q=1, DoDini=0.5);
+  <a href="Modelica_Blocks_Nonlinear.html#Modelica.Blocks.Nonlinear.SlewRateLimiter"
+>Modelica.Blocks.Nonlinear.SlewRateLimiter</a> slewRateLimiter(Rising=4);
+  <a href="Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Hysteresis"
+>Modelica.Blocks.Logical.Hysteresis</a> hysteresis(uHigh=4.19, uLow=0.1);
+  <a href="Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Switch"
+>Modelica.Blocks.Logical.Switch</a> switch1;
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</a> idis(y=-2);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</a> ich(y=2);
+  <a href="Modelica_Blocks_Sources.html#Modelica.Blocks.Sources.RealExpression"
+>Modelica.Blocks.Sources.RealExpression</a> vsense(y=B.v);
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaFunction">connect</span>(ground.p, CC.p);
+  <span class="ModelicaFunction">connect</span>(CC.p, B.n);
+  <span class="ModelicaFunction">connect</span>(CC.n, B.p);
+  <span class="ModelicaFunction">connect</span>(slewRateLimiter.y, CC.i);
+  <span class="ModelicaFunction">connect</span>(switch1.y, slewRateLimiter.u);
+  <span class="ModelicaFunction">connect</span>(hysteresis.y, switch1.u2);
+  <span class="ModelicaFunction">connect</span>(idis.y, switch1.u1);
+  <span class="ModelicaFunction">connect</span>(ich.y, switch1.u3);
+  <span class="ModelicaFunction">connect</span>(vsense.y, hysteresis.u);
+<span class="ModelicaKeyword">end </span>SimpleBatteryVerification;
+</div>
+<hr>
+<address>
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:25 2017.
+</address>
+</body>
+</html>

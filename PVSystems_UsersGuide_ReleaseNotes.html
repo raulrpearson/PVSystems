@@ -80,18 +80,106 @@ pre {white-space: pre; overflow-x : hidden;}
 <th>Description</th>
 </tr>
 <tr>
-<td><img src="PVSystems.UsersGuide.Rele84cd17f04c380af60_6_1S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_1" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_1"
+<td><img src="PVSystems.UsersGuide.Rele84cd17f14c380af50_6_2S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_2" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_2"
+>Version_0_6_2</a>
+</td>
+<td>Version 0.6.2 (July 6, 2017)</td>
+</tr>
+<tr>
+<td><img src="PVSystems.UsersGuide.Rele84cd17f14c380af50_6_2S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_1" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_1"
 >Version_0_6_1</a>
 </td>
 <td>Version 0.6.1 (April 19, 2017)</td>
 </tr>
 <tr>
-<td><img src="PVSystems.UsersGuide.Rele84cd17f04c380af60_6_1S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_0" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_0"
+<td><img src="PVSystems.UsersGuide.Rele84cd17f14c380af50_6_2S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_0" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_0"
 >Version_0_6_0</a>
 </td>
 <td>Version 0.6.0 (April 3, 2017)</td>
 </tr>
 </table>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Version_0_6_2<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.UsersGuide.ReleaseNotesI.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_2" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_2"></a><a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes"
+>PVSystems.UsersGuide.ReleaseNotes</a>.Version_0_6_2</h2>
+
+      <p>
+        <strong>Modifications</strong>:
+      </p>
+      <ul class="org-ul">
+        <li>The main new feature of this release is the slight
+          restructuring of switch network models that now have
+          switching, as well as averaged, variants. This
+          provides generic converter blocks that can be changed
+          from switched to averaged with the click of a mouse.
+        </li>
+        <li>The SignalPWM block is renamed to SwitchingPWM and
+          its icon is changed.
+        </li>
+        <li>Documentation for examples is updated and
+          completed. The names of components used in some of the
+          examples are changed.
+        </li>
+        <li>The Validation package is renamed to
+          Verification. This name change has also been applied
+          to models inside this package and associated files
+          like results plots.
+        </li>
+        <li>MPPTController is taken out of Control.Assemblies
+          and placed directly in the Control package.
+        </li>
+        <li>Instances of switch networks are made replaceable to
+          allow the use of different flavours of converters and
+          circuits (switched and averaged).
+        </li>
+        <li>HBridgeAveraged is renamed to HBridge since it can
+          now be instantiated with switched or averaged models.
+        </li>
+        <li>The averaged models (CCM1, CCM2&#x2026;) include the
+          port current equations that were previously part of
+          the TwoPortConverter interface, since they now inherit
+          from TwoPort, which doesn't include those equations.
+        </li>
+      </ul>
+      <p>
+        <strong>Additions</strong>:
+      </p>
+      <ul class="org-ul">
+        <li>Three variants of switched switch network models,
+          SW1 (switch and diode), SW2 (2 switches) and SW3 (2
+          switches + antiparallel diode).
+        </li>
+        <li>The script callCheckLibrary.mos has been added to
+          provide a convenient way to run regression tests. To
+          provide even more convenience, a
+          _<sub>Dymola</sub><sub>Commands</sub> annotation has
+          been added to the root package file so that this
+          script can be run from the Commands menu when using
+          Dymola. The reference regression tests should be
+          updated in each release if necessary.
+        </li>
+        <li>Added a script to export listings for publishing.
+        </li>
+        <li>TwoPort interface and ConverterIcon added in place
+          of TwoPortConverter.
+        </li>
+      </ul>
+      <p>
+        <strong>Deletions</strong>:
+      </p>
+      <ul class="org-ul">
+        <li>TwoPortConverter interface is removed and
+          substituted by a TwoPort interface (copied from MSL
+          without current equations) and a ConverterIcon.
+        </li>
+      </ul>
+    
+<p><span class="ModelicaBaseClass">Extends from Modelica.Icons.ReleaseNotes (Icon for release notes in documentation).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_UsersGuide_ReleaseNotes.html</pre>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE Version_0_6_1<![endif]-->
@@ -167,8 +255,7 @@ pre {white-space: pre; overflow-x : hidden;}
 >DeadTime</a>
       block has been added to be used in conjunction with any of the
       blocks producing switching signals
-      (currently <a href="PVSystems_Control.html#PVSystems.Control.SignalPWM"
->SignalPWM</a>
+      (currently <a href="modelica://PVSystems.Control.SignalPWM">SignalPWM</a>
       and <a href="PVSystems_Control.html#PVSystems.Control.SwitchingCPM"
 >SwitchingCPM</a>),
       to create a complement switching signal with an optional dead
@@ -185,6 +272,8 @@ pre {white-space: pre; overflow-x : hidden;}
   </ul>
 
 <p><span class="ModelicaBaseClass">Extends from Modelica.Icons.ReleaseNotes (Icon for release notes in documentation).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_UsersGuide_ReleaseNotes.html</pre>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE Version_0_6_0<![endif]-->
@@ -217,9 +306,11 @@ pre {white-space: pre; overflow-x : hidden;}
       </ul>
     
 <p><span class="ModelicaBaseClass">Extends from Modelica.Icons.ReleaseNotes (Icon for release notes in documentation).</span></p>
+<h3>Filename</h3>
+<pre>PVSystems_UsersGuide_ReleaseNotes.html</pre>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:07 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:22 2017.
 </address>
 </body>
 </html>

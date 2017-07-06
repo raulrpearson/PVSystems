@@ -67,6 +67,8 @@ pre {white-space: pre; overflow-x : hidden;}
        </li>
 </ul>
 
+<h3>Filename</h3>
+<pre>Modelica_Electrical_Analog_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> TwoPin <span class="ModelicaComment">&quot;Component with two electrical pins&quot;</span>
   <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
@@ -111,6 +113,8 @@ pre {white-space: pre; overflow-x : hidden;}
        </li>
 </ul>
 
+<h3>Filename</h3>
+<pre>Modelica_Electrical_Analog_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> OnePort
   <span class="ModelicaComment">&quot;Component with two electrical pins p and n and current i from p to n&quot;</span>
@@ -129,71 +133,6 @@ pre {white-space: pre; overflow-x : hidden;}
   0 = p.i + n.i;
   i = p.i;
 <span class="ModelicaKeyword">end </span>OnePort;
-</div>
-<hr>
-<!--[if supportFields]><span style="mso-element:field-begin"></span>
-<span style="mso-spacerun:yes"></span>XE TwoPort<![endif]-->
-<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
-<h2><img src="Modelica.Electrical.Analod993cc7d5077b5cboPortI.png" alt="Modelica.Electrical.Analog.Interfaces.TwoPort" align="right" style="border: 1px solid" width="80" height="80">
-<a name="Modelica.Electrical.Analog.Interfaces.TwoPort"></a>Modelica.Electrical.Analog.Interfaces.TwoPort</h2>
-<p>
-<span class="ModelicaDescription">Component with two electrical ports, including current</span>
-<br>
-<br><img src="Modelica.Electrical.Analod993cc7d5077b5cboPortD.png" alt="Modelica.Electrical.Analog.Interfaces.TwoPort">
-</p>
-<h3>Information</h3>
-
-<p>TwoPort is a partial model that consists of two ports. Like OnePort each port has two pins. It is assumed that the current flowing into the positive  pin   is identical to the current flowing out of pin n. This currents of each port are  provided explicitly as currents i1 and i2, the voltages respectively as v1 and v2.</p>
-
-<h3>Connectors</h3>
-<table summary="Connectors" class="ModelicaTableConnectors">
-<tr><th>Type</th><th>Name</th><th>Description</th></tr>
-<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
->PositivePin</a></td><td>p1</td><td>Positive pin of the left port (potential p1.v &gt; n1.v for positive voltage drop v1)</td></tr>
-<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
->NegativePin</a></td><td>n1</td><td>Negative pin of the left port</td></tr>
-<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
->PositivePin</a></td><td>p2</td><td>Positive pin of the right port (potential p2.v &gt; n2.v for positive voltage drop v2)</td></tr>
-<tr><td><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
->NegativePin</a></td><td>n2</td><td>Negative pin of the right port</td></tr>
-</table>
-<h3>Revisions</h3>
-
-<ul>
-<li><i> 1998   </i>
-       by Christoph Clauss<br> initially implemented<br>
-       </li>
-</ul>
-
-<h3>Modelica definition</h3>
-<div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> TwoPort
-  <span class="ModelicaComment">&quot;Component with two electrical ports, including current&quot;</span>
-  <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
->SI.Voltage</a> v1 <span class="ModelicaComment">&quot;Voltage drop over the left port&quot;</span>;
-  <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
->SI.Voltage</a> v2 <span class="ModelicaComment">&quot;Voltage drop over the right port&quot;</span>;
-  <a href="Modelica_SIunits.html#Modelica.SIunits.Current"
->SI.Current</a> i1 <span class="ModelicaComment">&quot;Current flowing from pos. to neg. pin of the left port&quot;</span>;
-  <a href="Modelica_SIunits.html#Modelica.SIunits.Current"
->SI.Current</a> i2 <span class="ModelicaComment">&quot;Current flowing from pos. to neg. pin of the right port&quot;</span>;
-  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
->PositivePin</a> p1
-    <span class="ModelicaComment">&quot;Positive pin of the left port (potential p1.v &gt; n1.v for positive voltage drop v1)&quot;</span>;
-  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
->NegativePin</a> n1 <span class="ModelicaComment">&quot;Negative pin of the left port&quot;</span>;
-  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.PositivePin"
->PositivePin</a> p2
-    <span class="ModelicaComment">&quot;Positive pin of the right port (potential p2.v &gt; n2.v for positive voltage drop v2)&quot;</span>;
-  <a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.NegativePin"
->NegativePin</a> n2 <span class="ModelicaComment">&quot;Negative pin of the right port&quot;</span>;
-<span class="ModelicaKeyword">equation </span>
-  v1 = p1.v - n1.v;
-  v2 = p2.v - n2.v;
-  0 = p1.i + n1.i;
-  0 = p2.i + n2.i;
-  i1 = p1.i;
-  i2 = p2.i;
-<span class="ModelicaKeyword">end </span>TwoPort;
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
@@ -226,6 +165,8 @@ pre {white-space: pre; overflow-x : hidden;}
        </li>
 </ul>
 
+<h3>Filename</h3>
+<pre>Modelica_Electrical_Analog_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">connector</span> PositivePin <span class="ModelicaComment">&quot;Positive pin of an electric component&quot;</span>
   <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
@@ -265,6 +206,8 @@ pre {white-space: pre; overflow-x : hidden;}
 </dd>
 </dl>
 
+<h3>Filename</h3>
+<pre>Modelica_Electrical_Analog_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">connector</span> NegativePin <span class="ModelicaComment">&quot;Negative pin of an electric component&quot;</span>
   <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
@@ -316,6 +259,8 @@ pre {white-space: pre; overflow-x : hidden;}
        </li>
 </ul>
 
+<h3>Filename</h3>
+<pre>Modelica_Electrical_Analog_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> VoltageSource <span class="ModelicaComment">&quot;Interface for voltage sources&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
@@ -382,6 +327,8 @@ on the model behaviour.
        </li>
 </ul>
 
+<h3>Filename</h3>
+<pre>Modelica_Electrical_Analog_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> ConditionalHeatPort
   <span class="ModelicaComment">&quot;Partial model to include a conditional HeatPort in order to describe the power loss via a thermal network&quot;</span>
@@ -435,6 +382,8 @@ on the model behaviour.
        </li>
 </ul>
 
+<h3>Filename</h3>
+<pre>Modelica_Electrical_Analog_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">connector</span> Pin <span class="ModelicaComment">&quot;Pin of an electrical component&quot;</span>
   <a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
@@ -509,6 +458,8 @@ behavior is <b>not</b> modelled. The parameters are not temperature dependent.
        </li>
 </ul>
 
+<h3>Filename</h3>
+<pre>Modelica_Electrical_Analog_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> IdealSwitch <span class="ModelicaComment">&quot;Ideal electrical switch&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
@@ -608,6 +559,8 @@ behavior is <b>not</b> modelled.
        </li>
 </ul>
 
+<h3>Filename</h3>
+<pre>Modelica_Electrical_Analog_Interfaces.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">partial </span><span class="ModelicaKeyword">model</span> IdealSemiconductor <span class="ModelicaComment">&quot;Ideal semiconductor&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
@@ -642,7 +595,7 @@ behavior is <b>not</b> modelled.
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Wed Apr 19 20:36:14 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:31 2017.
 </address>
 </body>
 </html>
