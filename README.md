@@ -6,7 +6,7 @@
 
 *PVSystems* is a [Modelica](https://modelica.org/) library providing models useful for the design and evaluation of photovoltaic systems and power converters as well as their associated control algorithms. For more information, check out the [online documentation](https://raulrpearson.github.io/PVSystems/).
 
-![Screenshot](PVSystems/Resources/Images/screenshot.png)
+<img src="https://cdn.rawgit.com/raulrpearson/PVSystems/86c28eb3/PVSystems/Resources/Images/screenshot_diagram.svg" width="45%"> <img src="https://cdn.rawgit.com/raulrpearson/PVSystems/86c28eb3/PVSystems/Resources/Images/screenshot_plot.svg" width="45%">
 
 The library is the result of a research project carried out in the form of a master's degree thesis. There are two intended audiences for the library:
 
