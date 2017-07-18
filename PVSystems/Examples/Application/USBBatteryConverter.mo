@@ -63,7 +63,7 @@ model USBBatteryConverter "Bidirectional converter for USB battery interface"
     height=6.67 - 2.5)
     annotation (Placement(transformation(extent={{90,60},{70,80}})));
   Modelica.Blocks.Sources.BooleanExpression modeCommand(y=time > 10)
-    annotation (Placement(transformation(extent={{-82,-80},{-50,-60}})));
+    annotation (Placement(transformation(extent={{-70,-80},{-50,-60}})));
 equation
   connect(Rbatt.n, conv.p1) annotation (Line(points={{-20,80},{-6,80},{-6,75},{
           4,75}}, color={0,0,255}));
@@ -95,10 +95,10 @@ equation
     annotation (Line(points={{-69,70},{-57,70}}, color={0,0,127}));
   connect(RloadSignal.y, Rload.R)
     annotation (Line(points={{69,70},{61,70}}, color={0,0,127}));
-  connect(modeCommand.y, modeSelector.u2) annotation (Line(points={{-48.4,-70},
-          {10,-70},{10,18}}, color={255,0,255}));
-  connect(modeCommand.y, conv.mode) annotation (Line(points={{-48.4,-70},{30,
-          -70},{30,50},{18,50},{18,58}}, color={255,0,255}));
-  annotation (experiment(StopTime=5, Interval=0.001),
+  connect(modeCommand.y, modeSelector.u2) annotation (Line(points={{-49,-70},{10,
+          -70},{10,18}},     color={255,0,255}));
+  connect(modeCommand.y, conv.mode) annotation (Line(points={{-49,-70},{30,-70},
+          {30,50},{18,50},{18,58}},      color={255,0,255}));
+  annotation (experiment(StopTime=20, Interval=0.001),
       __Dymola_experimentSetupOutput);
 end USBBatteryConverter;

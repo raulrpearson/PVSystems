@@ -81,6 +81,16 @@ model CPMBidirectionalBuckBoost
         extent={{10,-10},{-10,10}},
         rotation=270,
         origin={40,-30})));
+  Modelica.Blocks.MathBoolean.OnDelay onDelay(delayTime=3/fs) annotation (
+      Placement(transformation(
+        extent={{-4,-4},{4,4}},
+        rotation=90,
+        origin={10,-38})));
+  Modelica.Blocks.MathBoolean.OnDelay onDelay1(delayTime=3/fs) annotation (
+      Placement(transformation(
+        extent={{-4,-4},{4,4}},
+        rotation=90,
+        origin={40,-6})));
 equation
   connect(conv.p1, p1)
     annotation (Line(points={{66,95},{-100,95},{-100,50}}, color={0,0,255}));
@@ -108,14 +118,18 @@ equation
     annotation (Line(points={{-40,-120},{-40,14},{-2,14}}, color={0,0,127}));
   connect(mode, not1.u) annotation (Line(points={{40,-120},{40,-120},{40,-72},{
           40,-42}}, color={255,0,255}));
-  connect(mode, boost_cpm.enable) annotation (Line(points={{40,-120},{40,-120},
-          {40,-72},{10,-72},{10,-8}}, color={255,0,255}));
-  connect(not1.y, buck_cpm.enable)
-    annotation (Line(points={{40,-19},{40,28}}, color={255,0,255}));
   connect(boost_cpm.d, conv.dboost)
     annotation (Line(points={{21,4},{80,4},{80,78}}, color={0,0,127}));
   connect(buck_cpm.d, conv.dbuck)
     annotation (Line(points={{51,40},{72,40},{72,78}}, color={0,0,127}));
+  connect(mode, onDelay.u) annotation (Line(points={{40,-120},{40,-72},{10,-72},
+          {10,-43.6}}, color={255,0,255}));
+  connect(onDelay.y, boost_cpm.enable)
+    annotation (Line(points={{10,-33.2},{10,-8}}, color={255,0,255}));
+  connect(not1.y, onDelay1.u)
+    annotation (Line(points={{40,-19},{40,-11.6}}, color={255,0,255}));
+  connect(onDelay1.y, buck_cpm.enable)
+    annotation (Line(points={{40,-1.2},{40,28}}, color={255,0,255}));
   annotation (
     Diagram(graphics={Text(
           extent={{-22,2},{22,-2}},
