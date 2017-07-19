@@ -100,5 +100,69 @@ equation
   connect(modeCommand.y, conv.mode) annotation (Line(points={{-49,-70},{30,-70},
           {30,50},{18,50},{18,58}},      color={255,0,255}));
   annotation (experiment(StopTime=20, Interval=0.001),
-      __Dymola_experimentSetupOutput);
+      __Dymola_experimentSetupOutput,
+      Documentation(info="<html>
+          <p>
+            A battery, simulated with a controlled voltage source in
+            series with a small resistance, is interfaced with a USB
+            device, simulated with a resistive load. The converter
+            is a component included in
+            the <a href=\"Modelica://PVSystems.Electrical.Assemblies\">Electrical.Assemblies</a>
+            package.
+          </p>
+        
+          <p>
+            This example is borrowed
+            from <a href=\"modelica://PVSystems.UsersGuide.References.EMA16\">EMA16</a>. The
+            application is not that related with photovoltaics, but
+            provides a good showcase of the power electronics models
+            in this library. The converter is specified to have
+            three operating modes:
+          </p>
+        
+          <ul class=\"org-ul\">
+            <li>Battery voltage 12.6V, USB voltage 5+/-0.1V at 2A,
+              converter supplies bus.
+            </li>
+            <li>Battery voltage 9.6V, USB voltage 20+/-0.1V at 3A,
+              converter supplies bus.
+            </li>
+            <li>Battery voltage 11.1V, USB voltage 20V, bus supplies
+              60W to charge battery.
+            </li>
+          </ul>
+        
+          <p>
+            An efficient solution to these step-down and
+            bidirectional step-up requirements is a non-inverting
+            buck-boost converter with bi-directional switches
+            operated in a buck/boost modal fashion (i.e. the boost
+            switches are disabled while in buck mode and vice
+            versa). A possible solution to these requirements using
+            this topology is expressed through the parametrization
+            of <a href=\"modelica://PVSystems.Electrical.Assemblies.CPMBidirectionalBuckBoost\">CPMBidirectionalBuckBoost</a>:
+          </p>
+        
+        
+          <div class=\"figure\">
+            <p><img src=\"modelica://PVSystems/Resources/Images/USBBatteryConverterParameters.png\"
+                    alt=\"USBBatteryConverterParameters.png\" />
+            </p>
+          </div>
+        
+          <p>
+            This converter model includes both the electrical and
+            control components of a Current-Peak Mode controlled
+            modal non-inverting buck-boost. The default stop time is
+            set at 20 seconds. Running the simulation and plotting
+            the output voltage and current produces the following
+            result:
+          </p>
+        
+        
+          <div class=\"figure\">
+            <p><img src=\"modelica://PVSystems/Resources/Images/USBBatteryConverterResults.png\"
+                    alt=\"USBBatteryConverterResults.png\" /></p>
+          </div>
+        </html>"));
 end USBBatteryConverter;
