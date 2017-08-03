@@ -1,8 +1,8 @@
 IdealCBSwitchVerification
-MPPTControllerVerification
-ParkVerification
-PLLVerification
 PVArrayVerification
+SimpleBatteryVerification
 SwitchingPWMVerification
 SwitchingCPMVerification
-SimpleBatteryVerification
+ParkVerification
+PLLVerification
+MPPTControllerVerification
