@@ -11,33 +11,32 @@ model IdealCBSwitchVerification
         origin={30,10},
         extent={{-10,-10},{10,10}},
         rotation=270)));
-  Modelica.Blocks.Sources.BooleanStep booleanStep(startTime=0.45, startValue=
-        false) annotation (Placement(transformation(extent={{-80,0},{-60,20}},
+  Modelica.Blocks.Sources.BooleanStep booleanStep(startValue=true, startTime=
+        0.5)   annotation (Placement(transformation(extent={{-70,0},{-50,20}},
           rotation=0)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
-        transformation(extent={{20,-60},{40,-40}}, rotation=0)));
+        transformation(extent={{-10,-30},{10,-10}},rotation=0)));
   Modelica.Electrical.Analog.Basic.Resistor resistor(R=2) annotation (Placement(
         transformation(
-        origin={0,40},
+        origin={0,30},
         extent={{-10,-10},{10,10}},
         rotation=180)));
 equation
   connect(booleanStep.y, idealCBSwitch.c)
-    annotation (Line(points={{-59,10},{-48,10},{-37,10}}, color={255,0,255}));
+    annotation (Line(points={{-49,10},{-49,10},{-37,10}}, color={255,0,255}));
   connect(idealCBSwitch.p, resistor.n)
-    annotation (Line(points={{-30,20},{-30,40},{-10,40}}, color={0,0,255}));
-  connect(idealCBSwitch.n, sineVoltage.n) annotation (Line(points={{-30,0},{-30,
-          -20},{30,-20},{30,0}}, color={0,0,255}));
+    annotation (Line(points={{-30,20},{-30,30},{-10,30}}, color={0,0,255}));
   connect(resistor.p, sineVoltage.p)
-    annotation (Line(points={{10,40},{30,40},{30,20}}, color={0,0,255}));
-  connect(ground.p, sineVoltage.n)
-    annotation (Line(points={{30,-40},{30,-20},{30,0}}, color={0,0,255}));
+    annotation (Line(points={{10,30},{30,30},{30,20}}, color={0,0,255}));
+  connect(idealCBSwitch.n, ground.p)
+    annotation (Line(points={{-30,0},{-30,-10},{0,-10}}, color={0,0,255}));
+  connect(ground.p, sineVoltage.n) annotation (Line(points={{0,-10},{16,-10},{
+          30,-10},{30,0}}, color={0,0,255}));
   annotation (
-    Diagram(graphics),
     experiment(
       StartTime=0,
       StopTime=1,
-      Tolerance=1e-4),
+      Tolerance=1e-3),
     Documentation(info="<html>
         <p>
           This example presents a circuit composed of a resistor

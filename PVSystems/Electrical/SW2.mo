@@ -6,7 +6,7 @@ model SW2 "Switched model implemented with switch x 2"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-40,0})));
-  Control.SwitchingPWM signalPWM(
+  Control.SwitchingPWM spwm(
     dMax=dMax,
     dMin=dMin,
     fs=fs,
@@ -27,27 +27,28 @@ model SW2 "Switched model implemented with switch x 2"
         extent={{10,10},{-10,-10}},
         rotation=270,
         origin={40,0})));
-  Control.DeadTime deadTime annotation (Placement(transformation(
+  Control.DeadTime dt(deadTime=deadTime) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,-30})));
+  parameter Modelica.SIunits.Time deadTime=0 "Dead time";
 equation
   connect(p1, sw1.p)
     annotation (Line(points={{-100,50},{-40,50},{-40,10}}, color={0,0,255}));
   connect(n1, sw1.n) annotation (Line(points={{-100,-50},{-40,-50},{-40,-10}},
         color={0,0,255}));
-  connect(signalPWM.vc, d)
+  connect(spwm.vc, d)
     annotation (Line(points={{0,-82},{0,-120}}, color={0,0,127}));
-  connect(deadTime.c, signalPWM.c1)
+  connect(dt.c, spwm.c1)
     annotation (Line(points={{0,-42},{0,-59}}, color={255,0,255}));
-  connect(deadTime.c1, sw1.control) annotation (Line(points={{-4,-19},{-4,-19},
-          {-4,0},{-33,0}}, color={255,0,255}));
+  connect(dt.c1, sw1.control) annotation (Line(points={{-4,-19},{-4,-19},{-4,0},
+          {-33,0}}, color={255,0,255}));
   connect(sw2.n, p2) annotation (Line(points={{40,10},{40,10},{40,50},{100,50}},
         color={0,0,255}));
   connect(n2, sw2.p)
     annotation (Line(points={{100,-50},{40,-50},{40,-10}}, color={0,0,255}));
-  connect(deadTime.c2, sw2.control) annotation (Line(points={{4,-19},{4,-19},{4,
-          0},{33,0}}, color={255,0,255}));
+  connect(dt.c2, sw2.control) annotation (Line(points={{4,-19},{4,-19},{4,0},{
+          33,0}}, color={255,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end SW2;
