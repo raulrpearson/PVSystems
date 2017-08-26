@@ -2,6 +2,7 @@ IdealCBSwitchVerification
 SW1Verification
 SW2Verification
 SW3Verification
+CCMXVerification
 PVArrayVerification
 SimpleBatteryVerification
 SwitchingPWMVerification
