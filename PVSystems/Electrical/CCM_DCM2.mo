@@ -11,8 +11,8 @@ protected
 equation
   0 = p1.i + n1.i;
   0 = p2.i + n2.i;
-  Re = 2*Le*fs/dsat^2;
-  mu = max(dsat, 1/(1 + Re*i1/v2));
+  Re = 2*Le*n*fs/dsat^2;
+  mu = max(dsat, 1/(1 + Re*max(0,i1)/v2));
   v1 = (1 - mu)*v2/mu/n;
   -i2 = (1 - mu)*i1/mu/n;
   annotation(Documentation(info="<html>
