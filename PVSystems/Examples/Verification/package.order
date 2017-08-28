@@ -3,6 +3,7 @@ SW1Verification
 SW2Verification
 SW3Verification
 CCMXVerification
+CCM_DCMXVerification
 PVArrayVerification
 SimpleBatteryVerification
 SwitchingPWMVerification
