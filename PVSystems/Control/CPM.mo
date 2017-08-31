@@ -5,7 +5,7 @@ protected
   Real d2;
 equation
   d2 = min(L*fs*(vc - Va*d)/Rf/vm2, 1 - d);
-  d = 2*(vc*(d + d2) - vs)/(vm1 + vm2)*d2*(d + d2) + 2*Va*(d + d2);
+  d = 2*(vc*(d + d2) - vs)/(Rf/L/fs*(vm1 + vm2)*d2*(d + d2) + 2*Va*(d + d2));
   annotation (Icon(graphics={
         Line(points={{-80,20},{-70,0},{-50,0},{-30,60},{10,0},{30,0},{50,60},{
               80,20}}, color={255,0,0}),
