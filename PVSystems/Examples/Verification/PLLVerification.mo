@@ -13,7 +13,8 @@ equation
   connect(pLL.theta, sync.u)
     annotation (Line(points={{11,0},{28,0}}, color={0,0,127}));
   annotation (
-    Diagram(graphics),
+    Diagram(graphics={Rectangle(extent={{-60,20},{60,-20}}, lineColor={255,255,
+              255})}),
     experiment(
       StartTime=0,
       StopTime=0.1,

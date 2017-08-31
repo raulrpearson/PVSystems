@@ -44,7 +44,8 @@ equation
   connect(vsense.y, hysteresis.u)
     annotation (Line(points={{-69,10},{-56,10}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+        coordinateSystem(preserveAspectRatio=false), graphics={Rectangle(extent
+            ={{-100,50},{100,-40}}, lineColor={255,255,255})}),
     experiment(StopTime=5400, __Dymola_NumberOfIntervals=10000),
     __Dymola_experimentSetupOutput,
     Documentation(info="<html>

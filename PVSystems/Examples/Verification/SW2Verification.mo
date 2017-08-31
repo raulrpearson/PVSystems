@@ -35,5 +35,6 @@ equation
   annotation (experiment(
       StartTime=0,
       StopTime=1,
-      Tolerance=1e-3));
+      Tolerance=1e-3), Diagram(graphics={Rectangle(extent={{-80,40},{48,-30}},
+            lineColor={255,255,255})}));
 end SW2Verification;

@@ -74,5 +74,7 @@ equation
           Plot the voltage drop in the resistor to confirm these
           results or play with the parameter values to see what
           effects they have.</p>
-      </html>"));
+      </html>"),
+    Diagram(graphics={Rectangle(extent={{-80,40},{48,-30}}, lineColor={255,255,
+              255})}));
 end IdealCBSwitchVerification;

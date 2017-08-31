@@ -82,5 +82,6 @@ equation
   connect(duty.y, ccm_dcm1.d) annotation (Line(points={{-59,-30},{-40,-30},{-40,
           40},{40,40},{40,58}}, color={0,0,127}));
   annotation (
-    experiment(StartTime=0, StopTime=1, Tolerance=1e-3));
+    experiment(StartTime=0, StopTime=1, Tolerance=1e-3), Diagram(graphics={
+          Rectangle(extent={{-90,90},{90,-50}}, lineColor={255,255,255})}));
 end CCM_DCMXVerification;

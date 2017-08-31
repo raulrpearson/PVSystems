@@ -133,5 +133,7 @@ equation
                   alt=\"MPPTControllerVerificationResultsB.png\"
                   /></p>
         </div>
-      </html>"));
+      </html>"),
+    Diagram(graphics={Rectangle(extent={{-100,92},{70,-90}}, lineColor={255,255,
+              255})}));
 end MPPTControllerVerification;

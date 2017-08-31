@@ -20,7 +20,8 @@ equation
   connect(add.y, signalPWM.vc)
     annotation (Line(points={{1,10},{18,10}}, color={0,0,127}));
   annotation (
-    Diagram(graphics),
+    Diagram(graphics={Rectangle(extent={{-90,50},{50,-30}}, lineColor={255,255,
+              255})}),
     experiment(
       StartTime=0,
       StopTime=1,

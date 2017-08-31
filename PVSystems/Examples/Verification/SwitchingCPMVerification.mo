@@ -50,5 +50,7 @@ equation
                     alt=\"SwitchingCPMVerificationresults.Png\"
                     /></p>
           </div>
-        </html>>"));
+        </html>>"),
+    Diagram(graphics={Rectangle(extent={{-68,58},{88,-68}}, lineColor={255,255,
+              255})}));
 end SwitchingCPMVerification;

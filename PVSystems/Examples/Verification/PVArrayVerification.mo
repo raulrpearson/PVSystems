@@ -30,7 +30,8 @@ equation
   connect(ground.p, rampVoltage.n)
     annotation (Line(points={{40,-20},{40,0}}, color={0,0,255}));
   annotation (
-    Diagram(graphics),
+    Diagram(graphics={Rectangle(extent={{-60,40},{60,-40}}, lineColor={255,255,
+              255})}),
     Documentation(info="<html>
         <p>
           A ramp DC voltage source is applied in parallel to an

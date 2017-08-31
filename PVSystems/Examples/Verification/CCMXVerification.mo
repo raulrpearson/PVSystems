@@ -204,7 +204,9 @@ equation
     experiment(
       StartTime=0, StopTime=1,Tolerance=1e-3),
     Diagram(
-      coordinateSystem(extent={{-100,-140},{100,140}}, initialScale=0.1)),
+      coordinateSystem(extent={{-100,-140},{100,140}}, initialScale=0.1),
+        graphics={Rectangle(extent={{-100,140},{100,-140}}, lineColor={255,255,
+              255})}),
     Icon(
       coordinateSystem(extent={{-100,-100},{100,100}}, initialScale=0.1)));
 end CCMXVerification;
