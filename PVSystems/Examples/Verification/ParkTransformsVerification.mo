@@ -1,5 +1,5 @@
 within PVSystems.Examples.Verification;
-model ParkVerification "Park transforms verification"
+model ParkTransformsVerification "Park transforms verification"
   extends Modelica.Icons.Example;
   Control.Park park
     annotation (Placement(transformation(extent={{0,20},{20,40}}, rotation=0)));
@@ -30,7 +30,8 @@ equation
   connect(inversePark.theta, sawTooth.y)
     annotation (Line(points={{50,18},{50,-30},{-59,-30}}, color={0,0,127}));
   annotation (
-    Diagram(graphics),
+    Diagram(graphics={Rectangle(extent={{-90,70},{70,-50}}, lineColor={255,255,
+              255})}),
     experiment(StopTime=0.1),
     Documentation(info="<html>
         <p>
@@ -54,4 +55,4 @@ equation
           recreates the original signals (which overlap them on
           the plot).</p>
       </html>"));
-end ParkVerification;
+end ParkTransformsVerification;

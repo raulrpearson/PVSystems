@@ -8,6 +8,6 @@ PVArrayVerification
 SimpleBatteryVerification
 SwitchingPWMVerification
 SwitchingCPMVerification
-ParkVerification
+ParkTransformsVerification
 PLLVerification
 MPPTControllerVerification
