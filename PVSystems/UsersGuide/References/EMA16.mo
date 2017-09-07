@@ -1,4 +1,4 @@
-﻿within PVSystems.UsersGuide.References;
+within PVSystems.UsersGuide.References;
 class EMA16 "<html>R. W. Erickson, D. Maksimović and K. Afridi,
   <a href=\"https://www.coursera.org/specializations/power-electronics\">
   <i>Power Electronics Specialization</i></a> at Coursera.

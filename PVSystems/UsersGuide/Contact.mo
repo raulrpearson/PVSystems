@@ -1,4 +1,4 @@
-﻿within PVSystems.UsersGuide;
+within PVSystems.UsersGuide;
 class Contact "Contact"
   extends Modelica.Icons.Contact;
   annotation (Documentation(info="<html>

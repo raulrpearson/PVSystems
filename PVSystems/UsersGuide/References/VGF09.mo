@@ -1,4 +1,4 @@
-﻿within PVSystems.UsersGuide.References;
+within PVSystems.UsersGuide.References;
 class VGF09 "<html>M. G. Villalva, J. R. Gazoli, and E. R. Filho, “Comprehensive
           Approach to Modeling and Simulation of Photovoltaic Arrays,”
           IEEE Transactions on Power Electronics, vol. 24, no. 5,

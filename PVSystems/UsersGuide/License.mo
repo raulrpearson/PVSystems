@@ -1,4 +1,4 @@
-﻿within PVSystems.UsersGuide;
+within PVSystems.UsersGuide;
 class License "License"
   annotation (Documentation(info="<html>
       <p>
