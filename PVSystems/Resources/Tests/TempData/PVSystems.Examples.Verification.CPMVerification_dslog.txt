@@ -1,0 +1,92 @@
+Log-file of program ./dymosim
+(generated: Fri Sep 08 06:30:43 2017)
+
+dymosim started
+... "dsin.txt" loading (dymosim input file)
+ERROR: Failed to solve non-linear system using Newton solver.
+ It could be that:
+* the starting values are too far from the solution
+ - especially if this occurs at the starting point (see homotopy in the manual) - in rare cases it could occur at events
+ * the equations are too discontinuous for the non-linear solver (likely due to over-using noEvent) - the residual will have knees,
+ * the equations have no solution (note that in some cases the event-logic can cause this) - the residual will be above zero.
+Jacobian has inverse norm 1.44444 and condition number 1.
+To get more information: Turn on Simulation/Setup/Debug/Nonlinear solver diagnostics/Details
+Solution to systems of equations not found at time = 0
+   Nonlinear system of equations number = 1
+Tag: simulation.nonlinear[1]
+   Infinity-norm of residue = 1.53846
+   Iteration is not making good progress.
+   Accumulated number of residue       calc.: 47
+   Accumulated number of symbolic Jacobian calc.: 2
+   Last values of solution vector:
+CPM.d = 0
+   Last values of residual vector:
+{ -1.53846 }
+ 
+Trying homotopy
+ERROR: Failed to solve non-linear system using Newton solver.
+ It could be that:
+* the starting values are too far from the solution
+ - especially if this occurs at the starting point (see homotopy in the manual) - in rare cases it could occur at events
+ * the equations are too discontinuous for the non-linear solver (likely due to over-using noEvent) - the residual will have knees,
+ * the equations have no solution (note that in some cases the event-logic can cause this) - the residual will be above zero.
+Jacobian has inverse norm 1.44444 and condition number 1.
+To get more information: Turn on Simulation/Setup/Debug/Nonlinear solver diagnostics/Details
+Solution to systems of equations not found at time = 0
+   Nonlinear system of equations number = 1
+Tag: simulation.nonlinear[1]
+   Infinity-norm of residue = 1.53846
+   Iteration is not making good progress.
+   Accumulated number of residue       calc.: 94
+   Accumulated number of symbolic Jacobian calc.: 4
+   Last values of solution vector:
+CPM.d = 0
+   Last values of residual vector:
+{ -1.53846 }
+ 
+Trying to solve non-linear system using global homotopy-method.
+... "PVSystems.Examples.Verification.CPMVerification.mat" creating (simulation result file)
+
+Integration started at T = 0 using integration method DASSL
+(DAE multi-step solver (dassl/dasslrt of Petzold modified by Dynasim))
+ERROR: Failed to solve non-linear system using Newton solver.
+ It could be that:
+* the starting values are too far from the solution
+ - especially if this occurs at the starting point (see homotopy in the manual) - in rare cases it could occur at events
+ * the equations are too discontinuous for the non-linear solver (likely due to over-using noEvent) - the residual will have knees,
+ * the equations have no solution (note that in some cases the event-logic can cause this) - the residual will be above zero.
+Jacobian has inverse norm 0.556541 and condition number 1.
+To get more information: Turn on Simulation/Setup/Debug/Nonlinear solver diagnostics/Details
+Solution to systems of equations not found at time = 1.575E-008
+   Nonlinear system of equations number = 1
+Tag: simulation.nonlinear[1]
+   Infinity-norm of residue = 5.9939
+   Iteration is not making good progress.
+   Accumulated number of residue       calc.: 266
+   Accumulated number of symbolic Jacobian calc.: 20
+   Last values of solution vector:
+CPM.d = 2.00099
+   Last values of residual vector:
+{ 5.9939 }
+ 
+Integration terminated before reaching "StopTime" at T = 0
+States and derivatives:
+integrator.y=0.000945 60000
+mean.x=7.45869e-012 0.000945
+   CPU-time for integration      : 0.006 seconds
+   CPU-time for one GRID interval: 6 milli-seconds
+   Number of result points       : 2
+   Number of GRID   points       : 2
+   Number of (successful) steps  : 0
+   Number of F-evaluations       : 11
+   Number of H-evaluations       : 0
+   Number of Jacobian-evaluations: 0
+   Number of (model) time events : 0
+   Number of (U) time events     : 0
+   Number of state    events     : 0
+   Number of step     events     : 0
+   Minimum integration stepsize  : 0
+   Maximum integration stepsize  : 0
+   Maximum integration order     : 0
+Calling terminal section
+... "dsfinal.txt" creating (final states)

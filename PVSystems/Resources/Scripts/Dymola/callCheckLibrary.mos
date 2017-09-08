@@ -1,2 +1,2 @@
 cd("Resources/Tests");
-ModelManagement.Check.checkLibrary(name="PVSystems", referenceFileDirectory="RefData", localCoverage=false)
+ModelManagement.Check.checkLibrary(name="PVSystems", referenceFileDirectory="RefData")
