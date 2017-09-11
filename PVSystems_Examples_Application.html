@@ -185,8 +185,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td><a href="PVSystems_Electrical.html#PVSystems.Electrical.CCM_DCM1"
 >CCM_DCM1</a></td><td>sn</td><td>redeclare Electrical.CCM_DCM...</td><td>&nbsp;</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> BuckOpen <span class="ModelicaComment">&quot;Ideal open-loop buck converter&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
@@ -325,8 +323,6 @@ pre {white-space: pre; overflow-x : hidden;}
       
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> Inverter1phOpen
   <span class="ModelicaComment">&quot;Stand-alone 1-phase open-loop inverter with constant DC source&quot;</span>
@@ -445,8 +441,6 @@ pre {white-space: pre; overflow-x : hidden;}
       
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> Inverter1phOpenSynch
   <span class="ModelicaComment">&quot;Grid-tied 1-phase open-loop inverter with constant DC source&quot;</span>
@@ -568,8 +562,6 @@ pre {white-space: pre; overflow-x : hidden;}
       
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> Inverter1phClosed
   <span class="ModelicaComment">&quot;Stand-alone 1-phase closed-loop inverter with constant DC source&quot;</span>
@@ -661,8 +653,6 @@ pre {white-space: pre; overflow-x : hidden;}
         
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> Inverter1phClosedSynch
   <span class="ModelicaComment">&quot;Grid-tied 1-phase closed-loop inverter with constant DC source&quot;</span>
@@ -767,8 +757,6 @@ pre {white-space: pre; overflow-x : hidden;}
             
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> PVInverter1ph <span class="ModelicaComment">&quot;Stand-alone 1-phase closed-loop inverter with PV source&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
@@ -887,8 +875,6 @@ pre {white-space: pre; overflow-x : hidden;}
       
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> PVInverter1phSynch
   <span class="ModelicaComment">&quot;Grid-tied 1-phase closed-loop inverter with PV source&quot;</span>
@@ -972,10 +958,75 @@ pre {white-space: pre; overflow-x : hidden;}
 <br><img src="PVSystems.Examples.Applica703c01c50956d05erterD.png" alt="PVSystems.Examples.Application.USBBatteryConverter">
 </p>
 <h3>Information</h3>
+
+          <p>
+            A battery, simulated with a controlled voltage source in
+            series with a small resistance, is interfaced with a USB
+            device, simulated with a resistive load. The converter
+            is a component included in
+            the <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies"
+>Electrical.Assemblies</a>
+            package.
+          </p>
+        
+          <p>
+            This example is borrowed
+            from <a href="PVSystems_UsersGuide_References.html#PVSystems.UsersGuide.References.EMA16"
+>EMA16</a>. The
+            application is not that related with photovoltaics, but
+            provides a good showcase of the power electronics models
+            in this library. The converter is specified to have
+            three operating modes:
+          </p>
+        
+          <ul class="org-ul">
+            <li>Battery voltage 12.6V, USB voltage 5+/-0.1V at 2A,
+              converter supplies bus.
+            </li>
+            <li>Battery voltage 9.6V, USB voltage 20+/-0.1V at 3A,
+              converter supplies bus.
+            </li>
+            <li>Battery voltage 11.1V, USB voltage 20V, bus supplies
+              60W to charge battery.
+            </li>
+          </ul>
+        
+          <p>
+            An efficient solution to these step-down and
+            bidirectional step-up requirements is a non-inverting
+            buck-boost converter with bi-directional switches
+            operated in a buck/boost modal fashion (i.e. the boost
+            switches are disabled while in buck mode and vice
+            versa). A possible solution to these requirements using
+            this topology is expressed through the parametrization
+            of <a href="PVSystems_Electrical_Assemblies.html#PVSystems.Electrical.Assemblies.CPMBidirectionalBuckBoost"
+>CPMBidirectionalBuckBoost</a>:
+          </p>
+        
+        
+          <div class="figure">
+            <p><img src="Images/USBBatteryConverterParameters.png"
+                    alt="USBBatteryConverterParameters.png" />
+            </p>
+          </div>
+        
+          <p>
+            This converter model includes both the electrical and
+            control components of a Current-Peak Mode controlled
+            modal non-inverting buck-boost. The default stop time is
+            set at 20 seconds. Running the simulation and plotting
+            the output voltage and current produces the following
+            result:
+          </p>
+        
+        
+          <div class="figure">
+            <p><img src="Images/USBBatteryConverterResults.png"
+                    alt="USBBatteryConverterResults.png" /></p>
+          </div>
+        
 <p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Icons.html#Modelica.Icons.Example"
 >Modelica.Icons.Example</a> (Icon for runnable examples).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_Examples_Application.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> USBBatteryConverter <span class="ModelicaComment">&quot;Bidirectional converter for USB battery interface&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Icons.html#Modelica.Icons.Example"
@@ -1059,7 +1110,7 @@ pre {white-space: pre; overflow-x : hidden;}
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:24 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Mon Sep 11 16:11:42 2017.
 </address>
 </body>
 </html>

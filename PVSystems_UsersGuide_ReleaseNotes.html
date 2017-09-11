@@ -80,24 +80,81 @@ pre {white-space: pre; overflow-x : hidden;}
 <th>Description</th>
 </tr>
 <tr>
-<td><img src="PVSystems.UsersGuide.Rele84cd17f14c380af50_6_2S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_2" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_2"
+<td><img src="PVSystems.UsersGuide.Rele84cd17f24c380af40_6_3S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_3" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_3"
+>Version_0_6_3</a>
+</td>
+<td>Version 0.6.3 (September 8, 2017)</td>
+</tr>
+<tr>
+<td><img src="PVSystems.UsersGuide.Rele84cd17f24c380af40_6_3S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_2" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_2"
 >Version_0_6_2</a>
 </td>
 <td>Version 0.6.2 (July 6, 2017)</td>
 </tr>
 <tr>
-<td><img src="PVSystems.UsersGuide.Rele84cd17f14c380af50_6_2S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_1" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_1"
+<td><img src="PVSystems.UsersGuide.Rele84cd17f24c380af40_6_3S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_1" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_1"
 >Version_0_6_1</a>
 </td>
 <td>Version 0.6.1 (April 19, 2017)</td>
 </tr>
 <tr>
-<td><img src="PVSystems.UsersGuide.Rele84cd17f14c380af50_6_2S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_0" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_0"
+<td><img src="PVSystems.UsersGuide.Rele84cd17f24c380af40_6_3S.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_0" width="20" height="20" align="top">&nbsp;<a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes.Version_0_6_0"
 >Version_0_6_0</a>
 </td>
 <td>Version 0.6.0 (April 3, 2017)</td>
 </tr>
 </table>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Version_0_6_3<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="PVSystems.UsersGuide.ReleaseNotesI.png" alt="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_3" align="right" style="border: 1px solid" width="80" height="80">
+<a name="PVSystems.UsersGuide.ReleaseNotes.Version_0_6_3"></a><a href="PVSystems_UsersGuide_ReleaseNotes.html#PVSystems.UsersGuide.ReleaseNotes"
+>PVSystems.UsersGuide.ReleaseNotes</a>.Version_0_6_3</h2>
+
+      <p>
+        <strong>Fixes and modifications</strong>:
+      </p>
+      <ul class="org-ul">
+        <li>USBBatteryConverter, which instantiates
+          CPMBidirectionalBuckBoost couldn't run the simulation
+          through a mode change (from buck to boost or
+          viceversa). CPMBidirectionalBuckBoost now incorporates
+          one on delay block for each mode enable to prevent
+          them from being active at the same time. This allows
+          for transitions to be simulated, without loss of
+          accuracy.
+        </li>
+        <li>CCM4 was missing the term for forward voltage drop
+          loss. This release adds that.
+        </li>
+        <li>CCM_DCM1 and CCM_DCM2 had an incorrect calculation
+          of mu which could provide negative values. This was
+          fixed. Additionally, CCM_DCM2 was missing an 'n' term
+          in the calculation of Re.
+        </li>
+        <li>CPM had some missing terms in the equation for d.
+        </li>
+      </ul>
+      <p>
+        <strong>Additions</strong>:
+      </p>
+      <ul class="org-ul">
+        <li>Verification models were added in the corresponding
+          examples package for SW1, SW2, SW3, CCM1, CCM2, CCM3,
+          CCM4, CCM5, CCM_DCM1, CCM_DCM2, CPM_CCM, CPM and
+          DeadTime.
+        </li>
+      </ul>
+      <p>
+        <strong>Deletions</strong>:
+      </p>
+      <ul class="org-ul">
+        <li>No deletions.
+        </li>
+      </ul>
+    
+<p><span class="ModelicaBaseClass">Extends from Modelica.Icons.ReleaseNotes (Icon for release notes in documentation).</span></p>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE Version_0_6_2<![endif]-->
@@ -178,8 +235,6 @@ pre {white-space: pre; overflow-x : hidden;}
       </ul>
     
 <p><span class="ModelicaBaseClass">Extends from Modelica.Icons.ReleaseNotes (Icon for release notes in documentation).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_UsersGuide_ReleaseNotes.html</pre>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE Version_0_6_1<![endif]-->
@@ -272,8 +327,6 @@ pre {white-space: pre; overflow-x : hidden;}
   </ul>
 
 <p><span class="ModelicaBaseClass">Extends from Modelica.Icons.ReleaseNotes (Icon for release notes in documentation).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_UsersGuide_ReleaseNotes.html</pre>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
 <span style="mso-spacerun:yes"></span>XE Version_0_6_0<![endif]-->
@@ -306,11 +359,9 @@ pre {white-space: pre; overflow-x : hidden;}
       </ul>
     
 <p><span class="ModelicaBaseClass">Extends from Modelica.Icons.ReleaseNotes (Icon for release notes in documentation).</span></p>
-<h3>Filename</h3>
-<pre>PVSystems_UsersGuide_ReleaseNotes.html</pre>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:22 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Mon Sep 11 16:11:40 2017.
 </address>
 </body>
 </html>

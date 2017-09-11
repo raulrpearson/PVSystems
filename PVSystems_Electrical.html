@@ -170,8 +170,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n</td><td>Negative pin</td></tr>
 <tr><td>input BooleanInput</td><td>c</td><td>&nbsp;</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> IdealCBSwitch <span class="ModelicaComment">&quot;Basic two-cuadrant current bidirectional switch&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.TwoPin"
@@ -228,8 +226,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> SW1 <span class="ModelicaComment">&quot;Switched model implemented with switch + diode&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.SwitchNetworkInterface"
@@ -298,6 +294,8 @@ pre {white-space: pre; overflow-x : hidden;}
 >Voltage</a></td><td>VD</td><td>0</td><td>Forward threshold voltage [V]</td></tr>
 <tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
 >Resistance</a></td><td>Ron</td><td>1.E-5</td><td>Closed switch resistance [Ohm]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>deadTime</td><td>0</td><td>Dead time [s]</td></tr>
 </table>
 <h3>Connectors</h3>
 <table summary="Connectors" class="ModelicaTableConnectors">
@@ -308,8 +306,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> SW2 <span class="ModelicaComment">&quot;Switched model implemented with switch x 2&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.SwitchNetworkInterface"
@@ -317,7 +313,7 @@ pre {white-space: pre; overflow-x : hidden;}
   <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealClosingSwitch"
 >Modelica.Electrical.Analog.Ideal.IdealClosingSwitch</a> sw1(Ron=Ron);
   <a href="PVSystems_Control.html#PVSystems.Control.SwitchingPWM"
->Control.SwitchingPWM</a> signalPWM(
+>Control.SwitchingPWM</a> spwm(
     dMax=dMax,
     dMin=dMin,
     fs=fs,
@@ -338,16 +334,18 @@ pre {white-space: pre; overflow-x : hidden;}
   <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealClosingSwitch"
 >Modelica.Electrical.Analog.Ideal.IdealClosingSwitch</a> sw2(Ron=Ron);
   <a href="PVSystems_Control.html#PVSystems.Control.DeadTime"
->Control.DeadTime</a> deadTime;
+>Control.DeadTime</a> dt(deadTime=deadTime);
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Modelica.SIunits.Time</a> deadTime=0 <span class="ModelicaComment">&quot;Dead time&quot;</span>;
 <span class="ModelicaKeyword">equation </span>
   <span class="ModelicaFunction">connect</span>(p1, sw1.p);
   <span class="ModelicaFunction">connect</span>(n1, sw1.n);
-  <span class="ModelicaFunction">connect</span>(signalPWM.vc, d);
-  <span class="ModelicaFunction">connect</span>(deadTime.c, signalPWM.c1);
-  <span class="ModelicaFunction">connect</span>(deadTime.c1, sw1.control);
+  <span class="ModelicaFunction">connect</span>(spwm.vc, d);
+  <span class="ModelicaFunction">connect</span>(dt.c, spwm.c1);
+  <span class="ModelicaFunction">connect</span>(dt.c1, sw1.control);
   <span class="ModelicaFunction">connect</span>(sw2.n, p2);
   <span class="ModelicaFunction">connect</span>(n2, sw2.p);
-  <span class="ModelicaFunction">connect</span>(deadTime.c2, sw2.control);
+  <span class="ModelicaFunction">connect</span>(dt.c2, sw2.control);
 <span class="ModelicaKeyword">end </span>SW2;
 </div>
 <hr>
@@ -382,6 +380,8 @@ pre {white-space: pre; overflow-x : hidden;}
 >Voltage</a></td><td>VD</td><td>0</td><td>Forward threshold voltage [V]</td></tr>
 <tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
 >Resistance</a></td><td>Ron</td><td>1.E-5</td><td>Closed switch resistance [Ohm]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Time</a></td><td>deadTime</td><td>0</td><td>Dead time [s]</td></tr>
 </table>
 <h3>Connectors</h3>
 <table summary="Connectors" class="ModelicaTableConnectors">
@@ -392,8 +392,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> SW3 <span class="ModelicaComment">&quot;Switched model implemented with switch + anti-parallel diode x 2&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.SwitchNetworkInterface"
@@ -401,7 +399,7 @@ pre {white-space: pre; overflow-x : hidden;}
   <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealClosingSwitch"
 >Modelica.Electrical.Analog.Ideal.IdealClosingSwitch</a> sw1(Ron=Ron);
   <a href="PVSystems_Control.html#PVSystems.Control.SwitchingPWM"
->Control.SwitchingPWM</a> signalPWM(
+>Control.SwitchingPWM</a> spwm(
     dMax=dMax,
     dMin=dMin,
     fs=fs,
@@ -422,20 +420,22 @@ pre {white-space: pre; overflow-x : hidden;}
   <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealClosingSwitch"
 >Modelica.Electrical.Analog.Ideal.IdealClosingSwitch</a> sw2(Ron=Ron);
   <a href="PVSystems_Control.html#PVSystems.Control.DeadTime"
->Control.DeadTime</a> deadTime;
+>Control.DeadTime</a> dt(deadTime=deadTime);
   <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealDiode"
 >Modelica.Electrical.Analog.Ideal.IdealDiode</a> d1;
   <a href="Modelica_Electrical_Analog_Ideal.html#Modelica.Electrical.Analog.Ideal.IdealDiode"
 >Modelica.Electrical.Analog.Ideal.IdealDiode</a> d2;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Time"
+>Modelica.SIunits.Time</a> deadTime=0 <span class="ModelicaComment">&quot;Dead time&quot;</span>;
 <span class="ModelicaKeyword">equation </span>
   <span class="ModelicaFunction">connect</span>(p1, sw1.p);
   <span class="ModelicaFunction">connect</span>(n1, sw1.n);
-  <span class="ModelicaFunction">connect</span>(signalPWM.vc, d);
-  <span class="ModelicaFunction">connect</span>(deadTime.c, signalPWM.c1);
-  <span class="ModelicaFunction">connect</span>(deadTime.c1, sw1.control);
+  <span class="ModelicaFunction">connect</span>(spwm.vc, d);
+  <span class="ModelicaFunction">connect</span>(dt.c, spwm.c1);
+  <span class="ModelicaFunction">connect</span>(dt.c1, sw1.control);
   <span class="ModelicaFunction">connect</span>(sw2.n, p2);
   <span class="ModelicaFunction">connect</span>(n2, sw2.p);
-  <span class="ModelicaFunction">connect</span>(deadTime.c2, sw2.control);
+  <span class="ModelicaFunction">connect</span>(dt.c2, sw2.control);
   <span class="ModelicaFunction">connect</span>(d1.n, sw1.p);
   <span class="ModelicaFunction">connect</span>(d1.p, sw1.n);
   <span class="ModelicaFunction">connect</span>(d2.n, p2);
@@ -488,8 +488,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CCM1 <span class="ModelicaComment">&quot;Average CCM model with no losses&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.SwitchNetworkInterface"
@@ -554,8 +552,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CCM2 <span class="ModelicaComment">&quot;Average CCM model with conduction losses&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.SwitchNetworkInterface"
@@ -621,8 +617,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CCM3 <span class="ModelicaComment">&quot;Average CCM model with no losses and tranformer&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.SwitchNetworkInterface"
@@ -677,6 +671,8 @@ pre {white-space: pre; overflow-x : hidden;}
 >Resistance</a></td><td>Ron</td><td>0</td><td>Transistor on resistance [Ohm]</td></tr>
 <tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
 >Resistance</a></td><td>RD</td><td>0</td><td>Diode on resistance [Ohm]</td></tr>
+<tr><td><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Voltage</a></td><td>VD</td><td>0</td><td>Diode forward voltage drop [V]</td></tr>
 <tr><td>Real</td><td>n</td><td>1</td><td>Transformer turns ratio 1:n (primary:secondary) [1]</td></tr>
 </table>
 <h3>Connectors</h3>
@@ -688,8 +684,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CCM4 <span class="ModelicaComment">&quot;Average CCM model with conduction losses and tranformer&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.SwitchNetworkInterface"
@@ -698,12 +692,14 @@ pre {white-space: pre; overflow-x : hidden;}
 >Modelica.SIunits.Resistance</a> Ron=0 <span class="ModelicaComment">&quot;Transistor on resistance&quot;</span>;
   <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Resistance"
 >Modelica.SIunits.Resistance</a> RD=0 <span class="ModelicaComment">&quot;Diode on resistance&quot;</span>;
+  <span class="ModelicaKeyword">parameter </span><a href="Modelica_SIunits.html#Modelica.SIunits.Voltage"
+>Modelica.SIunits.Voltage</a> VD=0 <span class="ModelicaComment">&quot;Diode forward voltage drop&quot;</span>;
   <span class="ModelicaKeyword">parameter </span>Real n(<span class="ModelicaKeyword">final </span>unit=&quot;1&quot;) = 1
     <span class="ModelicaComment">&quot;Transformer turns ratio 1:n (primary:secondary)&quot;</span>;
 <span class="ModelicaKeyword">equation </span>
   0 = p1.i + n1.i;
   0 = p2.i + n2.i;
-  v1 = i1*(Ron/dsat + (1 - dsat)*RD/n^2/dsat^2) + (1 - dsat)/dsat/n*v2;
+  v1 = i1*(Ron/dsat + (1 - dsat)*RD/n^2/dsat^2) + (1 - dsat)/dsat/n*(v2+VD);
   -i2 = i1*(1 - dsat)/dsat/n;
 <span class="ModelicaKeyword">end </span>CCM4;
 </div>
@@ -766,8 +762,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CCM5
   <span class="ModelicaComment">&quot;Average CCM model with conduction losses and diode reverse recovery&quot;</span>
@@ -840,8 +834,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CCM_DCM1 <span class="ModelicaComment">&quot;Average CCM-DCM model with no losses&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.SwitchNetworkInterface"
@@ -857,7 +849,7 @@ pre {white-space: pre; overflow-x : hidden;}
   0 = p1.i + n1.i;
   0 = p2.i + n2.i;
   Re = 2*Le*fs/dsat^2;
-  mu =<span class="ModelicaFunction"> max</span>(dsat, 1/(1 + Re*i1/v2));
+  mu =<span class="ModelicaFunction"> max</span>(dsat, 1/(1 + Re*<span class="ModelicaFunction">max</span>(0,i1)/v2));
   v1 = (1 - mu)/mu*v2;
   -i2 = (1 - mu)/mu*i1;
 <span class="ModelicaKeyword">end </span>CCM_DCM1;
@@ -914,8 +906,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>NegativePin</td><td>n2</td><td>Negative pin of the right port</td></tr>
 <tr><td>input RealInput</td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CCM_DCM2 <span class="ModelicaComment">&quot;Average CCM-DCM model with no losses and transformer&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.SwitchNetworkInterface"
@@ -932,8 +922,8 @@ pre {white-space: pre; overflow-x : hidden;}
 <span class="ModelicaKeyword">equation </span>
   0 = p1.i + n1.i;
   0 = p2.i + n2.i;
-  Re = 2*Le*fs/dsat^2;
-  mu =<span class="ModelicaFunction"> max</span>(dsat, 1/(1 + Re*i1/v2));
+  Re = 2*Le*n*fs/dsat^2;
+  mu =<span class="ModelicaFunction"> max</span>(dsat, 1/(1 + Re*<span class="ModelicaFunction">max</span>(0,i1)/v2));
   v1 = (1 - mu)*v2/mu/n;
   -i2 = (1 - mu)*i1/mu/n;
 <span class="ModelicaKeyword">end </span>CCM_DCM2;
@@ -988,8 +978,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input RealInput</td><td>G</td><td>Solar irradiation</td></tr>
 <tr><td>input RealInput</td><td>T</td><td>Panel temperature</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> PVArray <span class="ModelicaComment">&quot;Flexible PV array model&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Electrical_Analog_Interfaces.html#Modelica.Electrical.Analog.Interfaces.OnePort"
@@ -1092,8 +1080,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>PositivePin</td><td>p</td><td>Positive pin (potential p.v &gt; n.v for positive voltage drop v)</td></tr>
 <tr><td>NegativePin</td><td>n</td><td>Negative pin</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> SimpleBattery <span class="ModelicaComment">&quot;Simple battery model&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.BatteryInterface"
@@ -1132,7 +1118,7 @@ pre {white-space: pre; overflow-x : hidden;}
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:26 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Mon Sep 11 16:11:46 2017.
 </address>
 </body>
 </html>

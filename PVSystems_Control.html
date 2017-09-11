@@ -156,8 +156,6 @@ pre {white-space: pre; overflow-x : hidden;}
 >RealInput</a></td><td>vc</td><td>Control voltage</td></tr>
 <tr><td>output BooleanOutput</td><td>c1</td><td>Firing PWM signal</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Control.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> SwitchingPWM
   <span class="ModelicaComment">&quot;Generates a pulse width modulated (PWM) boolean fire signal&quot;</span>
@@ -246,8 +244,6 @@ pre {white-space: pre; overflow-x : hidden;}
 >BooleanOutput</a></td><td>c</td><td>Boolean firing signal</td></tr>
 <tr><td>output RealOutput</td><td>ramp</td><td>Artificial ramp signal</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Control.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> SwitchingCPM <span class="ModelicaComment">&quot;Current Peak Mode modulator for switching models&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
@@ -355,8 +351,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanOutput"
 >BooleanOutput</a></td><td>c2</td><td>PWM complement</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Control.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> DeadTime <span class="ModelicaComment">&quot;Introduces a dead time in complementary PWM firing signals&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
@@ -449,8 +443,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
 >BooleanInput</a></td><td>enable</td><td>Block enable/disable</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Control.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CPM_CCM <span class="ModelicaComment">&quot;Current Peak Mode modulator for averaged CCM models&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Control_Interfaces.html#PVSystems.Control.Interfaces.CPMInterface"
@@ -530,8 +522,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Control.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CPM <span class="ModelicaComment">&quot;Current Peak Mode modulator for averaged models&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Control_Interfaces.html#PVSystems.Control.Interfaces.CPMInterface"
@@ -540,7 +530,7 @@ pre {white-space: pre; overflow-x : hidden;}
   Real d2;
 <span class="ModelicaKeyword">equation </span>
   d2 =<span class="ModelicaFunction"> min</span>(L*fs*(vc - Va*d)/Rf/vm2, 1 - d);
-  d = 2*(vc*(d + d2) - vs)/(vm1 + vm2)*d2*(d + d2) + 2*Va*(d + d2);
+  d = 2*(vc*(d + d2) - vs)/(Rf/L/fs*(vm1 + vm2)*d2*(d + d2) + 2*Va*(d + d2));
 <span class="ModelicaKeyword">end </span>CPM;
 </div>
 <hr>
@@ -579,8 +569,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
 >RealInput</a></td><td>theta</td><td>&nbsp;</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Control.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Park <span class="ModelicaComment">&quot;Park transformation&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
@@ -636,8 +624,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
 >RealInput</a></td><td>theta</td><td>&nbsp;</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Control.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> InversePark <span class="ModelicaComment">&quot;Inverse Park transformation&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
@@ -691,8 +677,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>theta</td><td>&nbsp;</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Control.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> PLL <span class="ModelicaComment">&quot;Phase-locked loop&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Icons.html#Modelica.Blocks.Icons.Block"
@@ -788,8 +772,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Control.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> MPPTController <span class="ModelicaComment">&quot;Maximum Power Point Tracking Controller&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
@@ -834,7 +816,7 @@ pre {white-space: pre; overflow-x : hidden;}
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:28 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Mon Sep 11 16:11:48 2017.
 </address>
 </body>
 </html>

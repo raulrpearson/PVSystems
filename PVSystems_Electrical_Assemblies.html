@@ -115,8 +115,6 @@ pre {white-space: pre; overflow-x : hidden;}
 >RealInput</a></td><td>d</td><td>&nbsp;</td></tr>
 <tr><td colspan="2">replaceable model SwitchModel</td><td>&nbsp;</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical_Assemblies.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> HBridge <span class="ModelicaComment">&quot;Basic ideal H-bridge topology (averaged)&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.TwoPort"
@@ -177,8 +175,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
 >BooleanInput</a></td><td>c2</td><td>&nbsp;</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical_Assemblies.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> HBridgeSwitched <span class="ModelicaComment">&quot;Basic ideal H-bridge topology (switched)&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.TwoPort"
@@ -270,8 +266,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
 >RealInput</a></td><td>dboost</td><td>Boost control voltage</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical_Assemblies.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> BidirectionalBuckBoost <span class="ModelicaComment">&quot;Bidirectional Buck Boost converter&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="PVSystems_Electrical_Interfaces.html#PVSystems.Electrical.Interfaces.TwoPort"
@@ -404,8 +398,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.BooleanInput"
 >BooleanInput</a></td><td>mode</td><td>Boost control voltage</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical_Assemblies.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">model</span> CPMBidirectionalBuckBoost
   <span class="ModelicaComment">&quot;Bidirectional Buck Boost for battery USB interface&quot;</span>
@@ -480,6 +472,10 @@ pre {white-space: pre; overflow-x : hidden;}
     dmin=1e-3);
   <a href="Modelica_Blocks_Logical.html#Modelica.Blocks.Logical.Not"
 >Modelica.Blocks.Logical.Not</a> not1;
+  <a href="Modelica_Blocks_MathBoolean.html#Modelica.Blocks.MathBoolean.OnDelay"
+>Modelica.Blocks.MathBoolean.OnDelay</a> onDelay(delayTime=3/fs);
+  <a href="Modelica_Blocks_MathBoolean.html#Modelica.Blocks.MathBoolean.OnDelay"
+>Modelica.Blocks.MathBoolean.OnDelay</a> onDelay1(delayTime=3/fs);
 <span class="ModelicaKeyword">equation </span>
   <span class="ModelicaFunction">connect</span>(conv.p1, p1);
   <span class="ModelicaFunction">connect</span>(conv.p2, p2);
@@ -494,10 +490,12 @@ pre {white-space: pre; overflow-x : hidden;}
   <span class="ModelicaFunction">connect</span>(vc, buck_cpm.vc);
   <span class="ModelicaFunction">connect</span>(vc, boost_cpm.vc);
   <span class="ModelicaFunction">connect</span>(mode, not1.u);
-  <span class="ModelicaFunction">connect</span>(mode, boost_cpm.enable);
-  <span class="ModelicaFunction">connect</span>(not1.y, buck_cpm.enable);
   <span class="ModelicaFunction">connect</span>(boost_cpm.d, conv.dboost);
   <span class="ModelicaFunction">connect</span>(buck_cpm.d, conv.dbuck);
+  <span class="ModelicaFunction">connect</span>(mode, onDelay.u);
+  <span class="ModelicaFunction">connect</span>(onDelay.y, boost_cpm.enable);
+  <span class="ModelicaFunction">connect</span>(not1.y, onDelay1.u);
+  <span class="ModelicaFunction">connect</span>(onDelay1.y, buck_cpm.enable);
 <span class="ModelicaKeyword">end </span>CPMBidirectionalBuckBoost;
 </div>
 <hr>
@@ -526,8 +524,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
 >RealInput</a></td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical_Assemblies.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">replaceable </span><span class="ModelicaKeyword">model</span> SwitchModel = <a href="PVSystems_Electrical.html#PVSystems.Electrical.CCM1"
 >CCM1</a> <span class="ModelicaKeyword">constrainedby </span>
@@ -559,8 +555,6 @@ pre {white-space: pre; overflow-x : hidden;}
 <tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
 >RealInput</a></td><td>d</td><td>Duty cycle</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>PVSystems_Electrical_Assemblies.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">replaceable </span><span class="ModelicaKeyword">model</span> SwitchModel = <a href="PVSystems_Electrical.html#PVSystems.Electrical.CCM1"
 >CCM1</a> <span class="ModelicaKeyword">constrainedby </span>
@@ -568,7 +562,7 @@ pre {white-space: pre; overflow-x : hidden;}
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:27 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Mon Sep 11 16:11:47 2017.
 </address>
 </body>
 </html>

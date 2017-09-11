@@ -72,8 +72,6 @@ as <b>cos</b> of the input <b>u</b>:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Cos <span class="ModelicaComment">&quot;Output the cosine of the input&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
@@ -133,8 +131,6 @@ Example:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Add <span class="ModelicaComment">&quot;Output the sum of the two inputs&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
@@ -199,8 +195,6 @@ explicitly set to 0.0, if the mean value results in a negative value.
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Mean <span class="ModelicaComment">&quot;Calculate mean over period 1/f&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
@@ -225,6 +219,57 @@ explicitly set to 0.0, if the mean value results in a negative value.
     <span class="ModelicaFunction">reinit</span>(x, 0);
   <span class="ModelicaKeyword">end when</span>;
 <span class="ModelicaKeyword">end </span>Mean;
+</div>
+<hr>
+<!--[if supportFields]><span style="mso-element:field-begin"></span>
+<span style="mso-spacerun:yes"></span>XE Abs<![endif]-->
+<!--[if supportFields]><span style="mso-element:field-end"></span><![endif]-->
+<h2><img src="Modelica.Blocks.Math.AbsI.png" alt="Modelica.Blocks.Math.Abs" align="right" style="border: 1px solid" width="80" height="80">
+<a name="Modelica.Blocks.Math.Abs"></a>Modelica.Blocks.Math.Abs</h2>
+<p>
+<span class="ModelicaDescription">Output the absolute value of the input</span>
+<br>
+<br><img src="Modelica.Blocks.Math.AbsD.png" alt="Modelica.Blocks.Math.Abs">
+</p>
+<h3>Information</h3>
+
+<p>
+This blocks computes the output <b>y</b>
+as <i>absolute value</i> of the input <b>u</b>:
+</p>
+<pre>
+    y = <b>abs</b>( u );
+</pre>
+<p>
+The Boolean parameter generateEvent decides whether Events are generated at zero crossing (Modelica specification before 3) or not.
+</p>
+
+<p><span class="ModelicaBaseClass">Extends from <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a> (Single Input Single Output continuous control block).</span></p>
+<h3>Parameters</h3>
+<table summary="Parameters" class="ModelicaTableParameters">
+<tr><th>Type</th><th>Name</th><th>Default</th><th>Description</th></tr>
+<tr><td>Boolean</td><td>generateEvent</td><td>false</td><td>Choose whether events shall be generated</td></tr>
+</table>
+<h3>Connectors</h3>
+<table summary="Connectors" class="ModelicaTableConnectors">
+<tr><th>Type</th><th>Name</th><th>Description</th></tr>
+<tr><td>input <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealInput"
+>RealInput</a></td><td>u</td><td>Connector of Real input signal</td></tr>
+<tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
+>RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
+</table>
+<h3>Modelica definition</h3>
+<div class="modelica"><span class="ModelicaKeyword">block</span> Abs <span class="ModelicaComment">&quot;Output the absolute value of the input&quot;</span>
+  <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
+>Interfaces.SISO</a>;
+  <span class="ModelicaKeyword">parameter </span>Boolean generateEvent=false
+    <span class="ModelicaComment">&quot;Choose whether events shall be generated&quot;</span>;
+<span class="ModelicaKeyword">equation </span>
+  <span class="ModelicaComment">//y = abs(u);</span>
+  y = <span class="ModelicaKeyword">if </span>generateEvent<span class="ModelicaKeyword"> then </span>(<span class="ModelicaKeyword">if </span>u &gt;= 0<span class="ModelicaKeyword"> then </span>u<span class="ModelicaKeyword"> else </span>-u)<span class="ModelicaKeyword"> else </span>(<span class="ModelicaKeyword">if </span><span class="ModelicaFunction">noEvent</span>(u &gt;=
+    0)<span class="ModelicaKeyword"> then </span>u<span class="ModelicaKeyword"> else </span>-u);
+<span class="ModelicaKeyword">end </span>Abs;
 </div>
 <hr>
 <!--[if supportFields]><span style="mso-element:field-begin"></span>
@@ -263,8 +308,6 @@ as <b>sine</b> of the input <b>u</b>:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Sin <span class="ModelicaComment">&quot;Output the sine of the input&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SISO"
@@ -308,8 +351,6 @@ the two inputs <b>u1</b> and <b>u2</b>:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Connector of Real output signal</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Division <span class="ModelicaComment">&quot;Output first input divided by second input&quot;</span>
   <span class="ModelicaKeyword">extends </span><a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.SI2SO"
@@ -355,8 +396,6 @@ input <i>u</i>:
 <tr><td>output <a href="Modelica_Blocks_Interfaces.html#Modelica.Blocks.Interfaces.RealOutput"
 >RealOutput</a></td><td>y</td><td>Output signal connector</td></tr>
 </table>
-<h3>Filename</h3>
-<pre>Modelica_Blocks_Math.html</pre>
 <h3>Modelica definition</h3>
 <div class="modelica"><span class="ModelicaKeyword">block</span> Gain <span class="ModelicaComment">&quot;Output the product of a gain value with the input signal&quot;</span>
 
@@ -374,7 +413,7 @@ input <i>u</i>:
 </div>
 <hr>
 <address>
-<a href="http://www.3ds.com/">Automatically generated</a> Thu Jul 06 16:37:30 2017.
+<a href="http://www.3ds.com/">Automatically generated</a> Mon Sep 11 16:11:51 2017.
 </address>
 </body>
 </html>
