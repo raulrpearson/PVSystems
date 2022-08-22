@@ -1,6 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg viewBox="0 0 783.000000 476.000000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect x="0" y="0" width="783" height="476" fill="white" />
 	<text x="610.75" y="235.6" fill="rgb(0,0,255)" dominant-baseline="central" font-size="14" font-family="Arial" text-anchor="middle">Modifiable model</text>
 	<text x="403.35" y="52.6" fill="rgb(0,0,255)" dominant-baseline="central" font-size="17" font-family="Arial" text-anchor="middle">Switched model</text>
 	<rect fill="rgb(255,255,255)" stroke="rgb(0,0,255)" stroke-opacity="1" x="382" y="77" width="61" height="61"/>
