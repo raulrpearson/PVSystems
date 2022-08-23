@@ -27,7 +27,7 @@ The library can be used inside tools like [Dymola](http://www.3ds.com/products-s
 
 ## Contributing
 
-If you have any **questions, comments, suggestions, ideas or feature requests**, please do share those as well as any **mistakes or bugs** you might discover. You can open an issue in the [Issues](https://github.com/raulrpearson/PVSystems/issues) section of the repository or, if you prefer, contact me by [email](mailto:raulrpearson@protonmail.com). Contributions in the form of [Pull Requests](https://github.com/raulrpearson/PVSystems/pulls) are always welcome.
+If you have any **questions, comments, suggestions, ideas or feature requests**, please do share those as well as any **mistakes or bugs** you might discover. You can open an issue in the [Issues](https://github.com/raulrpearson/PVSystems/issues) section of the repository or, if you prefer, contact me by [email](mailto:raulrpearson@proton.me). Contributions in the form of [Pull Requests](https://github.com/raulrpearson/PVSystems/pulls) are always welcome.
 
 ## License
 
